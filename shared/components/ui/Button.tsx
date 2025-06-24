@@ -9,7 +9,7 @@ import {
 
 const button = cva(
   [
-    "rounded-base cursor-pointer border text-base font-bold transition-all",
+    "rounded-base font-primary cursor-pointer border text-base font-bold transition-all",
     "outline-none focus-visible:ring-3",
     "disabled:cursor-default",
   ],

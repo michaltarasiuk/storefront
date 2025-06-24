@@ -132,6 +132,8 @@
   --spacing-small-500: 0.1875rem; /* 3px */
   --spacing-none: 0rem; /* 0px */
 
+  --font-primary: var(--font-inter);
+
   --text-extra-large: 1.3125rem; /* 21px */
   --text-large: 1.1875rem; /* 19px */
   --text-medium: 1rem; /* 16px */
