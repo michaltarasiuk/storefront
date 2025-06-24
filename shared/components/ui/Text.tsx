@@ -54,7 +54,14 @@ export function Text({
   return (
     <AriaText
       elementType="span"
-      className={cn(text({appearance, emphasis, size}))}
+      className={cn(
+        text({
+          appearance,
+          emphasis,
+          size,
+        }),
+        props.className,
+      )}
       {...props}>
       {children}
     </AriaText>
@@ -71,7 +78,14 @@ export function TextBlock({
   return (
     <AriaText
       elementType="p"
-      className={cn(text({appearance, emphasis, size}))}
+      className={cn(
+        text({
+          appearance,
+          emphasis,
+          size,
+        }),
+        props.className,
+      )}
       {...props}>
       {children}
     </AriaText>

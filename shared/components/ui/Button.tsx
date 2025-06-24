@@ -117,7 +117,14 @@ export function Button({
   return (
     <AriaButton
       {...props}
-      className={cn(button({appearance, kind, size}), props.className)}>
+      className={cn(
+        button({
+          appearance,
+          kind,
+          size,
+        }),
+        props.className,
+      )}>
       {children}
     </AriaButton>
   );
