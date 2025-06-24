@@ -14,7 +14,7 @@ export function Tooltip({children, ...props}: TooltipProps) {
       className={cn(
         "p-small-100 max-w-48",
         "bg-base-text rounded-base",
-        "text-base-text-contrast font-primary text-base",
+        "text-base-text-contrast font-primary text-base font-normal",
         "entering:animate-in entering:fade-in-0 entering:zoom-in-95",
         "exiting:animate-out exiting:fade-out-0 exiting:zoom-out-95",
         props.className,
