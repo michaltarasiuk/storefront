@@ -7,7 +7,7 @@ import {
 import {cva, VariantProps} from "class-variance-authority";
 import {cn} from "@/shared/utils/cn";
 
-const text = cva("font-primary", {
+export const text = cva("font-primary", {
   variants: {
     appearance: {
       base: "text-base-text",
