@@ -97,7 +97,7 @@
   --color-info-text: #1c1c1c;
   --color-info-text-subdued: #303030;
 
-  --color-warning-warning: #8f6900;
+  --color-warning: #8f6900;
   --color-warning-background: #fff5eb;
   --color-warning-background-subdued: #ffeedb;
   --color-warning-border: #ffdeb2;
@@ -105,7 +105,7 @@
   --color-warning-text: #241700;
   --color-warning-text-subdued: #423100;
 
-  --color-success-success: #4d7a50;
+  --color-success: #4d7a50;
   --color-success-background: #eafbea;
   --color-success-background-subdued: #ddf8de;
   --color-success-border: #b1f2b4;

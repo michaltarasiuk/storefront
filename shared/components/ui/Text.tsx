@@ -14,23 +14,23 @@ const text = cva("font-primary", {
       accent: "text-base-accent",
       subdued: "text-base-text-subdued",
       info: "text-info",
-      success: "text-success-text",
-      warning: "text-warning-warning",
+      success: "text-success",
+      warning: "text-warning",
       critical: "text-critical",
       decorative: "text-base-decorative",
     },
     emphasis: {
       base: "font-normal",
       italic: "italic",
-      bold: "font-bold",
+      semibold: "font-semibold",
     },
     size: {
-      extraSmall: "text-extra-small",
+      extrasmall: "text-extra-small",
       small: "text-small",
       base: "text-base",
       medium: "text-medium",
       large: "text-large",
-      extraLarge: "text-extra-large",
+      extralarge: "text-extra-large",
     },
   },
   defaultVariants: {
@@ -78,6 +78,7 @@ export function TextBlock({
   return (
     <AriaText
       elementType="p"
+      {...props}
       className={cn(
         text({
           appearance,
@@ -85,8 +86,7 @@ export function TextBlock({
           size,
         }),
         props.className,
-      )}
-      {...props}>
+      )}>
       {children}
     </AriaText>
   );
