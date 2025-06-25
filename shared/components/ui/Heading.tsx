@@ -28,7 +28,7 @@ export function Heading({children, ...props}: HeadingProps) {
       {...props}
       level={props.level ?? level}
       className={cn(
-        heading({level: level === 1 || level === 2 ? level : null}),
+        heading(level === 1 || level === 2 ? {level} : {}),
         props.className,
       )}>
       {children}

@@ -11,7 +11,12 @@ export function FieldError({children, ...props}: FieldErrorProps) {
   return (
     <AriaFieldError
       {...props}
-      className={cn(text({appearance: "critical"}), props.className)}>
+      className={cn(
+        text({
+          appearance: "critical",
+        }),
+        props.className,
+      )}>
       {children}
     </AriaFieldError>
   );
