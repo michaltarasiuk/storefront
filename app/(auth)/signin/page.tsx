@@ -1,7 +1,8 @@
 import {Link} from "@/shared/components/Link";
 import {Routes} from "@/shared/consts/routes";
-import {SigninForm} from "../_components/SigninForm";
+
 import {FormHeader} from "../_components/FormHeader";
+import {SigninForm} from "../_components/SigninForm";
 
 export default function SigninPage() {
   return (

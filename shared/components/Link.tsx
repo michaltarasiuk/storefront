@@ -1,6 +1,7 @@
 "use client";
 
 import {Link as AriaLink, LinkProps} from "react-aria-components";
+
 import {cn} from "../utils/cn";
 
 export function Link({children, ...props}: LinkProps) {

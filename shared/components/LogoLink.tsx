@@ -1,6 +1,7 @@
 import Image from "next/image";
-import {Link} from "./Link";
+
 import {Routes} from "../consts/routes";
+import {Link} from "./Link";
 
 export function LogoLink(props: {className?: string}) {
   return (

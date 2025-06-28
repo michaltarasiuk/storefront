@@ -1,9 +1,10 @@
 "use client";
 
-import {cn} from "@/shared/utils/cn";
 import {cva} from "class-variance-authority";
 import {createContext, use} from "react";
 import {Heading as AriaHeading, HeadingProps} from "react-aria-components";
+
+import {cn} from "@/shared/utils/cn";
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 

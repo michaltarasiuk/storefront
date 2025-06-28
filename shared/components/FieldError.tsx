@@ -4,8 +4,10 @@ import {
   FieldError as AriaFieldError,
   type FieldErrorProps,
 } from "react-aria-components";
-import {text} from "./Text";
+
 import {cn} from "@/shared/utils/cn";
+
+import {text} from "../styles/text";
 
 export function FieldError({children, ...props}: FieldErrorProps) {
   return (

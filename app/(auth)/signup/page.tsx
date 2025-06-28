@@ -1,7 +1,8 @@
-import {SignupForm} from "../_components/SignupForm";
-import {FormHeader} from "../_components/FormHeader";
 import {Link} from "@/shared/components/Link";
 import {Routes} from "@/shared/consts/routes";
+
+import {FormHeader} from "../_components/FormHeader";
+import {SignupForm} from "../_components/SignupForm";
 
 export default function SignupPage() {
   return (

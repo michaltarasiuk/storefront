@@ -1,11 +1,12 @@
 "use client";
 
-import {cn} from "@/shared/utils/cn";
 import {
-  Tooltip as AriaTooltip,
   OverlayArrow,
+  Tooltip as AriaTooltip,
   TooltipProps,
 } from "react-aria-components";
+
+import {cn} from "@/shared/utils/cn";
 
 export function Tooltip({children, ...props}: TooltipProps) {
   return (

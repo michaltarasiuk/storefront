@@ -1,11 +1,12 @@
 "use client";
 
-import {cn} from "@/shared/utils/cn";
 import {cva, type VariantProps} from "class-variance-authority";
 import {
   Button as AriaButton,
   ButtonProps as AriaButtonProps,
 } from "react-aria-components";
+
+import {cn} from "@/shared/utils/cn";
 
 const button = cva(
   [

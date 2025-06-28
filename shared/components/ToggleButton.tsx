@@ -1,10 +1,11 @@
 "use client";
 
-import {cn} from "@/shared/utils/cn";
 import {
   ToggleButton as AriaToggleButton,
   ToggleButtonProps,
 } from "react-aria-components";
+
+import {cn} from "@/shared/utils/cn";
 
 export function ToggleButton({children, ...props}: ToggleButtonProps) {
   return (
