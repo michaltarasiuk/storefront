@@ -35,7 +35,7 @@ export function Menu<T extends Record<PropertyKey, unknown>>({
 
 const menuItem = cva(
   [
-    "py-small-200 px-base text-control-text font-primary rounded-small cursor-pointer text-base transition-colors",
+    "py-small-200 px-base text-control-text font-primary rounded-small cursor-pointer text-base",
     "hover:bg-base-background-subdued",
     "disabled:cursor-default disabled:opacity-50",
     "focus-visible:bg-base-background-subdued outline-none",
