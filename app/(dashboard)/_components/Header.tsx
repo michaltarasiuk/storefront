@@ -1,5 +1,6 @@
 import {Avatar} from "@/shared/components/Avatar";
 import {Button} from "@/shared/components/Button";
+import {IconButton} from "@/shared/components/IconButton";
 import {LogoLink} from "@/shared/components/LogoLink";
 import {Routes} from "@/shared/consts/routes";
 import {HamburgerIcon} from "@/shared/icons/HamburgerIcon";
@@ -27,7 +28,9 @@ export function Header() {
         className={cn(
           "flex items-center justify-between px-5 py-5 sm:hidden sm:px-0",
         )}>
-        <HamburgerIcon aria-hidden />
+        <IconButton aria-label="Open menu">
+          <HamburgerIcon aria-hidden />
+        </IconButton>
         <LogoLink />
         <Avatar />
       </div>
