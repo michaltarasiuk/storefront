@@ -47,12 +47,12 @@ function OrderStatusTab({children, icon: Icon, ...props}: OrderStatusTabProps) {
         "focus-visible:ring-base-accent outline-none focus-visible:ring-2",
         props.className,
       )}>
-      {({isHovered, isSelected}) => (
+      {({isSelected}) => (
         <>
           <Icon
             className={cn(
               "stroke-base-text-subdued hidden sm:inline",
-              (isHovered || isSelected) && "stroke-control-accent",
+              isSelected && "stroke-control-accent",
             )}
           />
           <span
@@ -60,7 +60,6 @@ function OrderStatusTab({children, icon: Icon, ...props}: OrderStatusTabProps) {
             className={cn(
               "font-primary text-base-text-subdued inline-flex flex-col text-base",
               "before:pointer-events-none before:invisible before:h-0 before:overflow-hidden before:font-bold before:content-[attr(data-text)] before:select-none",
-              isHovered && "text-control-accent",
               isSelected && "text-control-accent font-semibold",
             )}>
             {children}

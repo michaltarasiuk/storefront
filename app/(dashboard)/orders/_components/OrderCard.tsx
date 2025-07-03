@@ -3,23 +3,7 @@ import {Text} from "@/shared/components/Text";
 import {SuccessIcon} from "@/shared/icons/SuccessIcon";
 import {cn} from "@/shared/utils/cn";
 
-export function OrdersGridView() {
-  return (
-    <ul className={cn("grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3")}>
-      <li>
-        <OrderCard />
-      </li>
-      <li>
-        <OrderCard />
-      </li>
-      <li>
-        <OrderCard />
-      </li>
-    </ul>
-  );
-}
-
-function OrderCard() {
+export function OrderCard() {
   return (
     <article
       className={cn(
@@ -41,7 +25,7 @@ function OrderCard() {
             className={cn("[grid-area:status]")}
             role="status"
             aria-live="polite">
-            Confirmed
+            Confirmedo2
           </Text>
           <Text className={cn("[grid-area:updated]")}>
             <time dateTime="2024-10-17">Updated Oct 17</time>

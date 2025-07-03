@@ -1,6 +1,6 @@
 "use client";
 
-import {useId} from "react";
+import {use, useId} from "react";
 import {
   ToggleButton,
   ToggleButtonGroup,
@@ -10,33 +10,44 @@ import {
 import {GridIcon} from "@/shared/icons/GridIcon";
 import {ListIcon} from "@/shared/icons/ListIcon";
 import {cn} from "@/shared/utils/cn";
+import {isDefined} from "@/shared/utils/is-defined";
 
-export function OrderViewSwitcher() {
+import {OrderViewContext} from "../_utils/order-view-context";
+
+export function OrderViewToggle() {
+  const {orderView, setOrderView} = use(OrderViewContext);
   const gridViewId = useId();
-  const listViewId = useId();
+  const tableViewId = useId();
   return (
     <ToggleButtonGroup
-      defaultSelectedKeys={[gridViewId]}
+      selectedKeys={[orderView === "grid" ? gridViewId : tableViewId]}
+      onSelectionChange={([key]) => {
+        if (!isDefined(key)) {
+          return;
+        }
+        const selectedView = key === gridViewId ? "grid" : "table";
+        setOrderView?.(selectedView);
+      }}
       className={cn("rounded-large flex gap-2 p-1")}>
-      <ViewToggleButton id={gridViewId} icon={GridIcon}>
+      <OrderViewToggleButton id={gridViewId} icon={GridIcon}>
         Grid View
-      </ViewToggleButton>
-      <ViewToggleButton id={listViewId} icon={ListIcon}>
-        List View
-      </ViewToggleButton>
+      </OrderViewToggleButton>
+      <OrderViewToggleButton id={tableViewId} icon={ListIcon}>
+        Table View
+      </OrderViewToggleButton>
     </ToggleButtonGroup>
   );
 }
 
-interface ViewToggleButtonProps extends ToggleButtonProps {
+interface OrderViewToggleButtonProps extends ToggleButtonProps {
   icon: (props: React.ComponentProps<"svg">) => React.JSX.Element;
 }
 
-function ViewToggleButton({
+function OrderViewToggleButton({
   children,
   icon: Icon,
   ...props
-}: ViewToggleButtonProps) {
+}: OrderViewToggleButtonProps) {
   return (
     <ToggleButton
       {...props}
@@ -46,20 +57,18 @@ function ViewToggleButton({
         "selected:bg-base-background",
         props.className,
       )}>
-      {({isHovered, isSelected, isFocusVisible, ...renderProps}) => (
+      {({isSelected, isFocusVisible, ...renderProps}) => (
         <>
           <Icon
             aria-hidden
             className={cn(
               "stroke-base-text-subdued",
-              (isHovered || isSelected || isFocusVisible) &&
-                "stroke-control-accent",
+              (isSelected || isFocusVisible) && "stroke-control-accent",
             )}
           />
           <span className={cn("sr-only")}>
             {typeof children === "function"
               ? children({
-                  isHovered,
                   isSelected,
                   isFocusVisible,
                   ...renderProps,
