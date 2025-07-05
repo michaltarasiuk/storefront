@@ -16,7 +16,7 @@ export function ProfileSwitcher() {
     <MenuTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
       <Button
         className={cn(
-          "rounded-base flex cursor-pointer items-center gap-2 px-2 py-1 transition-colors",
+          "rounded-base flex cursor-pointer items-center gap-2 px-2 py-1",
           "hover:bg-base-background-subdued",
           "focus-visible:bg-base-background-subdued/50 focus-visible:ring-base-accent outline-none focus-visible:ring-2",
         )}>

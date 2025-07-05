@@ -38,7 +38,12 @@ export function ProductThumbnail({
 }: ProductThumbnailProps) {
   const [error, setError] = useState(false);
   return (
-    <div className={cn(productThumbnail({size}))}>
+    <div
+      className={cn(
+        productThumbnail({
+          size,
+        }),
+      )}>
       {isDefined(src) && !error ? (
         <Image src={src} alt={alt} fill onError={() => setError(true)} />
       ) : (
