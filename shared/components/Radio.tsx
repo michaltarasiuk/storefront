@@ -1,15 +1,11 @@
-import {
-  Checkbox as AriaCheckbox,
-  type CheckboxProps,
-} from "react-aria-components";
+import {Radio as AriaRadio, type RadioProps} from "react-aria-components";
 
-import {CheckmarkIcon} from "../icons/CheckmarkIcon";
 import {text} from "../styles/text";
 import {cn} from "../utils/cn";
 
-export function Checkbox({children, ...props}: CheckboxProps) {
+export function Radio({children, ...props}: RadioProps) {
   return (
-    <AriaCheckbox
+    <AriaRadio
       {...props}
       className={cn(
         "gap-small-100 flex cursor-pointer items-center",
@@ -28,21 +24,15 @@ export function Checkbox({children, ...props}: CheckboxProps) {
         <>
           <div
             className={cn(
-              "flex size-5 items-center justify-center",
-              "border-control-border bg-control-background rounded-small border transition-all",
+              "rounded-fully border-control-border bg-control-background size-5 border transition-all",
               {
                 "ring-base-accent/50 ring-2": isFocusVisible,
-                "border-base-accent": isFocused || isPressed,
+                "border-base-accent": isFocused || isPressed || isSelected,
                 "border-critical ring-critical/50 border-2": isInvalid,
-                "bg-control-accent border-control-accent ring-base-accent/50":
-                  isSelected,
+                "border-7": isSelected,
               },
-            )}>
-            <CheckmarkIcon
-              aria-hidden
-              className={cn("stroke-control-accent-contrast size-3")}
-            />
-          </div>
+            )}
+          />
           {typeof children === "function"
             ? children({
                 isFocusVisible,
@@ -55,6 +45,6 @@ export function Checkbox({children, ...props}: CheckboxProps) {
             : children}
         </>
       )}
-    </AriaCheckbox>
+    </AriaRadio>
   );
 }
