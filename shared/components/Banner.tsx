@@ -21,11 +21,6 @@ import {isDefined} from "../utils/is-defined";
 import {IconButton} from "./IconButton";
 
 type Status = "info" | "success" | "warning" | "critical";
-type StatusRecord = Record<Status, string>;
-
-interface StatusProps {
-  status: Status;
-}
 
 const banner = cva("p-base rounded-base flex max-w-96 border", {
   variants: {
@@ -34,12 +29,24 @@ const banner = cva("p-base rounded-base flex max-w-96 border", {
       success: "border-success-border bg-success-background",
       warning: "border-warning-border bg-warning-background",
       critical: "border-critical-border bg-critical-background",
-    } satisfies StatusRecord,
+    } satisfies Record<Status, string>,
   },
 });
 
-interface BannerProps extends Partial<StatusProps> {
+const bannerCloseButton = cva(["ml-small-300 size-6", "[&_svg]:size-3"], {
+  variants: {
+    status: {
+      info: "[&_svg]:stroke-info-text",
+      success: "[&_svg]:stroke-success-text",
+      warning: "[&_svg]:stroke-warning-text",
+      critical: "[&_svg]:stroke-critical-text",
+    } satisfies Record<Status, string>,
+  },
+});
+
+interface BannerProps {
   title: string;
+  status?: Status;
   children?: React.ReactNode;
   onClose?: () => void;
 }
@@ -65,7 +72,16 @@ export function Banner({
         {children}
       </BannerDisclosure>
       {isDefined(onClose) && (
-        <BannerCloseButton status={status} onClose={onClose} />
+        <IconButton
+          appearance={status}
+          className={cn(
+            bannerCloseButton({
+              status,
+            }),
+          )}
+          onClick={onClose}>
+          <CloseIcon aria-hidden />
+        </IconButton>
       )}
     </div>
   );
@@ -78,11 +94,13 @@ const bannerIcon = cva("size-5", {
       success: "stroke-success",
       warning: "stroke-warning",
       critical: "stroke-critical",
-    } satisfies StatusRecord,
+    } satisfies Record<Status, string>,
   },
 });
 
-interface BannerIconProps extends React.ComponentProps<"svg">, StatusProps {}
+interface BannerIconProps extends React.ComponentProps<"svg"> {
+  status: Status;
+}
 
 function BannerIcon({status, ...props}: BannerIconProps) {
   const className = cn(
@@ -117,7 +135,7 @@ const bannerHeading = cva(
         success: "text-success-text [&_svg]:stroke-success-text",
         warning: "text-warning-text [&_svg]:stroke-warning-text",
         critical: "text-critical-text [&_svg]:stroke-critical-text",
-      } satisfies StatusRecord,
+      } satisfies Record<Status, string>,
     },
   },
 );
@@ -134,7 +152,7 @@ const bannerButton = cva(
         success: "focus-visible:ring-success-border",
         warning: "focus-visible:ring-warning-border",
         critical: "focus-visible:ring-critical-border",
-      } satisfies StatusRecord,
+      } satisfies Record<Status, string>,
       isDisabled: {
         true: "cursor-default",
       },
@@ -149,16 +167,17 @@ const bannerDisclosurePanel = cva("font-primary text-base font-normal", {
       success: "text-success-text-subdued",
       warning: "text-warning-text-subdued",
       critical: "text-critical-text-subdued",
-    } satisfies StatusRecord,
+    } satisfies Record<Status, string>,
   },
 });
 
-interface BannerDisclosureProps extends StatusProps {
+interface BannerDisclosureProps {
   title: string;
+  status: Status;
   children?: React.ReactNode;
 }
 
-function BannerDisclosure({status, title, children}: BannerDisclosureProps) {
+function BannerDisclosure({title, status, children}: BannerDisclosureProps) {
   return (
     <Disclosure
       isDisabled={!isDefined(children)}
@@ -201,35 +220,5 @@ function BannerDisclosure({status, title, children}: BannerDisclosureProps) {
         </>
       )}
     </Disclosure>
-  );
-}
-
-const bannerCloseButton = cva(["ml-small-300 size-6", "[&_svg]:size-3"], {
-  variants: {
-    status: {
-      info: "[&_svg]:stroke-info-text",
-      success: "[&_svg]:stroke-success-text",
-      warning: "[&_svg]:stroke-warning-text",
-      critical: "[&_svg]:stroke-critical-text",
-    } satisfies StatusRecord,
-  },
-});
-
-interface BannerCloseButtonProps extends StatusProps {
-  onClose: () => void;
-}
-
-function BannerCloseButton({status, onClose}: BannerCloseButtonProps) {
-  return (
-    <IconButton
-      appearance={status}
-      className={cn(
-        bannerCloseButton({
-          status,
-        }),
-      )}
-      onClick={onClose}>
-      <CloseIcon aria-hidden />
-    </IconButton>
   );
 }
