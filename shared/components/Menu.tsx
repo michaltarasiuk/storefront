@@ -1,6 +1,7 @@
 "use client";
 
 import {cva, VariantProps} from "class-variance-authority";
+import {usePathname} from "next/navigation";
 import {
   Menu as AriaMenu,
   MenuItem as AriaMenuItem,
@@ -38,6 +39,7 @@ const menuItem = cva(
     "hover:bg-base-background-subdued",
     "disabled:cursor-default disabled:opacity-50",
     "focus-visible:bg-base-background-subdued outline-none",
+    "current:underline current:underline-offset-2",
   ],
   {
     variants: {
@@ -57,8 +59,11 @@ export function MenuItem<T extends Record<PropertyKey, unknown>>({
   critical,
   ...props
 }: MenuItemProps<T>) {
+  const pathname = usePathname();
+  const current = props.href === pathname;
   return (
     <AriaMenuItem
+      {...(current && {"data-current": true})}
       {...props}
       className={cn(
         menuItem({
