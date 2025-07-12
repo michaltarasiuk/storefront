@@ -1,3 +1,4 @@
+import {Text} from "@/shared/components/Text";
 import {cn} from "@/shared/utils/cn";
 
 export function Card({
@@ -10,7 +11,7 @@ export function Card({
   return (
     <section
       className={cn(
-        "p-large-200 rounded-large bg-base-background flex flex-col",
+        "p-large-200 rounded-large bg-base-background gap-base flex flex-col",
         className,
       )}>
       {children}
@@ -28,10 +29,14 @@ export function CardHeader({
   return (
     <header
       className={cn(
-        "flex items-center justify-between sm:justify-start",
+        "gap-small-200 flex items-center justify-between md:justify-start",
         className,
       )}>
       {children}
     </header>
   );
+}
+
+export function CardTitle({children}: {children: React.ReactNode}) {
+  return <Text emphasis="semibold">{children}</Text>;
 }

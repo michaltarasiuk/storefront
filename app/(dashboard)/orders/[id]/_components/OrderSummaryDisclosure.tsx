@@ -35,31 +35,7 @@ export function OrderSummaryDisclosure() {
             "p-large-200 space-y-large-200",
             "border-base-border border-b",
           )}>
-          <ProductList
-            products={[
-              {
-                title: "Fiddle Leaf Fig",
-                description: "Ceramic pot",
-                price: "$118.00",
-                src: "/products/product-1.png",
-                badge: 1,
-              },
-              {
-                title: "Snake Plant",
-                description: "Terracotta pot",
-                price: "$39.00",
-                src: "/products/product-2.png",
-                badge: 1,
-              },
-              {
-                title: "Peace Lily",
-                description: "Plastic pot",
-                price: "$39.00",
-                src: "/products/product-3.png",
-                badge: 1,
-              },
-            ]}
-          />
+          <ProductList />
         </div>
       </DisclosurePanel>
     </Disclosure>

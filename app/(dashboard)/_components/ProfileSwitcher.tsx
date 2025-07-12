@@ -49,7 +49,7 @@ export function ProfileSwitcher() {
           <MenuItem id={logoutDialogId}>Log out</MenuItem>
         </Menu>
       </MenuTrigger>
-      <Modal isOpen={isLogoutDialogOpen}>
+      <Modal isOpen={isLogoutDialogOpen} size="auto">
         <Dialog className={cn("flex items-center justify-center")}>
           <Text>Logging you out...</Text>
         </Dialog>
