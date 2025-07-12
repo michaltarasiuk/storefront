@@ -6,6 +6,6 @@ export const Routes = {
   profile: "/profile",
   settings: "/settings",
   order(id: string) {
-    return `/orders/${id}`;
+    return `${this.orders}/${id}`;
   },
 };

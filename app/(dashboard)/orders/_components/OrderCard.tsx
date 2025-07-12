@@ -1,3 +1,5 @@
+"use client";
+
 import {Link} from "react-aria-components";
 
 import {Button} from "@/shared/components/Button";

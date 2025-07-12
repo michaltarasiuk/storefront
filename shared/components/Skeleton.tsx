@@ -40,12 +40,12 @@ export function SkeletonText({inlineSize, size, className}: SkeletonTextProps) {
   );
 }
 
-const skeletonText = cva("absolute h-4/5", {
+const skeletonText = cva("absolute h-4/5 w-full", {
   variants: {
     inlineSize: {
-      small: "w-20",
-      base: "w-44",
-      large: "w-64",
+      small: "max-w-20",
+      base: "max-w-44",
+      large: "max-w-64",
     },
   },
   defaultVariants: {
