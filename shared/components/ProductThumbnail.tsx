@@ -10,7 +10,10 @@ import {isDefined} from "../utils/is-defined";
 import {Badge} from "./Badge";
 
 const productThumbnail = cva(
-  "rounded-base border-base-border bg-base-background-subdued relative flex items-center justify-center border",
+  [
+    "relative flex items-center justify-center overflow-hidden",
+    "rounded-base border-base-border bg-base-background-subdued border",
+  ],
   {
     variants: {
       size: {
@@ -38,17 +41,19 @@ export function ProductThumbnail({
 }: ProductThumbnailProps) {
   const [error, setError] = useState(false);
   return (
-    <div
-      className={cn(
-        productThumbnail({
-          size,
-        }),
-      )}>
-      {isDefined(src) && !error ? (
-        <Image src={src} alt={alt} fill onError={() => setError(true)} />
-      ) : (
-        <PlaceholderImageIcon aria-hidden />
-      )}
+    <div className={cn("relative")}>
+      <div
+        className={cn(
+          productThumbnail({
+            size,
+          }),
+        )}>
+        {isDefined(src) && !error ? (
+          <Image src={src} alt={alt} fill onError={() => setError(true)} />
+        ) : (
+          <PlaceholderImageIcon aria-hidden />
+        )}
+      </div>
       <div
         className={cn(
           "absolute end-0 top-0",
