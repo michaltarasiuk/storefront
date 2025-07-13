@@ -3,10 +3,15 @@ import {Form} from "@/shared/components/Form";
 import {TextField} from "@/shared/components/TextField";
 import {cn} from "@/shared/utils/cn";
 
-export function SignupForm({header}: {header: React.ReactNode}) {
+import {FormHeader} from "./FormHeader";
+
+export function SignupForm() {
   return (
     <Form className={cn("gap-small-100 flex flex-col")}>
-      {header}
+      <FormHeader
+        title="Sign up"
+        description="Create your account by entering your email and a password"
+      />
       <TextField type="email" name="email" label="Email" />
       <TextField
         type="password"
