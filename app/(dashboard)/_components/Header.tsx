@@ -24,7 +24,10 @@ export function Header() {
         <ProfileSwitcher />
       </div>
       {/* Mobile navigation */}
-      <div className={cn("relative flex justify-center py-5 md:hidden")}>
+      <div
+        className={cn(
+          "relative flex items-center justify-center py-5 md:hidden",
+        )}>
         <SheetTrigger>
           <IconButton
             aria-label="Open main navigation"
