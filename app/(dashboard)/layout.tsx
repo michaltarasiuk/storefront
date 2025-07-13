@@ -14,7 +14,7 @@ export default function DashboardLayout({children}: DashboardLayoutProps) {
         <Header />
       </div>
       <div className={cn("bg-base-background-subdued px-large-200 grow")}>
-        <main className={cn("mx-auto max-w-6xl")}>{children}</main>
+        <main className={cn("mx-auto mb-9 max-w-6xl")}>{children}</main>
       </div>
       <div className={cn("bg-base-background-subdued px-large-200")}>
         <Footer />

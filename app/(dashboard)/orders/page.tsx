@@ -23,7 +23,7 @@ export default function OrdersPage() {
       <div className={cn("bg-base-background rounded-large mb-6 p-5")}>
         <OrderStatusTabs />
       </div>
-      <div className={cn("mb-9")}>
+      <div>
         <Suspense fallback={<OrdersViewSkeleton />}>
           <OrdersView />
         </Suspense>
