@@ -1,10 +1,12 @@
 import {IconButton} from "@/shared/components/IconButton";
 import {LogoLink} from "@/shared/components/LogoLink";
+import {SheetTrigger} from "@/shared/components/Sheet";
 import {Routes} from "@/shared/consts/routes";
 import {HamburgerIcon} from "@/shared/icons/HamburgerIcon";
 import {cn} from "@/shared/utils/cn";
 
-import {MenuItem} from "./MenuItem";
+import {MenuItemLink} from "./MenuItem";
+import {MobileNavigationSheet} from "./MobileNavigationSheet";
 import {ProfileSwitcher} from "./ProfileSwitcher";
 
 export function Header() {
@@ -15,19 +17,22 @@ export function Header() {
         <nav className={cn("gap-large-500 flex items-center")}>
           <LogoLink priority />
           <div>
-            <MenuItem href={Routes.home}>Shop</MenuItem>
-            <MenuItem href={Routes.orders}>Orders</MenuItem>
+            <MenuItemLink href={Routes.home}>Shop</MenuItemLink>
+            <MenuItemLink href={Routes.orders}>Orders</MenuItemLink>
           </div>
         </nav>
         <ProfileSwitcher />
       </div>
       {/* Mobile navigation */}
       <div className={cn("relative flex justify-center py-5 md:hidden")}>
-        <IconButton
-          aria-label="Open main navigation"
-          className={cn("absolute start-0 size-10 -translate-x-1/4")}>
-          <HamburgerIcon aria-hidden />
-        </IconButton>
+        <SheetTrigger>
+          <IconButton
+            aria-label="Open main navigation"
+            className={cn("absolute start-0 size-10 -translate-x-1/4")}>
+            <HamburgerIcon aria-hidden />
+          </IconButton>
+          <MobileNavigationSheet />
+        </SheetTrigger>
         <LogoLink priority />
       </div>
     </header>

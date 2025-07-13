@@ -4,7 +4,7 @@ import {OrderCard, SkeletonOrderCard} from "./OrderCard";
 
 export function OrdersGrid() {
   return (
-    <OrdersGridRoot>
+    <OrdersGridList>
       {Array(3)
         .fill(null)
         .map((_, i) => (
@@ -12,13 +12,13 @@ export function OrdersGrid() {
             <OrderCard />
           </li>
         ))}
-    </OrdersGridRoot>
+    </OrdersGridList>
   );
 }
 
 export function OrdersGridSkeleton() {
   return (
-    <OrdersGridRoot>
+    <OrdersGridList>
       {Array(3)
         .fill(null)
         .map((_, i) => (
@@ -26,11 +26,11 @@ export function OrdersGridSkeleton() {
             <SkeletonOrderCard />
           </li>
         ))}
-    </OrdersGridRoot>
+    </OrdersGridList>
   );
 }
 
-function OrdersGridRoot({children}: {children: React.ReactNode}) {
+function OrdersGridList({children}: {children: React.ReactNode}) {
   return (
     <ul className={cn("grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3")}>
       {children}

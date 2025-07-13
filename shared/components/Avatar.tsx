@@ -22,11 +22,18 @@ const avatar = cva(
 
 interface AvatarProps extends VariantProps<typeof avatar> {
   initials?: string;
+  className?: string;
 }
 
-export function Avatar({initials, size}: AvatarProps) {
+export function Avatar({size, initials, className}: AvatarProps) {
   return (
-    <div className={cn(avatar({size}))}>
+    <div
+      className={cn(
+        avatar({
+          size,
+        }),
+        className,
+      )}>
       {isDefined(initials) ? initials : <ProfileIcon aria-hidden />}
     </div>
   );

@@ -4,10 +4,13 @@ import {cn} from "@/shared/utils/cn";
 export function Footer() {
   return (
     <footer
-      className={cn("border-base-border border-t py-5", "mx-auto max-w-6xl")}>
+      className={cn(
+        "py-large-200 mx-auto max-w-6xl",
+        "border-base-border border-t",
+      )}>
       <ul
         className={cn(
-          "flex flex-col items-center gap-3.5 sm:flex-row sm:items-start sm:gap-5",
+          "gap-base sm:gap-large-200 flex flex-col items-center sm:flex-row sm:items-start",
         )}>
         <li>
           <Link>Refund Policy</Link>

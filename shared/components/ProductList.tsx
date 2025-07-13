@@ -1,23 +1,20 @@
 import {ComponentProps} from "react";
 
 import {cn} from "../utils/cn";
+import {List, ListItem} from "./List";
 import {ProductThumbnail} from "./ProductThumbnail";
 import {Text} from "./Text";
 
-interface ProductListProps {
-  products?: ProductProps[];
-}
-
-export function ProductList({products = MockProducts}: ProductListProps) {
+export function ProductList() {
   return (
     <section aria-label="Product list">
-      <ul className={cn("space-y-base")} role="list">
-        {products.map((product) => (
-          <li key={product.title}>
+      <List>
+        {MockProducts.map((product) => (
+          <ListItem key={product.title}>
             <Product {...product} />
-          </li>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </section>
   );
 }

@@ -14,9 +14,7 @@ interface RadioGroupProps extends AriaRadioGroupProps {
 
 export function RadioGroup({label, children, ...props}: RadioGroupProps) {
   return (
-    <AriaRadioGroup
-      {...props}
-      className={cn("gap-base flex flex-col", props.className)}>
+    <AriaRadioGroup {...props}>
       {(renderProps) => (
         <>
           {isDefined(label) && (
@@ -30,7 +28,12 @@ export function RadioGroup({label, children, ...props}: RadioGroupProps) {
               {label}
             </Label>
           )}
-          {typeof children === "function" ? children(renderProps) : children}
+          <div
+            className={cn("gap-base flex flex-col", {
+              "ms-base mt-base": isDefined(label),
+            })}>
+            {typeof children === "function" ? children(renderProps) : children}
+          </div>
         </>
       )}
     </AriaRadioGroup>

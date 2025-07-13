@@ -22,7 +22,7 @@ function PageTitle() {
         "my-large-300 gap-x-small-300 grid grid-cols-[auto_1fr] grid-rows-2 items-center",
         "[grid-template-areas:'back_heading'_'empty_date']",
       )}>
-      <nav className={cn("[grid-area:back]")} aria-label="Breadcrumb">
+      <nav className={cn("[grid-area:back]")}>
         <IconLink
           aria-label="Go back to orders"
           href={Routes.orders}

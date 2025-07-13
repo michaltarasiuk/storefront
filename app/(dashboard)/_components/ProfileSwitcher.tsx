@@ -4,13 +4,13 @@ import {useId, useState} from "react";
 import {Button} from "react-aria-components";
 
 import {Avatar} from "@/shared/components/Avatar";
-import {Dialog, Modal} from "@/shared/components/Dialog";
 import {Menu, MenuItem, MenuTrigger} from "@/shared/components/Menu";
-import {Text} from "@/shared/components/Text";
 import {Routes} from "@/shared/consts/routes";
 import {ChevronDownIcon} from "@/shared/icons/ChevronDownIcon";
 import {ChevronUpIcon} from "@/shared/icons/ChevronUpIcon";
 import {cn} from "@/shared/utils/cn";
+
+import {LogoutDialog} from "./LogoutDialog";
 
 export function ProfileSwitcher() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,11 +49,7 @@ export function ProfileSwitcher() {
           <MenuItem id={logoutDialogId}>Log out</MenuItem>
         </Menu>
       </MenuTrigger>
-      <Modal isOpen={isLogoutDialogOpen} size="auto">
-        <Dialog className={cn("flex items-center justify-center")}>
-          <Text>Logging you out...</Text>
-        </Dialog>
-      </Modal>
+      <LogoutDialog isOpen={isLogoutDialogOpen} />
     </>
   );
 }
