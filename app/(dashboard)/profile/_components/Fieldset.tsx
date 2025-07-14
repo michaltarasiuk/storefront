@@ -1,5 +1,5 @@
-import {TextField} from "@/shared/components/TextField";
-import {cn} from "@/shared/utils/cn";
+import {TextField} from "@/components/TextField";
+import {cn} from "@/utils/cn";
 
 export function FullNameFieldset() {
   return (

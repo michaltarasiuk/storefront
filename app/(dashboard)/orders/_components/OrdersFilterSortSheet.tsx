@@ -2,14 +2,14 @@
 
 import {useId} from "react";
 
-import {Button} from "@/shared/components/Button";
-import {IconButton} from "@/shared/components/IconButton";
-import {Radio} from "@/shared/components/Radio";
-import {RadioGroup} from "@/shared/components/RadioGroup";
-import {Sheet, SheetTrigger} from "@/shared/components/Sheet";
-import {Tab, TabList, TabPanel, Tabs} from "@/shared/components/Tabs";
-import {FilterIcon} from "@/shared/icons/FilterIcon";
-import {cn} from "@/shared/utils/cn";
+import {Button} from "@/components/Button";
+import {IconButton} from "@/components/IconButton";
+import {Radio} from "@/components/Radio";
+import {RadioGroup} from "@/components/RadioGroup";
+import {Sheet, SheetTrigger} from "@/components/Sheet";
+import {Tab, TabList, TabPanel, Tabs} from "@/components/Tabs";
+import {FilterIcon} from "@/icons/FilterIcon";
+import {cn} from "@/utils/cn";
 
 export function OrdersFilterSortSheet() {
   const sortTabId = useId();

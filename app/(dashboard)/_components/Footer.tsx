@@ -1,5 +1,5 @@
-import {Link} from "@/shared/components/Link";
-import {cn} from "@/shared/utils/cn";
+import {Link} from "@/components/Link";
+import {cn} from "@/utils/cn";
 
 export function Footer() {
   return (

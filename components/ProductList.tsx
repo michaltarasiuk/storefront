@@ -9,8 +9,8 @@ export function ProductList() {
   return (
     <section aria-label="Product list">
       <List>
-        {MockProducts.map((product) => (
-          <ListItem key={product.title}>
+        {Products.map((product, i) => (
+          <ListItem key={i}>
             <Product {...product} />
           </ListItem>
         ))}
@@ -45,7 +45,7 @@ export function Product({
   );
 }
 
-const MockProducts: ProductProps[] = [
+const Products: ProductProps[] = [
   {
     title: "Fiddle Leaf Fig",
     description: "Ceramic pot",

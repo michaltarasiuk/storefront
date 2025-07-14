@@ -1,5 +1,5 @@
-import {Text} from "@/shared/components/Text";
-import {cn} from "@/shared/utils/cn";
+import {Text} from "@/components/Text";
+import {cn} from "@/utils/cn";
 
 export function Card({
   children,

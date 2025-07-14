@@ -4,7 +4,7 @@ import {cva} from "class-variance-authority";
 import {createContext, use} from "react";
 import {Heading as AriaHeading, HeadingProps} from "react-aria-components";
 
-import {cn} from "@/shared/utils/cn";
+import {cn} from "@/utils/cn";
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -23,8 +23,7 @@ const heading = cva(
 );
 
 export function Heading({children, ...props}: HeadingProps) {
-  const contextLevel = use(HeadingLevelContext);
-  const level = props.level ?? contextLevel;
+  const level = props.level ?? use(HeadingLevelContext);
   return (
     <AriaHeading
       {...props}

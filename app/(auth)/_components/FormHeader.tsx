@@ -1,5 +1,5 @@
-import {Heading} from "@/shared/components/Heading";
-import {TextBlock} from "@/shared/components/Text";
+import {Heading} from "@/components/Heading";
+import {TextBlock} from "@/components/Text";
 
 export function FormHeader({
   title,

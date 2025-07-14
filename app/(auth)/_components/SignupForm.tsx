@@ -1,7 +1,7 @@
-import {Button} from "@/shared/components/Button";
-import {Form} from "@/shared/components/Form";
-import {TextField} from "@/shared/components/TextField";
-import {cn} from "@/shared/utils/cn";
+import {Button} from "@/components/Button";
+import {Form} from "@/components/Form";
+import {TextField} from "@/components/TextField";
+import {cn} from "@/utils/cn";
 
 import {FormHeader} from "./FormHeader";
 

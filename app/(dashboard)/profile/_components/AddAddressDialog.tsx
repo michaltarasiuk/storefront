@@ -2,11 +2,11 @@
 
 import {Button} from "react-aria-components";
 
-import {Checkbox} from "@/shared/components/Checkbox";
-import {Dialog, DialogTrigger, Modal} from "@/shared/components/Dialog";
-import {Form} from "@/shared/components/Form";
-import {PlusIcon} from "@/shared/icons/PlusIcon";
-import {cn} from "@/shared/utils/cn";
+import {Checkbox} from "@/components/Checkbox";
+import {Dialog, DialogTrigger, Modal} from "@/components/Dialog";
+import {Form} from "@/components/Form";
+import {PlusIcon} from "@/icons/PlusIcon";
+import {cn} from "@/utils/cn";
 
 import {CancelButton} from "./CancelButton";
 import {DialogHeader} from "./DialogHeader";

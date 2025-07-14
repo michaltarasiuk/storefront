@@ -2,10 +2,10 @@
 
 import {useId} from "react";
 
-import {Tab, TabList, TabPanel, Tabs} from "@/shared/components/Tabs";
-import {ClockIcon} from "@/shared/icons/ClockIcon";
-import {OrderBoxIcon} from "@/shared/icons/OrderBoxIcon";
-import {cn} from "@/shared/utils/cn";
+import {Tab, TabList, TabPanel, Tabs} from "@/components/Tabs";
+import {ClockIcon} from "@/icons/ClockIcon";
+import {OrderBoxIcon} from "@/icons/OrderBoxIcon";
+import {cn} from "@/utils/cn";
 
 export function OrderStatusTabs() {
   const confirmedTabId = useId();

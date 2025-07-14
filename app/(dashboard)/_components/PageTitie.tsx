@@ -1,12 +1,13 @@
-import {Heading} from "@/shared/components/Heading";
-import {cn} from "@/shared/utils/cn";
+import {Heading} from "@/components/Heading";
+import {cn} from "@/utils/cn";
 
-interface PageTitleProps {
+export function PageTitle({
+  title,
+  children,
+}: {
   title: string;
   children?: React.ReactNode;
-}
-
-export function PageTitle({title, children}: PageTitleProps) {
+}) {
   return (
     <header className={cn("flex min-h-24 items-center justify-between py-6")}>
       <Heading>{title}</Heading>

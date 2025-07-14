@@ -1,5 +1,5 @@
-import {Link} from "@/shared/components/Link";
-import {Routes} from "@/shared/consts/routes";
+import {Link} from "@/components/Link";
+import {Routes} from "@/consts/routes";
 
 import {SignupForm} from "../_components/SignupForm";
 

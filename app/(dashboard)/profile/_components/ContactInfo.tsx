@@ -1,5 +1,5 @@
-import {text} from "@/shared/styles/text";
-import {cn} from "@/shared/utils/cn";
+import {text} from "@/styles/text";
+import {cn} from "@/utils/cn";
 
 export function ContactInfo() {
   return (

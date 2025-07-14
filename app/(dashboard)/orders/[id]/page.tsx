@@ -1,4 +1,4 @@
-import {cn} from "@/shared/utils/cn";
+import {cn} from "@/utils/cn";
 
 import {OrderHeader} from "./_components/OrderHeader";
 import {OrderSummaryDisclosure} from "./_components/OrderSummaryDisclosure";

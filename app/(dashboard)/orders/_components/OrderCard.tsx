@@ -2,12 +2,12 @@
 
 import {Link} from "react-aria-components";
 
-import {Button} from "@/shared/components/Button";
-import {Skeleton, SkeletonText} from "@/shared/components/Skeleton";
-import {Text} from "@/shared/components/Text";
-import {Routes} from "@/shared/consts/routes";
-import {SuccessIcon} from "@/shared/icons/SuccessIcon";
-import {cn} from "@/shared/utils/cn";
+import {Button} from "@/components/Button";
+import {Skeleton, SkeletonText} from "@/components/Skeleton";
+import {Text} from "@/components/Text";
+import {Routes} from "@/consts/routes";
+import {SuccessIcon} from "@/icons/SuccessIcon";
+import {cn} from "@/utils/cn";
 
 export function OrderCard() {
   return (

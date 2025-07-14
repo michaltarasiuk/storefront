@@ -1,6 +1,6 @@
-import {Dialog, Modal} from "@/shared/components/Dialog";
-import {Text} from "@/shared/components/Text";
-import {cn} from "@/shared/utils/cn";
+import {Dialog, Modal} from "@/components/Dialog";
+import {Text} from "@/components/Text";
+import {cn} from "@/utils/cn";
 
 export function LogoutDialog({isOpen}: {isOpen?: boolean}) {
   return (

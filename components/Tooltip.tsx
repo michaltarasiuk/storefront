@@ -6,7 +6,7 @@ import {
   TooltipProps,
 } from "react-aria-components";
 
-import {cn} from "@/shared/utils/cn";
+import {cn} from "@/utils/cn";
 
 export function Tooltip({children, ...props}: TooltipProps) {
   return (

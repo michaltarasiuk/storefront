@@ -6,7 +6,7 @@ import {
   ButtonProps as AriaButtonProps,
 } from "react-aria-components";
 
-import {cn} from "@/shared/utils/cn";
+import {cn} from "@/utils/cn";
 
 const button = cva(
   [

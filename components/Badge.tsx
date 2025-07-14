@@ -1,6 +1,6 @@
 import {cva, VariantProps} from "class-variance-authority";
 
-import {cn} from "@/shared/utils/cn";
+import {cn} from "@/utils/cn";
 
 const badge = cva(
   "px-small-300 gap-small-400 rounded-fully font-primary inline-flex items-center justify-center border py-px font-semibold",

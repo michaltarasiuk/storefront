@@ -2,7 +2,7 @@
 
 import {useFormStatus} from "react-dom";
 
-import {Button} from "@/shared/components/Button";
+import {Button} from "@/components/Button";
 
 export function SaveButton() {
   const {pending} = useFormStatus();

@@ -7,10 +7,10 @@ import {
   Heading,
 } from "react-aria-components";
 
-import {ProductList} from "@/shared/components/ProductList";
-import {Text} from "@/shared/components/Text";
-import {CartIcon} from "@/shared/icons/CartIcon";
-import {cn} from "@/shared/utils/cn";
+import {ProductList} from "@/components/ProductList";
+import {Text} from "@/components/Text";
+import {CartIcon} from "@/icons/CartIcon";
+import {cn} from "@/utils/cn";
 
 export function OrderSummaryDisclosure() {
   return (

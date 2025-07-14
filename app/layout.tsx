@@ -1,4 +1,4 @@
-import "./globals.css";
+import "@/styles/globals.css";
 
 import {ClientProviders} from "./_components/ClientProviders";
 import {Html} from "./_components/Html";

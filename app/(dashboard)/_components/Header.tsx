@@ -1,9 +1,9 @@
-import {IconButton} from "@/shared/components/IconButton";
-import {LogoLink} from "@/shared/components/LogoLink";
-import {SheetTrigger} from "@/shared/components/Sheet";
-import {Routes} from "@/shared/consts/routes";
-import {HamburgerIcon} from "@/shared/icons/HamburgerIcon";
-import {cn} from "@/shared/utils/cn";
+import {IconButton} from "@/components/IconButton";
+import {LogoLink} from "@/components/LogoLink";
+import {SheetTrigger} from "@/components/Sheet";
+import {Routes} from "@/consts/routes";
+import {HamburgerIcon} from "@/icons/HamburgerIcon";
+import {cn} from "@/utils/cn";
 
 import {MenuItemLink} from "./MenuItem";
 import {MobileNavigationSheet} from "./MobileNavigationSheet";
@@ -15,7 +15,7 @@ export function Header() {
       {/* Desktop navigation */}
       <div className={cn("hidden items-center justify-between py-6 md:flex")}>
         <nav className={cn("gap-large-500 flex items-center")}>
-          <LogoLink priority />
+          <LogoLink />
           <div>
             <MenuItemLink href={Routes.home}>Shop</MenuItemLink>
             <MenuItemLink href={Routes.orders}>Orders</MenuItemLink>
@@ -36,7 +36,7 @@ export function Header() {
           </IconButton>
           <MobileNavigationSheet />
         </SheetTrigger>
-        <LogoLink priority />
+        <LogoLink />
       </div>
     </header>
   );

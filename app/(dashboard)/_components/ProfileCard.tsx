@@ -2,9 +2,9 @@
 
 import {useId} from "react";
 
-import {Avatar} from "@/shared/components/Avatar";
-import {Text} from "@/shared/components/Text";
-import {cn} from "@/shared/utils/cn";
+import {Avatar} from "@/components/Avatar";
+import {Text} from "@/components/Text";
+import {cn} from "@/utils/cn";
 
 export function ProfileCard() {
   const profileNameId = useId();

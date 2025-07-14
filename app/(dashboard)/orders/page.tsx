@@ -1,6 +1,6 @@
 import {Suspense} from "react";
 
-import {cn} from "@/shared/utils/cn";
+import {cn} from "@/utils/cn";
 
 import {PageTitle} from "../_components/PageTitie";
 import {OrdersFilterSortSheet} from "./_components/OrdersFilterSortSheet";

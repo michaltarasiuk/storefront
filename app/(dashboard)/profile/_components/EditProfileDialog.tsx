@@ -1,11 +1,11 @@
 "use client";
 
-import {Dialog, DialogTrigger, Modal} from "@/shared/components/Dialog";
-import {Form} from "@/shared/components/Form";
-import {IconButton} from "@/shared/components/IconButton";
-import {TextField} from "@/shared/components/TextField";
-import {PenIcon} from "@/shared/icons/PenIcon";
-import {cn} from "@/shared/utils/cn";
+import {Dialog, DialogTrigger, Modal} from "@/components/Dialog";
+import {Form} from "@/components/Form";
+import {IconButton} from "@/components/IconButton";
+import {TextField} from "@/components/TextField";
+import {PenIcon} from "@/icons/PenIcon";
+import {cn} from "@/utils/cn";
 
 import {CancelButton} from "./CancelButton";
 import {DialogHeader} from "./DialogHeader";

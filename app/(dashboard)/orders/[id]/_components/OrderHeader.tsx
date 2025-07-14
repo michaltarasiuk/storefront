@@ -1,10 +1,10 @@
-import {Button} from "@/shared/components/Button";
-import {Heading} from "@/shared/components/Heading";
-import {IconLink} from "@/shared/components/IconButton";
-import {Text} from "@/shared/components/Text";
-import {Routes} from "@/shared/consts/routes";
-import {ArrowLeft} from "@/shared/icons/ArrowLeft";
-import {cn} from "@/shared/utils/cn";
+import {Button} from "@/components/Button";
+import {Heading} from "@/components/Heading";
+import {IconLink} from "@/components/IconButton";
+import {Text} from "@/components/Text";
+import {Routes} from "@/consts/routes";
+import {ArrowLeft} from "@/icons/ArrowLeft";
+import {cn} from "@/utils/cn";
 
 export function OrderHeader() {
   return (

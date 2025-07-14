@@ -1,10 +1,10 @@
 "use client";
 
-import {DialogTrigger} from "@/shared/components/Dialog";
-import {List, ListItem} from "@/shared/components/List";
-import {Sheet} from "@/shared/components/Sheet";
-import {Routes} from "@/shared/consts/routes";
-import {cn} from "@/shared/utils/cn";
+import {DialogTrigger} from "@/components/Dialog";
+import {List, ListItem} from "@/components/List";
+import {Sheet} from "@/components/Sheet";
+import {Routes} from "@/consts/routes";
+import {cn} from "@/utils/cn";
 
 import {LogoutDialog} from "./LogoutDialog";
 import {MenuItemButton, MenuItemLink} from "./MenuItem";

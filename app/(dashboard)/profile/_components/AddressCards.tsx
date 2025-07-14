@@ -1,6 +1,6 @@
-import {Text, TextBlock} from "@/shared/components/Text";
-import {PenIcon} from "@/shared/icons/PenIcon";
-import {cn} from "@/shared/utils/cn";
+import {Text} from "@/components/Text";
+import {PenIcon} from "@/icons/PenIcon";
+import {cn} from "@/utils/cn";
 
 import {EditAddressDialog} from "./EditAddressDialog";
 
@@ -10,24 +10,13 @@ export function AddressCards() {
       className={cn(
         "gap-x-large-400 gap-y-large-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4",
       )}>
-      <li>
-        <EditAddressDialog>
-          <AddressCard
-            fullname="Alain Stuart"
-            address={["151 O'Connor St", "Ottawa ON K2P 2L8", "Canada"]}
-            isShipping
-          />
-        </EditAddressDialog>
-      </li>
-      <li>
-        <EditAddressDialog>
-          <AddressCard
-            fullname="Alain Stuart"
-            address={["151 O'Connor St", "Ottawa ON K2P 2L8", "Canada"]}
-            isBilling
-          />
-        </EditAddressDialog>
-      </li>
+      {Addresses.map((address, i) => (
+        <li key={i}>
+          <EditAddressDialog>
+            <AddressCard {...address} />
+          </EditAddressDialog>
+        </li>
+      ))}
     </ul>
   );
 }
@@ -58,11 +47,24 @@ function AddressCard({
         {title}
       </Text>
       <PenIcon aria-hidden />
-      <TextBlock className="flex flex-col items-start">
+      <div className={cn("flex flex-col items-start")}>
         {addressLines.map((line, i) => (
           <Text key={i}>{line}</Text>
         ))}
-      </TextBlock>
+      </div>
     </article>
   );
 }
+
+const Addresses = [
+  {
+    fullname: "Alain Stuart",
+    address: ["151 O'Connor St", "Ottawa ON K2P 2L8", "Canada"],
+    isShipping: true,
+  },
+  {
+    fullname: "Alain Stuart",
+    address: ["151 O'Connor St", "Ottawa ON K2P 2L8", "Canada"],
+    isBilling: true,
+  },
+];

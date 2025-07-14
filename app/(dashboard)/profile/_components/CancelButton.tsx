@@ -1,4 +1,4 @@
-import {Button} from "@/shared/components/Button";
+import {Button} from "@/components/Button";
 
 export function CancelButton({onClick}: {onClick: () => void}) {
   return (

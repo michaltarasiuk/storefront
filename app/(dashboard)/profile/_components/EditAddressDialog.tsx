@@ -2,9 +2,9 @@
 
 import {Button} from "react-aria-components";
 
-import {Dialog, DialogTrigger, Modal} from "@/shared/components/Dialog";
-import {Form} from "@/shared/components/Form";
-import {cn} from "@/shared/utils/cn";
+import {Dialog, DialogTrigger, Modal} from "@/components/Dialog";
+import {Form} from "@/components/Form";
+import {cn} from "@/utils/cn";
 
 import {CancelButton} from "./CancelButton";
 import {DeleteAddressDialog} from "./DeleteAddressDialog";

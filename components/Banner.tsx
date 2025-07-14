@@ -44,19 +44,17 @@ const bannerCloseButton = cva("ms-small-300 size-6 [&_svg]:size-3", {
   },
 });
 
-interface BannerProps {
-  title: string;
-  status?: Status;
-  children?: React.ReactNode;
-  onClose?: () => void;
-}
-
 export function Banner({
   title,
   children,
   status = "info",
   onClose,
-}: BannerProps) {
+}: {
+  title: string;
+  status?: Status;
+  children?: React.ReactNode;
+  onClose?: () => void;
+}) {
   return (
     <div
       role={status === "critical" ? "alert" : "status"}
@@ -168,13 +166,15 @@ const bannerDisclosurePanel = cva("font-primary text-base font-normal", {
   },
 });
 
-interface BannerDisclosureProps {
+function BannerDisclosure({
+  title,
+  status,
+  children,
+}: {
   title: string;
   status: Status;
   children?: React.ReactNode;
-}
-
-function BannerDisclosure({title, status, children}: BannerDisclosureProps) {
+}) {
   return (
     <Disclosure
       isDisabled={!isDefined(children)}

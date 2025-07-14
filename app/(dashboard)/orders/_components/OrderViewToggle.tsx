@@ -7,10 +7,10 @@ import {
   type ToggleButtonProps,
 } from "react-aria-components";
 
-import {GridIcon} from "@/shared/icons/GridIcon";
-import {ListIcon} from "@/shared/icons/ListIcon";
-import {cn} from "@/shared/utils/cn";
-import {isDefined} from "@/shared/utils/is-defined";
+import {GridIcon} from "@/icons/GridIcon";
+import {ListIcon} from "@/icons/ListIcon";
+import {cn} from "@/utils/cn";
+import {isDefined} from "@/utils/is-defined";
 
 import {OrderViewContext} from "../_utils/order-view-context";
 

@@ -1,4 +1,4 @@
-import {cn} from "@/shared/utils/cn";
+import {cn} from "@/utils/cn";
 
 import {PageTitle} from "../_components/PageTitie";
 import {AddAddressDialog} from "./_components/AddAddressDialog";

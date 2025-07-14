@@ -1,5 +1,5 @@
-import {LogoLink} from "@/shared/components/LogoLink";
-import {cn} from "@/shared/utils/cn";
+import {LogoLink} from "@/components/LogoLink";
+import {cn} from "@/utils/cn";
 
 export default function AuthLayout({children}: {children: React.ReactNode}) {
   return (

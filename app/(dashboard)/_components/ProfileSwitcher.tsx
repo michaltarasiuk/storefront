@@ -3,12 +3,12 @@
 import {useId, useState} from "react";
 import {Button} from "react-aria-components";
 
-import {Avatar} from "@/shared/components/Avatar";
-import {Menu, MenuItem, MenuTrigger} from "@/shared/components/Menu";
-import {Routes} from "@/shared/consts/routes";
-import {ChevronDownIcon} from "@/shared/icons/ChevronDownIcon";
-import {ChevronUpIcon} from "@/shared/icons/ChevronUpIcon";
-import {cn} from "@/shared/utils/cn";
+import {Avatar} from "@/components/Avatar";
+import {Menu, MenuItem, MenuTrigger} from "@/components/Menu";
+import {Routes} from "@/consts/routes";
+import {ChevronDownIcon} from "@/icons/ChevronDownIcon";
+import {ChevronUpIcon} from "@/icons/ChevronUpIcon";
+import {cn} from "@/utils/cn";
 
 import {LogoutDialog} from "./LogoutDialog";
 

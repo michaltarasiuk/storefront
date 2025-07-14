@@ -37,11 +37,12 @@ export function List({children, spacing, className}: ListProps) {
   );
 }
 
-interface ListItemProps {
+export function ListItem({
+  children,
+  className,
+}: {
   children: React.ReactNode;
   className?: string;
-}
-
-export function ListItem({children, className}: ListItemProps) {
+}) {
   return <li className={cn("flex justify-stretch", className)}>{children}</li>;
 }

@@ -1,4 +1,4 @@
-import {cn} from "@/shared/utils/cn";
+import {cn} from "@/utils/cn";
 
 import {Footer} from "./_components/Footer";
 import {Header} from "./_components/Header";

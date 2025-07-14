@@ -1,7 +1,7 @@
-import {Heading} from "@/shared/components/Heading";
-import {IconButton} from "@/shared/components/IconButton";
-import {CloseIcon} from "@/shared/icons/CloseIcon";
-import {cn} from "@/shared/utils/cn";
+import {Heading} from "@/components/Heading";
+import {IconButton} from "@/components/IconButton";
+import {CloseIcon} from "@/icons/CloseIcon";
+import {cn} from "@/utils/cn";
 
 export function DialogHeader({
   title,
