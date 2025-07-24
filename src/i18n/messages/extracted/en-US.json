@@ -1,0 +1,245 @@
+{
+  "/GCoTA": {
+    "defaultMessage": "Clear"
+  },
+  "/bIuBb": {
+    "defaultMessage": "Order number (high to low)"
+  },
+  "0Azlrb": {
+    "defaultMessage": "Manage"
+  },
+  "2/2yg+": {
+    "defaultMessage": "Add"
+  },
+  "25oM9Q": {
+    "defaultMessage": "Sort"
+  },
+  "32rBNK": {
+    "defaultMessage": "Terms of Service"
+  },
+  "427Jxb": {
+    "defaultMessage": "Buy again"
+  },
+  "47FYwb": {
+    "defaultMessage": "Cancel"
+  },
+  "4YJHut": {
+    "defaultMessage": "Clear search"
+  },
+  "4uRlnn": {
+    "defaultMessage": "Go back to orders"
+  },
+  "5mUL+f": {
+    "defaultMessage": "Newest to oldest"
+  },
+  "5sg7KC": {
+    "defaultMessage": "Password"
+  },
+  "74xz0X": {
+    "defaultMessage": "Delete address"
+  },
+  "7tOz+m": {
+    "defaultMessage": "Pay now"
+  },
+  "8HJxXG": {
+    "defaultMessage": "Sign up"
+  },
+  "9Obw6C": {
+    "defaultMessage": "Filter"
+  },
+  "A82IFk": {
+    "defaultMessage": "Logging you out..."
+  },
+  "BIxs9X": {
+    "defaultMessage": "This is my default address"
+  },
+  "C9WQ46": {
+    "defaultMessage": "Order Status Tabs"
+  },
+  "D3idYv": {
+    "defaultMessage": "Settings"
+  },
+  "Dxd1uB": {
+    "defaultMessage": "Shop"
+  },
+  "EWw/tK": {
+    "defaultMessage": "Apply"
+  },
+  "FQyBR6": {
+    "defaultMessage": "Table View"
+  },
+  "I2BSqV": {
+    "defaultMessage": "Order total (high to low)"
+  },
+  "I4Qr0O": {
+    "defaultMessage": "Order #{number}"
+  },
+  "I9ur7M": {
+    "defaultMessage": "Delete address?"
+  },
+  "ISmib3": {
+    "defaultMessage": "Order number (low to high)"
+  },
+  "ItDqLZ": {
+    "defaultMessage": "{count} items"
+  },
+  "JapGs4": {
+    "defaultMessage": "Already have an account? Sign in"
+  },
+  "K3r6DQ": {
+    "defaultMessage": "Delete"
+  },
+  "N1cjj/": {
+    "defaultMessage": "Email used for login can't be changed"
+  },
+  "NWiwy9": {
+    "defaultMessage": "Show filter and sort options for orders"
+  },
+  "PlBReU": {
+    "defaultMessage": "Log out"
+  },
+  "Rfvi9/": {
+    "defaultMessage": "Last 30 days"
+  },
+  "RpOD8c": {
+    "defaultMessage": "Sort orders"
+  },
+  "RvpBdy": {
+    "defaultMessage": "Address Information"
+  },
+  "SQJto2": {
+    "defaultMessage": "Sign in"
+  },
+  "Sjo1P4": {
+    "defaultMessage": "Custom"
+  },
+  "T4gmxU": {
+    "defaultMessage": "Refund Policy"
+  },
+  "TE4fIS": {
+    "defaultMessage": "City"
+  },
+  "TVieNi": {
+    "defaultMessage": "You will be logged out on this device as well."
+  },
+  "TemVby": {
+    "defaultMessage": "Full Name"
+  },
+  "X7jl6w": {
+    "defaultMessage": "Orders"
+  },
+  "b7BHTd": {
+    "defaultMessage": "Show order summary"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Back"
+  },
+  "dX7+Rv": {
+    "defaultMessage": "Confirmed"
+  },
+  "e6Ph5+": {
+    "defaultMessage": "Address"
+  },
+  "e7yFQY": {
+    "defaultMessage": "Open main navigation"
+  },
+  "eKEL/g": {
+    "defaultMessage": "Pending"
+  },
+  "ePjUFH": {
+    "defaultMessage": "If you've lost a device or have security concerns, log out everywhere to ensure the security of your account."
+  },
+  "ex+q9+": {
+    "defaultMessage": "Edit address"
+  },
+  "fiC9xB": {
+    "defaultMessage": "Shipping Policy"
+  },
+  "gvXtEw": {
+    "defaultMessage": "Company logo"
+  },
+  "hJZwTS": {
+    "defaultMessage": "Email address"
+  },
+  "i7vqD3": {
+    "defaultMessage": "Oldest to newest"
+  },
+  "irFBKn": {
+    "defaultMessage": "Last 7 days"
+  },
+  "itPgxd": {
+    "defaultMessage": "Profile"
+  },
+  "jdJhOL": {
+    "defaultMessage": "Phone number"
+  },
+  "jq3zbE": {
+    "defaultMessage": "Don't have an account? Sign up"
+  },
+  "jvo0vs": {
+    "defaultMessage": "Save"
+  },
+  "kk1RMl": {
+    "defaultMessage": "Go to homepage"
+  },
+  "lcPfsu": {
+    "defaultMessage": "Hide order summary"
+  },
+  "mgYBYo": {
+    "defaultMessage": "Last 90 days"
+  },
+  "nYDnup": {
+    "defaultMessage": "Order date"
+  },
+  "nYrKWp": {
+    "defaultMessage": "Edit profile"
+  },
+  "p99EyA": {
+    "defaultMessage": "Create your account by entering your email and a password"
+  },
+  "pONqz8": {
+    "defaultMessage": "First name"
+  },
+  "r5sWuC": {
+    "defaultMessage": "Last 12 months"
+  },
+  "rFxf+e": {
+    "defaultMessage": "Please enter your email and password to access your account"
+  },
+  "rbrahO": {
+    "defaultMessage": "Close"
+  },
+  "s3O2Si": {
+    "defaultMessage": "Log out everywhere"
+  },
+  "sWflS2": {
+    "defaultMessage": "Existing orders are not affected."
+  },
+  "sy+pv5": {
+    "defaultMessage": "Email"
+  },
+  "txUL0F": {
+    "defaultMessage": "Last name"
+  },
+  "v0xaYB": {
+    "defaultMessage": "Add address"
+  },
+  "vqKTqE": {
+    "defaultMessage": "Order total (low to high)"
+  },
+  "vx0nkZ": {
+    "defaultMessage": "Privacy Policy"
+  },
+  "xmcVZ0": {
+    "defaultMessage": "Search"
+  },
+  "yOsL4f": {
+    "defaultMessage": "Apartment, suite, etc (optional)"
+  },
+  "zL39WD": {
+    "defaultMessage": "Grid View"
+  },
+  "zWgbGg": {
+    "defaultMessage": "Today"
+  }
+}

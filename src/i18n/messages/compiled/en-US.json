@@ -1,0 +1,496 @@
+{
+  "/GCoTA": [
+    {
+      "type": 0,
+      "value": "Clear"
+    }
+  ],
+  "/bIuBb": [
+    {
+      "type": 0,
+      "value": "Order number (high to low)"
+    }
+  ],
+  "0Azlrb": [
+    {
+      "type": 0,
+      "value": "Manage"
+    }
+  ],
+  "2/2yg+": [
+    {
+      "type": 0,
+      "value": "Add"
+    }
+  ],
+  "25oM9Q": [
+    {
+      "type": 0,
+      "value": "Sort"
+    }
+  ],
+  "32rBNK": [
+    {
+      "type": 0,
+      "value": "Terms of Service"
+    }
+  ],
+  "427Jxb": [
+    {
+      "type": 0,
+      "value": "Buy again"
+    }
+  ],
+  "47FYwb": [
+    {
+      "type": 0,
+      "value": "Cancel"
+    }
+  ],
+  "4YJHut": [
+    {
+      "type": 0,
+      "value": "Clear search"
+    }
+  ],
+  "4uRlnn": [
+    {
+      "type": 0,
+      "value": "Go back to orders"
+    }
+  ],
+  "5mUL+f": [
+    {
+      "type": 0,
+      "value": "Newest to oldest"
+    }
+  ],
+  "5sg7KC": [
+    {
+      "type": 0,
+      "value": "Password"
+    }
+  ],
+  "74xz0X": [
+    {
+      "type": 0,
+      "value": "Delete address"
+    }
+  ],
+  "7tOz+m": [
+    {
+      "type": 0,
+      "value": "Pay now"
+    }
+  ],
+  "8HJxXG": [
+    {
+      "type": 0,
+      "value": "Sign up"
+    }
+  ],
+  "9Obw6C": [
+    {
+      "type": 0,
+      "value": "Filter"
+    }
+  ],
+  "A82IFk": [
+    {
+      "type": 0,
+      "value": "Logging you out..."
+    }
+  ],
+  "BIxs9X": [
+    {
+      "type": 0,
+      "value": "This is my default address"
+    }
+  ],
+  "C9WQ46": [
+    {
+      "type": 0,
+      "value": "Order Status Tabs"
+    }
+  ],
+  "D3idYv": [
+    {
+      "type": 0,
+      "value": "Settings"
+    }
+  ],
+  "Dxd1uB": [
+    {
+      "type": 0,
+      "value": "Shop"
+    }
+  ],
+  "EWw/tK": [
+    {
+      "type": 0,
+      "value": "Apply"
+    }
+  ],
+  "FQyBR6": [
+    {
+      "type": 0,
+      "value": "Table View"
+    }
+  ],
+  "I2BSqV": [
+    {
+      "type": 0,
+      "value": "Order total (high to low)"
+    }
+  ],
+  "I4Qr0O": [
+    {
+      "type": 0,
+      "value": "Order #"
+    },
+    {
+      "type": 1,
+      "value": "number"
+    }
+  ],
+  "I9ur7M": [
+    {
+      "type": 0,
+      "value": "Delete address?"
+    }
+  ],
+  "ISmib3": [
+    {
+      "type": 0,
+      "value": "Order number (low to high)"
+    }
+  ],
+  "ItDqLZ": [
+    {
+      "type": 1,
+      "value": "count"
+    },
+    {
+      "type": 0,
+      "value": " items"
+    }
+  ],
+  "JapGs4": [
+    {
+      "type": 0,
+      "value": "Already have an account? Sign in"
+    }
+  ],
+  "K3r6DQ": [
+    {
+      "type": 0,
+      "value": "Delete"
+    }
+  ],
+  "N1cjj/": [
+    {
+      "type": 0,
+      "value": "Email used for login can't be changed"
+    }
+  ],
+  "NWiwy9": [
+    {
+      "type": 0,
+      "value": "Show filter and sort options for orders"
+    }
+  ],
+  "PlBReU": [
+    {
+      "type": 0,
+      "value": "Log out"
+    }
+  ],
+  "Rfvi9/": [
+    {
+      "type": 0,
+      "value": "Last 30 days"
+    }
+  ],
+  "RpOD8c": [
+    {
+      "type": 0,
+      "value": "Sort orders"
+    }
+  ],
+  "RvpBdy": [
+    {
+      "type": 0,
+      "value": "Address Information"
+    }
+  ],
+  "SQJto2": [
+    {
+      "type": 0,
+      "value": "Sign in"
+    }
+  ],
+  "Sjo1P4": [
+    {
+      "type": 0,
+      "value": "Custom"
+    }
+  ],
+  "T4gmxU": [
+    {
+      "type": 0,
+      "value": "Refund Policy"
+    }
+  ],
+  "TE4fIS": [
+    {
+      "type": 0,
+      "value": "City"
+    }
+  ],
+  "TVieNi": [
+    {
+      "type": 0,
+      "value": "You will be logged out on this device as well."
+    }
+  ],
+  "TemVby": [
+    {
+      "type": 0,
+      "value": "Full Name"
+    }
+  ],
+  "X7jl6w": [
+    {
+      "type": 0,
+      "value": "Orders"
+    }
+  ],
+  "b7BHTd": [
+    {
+      "type": 0,
+      "value": "Show order summary"
+    }
+  ],
+  "cyR7Kh": [
+    {
+      "type": 0,
+      "value": "Back"
+    }
+  ],
+  "dX7+Rv": [
+    {
+      "type": 0,
+      "value": "Confirmed"
+    }
+  ],
+  "e6Ph5+": [
+    {
+      "type": 0,
+      "value": "Address"
+    }
+  ],
+  "e7yFQY": [
+    {
+      "type": 0,
+      "value": "Open main navigation"
+    }
+  ],
+  "eKEL/g": [
+    {
+      "type": 0,
+      "value": "Pending"
+    }
+  ],
+  "ePjUFH": [
+    {
+      "type": 0,
+      "value": "If you've lost a device or have security concerns, log out everywhere to ensure the security of your account."
+    }
+  ],
+  "ex+q9+": [
+    {
+      "type": 0,
+      "value": "Edit address"
+    }
+  ],
+  "fiC9xB": [
+    {
+      "type": 0,
+      "value": "Shipping Policy"
+    }
+  ],
+  "gvXtEw": [
+    {
+      "type": 0,
+      "value": "Company logo"
+    }
+  ],
+  "hJZwTS": [
+    {
+      "type": 0,
+      "value": "Email address"
+    }
+  ],
+  "i7vqD3": [
+    {
+      "type": 0,
+      "value": "Oldest to newest"
+    }
+  ],
+  "irFBKn": [
+    {
+      "type": 0,
+      "value": "Last 7 days"
+    }
+  ],
+  "itPgxd": [
+    {
+      "type": 0,
+      "value": "Profile"
+    }
+  ],
+  "jdJhOL": [
+    {
+      "type": 0,
+      "value": "Phone number"
+    }
+  ],
+  "jq3zbE": [
+    {
+      "type": 0,
+      "value": "Don't have an account? Sign up"
+    }
+  ],
+  "jvo0vs": [
+    {
+      "type": 0,
+      "value": "Save"
+    }
+  ],
+  "kk1RMl": [
+    {
+      "type": 0,
+      "value": "Go to homepage"
+    }
+  ],
+  "lcPfsu": [
+    {
+      "type": 0,
+      "value": "Hide order summary"
+    }
+  ],
+  "mgYBYo": [
+    {
+      "type": 0,
+      "value": "Last 90 days"
+    }
+  ],
+  "nYDnup": [
+    {
+      "type": 0,
+      "value": "Order date"
+    }
+  ],
+  "nYrKWp": [
+    {
+      "type": 0,
+      "value": "Edit profile"
+    }
+  ],
+  "p99EyA": [
+    {
+      "type": 0,
+      "value": "Create your account by entering your email and a password"
+    }
+  ],
+  "pONqz8": [
+    {
+      "type": 0,
+      "value": "First name"
+    }
+  ],
+  "r5sWuC": [
+    {
+      "type": 0,
+      "value": "Last 12 months"
+    }
+  ],
+  "rFxf+e": [
+    {
+      "type": 0,
+      "value": "Please enter your email and password to access your account"
+    }
+  ],
+  "rbrahO": [
+    {
+      "type": 0,
+      "value": "Close"
+    }
+  ],
+  "s3O2Si": [
+    {
+      "type": 0,
+      "value": "Log out everywhere"
+    }
+  ],
+  "sWflS2": [
+    {
+      "type": 0,
+      "value": "Existing orders are not affected."
+    }
+  ],
+  "sy+pv5": [
+    {
+      "type": 0,
+      "value": "Email"
+    }
+  ],
+  "txUL0F": [
+    {
+      "type": 0,
+      "value": "Last name"
+    }
+  ],
+  "v0xaYB": [
+    {
+      "type": 0,
+      "value": "Add address"
+    }
+  ],
+  "vqKTqE": [
+    {
+      "type": 0,
+      "value": "Order total (low to high)"
+    }
+  ],
+  "vx0nkZ": [
+    {
+      "type": 0,
+      "value": "Privacy Policy"
+    }
+  ],
+  "xmcVZ0": [
+    {
+      "type": 0,
+      "value": "Search"
+    }
+  ],
+  "yOsL4f": [
+    {
+      "type": 0,
+      "value": "Apartment, suite, etc (optional)"
+    }
+  ],
+  "zL39WD": [
+    {
+      "type": 0,
+      "value": "Grid View"
+    }
+  ],
+  "zWgbGg": [
+    {
+      "type": 0,
+      "value": "Today"
+    }
+  ]
+}
