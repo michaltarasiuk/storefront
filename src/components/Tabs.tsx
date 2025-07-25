@@ -5,6 +5,8 @@ import {
   type TabProps as AriaTabProps,
 } from "react-aria-components";
 
+import {text} from "@/styles/text";
+
 import {cn} from "../utils/cn";
 import {isDefined} from "../utils/is-defined";
 
@@ -38,8 +40,11 @@ export function Tab({textValue, icon: Icon, children, ...props}: TabProps) {
           <span
             data-text={textValue}
             className={cn(
-              "font-primary text-base-text-subdued inline-flex flex-col text-base",
+              "inline-flex flex-col",
               "before:pointer-events-none before:invisible before:h-0 before:overflow-hidden before:font-bold before:content-[attr(data-text)] before:select-none",
+              text({
+                appearance: "subdued",
+              }),
               isSelected && "text-control-accent font-semibold",
             )}>
             {!isDefined(children)

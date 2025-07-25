@@ -10,6 +10,7 @@ export const text = cva(null, {
       base: "text-base-text",
       accent: "text-base-accent",
       subdued: "text-base-text-subdued",
+      contrast: "text-base-text-contrast",
       info: "text-info",
       success: "text-success",
       warning: "text-warning",
@@ -22,12 +23,12 @@ export const text = cva(null, {
       semibold: "font-semibold",
     },
     size: {
-      extrasmall: "text-extra-small",
+      extraSmall: "text-extra-small",
       small: "text-small",
       base: "text-base",
       medium: "text-medium",
       large: "text-large",
-      extralarge: "text-extra-large",
+      extraLarge: "text-extra-large",
     },
   },
   defaultVariants: {

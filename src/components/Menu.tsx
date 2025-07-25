@@ -18,10 +18,7 @@ import {cn} from "../utils/cn";
 
 export {MenuTrigger} from "react-aria-components";
 
-export function Menu<T extends Record<PropertyKey, unknown>>({
-  children,
-  ...props
-}: MenuProps<T>) {
+export function Menu<T extends object>({children, ...props}: MenuProps<T>) {
   return (
     <Popover>
       <AriaMenu
@@ -58,7 +55,7 @@ interface MenuItemProps<T>
   extends AriaMenuItemProps<T>,
     VariantProps<typeof menuItem> {}
 
-export function MenuItem<T extends Record<PropertyKey, unknown>>({
+export function MenuItem<T extends object>({
   children,
   critical,
   href,

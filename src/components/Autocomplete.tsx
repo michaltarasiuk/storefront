@@ -11,6 +11,7 @@ import {
 } from "react-aria-components";
 
 import {CheckmarkIcon} from "@/icons/CheckmarkIcon";
+import {text} from "@/styles/text";
 import {cn} from "@/utils/cn";
 
 import {SearchField} from "./SearchField";
@@ -48,7 +49,7 @@ export function Autocomplete<T>({
   );
 }
 
-export function AutocompleteItem<T extends Record<PropertyKey, unknown>>({
+export function AutocompleteItem<T extends object>({
   children,
   ...props
 }: MenuItemProps<T>) {
@@ -56,10 +57,11 @@ export function AutocompleteItem<T extends Record<PropertyKey, unknown>>({
     <MenuItem
       {...props}
       className={cn(
-        "px-base py-small-200 font-primary text-base-text bg-base-background rounded-base cursor-pointer text-base",
+        "px-base py-small-200 bg-base-background rounded-base cursor-pointer",
         "hover:bg-base-background-subdued",
         "selected:bg-base-background-subdued",
         "disabled:opacity-50",
+        text(),
         props.className,
       )}>
       {({isSelected, ...renderProps}) => (

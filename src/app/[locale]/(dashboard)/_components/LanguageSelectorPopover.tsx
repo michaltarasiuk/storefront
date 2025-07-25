@@ -13,6 +13,7 @@ import {getLanguageDisplayName} from "@/i18n/utils/get-language-display-name";
 import {isLocaleSupported} from "@/i18n/utils/is-locale-supported";
 import {ChevronDownIcon} from "@/icons/ChevronDownIcon";
 import {ChevronUpIcon} from "@/icons/ChevronUpIcon";
+import {text} from "@/styles/text";
 import {cn} from "@/utils/cn";
 
 export function LanguageSelectorPopover() {
@@ -58,9 +59,12 @@ export function LanguageSelectorButton({isOpen}: {isOpen?: boolean}) {
   return (
     <Button
       className={cn(
-        "rounded-base font-primary text-base-accent gap-small-500 flex min-h-6 cursor-pointer items-center text-base",
+        "rounded-base gap-small-500 flex min-h-6 cursor-pointer items-center",
         "hover:underline hover:underline-offset-2",
         "focus-visible:ring-control-accent outline-none focus-visible:ring-2 focus-visible:ring-offset-3",
+        text({
+          appearance: "accent",
+        }),
       )}>
       {getLanguageDisplayName(currentLocale)}
       {isOpen ? (

@@ -6,6 +6,7 @@ import {
   TooltipProps,
 } from "react-aria-components";
 
+import {text} from "@/styles/text";
 import {cn} from "@/utils/cn";
 
 export {TooltipTrigger} from "react-aria-components";
@@ -15,9 +16,12 @@ export function Tooltip({children, ...props}: TooltipProps) {
     <AriaTooltip
       {...props}
       className={cn(
-        "p-small-100 bg-base-text rounded-base text-base-text-contrast font-primary max-w-48 text-base font-normal",
+        "p-small-100 bg-base-text rounded-base max-w-48",
         "entering:animate-in entering:fade-in-0 entering:zoom-in-95",
         "exiting:animate-out exiting:fade-out-0 exiting:zoom-out-95",
+        text({
+          appearance: "contrast",
+        }),
         props.className,
       )}>
       {(renderProps) => (
