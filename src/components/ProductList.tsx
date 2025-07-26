@@ -40,7 +40,7 @@ export function Product({
           <Text appearance="subdued">{description}</Text>
         </div>
       </div>
-      <Text aria-label={`Price: ${price}`}>{price}</Text>
+      <Text>{price}</Text>
     </article>
   );
 }
