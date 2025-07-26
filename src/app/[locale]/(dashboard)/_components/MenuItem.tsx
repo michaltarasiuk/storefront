@@ -19,7 +19,7 @@ const menuItem = cva(
   {
     variants: {
       current: {
-        true: "current:underline current:underline-offset-2",
+        true: "underline underline-offset-2",
       },
     },
   },
