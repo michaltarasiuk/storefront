@@ -13,7 +13,7 @@ export function OrderStatusTabs() {
   const pendingTabId = useId();
   const intl = useIntl();
   return (
-    <Tabs>
+    <Tabs className={cn("min-h-12")}>
       <TabList
         aria-label={intl.formatMessage({
           id: "C9WQ46",

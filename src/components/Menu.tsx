@@ -36,16 +36,18 @@ export function Menu<T extends object>({children, ...props}: MenuProps<T>) {
 
 const menuItem = cva(
   [
-    "py-small-200 px-base text-control-text font-primary rounded-small cursor-pointer text-base",
+    "px-base py-small-200 font-primary text-control-text rounded-small cursor-pointer text-base",
     "hover:bg-base-background-subdued",
-    "disabled:cursor-default disabled:opacity-50",
     "focus-visible:bg-base-background-subdued outline-none",
-    "current:underline current:underline-offset-2",
+    "disabled:cursor-default disabled:opacity-50",
   ],
   {
     variants: {
       critical: {
         true: "text-critical hover:bg-critical-background-subdued",
+      },
+      current: {
+        true: "current:underline current:underline-offset-2",
       },
     },
   },
@@ -67,11 +69,11 @@ export function MenuItem<T extends object>({
   return (
     <AriaMenuItem
       href={hrefWithLocale}
-      {...(hrefWithLocale === pathname && {"data-current": true})}
       {...props}
       className={cn(
         menuItem({
           critical,
+          current: isDefined(hrefWithLocale) && hrefWithLocale === pathname,
         }),
         props.className,
       )}>

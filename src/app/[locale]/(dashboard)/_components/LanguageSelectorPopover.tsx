@@ -59,7 +59,7 @@ export function LanguageSelectorButton({isOpen}: {isOpen?: boolean}) {
   return (
     <Button
       className={cn(
-        "rounded-base gap-small-500 flex min-h-6 cursor-pointer items-center",
+        "rounded-base gap-small-500 flex cursor-pointer items-center",
         "hover:underline hover:underline-offset-2",
         "focus-visible:ring-control-accent outline-none focus-visible:ring-2 focus-visible:ring-offset-3",
         text({

@@ -42,10 +42,11 @@ export function Tab({textValue, icon: Icon, children, ...props}: TabProps) {
             className={cn(
               "inline-flex flex-col",
               "before:pointer-events-none before:invisible before:h-0 before:overflow-hidden before:font-bold before:content-[attr(data-text)] before:select-none",
-              text({
-                appearance: "subdued",
-              }),
-              isSelected && "text-control-accent font-semibold",
+              text(
+                isSelected
+                  ? {appearance: "accent", emphasis: "semibold"}
+                  : {appearance: "subdued"},
+              ),
             )}>
             {!isDefined(children)
               ? textValue

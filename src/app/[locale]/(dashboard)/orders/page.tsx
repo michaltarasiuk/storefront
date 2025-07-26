@@ -35,9 +35,7 @@ export default async function OrdersPage({params}: OrdersPageProps) {
         </div>
       </PageTitle>
       <div className={cn("bg-base-background rounded-large mb-6 p-5")}>
-        <div className={cn("min-h-12")}>
-          <OrderStatusTabs />
-        </div>
+        <OrderStatusTabs />
       </div>
       <Suspense fallback={<OrdersViewSkeleton />}>
         <OrdersView />
