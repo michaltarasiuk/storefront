@@ -1,15 +1,15 @@
 import {cva, type VariantProps} from "class-variance-authority";
 import {
+  CheckboxGroup as AriaCheckboxGroup,
+  type CheckboxGroupProps as AriaCheckboxGroupProps,
   Label,
-  RadioGroup as AriaRadioGroup,
-  type RadioGroupProps as AriaRadioGroupProps,
 } from "react-aria-components";
 
 import {text} from "../styles/text";
 import {cn} from "../utils/cn";
 import {isDefined} from "../utils/is-defined";
 
-const radioGroup = cva("group", {
+const checkboxGroup = cva("group", {
   variants: {
     variant: {
       base: "gap-base flex flex-col",
@@ -21,20 +21,20 @@ const radioGroup = cva("group", {
   },
 });
 
-interface RadioGroupProps
-  extends AriaRadioGroupProps,
-    VariantProps<typeof radioGroup> {
+interface CheckboxGroupProps
+  extends AriaCheckboxGroupProps,
+    VariantProps<typeof checkboxGroup> {
   label?: string;
 }
 
-export function RadioGroup({
+export function CheckboxGroup({
   label,
   children,
   variant,
   ...props
-}: RadioGroupProps) {
+}: CheckboxGroupProps) {
   return (
-    <AriaRadioGroup {...props}>
+    <AriaCheckboxGroup {...props}>
       {(renderProps) => (
         <>
           {isDefined(label) && (
@@ -51,7 +51,7 @@ export function RadioGroup({
           <div
             data-variant={variant}
             className={cn(
-              radioGroup({
+              checkboxGroup({
                 variant,
               }),
               {
@@ -62,6 +62,6 @@ export function RadioGroup({
           </div>
         </>
       )}
-    </AriaRadioGroup>
+    </AriaCheckboxGroup>
   );
 }

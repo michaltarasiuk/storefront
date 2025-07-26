@@ -59,6 +59,7 @@ export function AutocompleteItem<T extends object>({
       className={cn(
         "px-base py-small-200 bg-base-background rounded-base cursor-pointer",
         "hover:bg-base-background-subdued",
+        "focus-visible:bg-base-background-subdued",
         "selected:bg-base-background-subdued",
         "disabled:opacity-50",
         text(),

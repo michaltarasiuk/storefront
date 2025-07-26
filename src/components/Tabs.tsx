@@ -31,10 +31,9 @@ export function Tab({textValue, icon: Icon, children, ...props}: TabProps) {
         <>
           {isDefined(Icon) && (
             <Icon
-              className={cn(
-                "stroke-base-text-subdued hidden sm:inline",
-                isSelected && "stroke-control-accent",
-              )}
+              className={cn("stroke-base-text-subdued hidden sm:inline", {
+                "stroke-control-accent": isSelected,
+              })}
             />
           )}
           <span

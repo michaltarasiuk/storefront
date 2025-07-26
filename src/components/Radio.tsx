@@ -8,8 +8,14 @@ export function Radio({children, ...props}: RadioProps) {
     <AriaRadio
       {...props}
       className={cn(
-        "gap-small-100 flex cursor-pointer items-center",
+        "gap-small-100 relative flex cursor-pointer items-center",
         "disabled:cursor-default disabled:opacity-50",
+        "group-data-[variant=group]:p-base group-data-[variant=group]:border-control-border group-data-[variant=group]:bg-base-background group-data-[variant=group]:border",
+        "group-data-[variant=group]:after:absolute group-data-[variant=group]:after:inset-[-1px] group-data-[variant=group]:after:border group-data-[variant=group]:after:border-transparent group-data-[variant=group]:after:transition-all",
+        "group-data-[variant=group]:first:rounded-t-base group-data-[variant=group]:last:rounded-b-base group-data-[variant=group]:not-first:border-t-0",
+        "group-data-[variant=group]:first:after:rounded-t-base group-data-[variant=group]:last:after:rounded-b-base",
+        "group-data-[variant=group]:selected:bg-control-selected-background",
+        "group-data-[variant=group]:selected:after:border-control-selected-border",
         text(),
         props.className,
       )}>

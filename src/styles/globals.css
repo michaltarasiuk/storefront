@@ -183,6 +183,17 @@
   --color-control-accent-contrast: #ffffff;
   --color-control-decorative: #44691e;
 
+  --color-control-selected-background: #44691e;
+  --color-control-selected-background-subdued: #44691e;
+  --color-control-selected-border: #44691e;
+  --color-control-selected-icon: #f7faf5;
+  --color-control-selected-text: #f7faf5;
+  --color-control-selected-text-subdued: #f7faf5;
+  --color-control-selected-text-contrast: #44691e;
+  --color-control-selected-accent: #f7faf5;
+  --color-control-selected-accent-contrast: #44691e;
+  --color-control-selected-decorative: #f7faf5;
+
   --color-primary-button-background: #44691e;
   --color-primary-button-background-subdued: #44691e;
   --color-primary-button-border: #44691e;
