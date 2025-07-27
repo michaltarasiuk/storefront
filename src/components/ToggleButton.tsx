@@ -2,10 +2,12 @@
 
 import {
   ToggleButton as AriaToggleButton,
-  ToggleButtonProps,
+  type ToggleButtonProps,
 } from "react-aria-components";
 
 import {cn} from "@/utils/cn";
+
+export {ToggleButtonGroup} from "react-aria-components";
 
 export function ToggleButton({children, ...props}: ToggleButtonProps) {
   return (
