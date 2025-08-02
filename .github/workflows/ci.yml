@@ -13,6 +13,9 @@ concurrency:
 jobs:
   ci:
     runs-on: ubuntu-latest
+    env:
+      SALEOR_AUTH_TOKEN: ${{ secrets.SALEOR_AUTH_TOKEN }}
+      NEXT_PUBLIC_SALEOR_GRAPHQL_URL: ${{ vars.NEXT_PUBLIC_SALEOR_GRAPHQL_URL }}
 
     steps:
       - uses: actions/checkout@v4
