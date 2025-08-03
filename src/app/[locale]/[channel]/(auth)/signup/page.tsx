@@ -4,7 +4,7 @@ import {FormattedMessage} from "@/i18n/react-intl";
 
 import {SignupForm} from "../_components/SignupForm";
 
-export default async function SignupPage() {
+export default function SignupPage() {
   return (
     <>
       <SignupForm />

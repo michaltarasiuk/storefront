@@ -4,3 +4,7 @@ export function joinPathSegments(...segments: string[]) {
   }
   return "/" + segments.map(trimLeadingSlash).join("/");
 }
+
+export function splitPathSegments(pathname: string) {
+  return pathname.split("/").filter((segment) => segment.length > 0);
+}

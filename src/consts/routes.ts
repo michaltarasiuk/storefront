@@ -1,9 +1,10 @@
-import {joinPathSegments} from "@/utils/join-path-segments";
+import {joinPathSegments} from "@/utils/pathname";
 
 export const Routes = {
   home: "/",
-  signin: "/signin",
   signup: "/signup",
+  signin: "/signin",
+  confirmAccount: "/confirm-account",
   orders: "/orders",
   profile: "/profile",
   settings: "/settings",

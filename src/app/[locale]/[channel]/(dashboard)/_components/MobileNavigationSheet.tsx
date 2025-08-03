@@ -4,14 +4,19 @@ import {DialogTrigger} from "@/components/Dialog";
 import {List, ListItem} from "@/components/List";
 import {Sheet} from "@/components/Sheet";
 import {Routes} from "@/consts/routes";
+import {useChannel} from "@/i18n/hooks/use-channel";
+import {useLocale} from "@/i18n/hooks/use-locale";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
 
+import {logOut} from "../_actions/log-out";
 import {LogoutDialog} from "./LogoutDialog";
 import {MenuItemButton, MenuItemLink} from "./MenuItem";
 import {ProfileCard} from "./ProfileCard";
 
 export function MobileNavigationSheet() {
+  const locale = useLocale();
+  const channel = useChannel();
   return (
     <Sheet className={cn("p-base flex flex-col")}>
       {({close}) => (
@@ -44,7 +49,7 @@ export function MobileNavigationSheet() {
             </ListItem>
             <ListItem>
               <DialogTrigger>
-                <MenuItemButton>
+                <MenuItemButton onClick={() => logOut(locale, channel)}>
                   <FormattedMessage id="PlBReU" defaultMessage="Log out" />
                 </MenuItemButton>
                 <LogoutDialog />

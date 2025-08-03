@@ -6,14 +6,19 @@ import {Button} from "react-aria-components";
 import {Avatar} from "@/components/Avatar";
 import {Menu, MenuItem, MenuTrigger} from "@/components/Menu";
 import {Routes} from "@/consts/routes";
+import {useChannel} from "@/i18n/hooks/use-channel";
+import {useLocale} from "@/i18n/hooks/use-locale";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {ChevronDownIcon} from "@/icons/ChevronDownIcon";
 import {ChevronUpIcon} from "@/icons/ChevronUpIcon";
 import {cn} from "@/utils/cn";
 
+import {logOut} from "../_actions/log-out";
 import {LogoutDialog} from "./LogoutDialog";
 
 export function ProfileSwitcher() {
+  const locale = useLocale();
+  const channel = useChannel();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLogoutDialogOpen, setIsLogoutDialogOpen] = useState(false);
   const logoutDialogId = useId();
@@ -40,9 +45,10 @@ export function ProfileSwitcher() {
           )}
         </Button>
         <Menu
-          onAction={(action) => {
+          onAction={async (action) => {
             if (action === logoutDialogId) {
               setIsLogoutDialogOpen(true);
+              await logOut(locale, channel);
             }
           }}>
           <MenuItem href={Routes.profile}>

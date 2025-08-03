@@ -14,16 +14,22 @@ import {TypedDocumentNode as DocumentNode} from "@graphql-typed-document-node/co
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
-  "\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n    }\n  }\n": typeof types.SigninDocument;
-  "\n  mutation Signup($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      __typename\n    }\n  }\n": typeof types.SignupDocument;
+  "\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n      refreshToken\n      errors {\n        ...ValidationError\n      }\n    }\n  }\n": typeof types.SigninDocument;
+  "\n  mutation Signup($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      requiresConfirmation\n      errors {\n        ...ValidationError\n      }\n    }\n  }\n": typeof types.SignupDocument;
+  "\n  fragment ValidationError on AccountError {\n    field\n    message\n  }\n": typeof types.ValidationErrorFragmentDoc;
+  "\n  mutation ConfirmAccount($email: String!, $token: String!) {\n    confirmAccount(email: $email, token: $token) {\n      user {\n        isActive\n      }\n      errors {\n        message\n      }\n    }\n  }\n": typeof types.ConfirmAccountDocument;
   "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n": typeof types.ChannelSlugsDocument;
   "\n  query ChannelsWithCountry {\n    channels {\n      slug\n      defaultCountry {\n        code\n        country\n      }\n    }\n  }\n": typeof types.ChannelsWithCountryDocument;
 };
 const documents: Documents = {
-  "\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n    }\n  }\n":
+  "\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n      refreshToken\n      errors {\n        ...ValidationError\n      }\n    }\n  }\n":
     types.SigninDocument,
-  "\n  mutation Signup($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      __typename\n    }\n  }\n":
+  "\n  mutation Signup($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      requiresConfirmation\n      errors {\n        ...ValidationError\n      }\n    }\n  }\n":
     types.SignupDocument,
+  "\n  fragment ValidationError on AccountError {\n    field\n    message\n  }\n":
+    types.ValidationErrorFragmentDoc,
+  "\n  mutation ConfirmAccount($email: String!, $token: String!) {\n    confirmAccount(email: $email, token: $token) {\n      user {\n        isActive\n      }\n      errors {\n        message\n      }\n    }\n  }\n":
+    types.ConfirmAccountDocument,
   "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n":
     types.ChannelSlugsDocument,
   "\n  query ChannelsWithCountry {\n    channels {\n      slug\n      defaultCountry {\n        code\n        country\n      }\n    }\n  }\n":
@@ -48,14 +54,26 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n    }\n  }\n",
-): (typeof documents)["\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n    }\n  }\n"];
+  source: "\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n      refreshToken\n      errors {\n        ...ValidationError\n      }\n    }\n  }\n",
+): (typeof documents)["\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n      refreshToken\n      errors {\n        ...ValidationError\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  mutation Signup($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      __typename\n    }\n  }\n",
-): (typeof documents)["\n  mutation Signup($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      __typename\n    }\n  }\n"];
+  source: "\n  mutation Signup($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      requiresConfirmation\n      errors {\n        ...ValidationError\n      }\n    }\n  }\n",
+): (typeof documents)["\n  mutation Signup($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      requiresConfirmation\n      errors {\n        ...ValidationError\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  fragment ValidationError on AccountError {\n    field\n    message\n  }\n",
+): (typeof documents)["\n  fragment ValidationError on AccountError {\n    field\n    message\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  mutation ConfirmAccount($email: String!, $token: String!) {\n    confirmAccount(email: $email, token: $token) {\n      user {\n        isActive\n      }\n      errors {\n        message\n      }\n    }\n  }\n",
+): (typeof documents)["\n  mutation ConfirmAccount($email: String!, $token: String!) {\n    confirmAccount(email: $email, token: $token) {\n      user {\n        isActive\n      }\n      errors {\n        message\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

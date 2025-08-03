@@ -13,7 +13,7 @@ import {
 import {useChannel} from "@/i18n/hooks/use-channel";
 import {useLocale} from "@/i18n/hooks/use-locale";
 import {isDefined} from "@/utils/is-defined";
-import {joinPathSegments} from "@/utils/join-path-segments";
+import {joinPathSegments} from "@/utils/pathname";
 
 import {cn} from "../utils/cn";
 

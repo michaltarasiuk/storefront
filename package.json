@@ -23,6 +23,7 @@
     "client-only": "^0.0.1",
     "graphql": "^16.11.0",
     "graphql-config": "^5.1.5",
+    "jsonwebtoken": "^9.0.2",
     "negotiator": "^1.0.0",
     "next": "15.3.4",
     "react": "^19.0.0",
@@ -40,7 +41,9 @@
     "@formatjs/cli": "^6.7.2",
     "@graphql-codegen/cli": "^5.0.7",
     "@parcel/watcher": "^2.5.1",
+    "@react-types/shared": "^3.31.0",
     "@tailwindcss/postcss": "^4",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/negotiator": "^0.6.4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -57,5 +60,6 @@
     "prettier-plugin-tailwindcss": "^0.6.13",
     "tailwindcss": "^4",
     "typescript": "^5.8.3"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

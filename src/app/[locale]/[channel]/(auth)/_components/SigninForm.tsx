@@ -11,18 +11,19 @@ import {useChannel} from "@/i18n/hooks/use-channel";
 import {useLocale} from "@/i18n/hooks/use-locale";
 import {FormattedMessage, useIntl} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
+import {isDefined} from "@/utils/is-defined";
 
+import {signIn} from "../_actions/sign-in";
 import {FormHeader} from "./FormHeader";
 
-export function SigninForm() {
-  const [{errors}, formAction] = useActionState(
-    () => ({
-      errors: {},
-    }),
-    {
-      errors: {},
-    },
-  );
+interface SigninFormProps {
+  defaultEmail?: string;
+}
+
+export function SigninForm({defaultEmail}: SigninFormProps) {
+  const [{errors}, formAction] = useActionState(signIn, {
+    errors: {},
+  });
   const locale = useLocale();
   const channel = useChannel();
   const intl = useIntl();
@@ -45,6 +46,7 @@ export function SigninForm() {
       <TextField
         name="email"
         type="email"
+        defaultValue={defaultEmail}
         placeholder={intl.formatMessage({
           id: "sy+pv5",
           defaultMessage: "Email",
@@ -58,6 +60,7 @@ export function SigninForm() {
           defaultMessage: "Password",
         })}
         autoComplete="current-password"
+        autoFocus={isDefined(defaultEmail)}
       />
       <Input name="locale" type="hidden" value={locale} />
       <Input name="channel" type="hidden" value={channel} />

@@ -4,7 +4,7 @@ import {graphql} from "@/graphql/codegen";
 import {query} from "@/graphql/server-client";
 import type {Locale} from "@/i18n/consts";
 import {isDefined} from "@/utils/is-defined";
-import {joinPathSegments} from "@/utils/join-path-segments";
+import {joinPathSegments} from "@/utils/pathname";
 
 interface LocalePageProps {
   params: Promise<{

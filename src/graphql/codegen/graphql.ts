@@ -29664,7 +29664,16 @@ export type SigninMutationVariables = Exact<{
 
 export type SigninMutation = {
   __typename?: "Mutation";
-  tokenCreate?: {__typename?: "CreateToken"; token?: string | null} | null;
+  tokenCreate?: {
+    __typename?: "CreateToken";
+    token?: string | null;
+    refreshToken?: string | null;
+    errors: Array<
+      {__typename?: "AccountError"} & {
+        " $fragmentRefs"?: {ValidationErrorFragment: ValidationErrorFragment};
+      }
+    >;
+  } | null;
 };
 
 export type SignupMutationVariables = Exact<{
@@ -29673,7 +29682,35 @@ export type SignupMutationVariables = Exact<{
 
 export type SignupMutation = {
   __typename?: "Mutation";
-  accountRegister?: {__typename: "AccountRegister"} | null;
+  accountRegister?: {
+    __typename?: "AccountRegister";
+    requiresConfirmation?: boolean | null;
+    errors: Array<
+      {__typename?: "AccountError"} & {
+        " $fragmentRefs"?: {ValidationErrorFragment: ValidationErrorFragment};
+      }
+    >;
+  } | null;
+};
+
+export type ValidationErrorFragment = {
+  __typename?: "AccountError";
+  field?: string | null;
+  message?: string | null;
+} & {" $fragmentName"?: "ValidationErrorFragment"};
+
+export type ConfirmAccountMutationVariables = Exact<{
+  email: Scalars["String"]["input"];
+  token: Scalars["String"]["input"];
+}>;
+
+export type ConfirmAccountMutation = {
+  __typename?: "Mutation";
+  confirmAccount?: {
+    __typename?: "ConfirmAccount";
+    user?: {__typename?: "User"; isActive: boolean} | null;
+    errors: Array<{__typename?: "AccountError"; message?: string | null}>;
+  } | null;
 };
 
 export type ChannelSlugsQueryVariables = Exact<{[key: string]: never}>;
@@ -29702,6 +29739,26 @@ export type ChannelsWithCountryQuery = {
   }> | null;
 };
 
+export const ValidationErrorFragmentDoc = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "FragmentDefinition",
+      name: {kind: "Name", value: "ValidationError"},
+      typeCondition: {
+        kind: "NamedType",
+        name: {kind: "Name", value: "AccountError"},
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {kind: "Field", name: {kind: "Name", value: "field"}},
+          {kind: "Field", name: {kind: "Name", value: "message"}},
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<ValidationErrorFragment, unknown>;
 export const SigninDocument = {
   kind: "Document",
   definitions: [
@@ -29752,9 +29809,38 @@ export const SigninDocument = {
               kind: "SelectionSet",
               selections: [
                 {kind: "Field", name: {kind: "Name", value: "token"}},
+                {kind: "Field", name: {kind: "Name", value: "refreshToken"}},
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "errors"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "FragmentSpread",
+                        name: {kind: "Name", value: "ValidationError"},
+                      },
+                    ],
+                  },
+                },
               ],
             },
           },
+        ],
+      },
+    },
+    {
+      kind: "FragmentDefinition",
+      name: {kind: "Name", value: "ValidationError"},
+      typeCondition: {
+        kind: "NamedType",
+        name: {kind: "Name", value: "AccountError"},
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {kind: "Field", name: {kind: "Name", value: "field"}},
+          {kind: "Field", name: {kind: "Name", value: "message"}},
         ],
       },
     },
@@ -29796,7 +29882,112 @@ export const SignupDocument = {
             selectionSet: {
               kind: "SelectionSet",
               selections: [
-                {kind: "Field", name: {kind: "Name", value: "__typename"}},
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "requiresConfirmation"},
+                },
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "errors"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "FragmentSpread",
+                        name: {kind: "Name", value: "ValidationError"},
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: "FragmentDefinition",
+      name: {kind: "Name", value: "ValidationError"},
+      typeCondition: {
+        kind: "NamedType",
+        name: {kind: "Name", value: "AccountError"},
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {kind: "Field", name: {kind: "Name", value: "field"}},
+          {kind: "Field", name: {kind: "Name", value: "message"}},
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<SignupMutation, SignupMutationVariables>;
+export const ConfirmAccountDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "mutation",
+      name: {kind: "Name", value: "ConfirmAccount"},
+      variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: {kind: "Variable", name: {kind: "Name", value: "email"}},
+          type: {
+            kind: "NonNullType",
+            type: {kind: "NamedType", name: {kind: "Name", value: "String"}},
+          },
+        },
+        {
+          kind: "VariableDefinition",
+          variable: {kind: "Variable", name: {kind: "Name", value: "token"}},
+          type: {
+            kind: "NonNullType",
+            type: {kind: "NamedType", name: {kind: "Name", value: "String"}},
+          },
+        },
+      ],
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "confirmAccount"},
+            arguments: [
+              {
+                kind: "Argument",
+                name: {kind: "Name", value: "email"},
+                value: {kind: "Variable", name: {kind: "Name", value: "email"}},
+              },
+              {
+                kind: "Argument",
+                name: {kind: "Name", value: "token"},
+                value: {kind: "Variable", name: {kind: "Name", value: "token"}},
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "user"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {kind: "Field", name: {kind: "Name", value: "isActive"}},
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "errors"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {kind: "Field", name: {kind: "Name", value: "message"}},
+                    ],
+                  },
+                },
               ],
             },
           },
@@ -29804,7 +29995,10 @@ export const SignupDocument = {
       },
     },
   ],
-} as unknown as DocumentNode<SignupMutation, SignupMutationVariables>;
+} as unknown as DocumentNode<
+  ConfirmAccountMutation,
+  ConfirmAccountMutationVariables
+>;
 export const ChannelSlugsDocument = {
   kind: "Document",
   definitions: [

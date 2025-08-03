@@ -5,7 +5,7 @@ import {NextResponse, URLPattern} from "next/server";
 
 import {ciEquals} from "@/utils/ci-equals";
 import {isDefined} from "@/utils/is-defined";
-import {joinPathSegments} from "@/utils/join-path-segments";
+import {joinPathSegments} from "@/utils/pathname";
 
 import {DefaultLocale, Locales, NextLocaleCookieName} from "./consts";
 

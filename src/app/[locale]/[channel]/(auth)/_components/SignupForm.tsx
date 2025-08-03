@@ -12,17 +12,14 @@ import {useLocale} from "@/i18n/hooks/use-locale";
 import {FormattedMessage, useIntl} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
 
+import {signUp} from "../_actions/sign-up";
 import {FormHeader} from "./FormHeader";
 
 export function SignupForm() {
-  const [{errors}, formAction] = useActionState(
-    () => ({
-      errors: {},
-    }),
-    {
-      errors: {},
-    },
-  );
+  const [{errors}, formAction] = useActionState(signUp, {
+    requiresConfirmation: false,
+    errors: {},
+  });
   const locale = useLocale();
   const channel = useChannel();
   const intl = useIntl();

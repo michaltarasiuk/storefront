@@ -2,7 +2,7 @@
 
 import {Link} from "@/components/Link";
 import {isDefined} from "@/utils/is-defined";
-import {joinPathSegments} from "@/utils/join-path-segments";
+import {joinPathSegments} from "@/utils/pathname";
 
 import {useChannel} from "../hooks/use-channel";
 import {useLocale} from "../hooks/use-locale";
