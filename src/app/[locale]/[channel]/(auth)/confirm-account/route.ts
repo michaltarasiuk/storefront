@@ -4,6 +4,7 @@ import * as z from "zod";
 import {Routes} from "@/consts/routes";
 import {graphql} from "@/graphql/codegen";
 import {getClient} from "@/graphql/server-client";
+import type {Locale} from "@/i18n/consts";
 import {isDefined} from "@/utils/is-defined";
 import {joinPathSegments, splitPathSegments} from "@/utils/pathname";
 
@@ -27,10 +28,10 @@ const SearchParamsSchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
-    const requestUrl = new URL(request.url);
-    const [locale, channel] = splitPathSegments(requestUrl.pathname);
+    const {pathname, searchParams} = new URL(request.url);
+    const [locale, channel] = splitPathSegments(pathname) as [Locale, string];
     const {email, token} = SearchParamsSchema.parse(
-      Object.fromEntries(requestUrl.searchParams),
+      Object.fromEntries(searchParams),
     );
     const {data} = await getClient().mutate({
       mutation: ConfirmAccountMutation,
@@ -42,7 +43,7 @@ export async function GET(request: NextRequest) {
     const {user, errors = []} = data?.confirmAccount ?? {};
     if (isDefined(user) && user.isActive) {
       const redirectUrl = new URL(
-        joinPathSegments(locale!, channel!, Routes.signin),
+        joinPathSegments(locale, channel, Routes.signin),
         request.url,
       );
       redirectUrl.searchParams.set("email", email);
@@ -50,26 +51,22 @@ export async function GET(request: NextRequest) {
     } else {
       throw new AggregateError(
         errors
-          .filter((error) => isDefined(error.message))
-          .map((error) => new Error(error.message!)),
+          .flatMap((error) => error.message ?? [])
+          .map((message) => new Error(message)),
       );
     }
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        {errors: error.issues.map((issue) => issue.message)},
-        {status: 400},
-      );
-    } else if (error instanceof AggregateError) {
-      return NextResponse.json(
-        {errors: error.errors.map((error) => error.message)},
-        {status: 400},
-      );
-    } else {
-      return NextResponse.json(
-        {errors: ["Unexpected error occurred."]},
-        {status: 500},
-      );
+    let status = 500;
+    let errors = ["An error occurred while confirming your account."];
+    if (error instanceof AggregateError) {
+      status = 400;
+      errors = error.errors
+        .filter((error) => error instanceof Error)
+        .map((error) => error.message);
+    } else if (error instanceof z.ZodError) {
+      status = 400;
+      errors = error.issues.map((issue) => issue.message);
     }
+    return NextResponse.json({errors}, {status});
   }
 }
