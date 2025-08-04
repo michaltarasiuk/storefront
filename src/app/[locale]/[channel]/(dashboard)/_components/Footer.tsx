@@ -4,10 +4,7 @@ import {IntlLink} from "@/i18n/components/IntlLink";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
 
-import {
-  LanguageSelectorButton,
-  LanguageSelectorPopover,
-} from "./LanguageSelectorPopover";
+import {LanguageSelector, LanguageSelectorButton} from "./LanguageSelector";
 
 export function Footer() {
   return (
@@ -18,7 +15,7 @@ export function Footer() {
       <ul className={cn("gap-x-base gap-y-small-400 flex flex-wrap")}>
         <li>
           <Suspense fallback={<LanguageSelectorButton />}>
-            <LanguageSelectorPopover />
+            <LanguageSelector />
           </Suspense>
         </li>
         <li>
