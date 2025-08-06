@@ -1,5 +1,5 @@
 import {IconButton} from "@/components/IconButton";
-import {LogoLink} from "@/components/LogoLink";
+import {LinkedLogo} from "@/components/LinkedLogo";
 import {SheetTrigger} from "@/components/Sheet";
 import {Routes} from "@/consts/routes";
 import type {Locale} from "@/i18n/consts";
@@ -18,7 +18,7 @@ export async function Header({locale}: {locale: Locale}) {
     <header className={cn("mx-auto max-w-6xl")}>
       <div className={cn("hidden items-center justify-between py-6 md:flex")}>
         <nav className={cn("gap-large-500 flex items-center")}>
-          <LogoLink locale={locale} />
+          <LinkedLogo locale={locale} />
           <div className={cn("gap-small-300 flex items-center")}>
             <MenuItemLink href={Routes.home}>
               <FormattedMessage id="Dxd1uB" defaultMessage="Shop" />
@@ -45,7 +45,7 @@ export async function Header({locale}: {locale: Locale}) {
           </IconButton>
           <MobileNavigationSheet />
         </SheetTrigger>
-        <LogoLink locale={locale} />
+        <LinkedLogo locale={locale} />
       </div>
     </header>
   );

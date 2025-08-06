@@ -1,4 +1,4 @@
-import {LogoLink} from "@/components/LogoLink";
+import {LinkedLogo} from "@/components/LinkedLogo";
 import type {Locale} from "@/i18n/consts";
 import {cn} from "@/utils/cn";
 
@@ -22,7 +22,7 @@ export default async function AuthLayout({children, params}: AuthLayoutProps) {
           "sm:p-large-500 sm:rounded-large sm:h-auto sm:w-auto sm:basis-md",
         )}>
         <div className="mx-auto">
-          <LogoLink locale={locale} />
+          <LinkedLogo locale={locale} />
         </div>
         {children}
       </main>

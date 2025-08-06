@@ -6,7 +6,7 @@ import {getIntl} from "@/i18n/utils/get-intl";
 
 import {Routes} from "../consts/routes";
 
-export async function LogoLink({locale}: {locale: Locale}) {
+export async function LinkedLogo({locale}: {locale: Locale}) {
   const intl = await getIntl(locale);
   return (
     <IntlLink
