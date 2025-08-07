@@ -19,9 +19,7 @@ interface TextFieldProps extends AriaTextFieldProps {
 
 export function TextField({label, description, ...props}: TextFieldProps) {
   return (
-    <AriaTextField
-      {...props}
-      className={cn("group relative flex flex-col", props.className)}>
+    <AriaTextField {...props} className={cn("group relative", props.className)}>
       <Label
         className={cn(
           "text-control-text-subdued font-primary text-small pointer-events-none absolute start-3 top-3 ms-px translate-y-full leading-[1] opacity-0 transition-all duration-300",
@@ -31,7 +29,7 @@ export function TextField({label, description, ...props}: TextFieldProps) {
       </Label>
       <Input
         placeholder={label}
-        className={cn("h-[3.25rem] p-3 [&:not(:placeholder-shown)]:pt-6")}
+        className={cn("h-[3.25rem] p-3", "[&:not(:placeholder-shown)]:pt-6")}
       />
       {isDefined(description) && (
         <Text slot="description" appearance="subdued" size="small">

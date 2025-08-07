@@ -28,7 +28,7 @@ export function SearchField({
 }: SearchFieldProps) {
   const intl = useIntl();
   return (
-    <AriaSearchField {...props} className={cn("flex flex-col")}>
+    <AriaSearchField {...props}>
       {({isEmpty}) => (
         <>
           <div className={cn("relative flex items-center")}>
@@ -50,7 +50,7 @@ export function SearchField({
                   defaultMessage: "Clear search",
                 })}
                 className={cn("end-small-100 absolute")}>
-                <CloseIcon aria-hidden />
+                <CloseIcon aria-hidden className={cn("size-3.5")} />
               </IconButton>
             )}
           </div>

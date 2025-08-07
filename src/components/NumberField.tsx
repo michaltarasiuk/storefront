@@ -23,24 +23,21 @@ interface NumberFieldProps extends AriaNumberFieldProps {
 
 export function NumberField({label, description, ...props}: NumberFieldProps) {
   return (
-    <AriaNumberField
-      {...props}
-      className={cn(
-        "group relative flex flex-col justify-center",
-        props.className,
-      )}>
-      <Label
-        className={cn(
-          "text-control-text-subdued font-primary text-small pointer-events-none absolute start-3 top-3 ms-px translate-y-full leading-[1] opacity-0 transition-all duration-300",
-          "group-has-[input:not(:placeholder-shown)]:translate-y-0 group-has-[input:not(:placeholder-shown)]:opacity-100",
-        )}>
-        {label}
-      </Label>
-      <Input
-        placeholder={label}
-        className={cn("[&:not(:placeholder-shown)]:pt-6")}
-      />
-      <NumberFieldControls />
+    <AriaNumberField {...props}>
+      <div className={cn("group relative flex items-center")}>
+        <Label
+          className={cn(
+            "text-control-text-subdued font-primary text-small pointer-events-none absolute start-3 top-3 ms-px translate-y-full leading-[1] opacity-0 transition-all duration-300",
+            "group-has-[input:not(:placeholder-shown)]:translate-y-0 group-has-[input:not(:placeholder-shown)]:opacity-100",
+          )}>
+          {label}
+        </Label>
+        <Input
+          placeholder={label}
+          className={cn("h-[3.25rem] p-3", "[&:not(:placeholder-shown)]:pt-6")}
+        />
+        <NumberFieldControls />
+      </div>
       {isDefined(description) && (
         <Text slot="description" appearance="subdued" size="small">
           {description}
