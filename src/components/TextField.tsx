@@ -9,8 +9,8 @@ import {
 import {cn} from "../utils/cn";
 import {isDefined} from "../utils/is-defined";
 import {FieldError} from "./FieldError";
-import {Text} from "./Text";
 import {Input} from "./Input";
+import {Text} from "./Text";
 
 interface TextFieldProps extends AriaTextFieldProps {
   label: string;
@@ -29,7 +29,10 @@ export function TextField({label, description, ...props}: TextFieldProps) {
         )}>
         {label}
       </Label>
-      <Input placeholder={label} />
+      <Input
+        placeholder={label}
+        className={cn("h-[3.25rem] p-3 [&:not(:placeholder-shown)]:pt-6")}
+      />
       {isDefined(description) && (
         <Text slot="description" appearance="subdued" size="small">
           {description}

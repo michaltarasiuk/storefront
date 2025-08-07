@@ -9,7 +9,7 @@
     "lint-fix": "eslint --fix .",
     "prettier-check": "prettier --check .",
     "prettier-write": "prettier --write",
-    "format": "bun run prettier write .",
+    "format": "bun run prettier-write .",
     "extract": "formatjs extract --out-file src/i18n/messages/extracted/en-US.json -- '!**/*.d.ts' '**/*.{ts,tsx}' && bun run prettier-write src/i18n/messages/extracted/en-US.json",
     "compile-folder": "formatjs compile-folder --ast src/i18n/messages/extracted src/i18n/messages/compiled && bun run prettier-write src/i18n/messages/compiled",
     "extract-compile": "bun run extract && bun run compile-folder",

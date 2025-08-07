@@ -6,14 +6,15 @@ import {
   type NumberFieldProps as AriaNumberFieldProps,
 } from "react-aria-components";
 
+import {MinusIcon} from "@/icons/MinusIcon";
+import {PlusIcon} from "@/icons/PlusIcon";
+
 import {cn} from "../utils/cn";
 import {isDefined} from "../utils/is-defined";
 import {FieldError} from "./FieldError";
-import {Text} from "./Text";
-import {Input} from "./Input";
 import {IconButton} from "./IconButton";
-import {MinusIcon} from "@/icons/MinusIcon";
-import {PlusIcon} from "@/icons/PlusIcon";
+import {Input} from "./Input";
+import {Text} from "./Text";
 
 interface NumberFieldProps extends AriaNumberFieldProps {
   label: string;
@@ -35,7 +36,10 @@ export function NumberField({label, description, ...props}: NumberFieldProps) {
         )}>
         {label}
       </Label>
-      <Input placeholder={label} />
+      <Input
+        placeholder={label}
+        className={cn("[&:not(:placeholder-shown)]:pt-6")}
+      />
       <NumberFieldControls />
       {isDefined(description) && (
         <Text slot="description" appearance="subdued" size="small">

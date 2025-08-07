@@ -59,7 +59,7 @@ export function AddressFieldset() {
         <TextField
           name="postalCode"
           label={intl.formatMessage({
-            id: "TE4fIS",
+            id: "3EnruA",
             defaultMessage: "Postal code",
           })}
           autoComplete="postal-code"

@@ -6,7 +6,6 @@ import {assertNever} from "@/utils/assert-never";
 
 import {OrderViewContext} from "../_utils/order-view-context";
 import {OrdersGrid, OrdersGridSkeleton} from "./OrdersGrid";
-import {NumberField} from "@/components/NumberField";
 
 export function OrdersView() {
   const {orderView} = use(OrderViewContext);
@@ -14,7 +13,7 @@ export function OrdersView() {
     case "grid":
       return <OrdersGrid />;
     case "table":
-      return <NumberFieldDemo />;
+      return null;
     default:
       assertNever(orderView);
   }
@@ -30,8 +29,4 @@ export function OrdersViewSkeleton() {
     default:
       assertNever(orderView);
   }
-}
-
-function NumberFieldDemo() {
-  return <NumberField label="Label" minValue={0} maxValue={10} />;
 }
