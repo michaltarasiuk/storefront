@@ -29,7 +29,7 @@ export function TextField({label, description, ...props}: TextFieldProps) {
       </Label>
       <Input
         placeholder={label}
-        className={cn("h-[3.25rem] p-3", "[&:not(:placeholder-shown)]:pt-6")}
+        className={cn("h-input p-3", "[&:not(:placeholder-shown)]:pt-6")}
       />
       {isDefined(description) && (
         <Text slot="description" appearance="subdued" size="small">

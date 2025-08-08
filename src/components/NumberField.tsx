@@ -34,7 +34,7 @@ export function NumberField({label, description, ...props}: NumberFieldProps) {
         </Label>
         <Input
           placeholder={label}
-          className={cn("h-[3.25rem] p-3", "[&:not(:placeholder-shown)]:pt-6")}
+          className={cn("h-input p-3", "[&:not(:placeholder-shown)]:pt-6")}
         />
         <NumberFieldControls />
       </div>
@@ -52,10 +52,10 @@ function NumberFieldControls() {
   return (
     <div className={cn("absolute end-0 flex")}>
       <IconButton slot="decrement" className={cn("size-9")}>
-        <MinusIcon className={cn("size-3.5")} />
+        <MinusIcon aria-hidden className={cn("size-3.5")} />
       </IconButton>
       <IconButton slot="increment" className={cn("size-9")}>
-        <PlusIcon className={cn("size-3.5")} />
+        <PlusIcon aria-hidden className={cn("size-3.5")} />
       </IconButton>
     </div>
   );

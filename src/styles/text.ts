@@ -16,6 +16,7 @@ export const text = cva(null, {
       warning: "text-warning",
       critical: "text-critical",
       decorative: "text-base-decorative",
+      control: "text-control-text",
     },
     emphasis: {
       base: "font-normal",

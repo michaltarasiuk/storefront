@@ -11,7 +11,7 @@ export function Input(props: InputProps) {
         "placeholder:text-control-text-subdued",
         "focus:ring-control-accent/50 focus:border-control-accent outline-none focus:shadow-none focus:ring-3",
         "invalid:border-critical invalid:ring-critical invalid:ring-1",
-        "disabled:bg-[#F8F8F8] disabled:opacity-50",
+        "disabled:bg-disabled-input-background disabled:opacity-50",
         props.className,
       )}
     />
