@@ -50,7 +50,7 @@ export function TagGroup<T extends object>({
       )}
       <TagList
         renderEmptyState={renderEmptyState}
-        className={cn("gap-small-200 flex flex-wrap")}>
+        className={cn("gap-x-small-200 gap-y-small-400 flex flex-wrap")}>
         {children}
       </TagList>
       {isDefined(description) && (
