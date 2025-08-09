@@ -8,7 +8,7 @@ import {
 } from "@apollo/client-integration-nextjs";
 
 import {serverEnv} from "@/env-server";
-import introspection from "@/graphql/codegen/introspection.json";
+import introspection from "@/graphql/codegen/introspection.json" with {type: "json"};
 
 export const {getClient, query, PreloadQuery} = registerApolloClient(() => {
   return new ApolloClient({
