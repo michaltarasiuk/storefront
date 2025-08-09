@@ -1,5 +1,8 @@
+"use client";
+
 import {Switch as AriaSwitch, type SwitchProps} from "react-aria-components";
 
+import {CheckmarkIcon} from "@/icons/CheckmarkIcon";
 import {text} from "@/styles/text";
 import {cn} from "@/utils/cn";
 
@@ -34,13 +37,19 @@ export function Switch({children, ...props}: SwitchProps) {
               },
             )}>
             <div
-              className={cn("rounded-fully absolute transition-all", {
-                "bg-control-text-subdued size-base start-small-400":
-                  !isSelected,
-                "bg-control-accent-contrast start-[calc((var(--spacing)*5-var(--spacing-small-500)))] size-5":
-                  isSelected,
-              })}
-            />
+              className={cn(
+                "rounded-fully absolute flex items-center justify-center transition-all",
+                isSelected
+                  ? "bg-control-accent-contrast start-[calc((var(--spacing)*5-var(--spacing-small-500)))] size-5"
+                  : "bg-control-text-subdued size-base start-small-400",
+              )}>
+              <CheckmarkIcon
+                aria-hidden
+                className={cn("size-3 opacity-0", {
+                  "opacity-100 transition-opacity delay-150": isSelected,
+                })}
+              />
+            </div>
           </div>
         </>
       )}
