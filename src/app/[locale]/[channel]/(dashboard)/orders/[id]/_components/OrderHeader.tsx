@@ -6,7 +6,7 @@ import {Routes} from "@/consts/routes";
 import type {Locale} from "@/i18n/consts";
 import {FormattedDate, FormattedMessage} from "@/i18n/react-intl";
 import {getIntl} from "@/i18n/utils/get-intl";
-import {ArrowLeft} from "@/icons/ArrowLeft";
+import {ArrowLeft} from "@/icons/ArrowLeftIcon";
 import {cn} from "@/utils/cn";
 
 export async function OrderHeader({locale}: {locale: Locale}) {
