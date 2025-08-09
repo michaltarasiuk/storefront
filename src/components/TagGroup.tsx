@@ -12,28 +12,24 @@ import {
   TagList,
 } from "react-aria-components";
 
-import {Text} from "./Text";
-export {FieldError} from "./FieldError";
-
 import {CloseIcon} from "@/icons/CloseIcon";
 import {text} from "@/styles/text";
 import {cn} from "@/utils/cn";
 import {isDefined} from "@/utils/is-defined";
 
 import {IconButton} from "./IconButton";
+import {Text} from "./Text";
 
 interface TagGroupProps<T>
   extends Omit<AriaTagGroupProps, "children">,
     Pick<TagListProps<T>, "children" | "renderEmptyState"> {
   label?: string;
   description?: string;
-  errorMessage?: string;
 }
 
 export function TagGroup<T extends object>({
   label,
   description,
-  errorMessage,
   children,
   renderEmptyState,
   ...props
@@ -43,6 +39,7 @@ export function TagGroup<T extends object>({
       {isDefined(label) && (
         <Label
           className={cn(
+            "mb-small-400",
             text({
               font: "secondary",
               emphasis: "semibold",
@@ -59,18 +56,6 @@ export function TagGroup<T extends object>({
       {isDefined(description) && (
         <Text slot="description" appearance="subdued" size="small">
           {description}
-        </Text>
-      )}
-      {isDefined(errorMessage) && (
-        <Text
-          slot="errorMessage"
-          className={cn(
-            "mt-small-200",
-            text({
-              appearance: "critical",
-            }),
-          )}>
-          {errorMessage}
         </Text>
       )}
     </AriaTagGroup>
