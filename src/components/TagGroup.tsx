@@ -103,7 +103,7 @@ export function Tag({icon: Icon, children, ...props}: TagProps) {
             <Icon
               aria-hidden
               className={cn({
-                "stroke-control-accent": isSelected,
+                 "stroke-control-accent": isSelected,
               })}
             />
             {typeof children === "function"
