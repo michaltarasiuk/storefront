@@ -1,3 +1,5 @@
+"use client";
+
 import {Input as AriaInput, type InputProps} from "react-aria-components";
 
 import {cn} from "@/utils/cn";

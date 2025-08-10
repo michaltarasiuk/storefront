@@ -1,3 +1,5 @@
+"use client";
+
 import {Radio as AriaRadio, type RadioProps} from "react-aria-components";
 
 import {text} from "../styles/text";
