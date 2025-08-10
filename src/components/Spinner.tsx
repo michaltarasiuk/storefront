@@ -6,7 +6,7 @@ import {useIntl} from "@/i18n/react-intl";
 import {SpinnerIcon} from "@/icons/SpinnerIcon";
 import {cn} from "@/utils/cn";
 
-const spinner = cva("animate-spin [animation-duration:0.5s]", {
+const spinner = cva("animate-spin", {
   variants: {
     size: {
       extraSmall: "size-2.5",

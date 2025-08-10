@@ -1,5 +1,6 @@
 "use client";
 
+import {Select, SelectItem} from "@/components/Select";
 import {TextField} from "@/components/TextField";
 import {FormattedMessage, useIntl} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
@@ -38,6 +39,13 @@ export function AddressFieldset() {
       <legend className={cn("sr-only")}>
         <FormattedMessage id="RvpBdy" defaultMessage="Address Information" />
       </legend>
+      <Select
+        name="country"
+        label={intl.formatMessage({
+          id: "ASVYue",
+          defaultMessage: "Country/region",
+        })}
+      />
       <FullNameFieldset />
       <TextField
         name="address"

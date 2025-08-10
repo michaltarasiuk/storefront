@@ -34,11 +34,11 @@ export function TextArea({label, description, ...props}: TextAreaProps) {
         data-replicated-value={value + " "}
         className={cn(
           "group relative grid min-h-20",
-          "after:invisible after:border after:p-3 after:text-base after:break-all after:whitespace-pre-wrap after:transition-all after:content-[attr(data-replicated-value)] after:[grid-area:1/1/2/2] has-[textarea:not(:placeholder-shown)]:after:pt-6",
+          "after:p-small-100 after:invisible after:border after:text-base after:break-all after:whitespace-pre-wrap after:transition-all after:content-[attr(data-replicated-value)] after:[grid-area:1/1/2/2] has-[textarea:not(:placeholder-shown)]:after:pt-6",
         )}>
         <Label
           className={cn(
-            "text-control-text-subdued font-primary text-small pointer-events-none absolute start-3 top-3 ms-px translate-y-full leading-[1] opacity-0 transition-all",
+            "text-control-text-subdued font-primary text-small top-small-100 pointer-events-none absolute start-3 ms-px translate-y-full leading-[1] opacity-0 transition-all",
             "group-has-[textarea:not(:placeholder-shown)]:translate-y-0 group-has-[textarea:not(:placeholder-shown)]:opacity-100",
           )}>
           {label}
@@ -46,7 +46,7 @@ export function TextArea({label, description, ...props}: TextAreaProps) {
         <AriaTextArea
           placeholder={label}
           className={cn(
-            "rounded-base border-control-border bg-control-background resize-none overflow-hidden border p-3 transition-all [grid-area:1/1/2/2]",
+            "rounded-base border-control-border bg-control-background p-small-100 resize-none overflow-hidden border transition-all [grid-area:1/1/2/2]",
             "placeholder:text-control-text-subdued [&:not(:placeholder-shown)]:pt-6",
             "focus:ring-control-accent/50 focus:border-control-accent outline-none focus:shadow-none focus:ring-3",
             "invalid:border-critical invalid:ring-critical invalid:ring-1",
