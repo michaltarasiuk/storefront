@@ -8,6 +8,16 @@ const config: CodegenConfig = {
   generates: {
     "./src/graphql/codegen/": {
       preset: "client",
+      presetConfig: {
+        gqlTagName: "gql",
+        fragmentMasking: false,
+      },
+      config: {
+        customDirectives: {
+          apolloUnmask: true,
+        },
+        inlineFragmentTypes: "mask",
+      },
     },
     "./src/graphql/codegen/introspection.json": {
       plugins: ["fragment-matcher"],

@@ -18,5 +18,6 @@ export const {getClient, query, PreloadQuery} = registerApolloClient(() => {
     link: new HttpLink({
       uri: serverEnv.NEXT_PUBLIC_SALEOR_GRAPHQL_URL,
     }),
+    dataMasking: true,
   });
 });

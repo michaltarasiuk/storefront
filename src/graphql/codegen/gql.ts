@@ -37,57 +37,57 @@ const documents: Documents = {
 };
 
 /**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  *
  *
  * @example
  * ```ts
- * const query = graphql(`query GetUser($id: ID!) { user(id: $id) { name } }`);
+ * const query = gql(`query GetUser($id: ID!) { user(id: $id) { name } }`);
  * ```
  *
  * The query argument is unknown!
  * Please regenerate the types.
  */
-export function graphql(source: string): unknown;
+export function gql(source: string): unknown;
 
 /**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(
+export function gql(
   source: "\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n      refreshToken\n      errors {\n        ...ValidationError\n      }\n    }\n  }\n",
 ): (typeof documents)["\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n      refreshToken\n      errors {\n        ...ValidationError\n      }\n    }\n  }\n"];
 /**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(
+export function gql(
   source: "\n  mutation Signup($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      requiresConfirmation\n      errors {\n        ...ValidationError\n      }\n    }\n  }\n",
 ): (typeof documents)["\n  mutation Signup($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      requiresConfirmation\n      errors {\n        ...ValidationError\n      }\n    }\n  }\n"];
 /**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(
+export function gql(
   source: "\n  fragment ValidationError on AccountError {\n    field\n    message\n  }\n",
 ): (typeof documents)["\n  fragment ValidationError on AccountError {\n    field\n    message\n  }\n"];
 /**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(
+export function gql(
   source: "\n  mutation ConfirmAccount($email: String!, $token: String!) {\n    confirmAccount(email: $email, token: $token) {\n      user {\n        isActive\n      }\n      errors {\n        message\n      }\n    }\n  }\n",
 ): (typeof documents)["\n  mutation ConfirmAccount($email: String!, $token: String!) {\n    confirmAccount(email: $email, token: $token) {\n      user {\n        isActive\n      }\n      errors {\n        message\n      }\n    }\n  }\n"];
 /**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(
+export function gql(
   source: "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n",
 ): (typeof documents)["\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n"];
 /**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(
+export function gql(
   source: "\n  query ChannelsWithCountry {\n    channels {\n      slug\n      defaultCountry {\n        code\n        country\n      }\n    }\n  }\n",
 ): (typeof documents)["\n  query ChannelsWithCountry {\n    channels {\n      slug\n      defaultCountry {\n        code\n        country\n      }\n    }\n  }\n"];
 
-export function graphql(source: string) {
+export function gql(source: string) {
   return (documents as any)[source] ?? {};
 }
 

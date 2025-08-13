@@ -1,10 +1,10 @@
 import type {ValidationErrors} from "@react-types/shared";
 
-import {graphql} from "@/graphql/codegen";
+import {gql} from "@/graphql/codegen";
 import type {ValidationErrorFragment} from "@/graphql/codegen/graphql";
 import {isDefined} from "@/utils/is-defined";
 
-graphql(`
+gql(`
   fragment ValidationError on AccountError {
     field
     message

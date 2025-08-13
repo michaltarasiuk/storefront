@@ -1,8 +1,8 @@
 import {notFound, redirect} from "next/navigation";
 
 import {serverEnv} from "@/env-server";
-import {query} from "@/graphql/client";
-import {graphql} from "@/graphql/codegen";
+import {query} from "@/graphql/apollo-client";
+import {gql} from "@/graphql/codegen";
 import type {Locale} from "@/i18n/consts";
 import {isDefined} from "@/utils/is-defined";
 import {joinPathSegments} from "@/utils/pathname";
@@ -36,7 +36,7 @@ export default async function LocalePage({params}: LocalePageProps) {
   redirect(joinPathSegments(locale, regionChannel.slug));
 }
 
-const ChannelsWithCountryQuery = graphql(`
+const ChannelsWithCountryQuery = gql(`
   query ChannelsWithCountry {
     channels {
       slug

@@ -3,8 +3,8 @@ import "@/styles/globals.css";
 import type {ApolloClient} from "@apollo/client";
 
 import {serverEnv} from "@/env-server";
-import {getClient} from "@/graphql/client";
-import {graphql} from "@/graphql/codegen";
+import {getClient} from "@/graphql/apollo-client";
+import {gql} from "@/graphql/codegen";
 
 interface ChannelLayoutProps {
   children: React.ReactNode;
@@ -42,7 +42,7 @@ async function getActiveChannelSlugs(client: ApolloClient<unknown>) {
   return slugs;
 }
 
-const ChannelSlugsQuery = graphql(`
+const ChannelSlugsQuery = gql(`
   query ChannelSlugs {
     channels {
       slug
