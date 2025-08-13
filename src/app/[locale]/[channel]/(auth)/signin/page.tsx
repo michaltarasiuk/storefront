@@ -1,21 +1,20 @@
-"use client";
-
-import {useSearchParams} from "next/navigation";
-import {Suspense} from "react";
-
 import {Routes} from "@/consts/routes";
 import {IntlLink} from "@/i18n/components/IntlLink";
 import {FormattedMessage} from "@/i18n/react-intl";
-import {isDefined} from "@/utils/is-defined";
 
 import {SigninForm} from "../_components/SigninForm";
 
-export default function SigninPage() {
+interface SigninPageProps {
+  searchParams: Promise<{
+    email?: string;
+  }>;
+}
+
+export default async function SigninPage({searchParams}: SigninPageProps) {
+  const {email} = await searchParams;
   return (
     <>
-      <Suspense fallback={<SigninForm />}>
-        <SigninFormWithParams />
-      </Suspense>
+      <SigninForm defaultEmail={email} />
       <IntlLink href={Routes.account.signup}>
         <FormattedMessage
           id="jq3zbE"
@@ -23,17 +22,5 @@ export default function SigninPage() {
         />
       </IntlLink>
     </>
-  );
-}
-
-function SigninFormWithParams() {
-  const searchParams = useSearchParams();
-  const defaultEmail = searchParams.get("email");
-  return (
-    <SigninForm
-      {...(isDefined(defaultEmail) && {
-        defaultEmail,
-      })}
-    />
   );
 }
