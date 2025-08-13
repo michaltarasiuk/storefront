@@ -12,8 +12,6 @@ import {cn} from "../utils/cn";
 
 export {DialogTrigger as SheetTrigger} from "react-aria-components";
 
-type Side = "start" | "end";
-
 const modalOverlay = cva(
   [
     "fixed inset-0 z-50 flex items-stretch bg-black/60",
@@ -25,7 +23,7 @@ const modalOverlay = cva(
       side: {
         start: "justify-start",
         end: "justify-end",
-      } satisfies Record<Side, string>,
+      },
     },
     defaultVariants: {
       side: "start",
@@ -40,7 +38,7 @@ const modal = cva(
       side: {
         start: "entering:slide-in-from-start exiting:slide-out-to-start",
         end: "entering:slide-in-from-end exiting:slide-out-to-end",
-      } satisfies Record<Side, string>,
+      },
     },
     defaultVariants: {
       side: "start",
@@ -49,7 +47,7 @@ const modal = cva(
 );
 
 interface SheetProps extends DialogProps {
-  side?: Side;
+  side?: "start" | "end";
 }
 
 export function Sheet({side, children, ...props}: SheetProps) {

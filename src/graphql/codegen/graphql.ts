@@ -29709,7 +29709,6 @@ export type ConfirmAccountMutation = {
   confirmAccount?: {
     __typename?: "ConfirmAccount";
     user?: {__typename?: "User"; isActive: boolean} | null;
-    errors: Array<{__typename?: "AccountError"; message?: string | null}>;
   } | null;
 };
 
@@ -29975,16 +29974,6 @@ export const ConfirmAccountDocument = {
                     kind: "SelectionSet",
                     selections: [
                       {kind: "Field", name: {kind: "Name", value: "isActive"}},
-                    ],
-                  },
-                },
-                {
-                  kind: "Field",
-                  name: {kind: "Name", value: "errors"},
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {kind: "Field", name: {kind: "Name", value: "message"}},
                     ],
                   },
                 },
