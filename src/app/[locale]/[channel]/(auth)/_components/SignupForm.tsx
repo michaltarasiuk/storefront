@@ -59,7 +59,6 @@ export function SignupForm() {
           id: "5sg7KC",
           defaultMessage: "Password",
         })}
-        autoComplete="new-password"
         isRequired
       />
       <Input name="locale" type="hidden" value={locale} />

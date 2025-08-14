@@ -64,7 +64,6 @@ export function SigninForm({defaultEmail}: SigninFormProps) {
           id: "5sg7KC",
           defaultMessage: "Password",
         })}
-        autoComplete="current-password"
         autoFocus={isDefined(defaultEmail)}
         isRequired
       />

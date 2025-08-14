@@ -25,7 +25,6 @@ export function AddressFieldset() {
           id: "e6Ph5+",
           defaultMessage: "Address",
         })}
-        autoComplete="street-address"
       />
       <TextField
         name="apartment"
@@ -33,7 +32,6 @@ export function AddressFieldset() {
           id: "yOsL4f",
           defaultMessage: "Apartment, suite, etc (optional)",
         })}
-        autoComplete="address-line2"
       />
       <div className={cn("gap-base grid grid-cols-1 sm:grid-cols-2")}>
         <TextField
@@ -42,7 +40,6 @@ export function AddressFieldset() {
             id: "3EnruA",
             defaultMessage: "Postal code",
           })}
-          autoComplete="postal-code"
         />
         <TextField
           name="city"
@@ -50,7 +47,6 @@ export function AddressFieldset() {
             id: "TE4fIS",
             defaultMessage: "City",
           })}
-          autoComplete="address-level2"
         />
       </div>
     </fieldset>

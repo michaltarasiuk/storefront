@@ -14,7 +14,6 @@ export function FullNameFieldset() {
           id: "pONqz8",
           defaultMessage: "First name",
         })}
-        autoComplete="given-name"
       />
       <TextField
         name="lastName"
@@ -22,7 +21,6 @@ export function FullNameFieldset() {
           id: "txUL0F",
           defaultMessage: "Last name",
         })}
-        autoComplete="family-name"
       />
     </fieldset>
   );

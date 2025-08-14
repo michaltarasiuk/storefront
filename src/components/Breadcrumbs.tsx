@@ -1,6 +1,5 @@
 "use client";
 
-import {cva} from "class-variance-authority";
 import {usePathname} from "next/navigation";
 import {
   Breadcrumb,
