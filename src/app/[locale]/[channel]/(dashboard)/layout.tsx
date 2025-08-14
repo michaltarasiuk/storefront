@@ -18,15 +18,11 @@ export default async function DashboardLayout({
   const {locale} = await params;
   return (
     <div className={cn("flex min-h-dvh flex-col")}>
-      <div className={cn("bg-base-background px-large-200")}>
-        <Header locale={locale} />
+      <Header locale={locale} />
+      <div className={cn("bg-base-background-subdued grow")}>
+        <div className={cn("mx-auto max-w-6xl")}>{children}</div>
       </div>
-      <div className={cn("bg-base-background-subdued px-large-200 grow")}>
-        <main className={cn("mx-auto mb-9 max-w-6xl")}>{children}</main>
-      </div>
-      <div className={cn("bg-base-background-subdued px-large-200")}>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }

@@ -15,8 +15,12 @@ import {ProfileSwitcher} from "./ProfileSwitcher";
 export async function Header({locale}: {locale: Locale}) {
   const intl = await getIntl(locale);
   return (
-    <header className={cn("mx-auto max-w-6xl")}>
-      <div className={cn("hidden items-center justify-between py-6 md:flex")}>
+    <header className={cn("bg-base-background")}>
+      <div
+        className={cn(
+          "mx-auto hidden max-w-6xl py-6",
+          "items-center justify-between md:flex",
+        )}>
         <nav className={cn("gap-large-500 flex items-center")}>
           <LinkedLogo locale={locale} />
           <div className={cn("gap-small-300 flex items-center")}>
@@ -32,7 +36,8 @@ export async function Header({locale}: {locale: Locale}) {
       </div>
       <div
         className={cn(
-          "relative flex items-center justify-center py-5 md:hidden",
+          "relative py-5 md:hidden",
+          "flex items-center justify-center",
         )}>
         <SheetTrigger>
           <IconButton

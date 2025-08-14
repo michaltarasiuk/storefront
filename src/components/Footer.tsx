@@ -8,11 +8,12 @@ import {LanguageSelector, LanguageSelectorButton} from "./LanguageSelector";
 
 export function Footer() {
   return (
-    <footer
-      className={cn(
-        "py-large-200 border-base-border mx-auto max-w-6xl border-t",
-      )}>
-      <ul className={cn("gap-x-base gap-y-small-400 flex flex-wrap")}>
+    <footer className={cn("bg-base-background-subdued")}>
+      <ul
+        className={cn(
+          "border-base-border py-large-200 mx-auto max-w-6xl border-t",
+          "gap-x-base gap-y-small-400 flex flex-wrap",
+        )}>
         <li>
           <Suspense fallback={<LanguageSelectorButton />}>
             <LanguageSelector />

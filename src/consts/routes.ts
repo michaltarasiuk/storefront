@@ -14,9 +14,4 @@ export const Routes = {
       return joinPathSegments(this.orders, id);
     },
   },
-  checkout: {
-    information: "/checkout/information",
-    shipping: "/checkout/shipping",
-    payment: "/checkout/payment",
-  },
 };
