@@ -21,29 +21,19 @@ interface BreadcrumbItem extends React.ComponentProps<typeof BreadcrumbLink> {
 }
 
 export function Breadcrumbs({
-  children,
+  children = ({label, ...props}) => (
+    <BreadcrumbLink {...props}>{label}</BreadcrumbLink>
+  ),
   ...props
 }: BreadcrumbsProps<BreadcrumbItem>) {
   return (
     <AriaBreadcrumbs
       {...props}
       className={cn("gap-small-200 flex flex-wrap", props.className)}>
-      {!isDefined(children)
-        ? ({label, ...props}) => (
-            <BreadcrumbLink {...props}>{label}</BreadcrumbLink>
-          )
-        : children}
+      {children}
     </AriaBreadcrumbs>
   );
 }
-
-const breadcrumbLink = cva("hover:no-underline", {
-  variants: {
-    current: {
-      true: "text-base-text",
-    },
-  },
-});
 
 export function BreadcrumbLink({
   children,
@@ -60,9 +50,10 @@ export function BreadcrumbLink({
         {...props}
         href={href}
         className={cn(
-          breadcrumbLink({
-            current: pathname === href,
-          }),
+          "hover:no-underline",
+          {
+            "text-base-text": pathname === href,
+          },
           props.className,
         )}>
         {(renderProps) => (
