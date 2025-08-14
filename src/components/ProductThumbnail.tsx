@@ -1,7 +1,7 @@
 "use client";
 
 import {cva, type VariantProps} from "class-variance-authority";
-import Image from "next/image";
+import Image, {type ImageProps} from "next/image";
 import {useState} from "react";
 
 import {PlaceholderImageIcon} from "../icons/PlaceholderImageIcon";
@@ -24,9 +24,9 @@ const productThumbnail = cva(
   },
 );
 
-interface ProductThumbnailProps extends VariantProps<typeof productThumbnail> {
-  src?: string;
-  alt?: string;
+interface ProductThumbnailProps
+  extends Partial<Pick<ImageProps, "src" | "alt">>,
+    VariantProps<typeof productThumbnail> {
   badge: number;
 }
 
@@ -45,7 +45,7 @@ export function ProductThumbnail({
             size,
           }),
         )}>
-        {!error && isDefined(src) ? (
+        {isDefined(src) && !error ? (
           <Image src={src} alt={alt} fill onError={() => setError(true)} />
         ) : (
           <PlaceholderImageIcon aria-hidden />

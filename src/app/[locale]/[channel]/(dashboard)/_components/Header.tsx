@@ -4,7 +4,6 @@ import {SheetTrigger} from "@/components/Sheet";
 import {Routes} from "@/consts/routes";
 import type {Locale} from "@/i18n/consts";
 import {FormattedMessage} from "@/i18n/react-intl";
-import {getIntl} from "@/i18n/utils/get-intl";
 import {HamburgerIcon} from "@/icons/HamburgerIcon";
 import {cn} from "@/utils/cn";
 
@@ -13,7 +12,6 @@ import {MobileNavigationSheet} from "./MobileNavigationSheet";
 import {ProfileSwitcher} from "./ProfileSwitcher";
 
 export async function Header({locale}: {locale: Locale}) {
-  const intl = await getIntl(locale);
   return (
     <header className={cn("bg-base-background")}>
       <div
@@ -41,10 +39,6 @@ export async function Header({locale}: {locale: Locale}) {
         )}>
         <SheetTrigger>
           <IconButton
-            aria-label={intl.formatMessage({
-              id: "e7yFQY",
-              defaultMessage: "Open main navigation",
-            })}
             className={cn("absolute start-0 size-10 -translate-x-1/4")}>
             <HamburgerIcon aria-hidden />
           </IconButton>

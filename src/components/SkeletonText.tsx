@@ -24,20 +24,16 @@ interface SkeletonTextProps
   className?: string;
 }
 
-export function SkeletonText({
-  inlineSize,
-  className,
-  ...props
-}: SkeletonTextProps) {
+export function SkeletonText({inlineSize, ...props}: SkeletonTextProps) {
   return (
     <Text
+      {...props}
       className={cn(
         skeletonText({
           inlineSize,
         }),
-        className,
-      )}
-      {...props}>
+        props.className,
+      )}>
       &#8203;
       <Skeleton className={cn("absolute h-4/5 w-full")} />
     </Text>

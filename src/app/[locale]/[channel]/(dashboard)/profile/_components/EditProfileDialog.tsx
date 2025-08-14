@@ -16,12 +16,7 @@ export function EditProfileDialog() {
   const intl = useIntl();
   return (
     <DialogTrigger>
-      <IconButton
-        aria-label={intl.formatMessage({
-          id: "nYrKWp",
-          defaultMessage: "Edit profile",
-        })}
-        className={cn("rounded-fully size-5.5")}>
+      <IconButton className={cn("rounded-fully size-5.5")}>
         <PenIcon aria-hidden className={cn("stroke-base-accent")} />
       </IconButton>
       <Modal size="large" isDismissable>

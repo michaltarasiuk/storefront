@@ -9,12 +9,7 @@ import {Routes} from "../consts/routes";
 export async function LinkedLogo({locale}: {locale: Locale}) {
   const intl = await getIntl(locale);
   return (
-    <IntlLink
-      href={Routes.home}
-      aria-label={intl.formatMessage({
-        id: "kk1RMl",
-        defaultMessage: "Go to homepage",
-      })}>
+    <IntlLink href={Routes.home}>
       <Image
         src="/logo.png"
         alt={intl.formatMessage({

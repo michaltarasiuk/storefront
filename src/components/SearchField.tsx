@@ -6,7 +6,6 @@ import {
 } from "react-aria-components";
 
 import {Text} from "@/components/Text";
-import {useIntl} from "@/i18n/react-intl";
 import {CloseIcon} from "@/icons/CloseIcon";
 import {MagnifyIcon} from "@/icons/MagnifyIcon";
 import {cn} from "@/utils/cn";
@@ -26,7 +25,6 @@ export function SearchField({
   description,
   ...props
 }: SearchFieldProps) {
-  const intl = useIntl();
   return (
     <AriaSearchField {...props}>
       {({isEmpty}) => (
@@ -44,12 +42,7 @@ export function SearchField({
               )}
             />
             {!isEmpty && (
-              <IconButton
-                aria-label={intl.formatMessage({
-                  id: "4YJHut",
-                  defaultMessage: "Clear search",
-                })}
-                className={cn("end-small-100 absolute")}>
+              <IconButton className={cn("end-small-100 absolute")}>
                 <CloseIcon aria-hidden className={cn("size-3.5")} />
               </IconButton>
             )}

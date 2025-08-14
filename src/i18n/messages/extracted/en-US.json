@@ -26,12 +26,6 @@
   "47FYwb": {
     "defaultMessage": "Cancel"
   },
-  "4YJHut": {
-    "defaultMessage": "Clear search"
-  },
-  "4uRlnn": {
-    "defaultMessage": "Go back to orders"
-  },
   "5mUL+f": {
     "defaultMessage": "Newest to oldest"
   },
@@ -113,9 +107,6 @@
   "RpOD8c": {
     "defaultMessage": "Sort orders"
   },
-  "RvpBdy": {
-    "defaultMessage": "Address Information"
-  },
   "SQJto2": {
     "defaultMessage": "Sign in"
   },
@@ -130,9 +121,6 @@
   },
   "TVieNi": {
     "defaultMessage": "You will be logged out on this device as well."
-  },
-  "TemVby": {
-    "defaultMessage": "Full Name"
   },
   "X7jl6w": {
     "defaultMessage": "Orders"
@@ -155,9 +143,6 @@
   "e6Ph5+": {
     "defaultMessage": "Address"
   },
-  "e7yFQY": {
-    "defaultMessage": "Open main navigation"
-  },
   "eKEL/g": {
     "defaultMessage": "Pending"
   },
@@ -173,14 +158,8 @@
   "gvXtEw": {
     "defaultMessage": "Company logo"
   },
-  "hJZwTS": {
-    "defaultMessage": "Email address"
-  },
   "i7vqD3": {
     "defaultMessage": "Oldest to newest"
-  },
-  "iFsDVR": {
-    "defaultMessage": "Loading"
   },
   "irFBKn": {
     "defaultMessage": "Last 7 days"
@@ -196,9 +175,6 @@
   },
   "jvo0vs": {
     "defaultMessage": "Save"
-  },
-  "kk1RMl": {
-    "defaultMessage": "Go to homepage"
   },
   "lcPfsu": {
     "defaultMessage": "Hide order summary"

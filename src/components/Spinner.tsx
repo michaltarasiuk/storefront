@@ -2,7 +2,6 @@
 
 import {cva, type VariantProps} from "class-variance-authority";
 
-import {useIntl} from "@/i18n/react-intl";
 import {SpinnerIcon} from "@/icons/SpinnerIcon";
 import {cn} from "@/utils/cn";
 
@@ -26,13 +25,9 @@ interface SpinnerProps extends VariantProps<typeof spinner> {
 }
 
 export function Spinner({size, className}: SpinnerProps) {
-  const intl = useIntl();
   return (
     <SpinnerIcon
-      aria-label={intl.formatMessage({
-        id: "iFsDVR",
-        defaultMessage: "Loading",
-      })}
+      aria-hidden
       className={cn(
         spinner({
           size,
