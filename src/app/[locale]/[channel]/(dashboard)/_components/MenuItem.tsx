@@ -32,7 +32,7 @@ export function MenuItemLink({children, ...props}: LinkProps) {
   const basePath = useBasePath();
   const href = isDefined(props.href)
     ? joinPathSegments(...basePath, props.href)
-    : props.href;
+    : undefined;
   return (
     <IntlLink
       href={href}

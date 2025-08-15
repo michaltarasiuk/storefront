@@ -19,9 +19,9 @@ export default async function DashboardLayout({
   return (
     <div className={cn("flex min-h-dvh flex-col")}>
       <Header locale={locale} />
-      <div className={cn("bg-base-background-subdued px-large-200 grow")}>
-        <div className={cn("mx-auto max-w-6xl pb-9")}>{children}</div>
-      </div>
+      <main className={cn("bg-base-background-subdued px-large-200 grow")}>
+        <div className={cn("mx-auto max-w-6xl")}>{children}</div>
+      </main>
       <Footer />
     </div>
   );

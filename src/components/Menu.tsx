@@ -66,7 +66,7 @@ export function MenuItem<T extends object>({
   const basePath = useBasePath();
   const href = isDefined(props.href)
     ? joinPathSegments(...basePath, props.href)
-    : props.href;
+    : undefined;
   return (
     <AriaMenuItem
       {...props}

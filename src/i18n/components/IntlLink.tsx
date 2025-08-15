@@ -13,7 +13,7 @@ export function IntlLink({
   const basePath = useBasePath();
   const href = isDefined(props.href)
     ? joinPathSegments(...basePath, props.href)
-    : props.href;
+    : undefined;
   return (
     <Link {...props} href={href}>
       {children}
