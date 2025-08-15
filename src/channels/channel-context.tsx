@@ -1,9 +1,7 @@
 import {createContext} from "react";
 
-export interface Channel {
+export const ChannelContext = createContext<{
   taxConfiguration: {
     displayGrossPrices: boolean;
   };
-}
-
-export const ChannelContext = createContext<Channel>(undefined as never);
+}>(undefined as never);

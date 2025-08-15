@@ -24,7 +24,7 @@ export default async function ChannelLayout({
   if (!isDefined(channel)) {
     notFound();
   }
-  return <ChannelProvider channel={channel}>{children}</ChannelProvider>;
+  return <ChannelProvider value={channel}>{children}</ChannelProvider>;
 }
 
 export const dynamicParams = false;

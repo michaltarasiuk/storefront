@@ -1,13 +1,15 @@
 "use client";
 
-import {type Channel, ChannelContext} from "./channel-context";
+import {ChannelContext} from "./channel-context";
+
+type Channel = typeof ChannelContext extends React.Context<infer T> ? T : never;
 
 export function ChannelProvider({
   children,
-  channel,
+  value,
 }: {
   children: React.ReactNode;
-  channel: Channel;
+  value: Channel;
 }) {
-  return <ChannelContext value={channel}>{children}</ChannelContext>;
+  return <ChannelContext value={value}>{children}</ChannelContext>;
 }
