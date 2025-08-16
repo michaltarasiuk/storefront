@@ -1,6 +1,7 @@
 "use client";
 
 import {type FragmentType, useFragment} from "@apollo/client";
+import invariant from "tiny-invariant";
 
 import {Select} from "@/components/Select";
 import {TextField} from "@/components/TextField";
@@ -35,9 +36,7 @@ export function CompletedAddressFieldset({
     fragment: AddressFieldset_AddressFragment,
     from: address,
   });
-  if (!complete) {
-    return null;
-  }
+  invariant(complete);
   return <AddressFieldset address={data} />;
 }
 
@@ -66,6 +65,7 @@ export function AddressFieldset({address}: AddressFieldsetProps) {
           id: "ASVYue",
           defaultMessage: "Country/region",
         })}
+        isRequired
       />
       <div className={cn("gap-base grid grid-cols-1 sm:grid-cols-2")}>
         <TextField
@@ -75,6 +75,7 @@ export function AddressFieldset({address}: AddressFieldsetProps) {
             id: "pONqz8",
             defaultMessage: "First name",
           })}
+          isRequired
         />
         <TextField
           name="lastName"
@@ -83,6 +84,7 @@ export function AddressFieldset({address}: AddressFieldsetProps) {
             id: "txUL0F",
             defaultMessage: "Last name",
           })}
+          isRequired
         />
       </div>
       <TextField
@@ -92,6 +94,7 @@ export function AddressFieldset({address}: AddressFieldsetProps) {
           id: "e6Ph5+",
           defaultMessage: "Address",
         })}
+        isRequired
       />
       <TextField
         name="apartment"
@@ -109,6 +112,7 @@ export function AddressFieldset({address}: AddressFieldsetProps) {
             id: "3EnruA",
             defaultMessage: "Postal code",
           })}
+          isRequired
         />
         <TextField
           name="city"
@@ -117,6 +121,7 @@ export function AddressFieldset({address}: AddressFieldsetProps) {
             id: "TE4fIS",
             defaultMessage: "City",
           })}
+          isRequired
         />
       </div>
     </fieldset>

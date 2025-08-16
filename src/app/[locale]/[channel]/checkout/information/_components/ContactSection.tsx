@@ -40,6 +40,7 @@ export function ContactSection({checkout}: ContactSectionProps) {
           id: "KinTIy",
           defaultMessage: "Enter email",
         })}
+        isRequired
       />
       <Checkbox>
         <FormattedMessage
