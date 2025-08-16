@@ -36,14 +36,6 @@ export function Breadcrumbs({
   );
 }
 
-const breadcrumbLink = cva("hover:no-underline", {
-  variants: {
-    current: {
-      true: "text-base-text",
-    },
-  },
-});
-
 type BreadcrumbLinkProps = React.ComponentProps<typeof IntlLink>;
 
 export function BreadcrumbLink({
@@ -80,3 +72,11 @@ export function BreadcrumbLink({
     </Breadcrumb>
   );
 }
+
+const breadcrumbLink = cva("hover:no-underline", {
+  variants: {
+    current: {
+      true: "text-base-text",
+    },
+  },
+});

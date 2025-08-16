@@ -15,6 +15,7 @@ const CheckoutInformation_CheckoutQuery = gql(`
   query CheckoutInformation_Checkout($id: ID!) { 
     checkout(id: $id) {
       ...ContactSection_Checkout
+      ...ShippingAddress_Checkout
     }
   }
 `);

@@ -19,9 +19,11 @@ type Documents = {
   "\n  fragment ValidationError on AccountError {\n    field\n    message\n  }\n": typeof types.ValidationErrorFragmentDoc;
   "\n  mutation ConfirmAccount($email: String!, $token: String!) {\n    confirmAccount(email: $email, token: $token) {\n      user {\n        isActive\n      }\n    }\n  }\n": typeof types.ConfirmAccountDocument;
   "\n  fragment ContactSection_Checkout on Checkout {\n    id\n    email\n  }\n": typeof types.ContactSection_CheckoutFragmentDoc;
-  "\n  query CheckoutInformation_Checkout($id: ID!) { \n    checkout(id: $id) {\n      ...ContactSection_Checkout\n    }\n  }\n": typeof types.CheckoutInformation_CheckoutDocument;
+  "\n  fragment ShippingAddress_Checkout on Checkout {\n    shippingAddress {\n      ...AddressFieldset_Address\n    }\n  }\n": typeof types.ShippingAddress_CheckoutFragmentDoc;
+  "\n  query CheckoutInformation_Checkout($id: ID!) { \n    checkout(id: $id) {\n      ...ContactSection_Checkout\n      ...ShippingAddress_Checkout\n    }\n  }\n": typeof types.CheckoutInformation_CheckoutDocument;
   "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n": typeof types.ChannelSlugsDocument;
   "\n  query Channel($slug: String!) {\n    channel(slug: $slug) {\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n": typeof types.ChannelDocument;
+  "\n  fragment AddressFieldset_Address on Address {\n    id\n    country {\n      code\n    }\n    firstName\n    lastName\n    streetAddress1\n    streetAddress2\n    postalCode\n    city\n  }\n": typeof types.AddressFieldset_AddressFragmentDoc;
   "\n  fragment Money_TaxedMoney on TaxedMoney {\n    currency\n    gross {\n      amount\n    }\n    net {\n      amount\n    }\n  }\n": typeof types.Money_TaxedMoneyFragmentDoc;
 };
 const documents: Documents = {
@@ -35,12 +37,16 @@ const documents: Documents = {
     types.ConfirmAccountDocument,
   "\n  fragment ContactSection_Checkout on Checkout {\n    id\n    email\n  }\n":
     types.ContactSection_CheckoutFragmentDoc,
-  "\n  query CheckoutInformation_Checkout($id: ID!) { \n    checkout(id: $id) {\n      ...ContactSection_Checkout\n    }\n  }\n":
+  "\n  fragment ShippingAddress_Checkout on Checkout {\n    shippingAddress {\n      ...AddressFieldset_Address\n    }\n  }\n":
+    types.ShippingAddress_CheckoutFragmentDoc,
+  "\n  query CheckoutInformation_Checkout($id: ID!) { \n    checkout(id: $id) {\n      ...ContactSection_Checkout\n      ...ShippingAddress_Checkout\n    }\n  }\n":
     types.CheckoutInformation_CheckoutDocument,
   "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n":
     types.ChannelSlugsDocument,
   "\n  query Channel($slug: String!) {\n    channel(slug: $slug) {\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n":
     types.ChannelDocument,
+  "\n  fragment AddressFieldset_Address on Address {\n    id\n    country {\n      code\n    }\n    firstName\n    lastName\n    streetAddress1\n    streetAddress2\n    postalCode\n    city\n  }\n":
+    types.AddressFieldset_AddressFragmentDoc,
   "\n  fragment Money_TaxedMoney on TaxedMoney {\n    currency\n    gross {\n      amount\n    }\n    net {\n      amount\n    }\n  }\n":
     types.Money_TaxedMoneyFragmentDoc,
 };
@@ -93,8 +99,14 @@ export function gql(
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(
-  source: "\n  query CheckoutInformation_Checkout($id: ID!) { \n    checkout(id: $id) {\n      ...ContactSection_Checkout\n    }\n  }\n",
-): (typeof documents)["\n  query CheckoutInformation_Checkout($id: ID!) { \n    checkout(id: $id) {\n      ...ContactSection_Checkout\n    }\n  }\n"];
+  source: "\n  fragment ShippingAddress_Checkout on Checkout {\n    shippingAddress {\n      ...AddressFieldset_Address\n    }\n  }\n",
+): (typeof documents)["\n  fragment ShippingAddress_Checkout on Checkout {\n    shippingAddress {\n      ...AddressFieldset_Address\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(
+  source: "\n  query CheckoutInformation_Checkout($id: ID!) { \n    checkout(id: $id) {\n      ...ContactSection_Checkout\n      ...ShippingAddress_Checkout\n    }\n  }\n",
+): (typeof documents)["\n  query CheckoutInformation_Checkout($id: ID!) { \n    checkout(id: $id) {\n      ...ContactSection_Checkout\n      ...ShippingAddress_Checkout\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -107,6 +119,12 @@ export function gql(
 export function gql(
   source: "\n  query Channel($slug: String!) {\n    channel(slug: $slug) {\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n",
 ): (typeof documents)["\n  query Channel($slug: String!) {\n    channel(slug: $slug) {\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(
+  source: "\n  fragment AddressFieldset_Address on Address {\n    id\n    country {\n      code\n    }\n    firstName\n    lastName\n    streetAddress1\n    streetAddress2\n    postalCode\n    city\n  }\n",
+): (typeof documents)["\n  fragment AddressFieldset_Address on Address {\n    id\n    country {\n      code\n    }\n    firstName\n    lastName\n    streetAddress1\n    streetAddress2\n    postalCode\n    city\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

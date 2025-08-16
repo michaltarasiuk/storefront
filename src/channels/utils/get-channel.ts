@@ -1,7 +1,6 @@
 import {serverEnv} from "@/env-server";
 import {query} from "@/graphql/apollo-client";
 import {gql} from "@/graphql/codegen";
-import {bearerAuthHeader} from "@/utils/bearer-auth-header";
 
 const ChannelQuery = gql(`
   query Channel($slug: String!) {
@@ -20,9 +19,9 @@ export async function getChannel(slug: string) {
       slug,
     },
     context: {
-      headers: Object.fromEntries([
-        bearerAuthHeader(serverEnv.SALEOR_AUTH_TOKEN),
-      ]),
+      headers: {
+        Authorization: `Bearer ${serverEnv.SALEOR_AUTH_TOKEN}`,
+      },
     },
   });
   return data.channel;

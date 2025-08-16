@@ -2,7 +2,6 @@
 
 import {Dialog, DialogHeader, DialogTrigger, Modal} from "@/components/Dialog";
 import {Form} from "@/components/Form";
-import {FullNameFieldset} from "@/components/FullNameFieldset";
 import {IconButton} from "@/components/IconButton";
 import {TextField} from "@/components/TextField";
 import {useIntl} from "@/i18n/react-intl";
@@ -43,7 +42,22 @@ function ProfileForm({cancelButton}: {cancelButton: React.ReactNode}) {
   const intl = useIntl();
   return (
     <Form className={cn("space-y-base")}>
-      <FullNameFieldset />
+      <div className={cn("gap-base grid grid-cols-1 sm:grid-cols-2")}>
+        <TextField
+          name="firstName"
+          label={intl.formatMessage({
+            id: "pONqz8",
+            defaultMessage: "First name",
+          })}
+        />
+        <TextField
+          name="lastName"
+          label={intl.formatMessage({
+            id: "txUL0F",
+            defaultMessage: "Last name",
+          })}
+        />
+      </div>
       <TextField
         name="email"
         value="john.doe@example.com"

@@ -27,7 +27,7 @@ export function CheckoutInformation({
   return (
     <Form className={cn("space-y-large-300")}>
       <ContactSection checkout={data.checkout} />
-      <ShippingAddress />
+      <ShippingAddress checkout={data.checkout} />
       <div className={cn("gap-base flex flex-col")}>
         <Button size="large">
           <FormattedMessage defaultMessage="Continue to shipping" id="DgnS8R" />
