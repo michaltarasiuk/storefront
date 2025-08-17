@@ -9,34 +9,31 @@ import {TextField} from "@/components/TextField";
 import {FormattedMessage, useIntl} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
 import {isDefined} from "@/utils/is-defined";
+import {isEmptyRecord} from "@/utils/is-empty-record";
 
 import {signIn} from "../_actions/sign-in";
 import {FormHeader} from "./FormHeader";
 
-interface SigninFormProps {
-  defaultEmail?: string;
-}
-
-export function SigninForm({defaultEmail}: SigninFormProps) {
-  const [formState, formAction] = useActionState(signIn, {
+export function SigninForm({defaultEmail}: {defaultEmail?: string}) {
+  const [{errors}, formAction] = useActionState(signIn, {
     errors: {},
   });
   const [isPending, startTransition] = useTransition();
   const formRef = useRef<HTMLFormElement>(null);
   const intl = useIntl();
   useEffect(() => {
-    if (!Object.keys(formState.errors).length) {
+    if (isEmptyRecord(errors)) {
       startTransition(() => {
         if (isDefined(formRef.current)) {
           ReactDOM.requestFormReset(formRef.current);
         }
       });
     }
-  }, [formState]);
+  }, [errors]);
   return (
     <Form
       ref={formRef}
-      validationErrors={formState.errors}
+      validationErrors={errors}
       onSubmit={(event) => {
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement);

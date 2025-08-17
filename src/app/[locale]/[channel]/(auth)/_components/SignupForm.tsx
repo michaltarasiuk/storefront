@@ -12,12 +12,13 @@ import {useLocale} from "@/i18n/hooks/use-locale";
 import {FormattedMessage, useIntl} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
 import {isDefined} from "@/utils/is-defined";
+import {isEmptyRecord} from "@/utils/is-empty-record";
 
 import {signUp} from "../_actions/sign-up";
 import {FormHeader} from "./FormHeader";
 
 export function SignupForm() {
-  const [formState, formAction] = useActionState(signUp, {
+  const [{errors}, formAction] = useActionState(signUp, {
     requiresConfirmation: false,
     errors: {},
   });
@@ -27,18 +28,18 @@ export function SignupForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const intl = useIntl();
   useEffect(() => {
-    if (!Object.keys(formState.errors).length) {
+    if (isEmptyRecord(errors)) {
       startTransition(() => {
         if (isDefined(formRef.current)) {
           ReactDOM.requestFormReset(formRef.current);
         }
       });
     }
-  }, [formState]);
+  }, [errors]);
   return (
     <Form
       ref={formRef}
-      validationErrors={formState.errors}
+      validationErrors={errors}
       onSubmit={(event) => {
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement);
