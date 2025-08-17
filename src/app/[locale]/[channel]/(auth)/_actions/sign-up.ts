@@ -18,7 +18,7 @@ const SignupMutation = gql(`
     accountRegister(input: $input) {
       requiresConfirmation
       errors {
-        ...ValidationError
+        ...AccountValidationError
       }
     }
   }

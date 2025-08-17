@@ -1,13 +1,11 @@
 "use client";
 
-import {useActionState, useTransition} from "react";
-import {Input} from "react-aria-components";
+import {useActionState, useEffect, useRef, useTransition} from "react";
+import ReactDOM from "react-dom";
 
-import {useChannel} from "@/channels/hooks/use-channel";
 import {Button} from "@/components/Button";
 import {Form} from "@/components/Form";
 import {TextField} from "@/components/TextField";
-import {useLocale} from "@/i18n/hooks/use-locale";
 import {FormattedMessage, useIntl} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
 import {isDefined} from "@/utils/is-defined";
@@ -20,16 +18,25 @@ interface SigninFormProps {
 }
 
 export function SigninForm({defaultEmail}: SigninFormProps) {
-  const [{errors}, formAction] = useActionState(signIn, {
+  const [formState, formAction] = useActionState(signIn, {
     errors: {},
   });
   const [isPending, startTransition] = useTransition();
-  const locale = useLocale();
-  const channel = useChannel();
+  const formRef = useRef<HTMLFormElement>(null);
   const intl = useIntl();
+  useEffect(() => {
+    if (!Object.keys(formState.errors).length) {
+      startTransition(() => {
+        if (isDefined(formRef.current)) {
+          ReactDOM.requestFormReset(formRef.current);
+        }
+      });
+    }
+  }, [formState]);
   return (
     <Form
-      validationErrors={errors}
+      ref={formRef}
+      validationErrors={formState.errors}
       onSubmit={(event) => {
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement);
@@ -67,9 +74,7 @@ export function SigninForm({defaultEmail}: SigninFormProps) {
         autoFocus={isDefined(defaultEmail)}
         isRequired
       />
-      <Input name="locale" type="hidden" value={locale} />
-      <Input name="channel" type="hidden" value={channel} />
-      <Button type="submit" isDisabled={isPending} isPending={isPending}>
+      <Button type="submit" isPending={isPending} isDisabled={isPending}>
         <FormattedMessage id="SQJto2" defaultMessage="Sign in" />
       </Button>
     </Form>

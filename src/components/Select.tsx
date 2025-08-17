@@ -40,7 +40,9 @@ export function Select<T extends object>({
   children,
   ...props
 }: SelectProps<T>) {
-  const [selectedKey, setSelectedKey] = useState<Key | null>(null);
+  const [selectedKey, setSelectedKey] = useState<Key | null>(
+    props.defaultSelectedKey ?? null,
+  );
   return (
     <AriaSelect
       selectedKey={selectedKey}
@@ -53,7 +55,7 @@ export function Select<T extends object>({
         <>
           <Button
             className={cn(
-              "rounded-base border-control-border bg-control-background h-input p-small-100 relative flex w-full items-center justify-between border transition-all",
+              "rounded-base border-control-border bg-control-background h-input p-small-100 relative flex w-full cursor-pointer items-center justify-between border transition-all",
               {
                 "pt-6": isDefined(selectedKey),
                 "ring-control-accent/50 border-control-accent shadow-none ring-3 outline-none":

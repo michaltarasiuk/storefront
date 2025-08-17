@@ -1,9 +1,11 @@
 "use client";
 
 import {type FragmentType, useFragment} from "@apollo/client";
+import {use} from "react";
 import invariant from "tiny-invariant";
 
-import {Select} from "@/components/Select";
+import {ChannelContext} from "@/channels/channel-context";
+import {Select, SelectItem} from "@/components/Select";
 import {TextField} from "@/components/TextField";
 import {gql} from "@/graphql/codegen";
 import type {AddressFieldset_AddressFragment} from "@/graphql/codegen/graphql";
@@ -55,6 +57,7 @@ interface AddressFieldsetProps {
 }
 
 export function AddressFieldset({address}: AddressFieldsetProps) {
+  const {countries} = use(ChannelContext);
   const intl = useIntl();
   return (
     <fieldset className={cn("space-y-base")}>
@@ -65,8 +68,16 @@ export function AddressFieldset({address}: AddressFieldsetProps) {
           id: "ASVYue",
           defaultMessage: "Country/region",
         })}
-        isRequired
-      />
+        isRequired>
+        {countries.map((country) => (
+          <SelectItem
+            key={country.code}
+            id={country.code}
+            textValue={country.country}>
+            {country.country}
+          </SelectItem>
+        ))}
+      </Select>
       <div className={cn("gap-base grid grid-cols-1 sm:grid-cols-2")}>
         <TextField
           name="firstName"
@@ -88,7 +99,7 @@ export function AddressFieldset({address}: AddressFieldsetProps) {
         />
       </div>
       <TextField
-        name="address"
+        name="streetAddress1"
         defaultValue={address?.streetAddress1}
         label={intl.formatMessage({
           id: "e6Ph5+",
@@ -97,7 +108,7 @@ export function AddressFieldset({address}: AddressFieldsetProps) {
         isRequired
       />
       <TextField
-        name="apartment"
+        name="streetAddress2"
         defaultValue={address?.streetAddress2}
         label={intl.formatMessage({
           id: "yOsL4f",

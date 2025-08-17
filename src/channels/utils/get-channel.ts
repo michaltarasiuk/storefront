@@ -1,10 +1,15 @@
 import {serverEnv} from "@/env-server";
 import {query} from "@/graphql/apollo-client";
 import {gql} from "@/graphql/codegen";
+import {isDefined} from "@/utils/is-defined";
 
 const ChannelQuery = gql(`
   query Channel($slug: String!) {
     channel(slug: $slug) {
+      countries {
+        code
+        country
+      }
       taxConfiguration {
         displayGrossPrices
       }
@@ -24,5 +29,11 @@ export async function getChannel(slug: string) {
       },
     },
   });
-  return data.channel;
+  if (!isDefined(data.channel)) {
+    return;
+  }
+  return {
+    ...data.channel,
+    countries: data.channel.countries ?? [],
+  };
 }

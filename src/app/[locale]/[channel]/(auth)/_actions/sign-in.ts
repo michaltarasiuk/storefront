@@ -7,7 +7,6 @@ import {Routes} from "@/consts/routes";
 import {getClient} from "@/graphql/apollo-client";
 import {gql} from "@/graphql/codegen";
 import {isDefined} from "@/utils/is-defined";
-import {joinPathSegments} from "@/utils/pathname";
 import {setAccessTokenCookie, setRefreshTokenCookie} from "@/utils/session";
 
 import {toValidationErrors} from "../_utils/validation-errors";
@@ -18,7 +17,7 @@ const SigninMutation = gql(`
       token
       refreshToken
       errors {
-        ...ValidationError
+        ...AccountValidationError
       }
     }
   }
@@ -27,14 +26,10 @@ const SigninMutation = gql(`
 const FormDataSchema = z.object({
   email: z.email(),
   password: z.string(),
-  locale: z.string(),
-  channel: z.string(),
 });
 
 export async function signIn(_state: unknown, formData: FormData) {
-  const {email, password, locale, channel} = FormDataSchema.parse(
-    Object.fromEntries(formData),
-  );
+  const {email, password} = FormDataSchema.parse(Object.fromEntries(formData));
   const {data} = await getClient().mutate({
     mutation: SigninMutation,
     variables: {
@@ -46,7 +41,7 @@ export async function signIn(_state: unknown, formData: FormData) {
   if (isDefined(token) && isDefined(refreshToken)) {
     await setAccessTokenCookie(token);
     await setRefreshTokenCookie(refreshToken);
-    redirect(joinPathSegments(locale, channel, Routes.account.orders));
+    redirect(Routes.account.orders);
   }
   return {
     errors: toValidationErrors(errors),

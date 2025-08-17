@@ -29670,7 +29670,9 @@ export type SigninMutation = {
     refreshToken?: string | null;
     errors: Array<
       {__typename?: "AccountError"} & {
-        " $fragmentRefs"?: {ValidationErrorFragment: ValidationErrorFragment};
+        " $fragmentRefs"?: {
+          AccountValidationErrorFragment: AccountValidationErrorFragment;
+        };
       }
     >;
   } | null;
@@ -29687,17 +29689,19 @@ export type SignupMutation = {
     requiresConfirmation?: boolean | null;
     errors: Array<
       {__typename?: "AccountError"} & {
-        " $fragmentRefs"?: {ValidationErrorFragment: ValidationErrorFragment};
+        " $fragmentRefs"?: {
+          AccountValidationErrorFragment: AccountValidationErrorFragment;
+        };
       }
     >;
   } | null;
 };
 
-export type ValidationErrorFragment = {
+export type AccountValidationErrorFragment = {
   __typename?: "AccountError";
   field?: string | null;
   message?: string | null;
-} & {" $fragmentName"?: "ValidationErrorFragment"};
+} & {" $fragmentName"?: "AccountValidationErrorFragment"};
 
 export type ConfirmAccountMutationVariables = Exact<{
   email: Scalars["String"]["input"];
@@ -29764,6 +29768,11 @@ export type ChannelQuery = {
   __typename?: "Query";
   channel?: {
     __typename?: "Channel";
+    countries?: Array<{
+      __typename?: "CountryDisplay";
+      code: string;
+      country: string;
+    }> | null;
     taxConfiguration: {
       __typename?: "TaxConfiguration";
       displayGrossPrices: boolean;
@@ -29790,12 +29799,12 @@ export type Money_TaxedMoneyFragment = {
   net: {__typename?: "Money"; amount: number};
 } & {" $fragmentName"?: "Money_TaxedMoneyFragment"};
 
-export const ValidationErrorFragmentDoc = {
+export const AccountValidationErrorFragmentDoc = {
   kind: "Document",
   definitions: [
     {
       kind: "FragmentDefinition",
-      name: {kind: "Name", value: "ValidationError"},
+      name: {kind: "Name", value: "AccountValidationError"},
       typeCondition: {
         kind: "NamedType",
         name: {kind: "Name", value: "AccountError"},
@@ -29809,7 +29818,7 @@ export const ValidationErrorFragmentDoc = {
       },
     },
   ],
-} as unknown as DocumentNode<ValidationErrorFragment, unknown>;
+} as unknown as DocumentNode<AccountValidationErrorFragment, unknown>;
 export const ContactSection_CheckoutFragmentDoc = {
   kind: "Document",
   definitions: [
@@ -30024,7 +30033,7 @@ export const SigninDocument = {
                     selections: [
                       {
                         kind: "FragmentSpread",
-                        name: {kind: "Name", value: "ValidationError"},
+                        name: {kind: "Name", value: "AccountValidationError"},
                       },
                     ],
                   },
@@ -30037,7 +30046,7 @@ export const SigninDocument = {
     },
     {
       kind: "FragmentDefinition",
-      name: {kind: "Name", value: "ValidationError"},
+      name: {kind: "Name", value: "AccountValidationError"},
       typeCondition: {
         kind: "NamedType",
         name: {kind: "Name", value: "AccountError"},
@@ -30100,7 +30109,7 @@ export const SignupDocument = {
                     selections: [
                       {
                         kind: "FragmentSpread",
-                        name: {kind: "Name", value: "ValidationError"},
+                        name: {kind: "Name", value: "AccountValidationError"},
                       },
                     ],
                   },
@@ -30113,7 +30122,7 @@ export const SignupDocument = {
     },
     {
       kind: "FragmentDefinition",
-      name: {kind: "Name", value: "ValidationError"},
+      name: {kind: "Name", value: "AccountValidationError"},
       typeCondition: {
         kind: "NamedType",
         name: {kind: "Name", value: "AccountError"},
@@ -30377,6 +30386,17 @@ export const ChannelDocument = {
             selectionSet: {
               kind: "SelectionSet",
               selections: [
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "countries"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {kind: "Field", name: {kind: "Name", value: "code"}},
+                      {kind: "Field", name: {kind: "Name", value: "country"}},
+                    ],
+                  },
+                },
                 {
                   kind: "Field",
                   name: {kind: "Name", value: "taxConfiguration"},

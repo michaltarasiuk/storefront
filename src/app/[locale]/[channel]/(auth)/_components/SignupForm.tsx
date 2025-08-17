@@ -1,7 +1,8 @@
 "use client";
 
-import {useActionState, useTransition} from "react";
+import {useActionState, useEffect, useRef, useTransition} from "react";
 import {Input} from "react-aria-components";
+import ReactDOM from "react-dom";
 
 import {useChannel} from "@/channels/hooks/use-channel";
 import {Button} from "@/components/Button";
@@ -10,22 +11,34 @@ import {TextField} from "@/components/TextField";
 import {useLocale} from "@/i18n/hooks/use-locale";
 import {FormattedMessage, useIntl} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
+import {isDefined} from "@/utils/is-defined";
 
 import {signUp} from "../_actions/sign-up";
 import {FormHeader} from "./FormHeader";
 
 export function SignupForm() {
-  const [{errors}, formAction] = useActionState(signUp, {
+  const [formState, formAction] = useActionState(signUp, {
     requiresConfirmation: false,
     errors: {},
   });
   const [isPending, startTransition] = useTransition();
   const locale = useLocale();
   const channel = useChannel();
+  const formRef = useRef<HTMLFormElement>(null);
   const intl = useIntl();
+  useEffect(() => {
+    if (!Object.keys(formState.errors).length) {
+      startTransition(() => {
+        if (isDefined(formRef.current)) {
+          ReactDOM.requestFormReset(formRef.current);
+        }
+      });
+    }
+  }, [formState]);
   return (
     <Form
-      validationErrors={errors}
+      ref={formRef}
+      validationErrors={formState.errors}
       onSubmit={(event) => {
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement);
@@ -63,7 +76,7 @@ export function SignupForm() {
       />
       <Input name="locale" type="hidden" value={locale} />
       <Input name="channel" type="hidden" value={channel} />
-      <Button type="submit" isDisabled={isPending} isPending={isPending}>
+      <Button type="submit" isPending={isPending} isDisabled={isPending}>
         <FormattedMessage id="8HJxXG" defaultMessage="Sign up" />
       </Button>
     </Form>
