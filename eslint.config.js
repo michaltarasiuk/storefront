@@ -1,11 +1,11 @@
 import {dirname} from "node:path";
+import {fileURLToPath} from "node:url";
 
 import {FlatCompat} from "@eslint/eslintrc";
 import {globalIgnores} from "eslint/config";
 import formatjs from "eslint-plugin-formatjs";
 import reactRefresh from "eslint-plugin-react-refresh";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
-import {fileURLToPath} from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

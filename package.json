@@ -18,6 +18,7 @@
     "@apollo/client": "^3.13.8",
     "@apollo/client-integration-nextjs": "^0.12.2",
     "@formatjs/intl-localematcher": "^0.6.1",
+    "@t3-oss/env-nextjs": "^0.13.8",
     "class-variance-authority": "^0.7.1",
     "client-only": "^0.0.1",
     "graphql": "^16.11.0",

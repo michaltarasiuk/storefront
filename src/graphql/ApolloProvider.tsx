@@ -7,13 +7,13 @@ import {
   InMemoryCache,
 } from "@apollo/client-integration-nextjs";
 
-import {clientEnv} from "@/env-client";
+import {env} from "@/env";
 
 function makeClient() {
   return new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
-      uri: clientEnv.NEXT_PUBLIC_SALEOR_GRAPHQL_URL,
+      uri: env.NEXT_PUBLIC_SALEOR_GRAPHQL_URL,
     }),
   });
 }

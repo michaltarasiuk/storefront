@@ -1,4 +1,4 @@
-import {serverEnv} from "@/env-server";
+import {env} from "@/env";
 import {query} from "@/graphql/apollo-client";
 import {gql} from "@/graphql/codegen";
 import {isDefined} from "@/utils/is-defined";
@@ -25,7 +25,7 @@ export async function getChannel(slug: string) {
     },
     context: {
       headers: {
-        Authorization: `Bearer ${serverEnv.SALEOR_AUTH_TOKEN}`,
+        Authorization: `Bearer ${env.SALEOR_AUTH_TOKEN}`,
       },
     },
   });

@@ -3,7 +3,7 @@
 import * as z from "zod";
 
 import {Routes} from "@/consts/routes";
-import {serverEnv} from "@/env-server";
+import {env} from "@/env";
 import {getClient} from "@/graphql/apollo-client";
 import {gql} from "@/graphql/codegen";
 import {Locales} from "@/i18n/consts";
@@ -39,7 +39,7 @@ export async function signUp(_state: unknown, formData: FormData) {
   const redirectUrl = String(
     new URL(
       joinPathSegments(locale, channel, Routes.account.confirmAccount),
-      serverEnv.NEXT_PUBLIC_SITE_URL,
+      env.NEXT_PUBLIC_SITE_URL,
     ),
   );
   const {data} = await getClient().mutate({

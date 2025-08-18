@@ -1,6 +1,6 @@
 import type {ApolloClient} from "@apollo/client";
 
-import {serverEnv} from "@/env-server";
+import {env} from "@/env";
 import {gql} from "@/graphql/codegen";
 
 const ChannelSlugsQuery = gql(`
@@ -17,7 +17,7 @@ export async function getActiveChannelSlugs(client: ApolloClient<unknown>) {
     query: ChannelSlugsQuery,
     context: {
       headers: {
-        Authorization: `Bearer ${serverEnv.SALEOR_AUTH_TOKEN}`,
+        Authorization: `Bearer ${env.SALEOR_AUTH_TOKEN}`,
       },
     },
   });

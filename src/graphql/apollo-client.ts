@@ -7,7 +7,7 @@ import {
   registerApolloClient,
 } from "@apollo/client-integration-nextjs";
 
-import {serverEnv} from "@/env-server";
+import {env} from "@/env";
 import introspection from "@/graphql/codegen/introspection.json" with {type: "json"};
 
 export const {getClient, query, PreloadQuery} = registerApolloClient(() => {
@@ -16,7 +16,7 @@ export const {getClient, query, PreloadQuery} = registerApolloClient(() => {
       possibleTypes: introspection.possibleTypes,
     }),
     link: new HttpLink({
-      uri: serverEnv.NEXT_PUBLIC_SALEOR_GRAPHQL_URL,
+      uri: env.NEXT_PUBLIC_SALEOR_GRAPHQL_URL,
     }),
     dataMasking: true,
   });
