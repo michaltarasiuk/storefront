@@ -3,6 +3,7 @@ import Negotiator from "negotiator";
 import {cookies, headers} from "next/headers";
 import {NextResponse, URLPattern} from "next/server";
 
+import {DefaultChannel} from "@/channels/consts";
 import {ciEquals} from "@/utils/ci-equals";
 import {isDefined} from "@/utils/is-defined";
 import {joinPathSegments} from "@/utils/pathname";
@@ -16,9 +17,11 @@ export async function intlMiddleware(request: Request) {
       (await getLocaleByCookies()) ??
       (await getLocaleByHeaders()) ??
       DefaultLocale;
-    return NextResponse.redirect(
-      new URL(joinPathSegments(locale, requestUrl.pathname), request.url),
+    const redirectUrl = new URL(
+      joinPathSegments(locale, DefaultChannel, requestUrl.pathname),
+      request.url,
     );
+    return NextResponse.redirect(redirectUrl);
   }
 }
 

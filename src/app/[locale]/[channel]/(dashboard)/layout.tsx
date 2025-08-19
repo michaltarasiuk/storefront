@@ -22,7 +22,7 @@ export default async function DashboardLayout({
       <main className={cn("bg-base-background-subdued px-large-200 grow")}>
         <div className={cn("mx-auto max-w-6xl")}>{children}</div>
       </main>
-      <Footer />
+      <Footer variant="subdued" />
     </div>
   );
 }

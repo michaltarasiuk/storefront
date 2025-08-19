@@ -9,5 +9,9 @@ export async function getCheckoutId() {
 }
 
 export async function setCheckoutId(checkoutId: string) {
-  (await cookies()).set(CheckoutIdCookieName, checkoutId);
+  (await cookies()).set(CheckoutIdCookieName, checkoutId, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+  });
 }

@@ -7,24 +7,26 @@ import {Heading, SkeletonHeading} from "@/components/Heading";
 import {SkeletonInput} from "@/components/Input";
 import {TextField} from "@/components/TextField";
 import {gql} from "@/graphql/codegen";
-import type {ContactSection_CheckoutFragment} from "@/graphql/codegen/graphql";
+import type {CheckoutContactSection_CheckoutFragment} from "@/graphql/codegen/graphql";
 import {FormattedMessage, useIntl} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
 
-const ContactSection_CheckoutFragment = gql(`
-  fragment ContactSection_Checkout on Checkout {
+const CheckoutContactSection_CheckoutFragment = gql(`
+  fragment CheckoutContactSection_Checkout on Checkout {
     id
     email
   }
 `);
 
-interface ContactSectionProps {
-  checkout: FragmentType<ContactSection_CheckoutFragment>;
+interface CheckoutContactSectionProps {
+  checkout: FragmentType<CheckoutContactSection_CheckoutFragment>;
 }
 
-export function ContactSection({checkout}: ContactSectionProps) {
+export function CheckoutContactSection({
+  checkout,
+}: CheckoutContactSectionProps) {
   const {data} = useFragment({
-    fragment: ContactSection_CheckoutFragment,
+    fragment: CheckoutContactSection_CheckoutFragment,
     from: checkout,
   });
   const intl = useIntl();

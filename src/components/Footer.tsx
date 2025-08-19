@@ -1,3 +1,4 @@
+import {cva, type VariantProps} from "class-variance-authority";
 import {Suspense} from "react";
 
 import {IntlLink} from "@/i18n/components/IntlLink";
@@ -6,13 +7,29 @@ import {cn} from "@/utils/cn";
 
 import {LanguageSelector, LanguageSelectorButton} from "./LanguageSelector";
 
-export function Footer() {
+const footer = cva("px-large-200 md:px-0", {
+  variants: {
+    variant: {
+      base: "bg-base-background",
+      subdued: "bg-base-background-subdued",
+    },
+  },
+  defaultVariants: {
+    variant: "base",
+  },
+});
+
+export function Footer({variant}: VariantProps<typeof footer>) {
   return (
-    <footer className={cn("bg-base-background-subdued px-large-200")}>
+    <footer
+      className={cn(
+        footer({
+          variant,
+        }),
+      )}>
       <ul
         className={cn(
-          "border-base-border py-large-200 mx-auto max-w-6xl border-t",
-          "gap-x-base gap-y-small-400 flex flex-wrap",
+          "border-base-border py-large-200 gap-x-base gap-y-small-400 mx-auto flex max-w-6xl flex-wrap border-t",
         )}>
         <li>
           <Suspense fallback={<LanguageSelectorButton />}>

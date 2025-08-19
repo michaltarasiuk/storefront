@@ -9,11 +9,11 @@ export async function GET({nextUrl: {origin, searchParams}}: NextRequest) {
   const email = searchParams.get("email");
   const token = searchParams.get("token");
   if (!isDefined(email) || !isDefined(token)) {
-    return NextResponse.next();
+    return NextResponse.json(null, {status: 422});
   }
   const confirmed = await confirmAccount(email, token);
   if (!confirmed) {
-    return NextResponse.next();
+    return NextResponse.json(null, {status: 400});
   }
   const redirectUrl = new URL(Routes.account.signin, origin);
   redirectUrl.searchParams.set("email", email);

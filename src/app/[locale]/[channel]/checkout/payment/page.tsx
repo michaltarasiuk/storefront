@@ -6,34 +6,33 @@ import {getCheckoutId} from "@/utils/checkout";
 import {isDefined} from "@/utils/is-defined";
 
 import {
-  CheckoutInformationForm,
-  SkeletonCheckoutInformationForm,
-} from "../_components/CheckoutInformationForm";
+  CheckoutPaymentForm,
+  SkeletonCheckoutPaymentForm,
+} from "../_components/CheckoutPaymentForm";
 import {redirectToRoot} from "../_utils/redirect-to-root";
 
-const CheckoutInformation_CheckoutQuery = gql(`
-  query CheckoutInformation_Checkout($id: ID!) { 
+const CheckoutPayment_CheckoutQuery = gql(`
+  query CheckoutPayment_Checkout($id: ID!) { 
     checkout(id: $id) {
-      ...CheckoutContactSection_Checkout
-      ...CheckoutShippingAddress_Checkout
+      id
     }
   }
 `);
 
-export default async function CheckoutInformationPage() {
+export default async function CheckoutPaymentPage() {
   const checkoutId = await getCheckoutId();
   if (!isDefined(checkoutId)) {
     redirectToRoot();
   }
   return (
     <PreloadQuery
-      query={CheckoutInformation_CheckoutQuery}
+      query={CheckoutPayment_CheckoutQuery}
       variables={{
         id: checkoutId.value,
       }}>
       {(queryRef) => (
-        <Suspense fallback={<SkeletonCheckoutInformationForm />}>
-          <CheckoutInformationForm queryRef={queryRef} />
+        <Suspense fallback={<SkeletonCheckoutPaymentForm />}>
+          <CheckoutPaymentForm queryRef={queryRef} />
         </Suspense>
       )}
     </PreloadQuery>

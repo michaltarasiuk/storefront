@@ -107,6 +107,12 @@
       "value": "Country/region"
     }
   ],
+  "Akc1Gk": [
+    {
+      "type": 0,
+      "value": "Return to shipping"
+    }
+  ],
   "BIxs9X": [
     {
       "type": 0,
@@ -117,6 +123,12 @@
     {
       "type": 0,
       "value": "Order Status Tabs"
+    }
+  ],
+  "CyOkb5": [
+    {
+      "type": 0,
+      "value": "Promo Code"
     }
   ],
   "D3idYv": [
@@ -153,6 +165,12 @@
     {
       "type": 0,
       "value": "Apply"
+    }
+  ],
+  "FPGwAt": [
+    {
+      "type": 0,
+      "value": "Company name"
     }
   ],
   "FQyBR6": [
@@ -407,6 +425,18 @@
     {
       "type": 0,
       "value": "Save"
+    }
+  ],
+  "k2CDuD": [
+    {
+      "type": 0,
+      "value": "Return to information"
+    }
+  ],
+  "lD3+8a": [
+    {
+      "type": 0,
+      "value": "Pay"
     }
   ],
   "lcPfsu": [

@@ -7,27 +7,29 @@ import {
 } from "@/components/AddressFieldset";
 import {Heading, SkeletonHeading} from "@/components/Heading";
 import {gql} from "@/graphql/codegen";
-import type {ShippingAddress_CheckoutFragment} from "@/graphql/codegen/graphql";
+import type {CheckoutShippingAddress_CheckoutFragment} from "@/graphql/codegen/graphql";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
 import {isDefined} from "@/utils/is-defined";
 
-const ShippingAddress_CheckoutFragment = gql(`
-  fragment ShippingAddress_Checkout on Checkout {
+const CheckoutShippingAddress_CheckoutFragment = gql(`
+  fragment CheckoutShippingAddress_Checkout on Checkout {
     shippingAddress {
       ...AddressFieldset_Address
     }
   }
 `);
 
-interface ShippingAddressProps {
-  checkout: FragmentType<ShippingAddress_CheckoutFragment>;
+interface CheckoutShippingAddressProps {
+  checkout: FragmentType<CheckoutShippingAddress_CheckoutFragment>;
 }
 
-export function ShippingAddress({checkout}: ShippingAddressProps) {
+export function CheckoutShippingAddress({
+  checkout,
+}: CheckoutShippingAddressProps) {
   const {data, complete} = useFragment({
-    fragment: ShippingAddress_CheckoutFragment,
-    fragmentName: "ShippingAddress_Checkout",
+    fragment: CheckoutShippingAddress_CheckoutFragment,
+    fragmentName: "CheckoutShippingAddress_Checkout",
     from: checkout,
   });
   return (

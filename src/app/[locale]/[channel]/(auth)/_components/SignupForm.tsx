@@ -1,6 +1,6 @@
 "use client";
 
-import {useActionState, useRef, useTransition} from "react";
+import {useActionState, useTransition} from "react";
 import {Input} from "react-aria-components";
 
 import {useChannel} from "@/channels/hooks/use-channel";
@@ -22,11 +22,9 @@ export function SignupForm() {
   const [isPending, startTransition] = useTransition();
   const locale = useLocale();
   const channel = useChannel();
-  const formRef = useRef<HTMLFormElement>(null);
   const intl = useIntl();
   return (
     <Form
-      ref={formRef}
       validationErrors={errors}
       onSubmit={(event) => {
         event.preventDefault();

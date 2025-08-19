@@ -53,11 +53,17 @@
   "ASVYue": {
     "defaultMessage": "Country/region"
   },
+  "Akc1Gk": {
+    "defaultMessage": "Return to shipping"
+  },
   "BIxs9X": {
     "defaultMessage": "This is my default address"
   },
   "C9WQ46": {
     "defaultMessage": "Order Status Tabs"
+  },
+  "CyOkb5": {
+    "defaultMessage": "Promo Code"
   },
   "D3idYv": {
     "defaultMessage": "Settings"
@@ -76,6 +82,9 @@
   },
   "EWw/tK": {
     "defaultMessage": "Apply"
+  },
+  "FPGwAt": {
+    "defaultMessage": "Company name"
   },
   "FQyBR6": {
     "defaultMessage": "Table View"
@@ -199,6 +208,12 @@
   },
   "jvo0vs": {
     "defaultMessage": "Save"
+  },
+  "k2CDuD": {
+    "defaultMessage": "Return to information"
+  },
+  "lD3+8a": {
+    "defaultMessage": "Pay"
   },
   "lcPfsu": {
     "defaultMessage": "Hide order summary"

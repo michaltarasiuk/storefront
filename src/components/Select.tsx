@@ -105,6 +105,7 @@ export function Select<T extends object>({
             <ListBox
               className={cn(
                 "space-y-small-500 py-small-400 max-h-44 overflow-y-scroll",
+                "outline-none",
               )}>
               {children}
             </ListBox>

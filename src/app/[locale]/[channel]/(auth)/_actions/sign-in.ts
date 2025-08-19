@@ -17,19 +17,14 @@ const SigninMutation = gql(`
       token
       refreshToken
       errors {
-        ...AccountValidationError
+        ...AccountValidationError @unmask
       }
     }
   }
 `);
 
-const FormDataSchema = z.object({
-  email: z.email(),
-  password: z.string(),
-});
-
 export async function signIn(_state: unknown, formData: FormData) {
-  const {email, password} = FormDataSchema.parse(Object.fromEntries(formData));
+  const {email, password} = parseFormData(formData);
   const {data} = await getClient().mutate({
     mutation: SigninMutation,
     variables: {
@@ -46,4 +41,13 @@ export async function signIn(_state: unknown, formData: FormData) {
   return {
     errors: toValidationErrors(errors),
   };
+}
+
+const FormDataSchema = z.object({
+  email: z.email(),
+  password: z.string(),
+});
+
+function parseFormData(formData: FormData) {
+  return FormDataSchema.parse(Object.fromEntries(formData));
 }

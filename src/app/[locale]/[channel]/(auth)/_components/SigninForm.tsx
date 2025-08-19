@@ -1,6 +1,6 @@
 "use client";
 
-import {useActionState, useRef, useTransition} from "react";
+import {useActionState, useTransition} from "react";
 
 import {Button} from "@/components/Button";
 import {Form} from "@/components/Form";
@@ -17,11 +17,9 @@ export function SigninForm({defaultEmail}: {defaultEmail?: string}) {
     errors: {},
   });
   const [isPending, startTransition] = useTransition();
-  const formRef = useRef<HTMLFormElement>(null);
   const intl = useIntl();
   return (
     <Form
-      ref={formRef}
       validationErrors={errors}
       onSubmit={(event) => {
         event.preventDefault();

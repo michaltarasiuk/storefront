@@ -22,6 +22,7 @@ const AddressFieldset_AddressFragment = gql(`
     }
     firstName
     lastName
+    companyName
     streetAddress1
     streetAddress2
     postalCode
@@ -49,8 +50,9 @@ interface AddressFieldsetProps {
     };
     firstName: string;
     lastName: string;
+    companyName?: string;
     streetAddress1: string;
-    streetAddress2: string;
+    streetAddress2?: string;
     postalCode: string;
     city: string;
   };
@@ -98,6 +100,14 @@ export function AddressFieldset({address}: AddressFieldsetProps) {
           isRequired
         />
       </div>
+      <TextField
+        name="companyName"
+        defaultValue={address?.companyName}
+        label={intl.formatMessage({
+          id: "FPGwAt",
+          defaultMessage: "Company name",
+        })}
+      />
       <TextField
         name="streetAddress1"
         defaultValue={address?.streetAddress1}
@@ -147,6 +157,7 @@ export function SkeletonAddressFieldset() {
         <SkeletonInput />
         <SkeletonInput />
       </div>
+      <SkeletonInput />
       <SkeletonInput />
       <SkeletonInput />
       <div className={cn("gap-base grid grid-cols-1 sm:grid-cols-2")}>
