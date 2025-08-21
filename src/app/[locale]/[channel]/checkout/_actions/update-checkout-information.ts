@@ -8,8 +8,8 @@ import {Routes} from "@/consts/routes";
 import {getClient} from "@/graphql/apollo-client";
 import {graphql} from "@/graphql/codegen";
 import type {
+  CheckoutAddressUpdateMutationVariables,
   CheckoutEmailUpdateMutationVariables,
-  CheckoutShippingAddressUpdateMutationVariables,
 } from "@/graphql/codegen/graphql";
 import {AddressSchema} from "@/utils/address";
 import {getCheckoutId} from "@/utils/checkout";
@@ -28,12 +28,14 @@ const CheckoutEmailUpdateMutation = graphql(`
   }
 `);
 
-const CheckoutShippingAddressUpdateMutation = graphql(`
-  mutation CheckoutShippingAddressUpdate(
-    $id: ID!
-    $shippingAddress: AddressInput!
-  ) {
-    checkoutShippingAddressUpdate(id: $id, shippingAddress: $shippingAddress) {
+const CheckoutAddressUpdateMutation = graphql(`
+  mutation CheckoutAddressUpdate($id: ID!, $address: AddressInput!) {
+    checkoutShippingAddressUpdate(id: $id, shippingAddress: $address) {
+      errors {
+        ...CheckoutValidationError @unmask
+      }
+    }
+    checkoutBillingAddressUpdate(id: $id, billingAddress: $address) {
       errors {
         ...CheckoutValidationError @unmask
       }
@@ -49,22 +51,19 @@ export async function updateCheckoutInformation(
   if (!isDefined(checkoutId)) {
     redirectToRoot();
   }
-  const {email, ...shippingAddress} = parseFormData(formData);
-  const client = await getClient();
-  const [emailUpdate, shippingAddressUpdate] = await Promise.all([
+  const {email, ...address} = parseFormData(formData);
+  const client = getClient();
+  const [emailUpdate, addressUpdate] = await Promise.all([
     updateCheckoutEmail(client, {
       id: checkoutId.value,
       email,
     }),
-    updateCheckoutShippingAddress(client, {
+    updateCheckoutAddress(client, {
       id: checkoutId.value,
-      shippingAddress,
+      address,
     }),
   ]);
-  const errors = [
-    ...(emailUpdate?.errors ?? []),
-    ...(shippingAddressUpdate?.errors ?? []),
-  ];
+  const errors = addressUpdate.errors.concat(emailUpdate?.errors ?? []);
   if (!errors.length) {
     redirect(Routes.checkout.shipping);
   }
@@ -93,13 +92,18 @@ async function updateCheckoutEmail(
   return data?.checkoutEmailUpdate;
 }
 
-async function updateCheckoutShippingAddress(
+async function updateCheckoutAddress(
   client: ApolloClient<unknown>,
-  variables: CheckoutShippingAddressUpdateMutationVariables,
+  variables: CheckoutAddressUpdateMutationVariables,
 ) {
   const {data} = await client.mutate({
-    mutation: CheckoutShippingAddressUpdateMutation,
+    mutation: CheckoutAddressUpdateMutation,
     variables,
   });
-  return data?.checkoutShippingAddressUpdate;
+  return {
+    errors: [
+      ...(data?.checkoutBillingAddressUpdate?.errors ?? []),
+      ...(data?.checkoutShippingAddressUpdate?.errors ?? []),
+    ],
+  };
 }

@@ -29746,15 +29746,23 @@ export type CheckoutEmailUpdateMutation = {
   } | null;
 };
 
-export type CheckoutShippingAddressUpdateMutationVariables = Exact<{
+export type CheckoutAddressUpdateMutationVariables = Exact<{
   id: Scalars["ID"]["input"];
-  shippingAddress: AddressInput;
+  address: AddressInput;
 }>;
 
-export type CheckoutShippingAddressUpdateMutation = {
+export type CheckoutAddressUpdateMutation = {
   __typename?: "Mutation";
   checkoutShippingAddressUpdate?: {
     __typename?: "CheckoutShippingAddressUpdate";
+    errors: Array<{
+      __typename?: "CheckoutError";
+      field?: string | null;
+      message?: string | null;
+    }>;
+  } | null;
+  checkoutBillingAddressUpdate?: {
+    __typename?: "CheckoutBillingAddressUpdate";
     errors: Array<{
       __typename?: "CheckoutError";
       field?: string | null;
@@ -30601,13 +30609,13 @@ export const CheckoutEmailUpdateDocument = {
   CheckoutEmailUpdateMutation,
   CheckoutEmailUpdateMutationVariables
 >;
-export const CheckoutShippingAddressUpdateDocument = {
+export const CheckoutAddressUpdateDocument = {
   kind: "Document",
   definitions: [
     {
       kind: "OperationDefinition",
       operation: "mutation",
-      name: {kind: "Name", value: "CheckoutShippingAddressUpdate"},
+      name: {kind: "Name", value: "CheckoutAddressUpdate"},
       variableDefinitions: [
         {
           kind: "VariableDefinition",
@@ -30619,10 +30627,7 @@ export const CheckoutShippingAddressUpdateDocument = {
         },
         {
           kind: "VariableDefinition",
-          variable: {
-            kind: "Variable",
-            name: {kind: "Name", value: "shippingAddress"},
-          },
+          variable: {kind: "Variable", name: {kind: "Name", value: "address"}},
           type: {
             kind: "NonNullType",
             type: {
@@ -30649,7 +30654,50 @@ export const CheckoutShippingAddressUpdateDocument = {
                 name: {kind: "Name", value: "shippingAddress"},
                 value: {
                   kind: "Variable",
-                  name: {kind: "Name", value: "shippingAddress"},
+                  name: {kind: "Name", value: "address"},
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "errors"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "FragmentSpread",
+                        name: {kind: "Name", value: "CheckoutValidationError"},
+                        directives: [
+                          {
+                            kind: "Directive",
+                            name: {kind: "Name", value: "unmask"},
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "checkoutBillingAddressUpdate"},
+            arguments: [
+              {
+                kind: "Argument",
+                name: {kind: "Name", value: "id"},
+                value: {kind: "Variable", name: {kind: "Name", value: "id"}},
+              },
+              {
+                kind: "Argument",
+                name: {kind: "Name", value: "billingAddress"},
+                value: {
+                  kind: "Variable",
+                  name: {kind: "Name", value: "address"},
                 },
               },
             ],
@@ -30698,8 +30746,8 @@ export const CheckoutShippingAddressUpdateDocument = {
     },
   ],
 } as unknown as DocumentNode<
-  CheckoutShippingAddressUpdateMutation,
-  CheckoutShippingAddressUpdateMutationVariables
+  CheckoutAddressUpdateMutation,
+  CheckoutAddressUpdateMutationVariables
 >;
 export const CheckoutShippingMethodUpdateDocument = {
   kind: "Document",
