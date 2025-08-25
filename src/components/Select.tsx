@@ -41,7 +41,7 @@ export function Select<T extends object>({
   ...props
 }: SelectProps<T>) {
   const [selectedKey, setSelectedKey] = useState<Key | null>(
-    props.selectedKey ?? props.defaultSelectedKey ?? null,
+    (props.selectedKey ?? props.defaultSelectedKey) || null,
   );
   return (
     <AriaSelect
