@@ -6,16 +6,15 @@ import {getCheckoutId} from "@/utils/checkout";
 import {isDefined} from "@/utils/is-defined";
 
 import {
-  CheckoutInformationForm,
-  SkeletonCheckoutInformationForm,
-} from "../_components/CheckoutInformationForm";
+  CheckoutInformation,
+  SkeletonCheckoutInformation,
+} from "../_components/CheckoutInformation";
 import {redirectToRoot} from "../_utils/redirect-to-root";
 
 const CheckoutInformation_CheckoutQuery = graphql(`
   query CheckoutInformation_Checkout($id: ID!) {
     checkout(id: $id) {
-      ...CheckoutContactSection_Checkout
-      ...CheckoutShippingAddress_Checkout
+      ...CheckoutInformationForm_Checkout
     }
   }
 `);
@@ -32,8 +31,8 @@ export default async function CheckoutInformationPage() {
         id: checkoutId.value,
       }}>
       {(queryRef) => (
-        <Suspense fallback={<SkeletonCheckoutInformationForm />}>
-          <CheckoutInformationForm queryRef={queryRef} />
+        <Suspense fallback={<SkeletonCheckoutInformation />}>
+          <CheckoutInformation queryRef={queryRef} />
         </Suspense>
       )}
     </PreloadQuery>

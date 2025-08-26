@@ -24,13 +24,16 @@ type Documents = {
   "\n  mutation CheckoutShippingMethodUpdate($id: ID!, $shippingMethodId: ID!) {\n    checkoutDeliveryMethodUpdate(id: $id, deliveryMethodId: $shippingMethodId) {\n      errors {\n        ...CheckoutValidationError\n      }\n    }\n  }\n": typeof types.CheckoutShippingMethodUpdateDocument;
   "\n  fragment CheckoutBillingAddressSection_Checkout on Checkout {\n    id\n    shippingAddress {\n      ...AddressFieldset_Address\n    }\n    billingAddress {\n      ...AddressFieldset_Address\n    }\n  }\n": typeof types.CheckoutBillingAddressSection_CheckoutFragmentDoc;
   "\n  fragment CheckoutContactSection_Checkout on Checkout {\n    id\n    email\n  }\n": typeof types.CheckoutContactSection_CheckoutFragmentDoc;
+  "\n  fragment CheckoutInformationForm_Checkout on Checkout {\n    id\n    ...CheckoutContactSection_Checkout\n    ...CheckoutShippingAddress_Checkout\n  }\n": typeof types.CheckoutInformationForm_CheckoutFragmentDoc;
+  "\n  fragment CheckoutPaymentForm_Checkout on Checkout {\n    id\n    ...CheckoutBillingAddressSection_Checkout\n  }\n": typeof types.CheckoutPaymentForm_CheckoutFragmentDoc;
+  "\n  fragment CheckoutShippingForm_Checkout on Checkout {\n    id\n    ...CheckoutShippingMethods_Checkout\n  }\n": typeof types.CheckoutShippingForm_CheckoutFragmentDoc;
   "\n  fragment CheckoutShippingAddress_Checkout on Checkout {\n    shippingAddress {\n      ...AddressFieldset_Address\n    }\n  }\n": typeof types.CheckoutShippingAddress_CheckoutFragmentDoc;
   "\n  fragment CheckoutShippingMethods_Checkout on Checkout {\n    id\n    shippingMethods {\n      id\n      name\n    }\n  }\n": typeof types.CheckoutShippingMethods_CheckoutFragmentDoc;
   "\n  fragment CheckoutValidationError on CheckoutError {\n    field\n    message\n  }\n": typeof types.CheckoutValidationErrorFragmentDoc;
   "\n  mutation DemoCheckoutCreate($input: CheckoutCreateInput!) {\n    checkoutCreate(input: $input) {\n      checkout {\n        id\n      }\n    }\n  }\n": typeof types.DemoCheckoutCreateDocument;
-  "\n  query CheckoutInformation_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutContactSection_Checkout\n      ...CheckoutShippingAddress_Checkout\n    }\n  }\n": typeof types.CheckoutInformation_CheckoutDocument;
-  "\n  query CheckoutPayment_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutBillingAddressSection_Checkout\n    }\n  }\n": typeof types.CheckoutPayment_CheckoutDocument;
-  "\n  query CheckoutShipping_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutShippingMethods_Checkout\n    }\n  }\n": typeof types.CheckoutShipping_CheckoutDocument;
+  "\n  query CheckoutInformation_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutInformationForm_Checkout\n    }\n  }\n": typeof types.CheckoutInformation_CheckoutDocument;
+  "\n  query CheckoutPayment_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutPaymentForm_Checkout\n    }\n  }\n": typeof types.CheckoutPayment_CheckoutDocument;
+  "\n  query CheckoutShipping_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutShippingForm_Checkout\n    }\n  }\n": typeof types.CheckoutShipping_CheckoutDocument;
   "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n": typeof types.ChannelSlugsDocument;
   "\n  query Channel($slug: String!) {\n    channel(slug: $slug) {\n      countries {\n        code\n        country\n      }\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n": typeof types.ChannelDocument;
   "\n  fragment AddressFieldset_Address on Address {\n    id\n    country {\n      code\n    }\n    firstName\n    lastName\n    companyName\n    streetAddress1\n    streetAddress2\n    postalCode\n    countryArea\n    city\n  }\n": typeof types.AddressFieldset_AddressFragmentDoc;
@@ -59,6 +62,12 @@ const documents: Documents = {
     types.CheckoutBillingAddressSection_CheckoutFragmentDoc,
   "\n  fragment CheckoutContactSection_Checkout on Checkout {\n    id\n    email\n  }\n":
     types.CheckoutContactSection_CheckoutFragmentDoc,
+  "\n  fragment CheckoutInformationForm_Checkout on Checkout {\n    id\n    ...CheckoutContactSection_Checkout\n    ...CheckoutShippingAddress_Checkout\n  }\n":
+    types.CheckoutInformationForm_CheckoutFragmentDoc,
+  "\n  fragment CheckoutPaymentForm_Checkout on Checkout {\n    id\n    ...CheckoutBillingAddressSection_Checkout\n  }\n":
+    types.CheckoutPaymentForm_CheckoutFragmentDoc,
+  "\n  fragment CheckoutShippingForm_Checkout on Checkout {\n    id\n    ...CheckoutShippingMethods_Checkout\n  }\n":
+    types.CheckoutShippingForm_CheckoutFragmentDoc,
   "\n  fragment CheckoutShippingAddress_Checkout on Checkout {\n    shippingAddress {\n      ...AddressFieldset_Address\n    }\n  }\n":
     types.CheckoutShippingAddress_CheckoutFragmentDoc,
   "\n  fragment CheckoutShippingMethods_Checkout on Checkout {\n    id\n    shippingMethods {\n      id\n      name\n    }\n  }\n":
@@ -67,11 +76,11 @@ const documents: Documents = {
     types.CheckoutValidationErrorFragmentDoc,
   "\n  mutation DemoCheckoutCreate($input: CheckoutCreateInput!) {\n    checkoutCreate(input: $input) {\n      checkout {\n        id\n      }\n    }\n  }\n":
     types.DemoCheckoutCreateDocument,
-  "\n  query CheckoutInformation_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutContactSection_Checkout\n      ...CheckoutShippingAddress_Checkout\n    }\n  }\n":
+  "\n  query CheckoutInformation_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutInformationForm_Checkout\n    }\n  }\n":
     types.CheckoutInformation_CheckoutDocument,
-  "\n  query CheckoutPayment_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutBillingAddressSection_Checkout\n    }\n  }\n":
+  "\n  query CheckoutPayment_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutPaymentForm_Checkout\n    }\n  }\n":
     types.CheckoutPayment_CheckoutDocument,
-  "\n  query CheckoutShipping_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutShippingMethods_Checkout\n    }\n  }\n":
+  "\n  query CheckoutShipping_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutShippingForm_Checkout\n    }\n  }\n":
     types.CheckoutShipping_CheckoutDocument,
   "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n":
     types.ChannelSlugsDocument,
@@ -165,6 +174,24 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
+  source: "\n  fragment CheckoutInformationForm_Checkout on Checkout {\n    id\n    ...CheckoutContactSection_Checkout\n    ...CheckoutShippingAddress_Checkout\n  }\n",
+): (typeof documents)["\n  fragment CheckoutInformationForm_Checkout on Checkout {\n    id\n    ...CheckoutContactSection_Checkout\n    ...CheckoutShippingAddress_Checkout\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  fragment CheckoutPaymentForm_Checkout on Checkout {\n    id\n    ...CheckoutBillingAddressSection_Checkout\n  }\n",
+): (typeof documents)["\n  fragment CheckoutPaymentForm_Checkout on Checkout {\n    id\n    ...CheckoutBillingAddressSection_Checkout\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  fragment CheckoutShippingForm_Checkout on Checkout {\n    id\n    ...CheckoutShippingMethods_Checkout\n  }\n",
+): (typeof documents)["\n  fragment CheckoutShippingForm_Checkout on Checkout {\n    id\n    ...CheckoutShippingMethods_Checkout\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
   source: "\n  fragment CheckoutShippingAddress_Checkout on Checkout {\n    shippingAddress {\n      ...AddressFieldset_Address\n    }\n  }\n",
 ): (typeof documents)["\n  fragment CheckoutShippingAddress_Checkout on Checkout {\n    shippingAddress {\n      ...AddressFieldset_Address\n    }\n  }\n"];
 /**
@@ -189,20 +216,20 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  query CheckoutInformation_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutContactSection_Checkout\n      ...CheckoutShippingAddress_Checkout\n    }\n  }\n",
-): (typeof documents)["\n  query CheckoutInformation_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutContactSection_Checkout\n      ...CheckoutShippingAddress_Checkout\n    }\n  }\n"];
+  source: "\n  query CheckoutInformation_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutInformationForm_Checkout\n    }\n  }\n",
+): (typeof documents)["\n  query CheckoutInformation_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutInformationForm_Checkout\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  query CheckoutPayment_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutBillingAddressSection_Checkout\n    }\n  }\n",
-): (typeof documents)["\n  query CheckoutPayment_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutBillingAddressSection_Checkout\n    }\n  }\n"];
+  source: "\n  query CheckoutPayment_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutPaymentForm_Checkout\n    }\n  }\n",
+): (typeof documents)["\n  query CheckoutPayment_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutPaymentForm_Checkout\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  query CheckoutShipping_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutShippingMethods_Checkout\n    }\n  }\n",
-): (typeof documents)["\n  query CheckoutShipping_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutShippingMethods_Checkout\n    }\n  }\n"];
+  source: "\n  query CheckoutShipping_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutShippingForm_Checkout\n    }\n  }\n",
+): (typeof documents)["\n  query CheckoutShipping_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutShippingForm_Checkout\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

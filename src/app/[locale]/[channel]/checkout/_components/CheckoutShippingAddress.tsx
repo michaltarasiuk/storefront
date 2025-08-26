@@ -1,3 +1,5 @@
+"use client";
+
 import {type FragmentType, useFragment} from "@apollo/client";
 
 import {

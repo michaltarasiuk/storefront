@@ -1,12 +1,21 @@
 "use client";
 
-import {type QueryRef, useReadQuery} from "@apollo/client";
+import {
+  type FragmentType,
+  type QueryRef,
+  useFragment,
+  useReadQuery,
+} from "@apollo/client";
 import {useActionState, useTransition} from "react";
 
 import {Button} from "@/components/Button";
 import {Form} from "@/components/Form";
 import {Routes} from "@/consts/routes";
-import type {CheckoutShipping_CheckoutQuery} from "@/graphql/codegen/graphql";
+import {graphql} from "@/graphql/codegen";
+import type {
+  CheckoutShipping_CheckoutQuery,
+  CheckoutShippingForm_CheckoutFragment,
+} from "@/graphql/codegen/graphql";
 import {IntlLink} from "@/i18n/components/IntlLink";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {ChevronLeftIcon} from "@/icons/ChevronLeftIcon";
@@ -20,18 +29,41 @@ import {
   SkeletonCheckoutShippingMethods,
 } from "./CheckoutShippingMethods";
 
-interface CheckoutShippingFormProps {
+export function CheckoutShipping({
+  queryRef,
+}: {
   queryRef: QueryRef<CheckoutShipping_CheckoutQuery>;
+}) {
+  const {data} = useReadQuery(queryRef);
+  if (!isDefined(data.checkout)) {
+    redirectToRoot();
+  }
+  return <CheckoutShippingForm checkout={data.checkout} />;
 }
 
-export function CheckoutShippingForm({queryRef}: CheckoutShippingFormProps) {
-  const {data} = useReadQuery(queryRef);
+const CheckoutShippingForm_CheckoutFragment = graphql(`
+  fragment CheckoutShippingForm_Checkout on Checkout {
+    id
+    ...CheckoutShippingMethods_Checkout
+  }
+`);
+
+function CheckoutShippingForm({
+  checkout,
+}: {
+  checkout: FragmentType<CheckoutShippingForm_CheckoutFragment>;
+}) {
+  const {data, complete} = useFragment({
+    fragment: CheckoutShippingForm_CheckoutFragment,
+    fragmentName: "CheckoutShippingForm_Checkout",
+    from: checkout,
+  });
   const [{errors}, formAction] = useActionState(updateCheckoutShipping, {
     errors: {},
   });
   const [isPending, startTransition] = useTransition();
-  if (!isDefined(data.checkout)) {
-    redirectToRoot();
+  if (!complete) {
+    return <SkeletonCheckoutShipping />;
   }
   return (
     <Form
@@ -42,7 +74,7 @@ export function CheckoutShippingForm({queryRef}: CheckoutShippingFormProps) {
         startTransition(() => formAction(formData));
       }}
       className={cn("space-y-large-300")}>
-      <CheckoutShippingMethods checkout={data.checkout} />
+      <CheckoutShippingMethods checkout={data} />
       <div className={cn("gap-base flex flex-col")}>
         <Button
           type="submit"
@@ -51,13 +83,19 @@ export function CheckoutShippingForm({queryRef}: CheckoutShippingFormProps) {
           isDisabled={isPending}>
           <FormattedMessage id="DgnS8R" defaultMessage="Continue to shipping" />
         </Button>
-        <ReturnToInformationLink />
+        <IntlLink href={Routes.checkout.information}>
+          <ChevronLeftIcon aria-hidden />
+          <FormattedMessage
+            id="k2CDuD"
+            defaultMessage="Return to information"
+          />
+        </IntlLink>
       </div>
     </Form>
   );
 }
 
-export function SkeletonCheckoutShippingForm() {
+export function SkeletonCheckoutShipping() {
   return (
     <div className={cn("space-y-large-300")}>
       <SkeletonCheckoutShippingMethods />
@@ -65,17 +103,14 @@ export function SkeletonCheckoutShippingForm() {
         <Button type="submit" size="large" isDisabled>
           <FormattedMessage id="DgnS8R" defaultMessage="Continue to shipping" />
         </Button>
-        <ReturnToInformationLink />
+        <IntlLink href={Routes.checkout.information}>
+          <ChevronLeftIcon aria-hidden />
+          <FormattedMessage
+            id="k2CDuD"
+            defaultMessage="Return to information"
+          />
+        </IntlLink>
       </div>
     </div>
-  );
-}
-
-function ReturnToInformationLink() {
-  return (
-    <IntlLink href={Routes.checkout.information}>
-      <ChevronLeftIcon aria-hidden />
-      <FormattedMessage id="k2CDuD" defaultMessage="Return to information" />
-    </IntlLink>
   );
 }

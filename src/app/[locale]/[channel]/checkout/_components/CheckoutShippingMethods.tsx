@@ -1,13 +1,11 @@
 "use client";
 
 import {type FragmentType, useFragment} from "@apollo/client";
-import {redirect} from "next/navigation";
 import {useId} from "react";
 
 import {Heading, SkeletonHeading} from "@/components/Heading";
 import {Radio} from "@/components/Radio";
 import {RadioGroup} from "@/components/RadioGroup";
-import {Routes} from "@/consts/routes";
 import {graphql} from "@/graphql/codegen";
 import type {CheckoutShippingMethods_CheckoutFragment} from "@/graphql/codegen/graphql";
 import {FormattedMessage} from "@/i18n/react-intl";
@@ -36,7 +34,7 @@ export function CheckoutShippingMethods({
   });
   const headingId = useId();
   if (!complete) {
-    redirect(Routes.checkout.information);
+    return <SkeletonCheckoutShippingMethods />;
   }
   return (
     <section className={cn("space-y-base")}>

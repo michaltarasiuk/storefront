@@ -95,8 +95,8 @@ export function AddressFieldset({address}: AddressFieldsetProps) {
   } = data.addressValidationRules ?? {};
   return (
     <fieldset
-      className={cn("space-y-base", {
-        "animate-pulse opacity-50": isPending,
+      className={cn("space-y-base transition-opacity", {
+        "opacity-50": isPending,
       })}>
       <Select
         name={AddressFields.country}

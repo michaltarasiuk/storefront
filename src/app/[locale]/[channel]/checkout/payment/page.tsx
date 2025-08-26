@@ -6,15 +6,15 @@ import {getCheckoutId} from "@/utils/checkout";
 import {isDefined} from "@/utils/is-defined";
 
 import {
-  CheckoutPaymentForm,
-  SkeletonCheckoutPaymentForm,
-} from "../_components/CheckoutPaymentForm";
+  CheckoutPayment,
+  SkeletonCheckoutPayment,
+} from "../_components/CheckoutPayment";
 import {redirectToRoot} from "../_utils/redirect-to-root";
 
 const CheckoutPayment_CheckoutQuery = graphql(`
   query CheckoutPayment_Checkout($id: ID!) {
     checkout(id: $id) {
-      ...CheckoutBillingAddressSection_Checkout
+      ...CheckoutPaymentForm_Checkout
     }
   }
 `);
@@ -31,8 +31,8 @@ export default async function CheckoutPaymentPage() {
         id: checkoutId.value,
       }}>
       {(queryRef) => (
-        <Suspense fallback={<SkeletonCheckoutPaymentForm />}>
-          <CheckoutPaymentForm queryRef={queryRef} />
+        <Suspense fallback={<SkeletonCheckoutPayment />}>
+          <CheckoutPayment queryRef={queryRef} />
         </Suspense>
       )}
     </PreloadQuery>
