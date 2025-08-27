@@ -6,11 +6,11 @@ import {Routes} from "@/consts/routes";
 import {env} from "@/env";
 import {getClient} from "@/graphql/apollo-client";
 import {graphql} from "@/graphql/codegen";
-import {Locales} from "@/i18n/consts";
 import {localeToLanguageCode} from "@/i18n/utils/locale-to-language-code";
+import {BasePathSchema} from "@/utils/base-path";
 import {joinPathSegments} from "@/utils/pathname";
+import {toValidationErrors} from "@/utils/validation-errors";
 
-import {toValidationErrors} from "../_utils/validation-errors";
 import {signIn} from "./sign-in";
 
 const SignupMutation = graphql(`
@@ -27,8 +27,7 @@ const SignupMutation = graphql(`
 const FormDataSchema = z.object({
   email: z.email(),
   password: z.string(),
-  locale: z.union(Locales.map((locale) => z.literal(locale))),
-  channel: z.string(),
+  ...BasePathSchema.shape,
 });
 
 export async function signUp(_state: unknown, formData: FormData) {

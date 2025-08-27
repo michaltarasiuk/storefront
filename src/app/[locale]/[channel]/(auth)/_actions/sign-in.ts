@@ -6,10 +6,11 @@ import * as z from "zod";
 import {Routes} from "@/consts/routes";
 import {getClient} from "@/graphql/apollo-client";
 import {graphql} from "@/graphql/codegen";
+import {BasePathSchema} from "@/utils/base-path";
 import {isDefined} from "@/utils/is-defined";
+import {joinPathSegments} from "@/utils/pathname";
 import {setAccessTokenCookie, setRefreshTokenCookie} from "@/utils/session";
-
-import {toValidationErrors} from "../_utils/validation-errors";
+import {toValidationErrors} from "@/utils/validation-errors";
 
 const SigninMutation = graphql(`
   mutation Signin($email: String!, $password: String!) {
@@ -24,7 +25,7 @@ const SigninMutation = graphql(`
 `);
 
 export async function signIn(_state: unknown, formData: FormData) {
-  const {email, password} = parseFormData(formData);
+  const {email, password, locale, channel} = parseFormData(formData);
   const {data} = await getClient().mutate({
     mutation: SigninMutation,
     variables: {
@@ -36,7 +37,7 @@ export async function signIn(_state: unknown, formData: FormData) {
   if (isDefined(token) && isDefined(refreshToken)) {
     await setAccessTokenCookie(token);
     await setRefreshTokenCookie(refreshToken);
-    redirect(Routes.account.orders);
+    redirect(joinPathSegments(locale, channel, Routes.account.orders));
   }
   return {
     errors: toValidationErrors(errors),
@@ -46,6 +47,7 @@ export async function signIn(_state: unknown, formData: FormData) {
 const FormDataSchema = z.object({
   email: z.email(),
   password: z.string(),
+  ...BasePathSchema.shape,
 });
 
 function parseFormData(formData: FormData) {

@@ -1,10 +1,9 @@
 "use client";
 
-import {useChannel} from "@/channels/hooks/use-channel";
 import {DialogTrigger} from "@/components/Dialog";
 import {Sheet} from "@/components/Sheet";
 import {Routes} from "@/consts/routes";
-import {useLocale} from "@/i18n/hooks/use-locale";
+import {useBasePath} from "@/hooks/use-base-path";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
 
@@ -14,8 +13,7 @@ import {MenuItemButton, MenuItemLink} from "./MenuItem";
 import {ProfileCard} from "./ProfileCard";
 
 export function MobileNavigationSheet() {
-  const locale = useLocale();
-  const channel = useChannel();
+  const basePath = useBasePath();
   return (
     <Sheet className={cn("p-base flex flex-col")}>
       {({close}) => (
@@ -51,7 +49,7 @@ export function MobileNavigationSheet() {
             </li>
             <li>
               <DialogTrigger>
-                <MenuItemButton onClick={() => logOut(locale, channel)}>
+                <MenuItemButton onClick={() => logOut(...basePath)}>
                   <FormattedMessage id="PlBReU" defaultMessage="Log out" />
                 </MenuItemButton>
                 <LogoutDialog />

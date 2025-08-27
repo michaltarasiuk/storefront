@@ -1,13 +1,12 @@
 "use client";
 
 import {useActionState, useTransition} from "react";
-import {Input} from "react-aria-components";
 
-import {useChannel} from "@/channels/hooks/use-channel";
 import {Button} from "@/components/Button";
+import {ChannelField} from "@/components/ChannelField";
 import {Form} from "@/components/Form";
+import {LocaleField} from "@/components/LocaleField";
 import {TextField} from "@/components/TextField";
-import {useLocale} from "@/i18n/hooks/use-locale";
 import {FormattedMessage, useIntl} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
 
@@ -20,8 +19,6 @@ export function SignupForm() {
     errors: {},
   });
   const [isPending, startTransition] = useTransition();
-  const locale = useLocale();
-  const channel = useChannel();
   const intl = useIntl();
   return (
     <Form
@@ -61,8 +58,8 @@ export function SignupForm() {
         })}
         isRequired
       />
-      <Input name="locale" type="hidden" value={locale} />
-      <Input name="channel" type="hidden" value={channel} />
+      <LocaleField />
+      <ChannelField />
       <Button type="submit" isPending={isPending} isDisabled={isPending}>
         <FormattedMessage id="8HJxXG" defaultMessage="Sign up" />
       </Button>

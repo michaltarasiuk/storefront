@@ -1,10 +1,10 @@
 "use server";
 
+import {notFound} from "next/navigation";
+
 import {getCheckoutId} from "@/utils/checkout";
 import {isDefined} from "@/utils/is-defined";
-
-import {redirectToRoot} from "../_utils/redirect-to-root";
-import {toValidationErrors} from "../_utils/validation-errors";
+import {toValidationErrors} from "@/utils/validation-errors";
 
 export async function updateCheckoutPayment(
   _state: unknown,
@@ -12,7 +12,7 @@ export async function updateCheckoutPayment(
 ) {
   const checkoutId = await getCheckoutId();
   if (!isDefined(checkoutId)) {
-    redirectToRoot();
+    notFound();
   }
   return {
     errors: toValidationErrors([]),

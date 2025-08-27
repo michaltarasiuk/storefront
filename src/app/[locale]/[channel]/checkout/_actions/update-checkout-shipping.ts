@@ -1,16 +1,16 @@
 "use server";
 
-import {redirect} from "next/navigation";
+import {notFound, redirect} from "next/navigation";
 import * as z from "zod";
 
 import {Routes} from "@/consts/routes";
 import {getClient} from "@/graphql/apollo-client";
 import {graphql} from "@/graphql/codegen";
+import {BasePathSchema} from "@/utils/base-path";
 import {getCheckoutId} from "@/utils/checkout";
 import {isDefined} from "@/utils/is-defined";
-
-import {redirectToRoot} from "../_utils/redirect-to-root";
-import {toValidationErrors} from "../_utils/validation-errors";
+import {joinPathSegments} from "@/utils/pathname";
+import {toValidationErrors} from "@/utils/validation-errors";
 
 const CheckoutShippingMethodUpdateMutation = graphql(`
   mutation CheckoutShippingMethodUpdate($id: ID!, $shippingMethodId: ID!) {
@@ -28,9 +28,9 @@ export async function updateCheckoutShipping(
 ) {
   const checkoutId = await getCheckoutId();
   if (!isDefined(checkoutId)) {
-    redirectToRoot();
+    notFound();
   }
-  const {shippingMethodId} = parseFormData(formData);
+  const {shippingMethodId, locale, channel} = parseFormData(formData);
   const {data} = await getClient().mutate({
     mutation: CheckoutShippingMethodUpdateMutation,
     variables: {
@@ -40,7 +40,7 @@ export async function updateCheckoutShipping(
   });
   const errors = data?.checkoutDeliveryMethodUpdate?.errors ?? [];
   if (!errors.length) {
-    redirect(Routes.checkout.payment);
+    redirect(joinPathSegments(locale, channel, Routes.checkout.payment));
   }
   return {
     errors: toValidationErrors(errors),
@@ -49,8 +49,8 @@ export async function updateCheckoutShipping(
 
 const FormSchema = z.object({
   shippingMethodId: z.string(),
+  ...BasePathSchema.shape,
 });
-
 function parseFormData(formData: FormData) {
   return FormSchema.parse(Object.fromEntries(formData));
 }

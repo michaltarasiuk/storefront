@@ -1,7 +1,7 @@
 "use server";
 
 import type {ApolloClient} from "@apollo/client";
-import {redirect} from "next/navigation";
+import {notFound, redirect} from "next/navigation";
 import * as z from "zod";
 
 import {Routes} from "@/consts/routes";
@@ -12,11 +12,11 @@ import type {
   CheckoutEmailUpdateMutationVariables,
 } from "@/graphql/codegen/graphql";
 import {AddressSchema} from "@/utils/address";
+import {BasePathSchema} from "@/utils/base-path";
 import {getCheckoutId} from "@/utils/checkout";
 import {isDefined} from "@/utils/is-defined";
-
-import {redirectToRoot} from "../_utils/redirect-to-root";
-import {toValidationErrors} from "../_utils/validation-errors";
+import {joinPathSegments} from "@/utils/pathname";
+import {toValidationErrors} from "@/utils/validation-errors";
 
 const CheckoutEmailUpdateMutation = graphql(`
   mutation CheckoutEmailUpdate($id: ID!, $email: String!) {
@@ -49,9 +49,9 @@ export async function updateCheckoutInformation(
 ) {
   const checkoutId = await getCheckoutId();
   if (!isDefined(checkoutId)) {
-    redirectToRoot();
+    notFound();
   }
-  const {email, ...address} = parseFormData(formData);
+  const {email, locale, channel, ...address} = parseFormData(formData);
   const client = getClient();
   const [emailUpdate, addressUpdate] = await Promise.all([
     updateCheckoutEmail(client, {
@@ -63,9 +63,12 @@ export async function updateCheckoutInformation(
       address,
     }),
   ]);
-  const errors = addressUpdate.errors.concat(emailUpdate?.errors ?? []);
+  const errors = [
+    ...(addressUpdate?.errors ?? []),
+    ...(emailUpdate?.errors ?? []),
+  ];
   if (!errors.length) {
-    redirect(Routes.checkout.shipping);
+    redirect(joinPathSegments(locale, channel, Routes.checkout.shipping));
   }
   return {
     errors: toValidationErrors(errors),
@@ -75,8 +78,8 @@ export async function updateCheckoutInformation(
 const FormSchema = z.object({
   email: z.email(),
   ...AddressSchema.shape,
+  ...BasePathSchema.shape,
 });
-
 function parseFormData(formData: FormData) {
   return FormSchema.parse(Object.fromEntries(formData));
 }
@@ -100,10 +103,7 @@ async function updateCheckoutAddress(
     mutation: CheckoutAddressUpdateMutation,
     variables,
   });
-  return {
-    errors: [
-      ...(data?.checkoutBillingAddressUpdate?.errors ?? []),
-      ...(data?.checkoutShippingAddressUpdate?.errors ?? []),
-    ],
-  };
+  const checkoutAddress =
+    data?.checkoutShippingAddressUpdate ?? data?.checkoutBillingAddressUpdate;
+  return checkoutAddress;
 }

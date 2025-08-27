@@ -1,14 +1,13 @@
 "use server";
 
+import {notFound} from "next/navigation";
 import * as z from "zod";
 
 import {getClient} from "@/graphql/apollo-client";
 import {graphql} from "@/graphql/codegen";
 import {getCheckoutId} from "@/utils/checkout";
 import {isDefined} from "@/utils/is-defined";
-
-import {redirectToRoot} from "../_utils/redirect-to-root";
-import {toValidationErrors} from "../_utils/validation-errors";
+import {toValidationErrors} from "@/utils/validation-errors";
 
 const CheckoutAddPromoCodeMutation = graphql(`
   mutation CheckoutAddPromoCode($id: ID!, $promoCode: String!) {
@@ -26,7 +25,7 @@ export async function addCheckoutPromoCode(
 ) {
   const checkoutId = await getCheckoutId();
   if (!isDefined(checkoutId)) {
-    redirectToRoot();
+    notFound();
   }
   const {promoCode} = parseFormData(formData);
   const {data} = await getClient().mutate({
@@ -44,7 +43,6 @@ export async function addCheckoutPromoCode(
 const FormSchema = z.object({
   promoCode: z.string(),
 });
-
 function parseFormData(formData: FormData) {
   return FormSchema.parse(Object.fromEntries(formData));
 }

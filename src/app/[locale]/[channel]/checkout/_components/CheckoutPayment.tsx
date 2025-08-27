@@ -6,6 +6,7 @@ import {
   useFragment,
   useReadQuery,
 } from "@apollo/client";
+import {notFound} from "next/navigation";
 import {useActionState, useTransition} from "react";
 
 import {Button} from "@/components/Button";
@@ -23,7 +24,6 @@ import {cn} from "@/utils/cn";
 import {isDefined} from "@/utils/is-defined";
 
 import {updateCheckoutPayment} from "../_actions/update-checkout-payment";
-import {redirectToRoot} from "../_utils/redirect-to-root";
 import {
   CheckoutBillingAddressSection,
   SkeletonCheckoutBillingAddressSection,
@@ -36,7 +36,7 @@ export function CheckoutPayment({
 }) {
   const {data} = useReadQuery(queryRef);
   if (!isDefined(data.checkout)) {
-    redirectToRoot();
+    notFound();
   }
   return <CheckoutPaymentForm checkout={data.checkout} />;
 }

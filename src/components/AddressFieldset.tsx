@@ -3,6 +3,7 @@
 import type {FragmentType} from "@apollo/client";
 import {useFragment, useSuspenseQuery} from "@apollo/client";
 import {use, useState, useTransition} from "react";
+import type * as z from "zod";
 
 import {ChannelContext} from "@/channels/channel-context";
 import {Select, SelectItem} from "@/components/Select";
@@ -14,7 +15,7 @@ import type {
 import {useLocale} from "@/i18n/hooks/use-locale";
 import {useIntl} from "@/i18n/react-intl";
 import {localeToCountryCode} from "@/i18n/utils/locale-to-country-code";
-import {AddressFields, isCountryAreaChoice} from "@/utils/address";
+import {AddressFields, CountryAreaChoiceSchema} from "@/utils/address";
 import {cn} from "@/utils/cn";
 
 import {SkeletonInput} from "./Input";
@@ -75,6 +76,19 @@ interface AddressFieldsetProps {
   }>;
 }
 
+const AddressValidationRulesQuery = graphql(`
+  query AddressValidationRules($countryCode: CountryCode!) {
+    addressValidationRules(countryCode: $countryCode) {
+      allowedFields
+      requiredFields
+      countryAreaChoices {
+        raw
+        verbose
+      }
+    }
+  }
+`);
+
 export function AddressFieldset({address}: AddressFieldsetProps) {
   const locale = useLocale();
   const [countryCode, setCountryCode] = useState(() => {
@@ -117,25 +131,25 @@ export function AddressFieldset({address}: AddressFieldsetProps) {
           </SelectItem>
         ))}
       </Select>
-      {allowedFields.includes(AddressFields.name.key) && (
+      {allowedFields.includes(AddressFields.fullName) && (
         <div className={cn("gap-base grid grid-cols-1 sm:grid-cols-2")}>
           <TextField
-            name={AddressFields.name.fields.firstName}
+            name={AddressFields.firstName}
             defaultValue={address?.firstName}
             label={intl.formatMessage({
               id: "pONqz8",
               defaultMessage: "First name",
             })}
-            isRequired={requiredFields.includes(AddressFields.name.key)}
+            isRequired={requiredFields.includes(AddressFields.fullName)}
           />
           <TextField
-            name={AddressFields.name.fields.firstName}
+            name={AddressFields.lastName}
             defaultValue={address?.lastName}
             label={intl.formatMessage({
               id: "txUL0F",
               defaultMessage: "Last name",
             })}
-            isRequired={requiredFields.includes(AddressFields.name.key)}
+            isRequired={requiredFields.includes(AddressFields.fullName)}
           />
         </div>
       )}
@@ -244,15 +258,8 @@ export function SkeletonAddressFieldset() {
   );
 }
 
-const AddressValidationRulesQuery = graphql(`
-  query AddressValidationRules($countryCode: CountryCode!) {
-    addressValidationRules(countryCode: $countryCode) {
-      allowedFields
-      requiredFields
-      countryAreaChoices {
-        raw
-        verbose
-      }
-    }
-  }
-`);
+function isCountryAreaChoice(
+  value: unknown,
+): value is z.infer<typeof CountryAreaChoiceSchema> {
+  return CountryAreaChoiceSchema.safeParse(value).success;
+}

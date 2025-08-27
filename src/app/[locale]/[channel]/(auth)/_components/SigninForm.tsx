@@ -3,7 +3,9 @@
 import {useActionState, useTransition} from "react";
 
 import {Button} from "@/components/Button";
+import {ChannelField} from "@/components/ChannelField";
 import {Form} from "@/components/Form";
+import {LocaleField} from "@/components/LocaleField";
 import {TextField} from "@/components/TextField";
 import {FormattedMessage, useIntl} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
@@ -58,6 +60,8 @@ export function SigninForm({defaultEmail}: {defaultEmail?: string}) {
         autoFocus={isDefined(defaultEmail)}
         isRequired
       />
+      <LocaleField />
+      <ChannelField />
       <Button type="submit" isPending={isPending} isDisabled={isPending}>
         <FormattedMessage id="SQJto2" defaultMessage="Sign in" />
       </Button>

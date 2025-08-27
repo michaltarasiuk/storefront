@@ -1,3 +1,4 @@
+import {notFound} from "next/navigation";
 import {Suspense} from "react";
 
 import {PreloadQuery} from "@/graphql/apollo-client";
@@ -9,7 +10,6 @@ import {
   CheckoutInformation,
   SkeletonCheckoutInformation,
 } from "../_components/CheckoutInformation";
-import {redirectToRoot} from "../_utils/redirect-to-root";
 
 const CheckoutInformation_CheckoutQuery = graphql(`
   query CheckoutInformation_Checkout($id: ID!) {
@@ -22,7 +22,7 @@ const CheckoutInformation_CheckoutQuery = graphql(`
 export default async function CheckoutInformationPage() {
   const checkoutId = await getCheckoutId();
   if (!isDefined(checkoutId)) {
-    redirectToRoot();
+    notFound();
   }
   return (
     <PreloadQuery

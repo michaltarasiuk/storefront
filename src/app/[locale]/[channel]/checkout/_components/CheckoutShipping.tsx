@@ -6,10 +6,13 @@ import {
   useFragment,
   useReadQuery,
 } from "@apollo/client";
+import {notFound} from "next/navigation";
 import {useActionState, useTransition} from "react";
 
 import {Button} from "@/components/Button";
+import {ChannelField} from "@/components/ChannelField";
 import {Form} from "@/components/Form";
+import {LocaleField} from "@/components/LocaleField";
 import {Routes} from "@/consts/routes";
 import {graphql} from "@/graphql/codegen";
 import type {
@@ -23,7 +26,6 @@ import {cn} from "@/utils/cn";
 import {isDefined} from "@/utils/is-defined";
 
 import {updateCheckoutShipping} from "../_actions/update-checkout-shipping";
-import {redirectToRoot} from "../_utils/redirect-to-root";
 import {
   CheckoutShippingMethods,
   SkeletonCheckoutShippingMethods,
@@ -36,7 +38,7 @@ export function CheckoutShipping({
 }) {
   const {data} = useReadQuery(queryRef);
   if (!isDefined(data.checkout)) {
-    redirectToRoot();
+    notFound();
   }
   return <CheckoutShippingForm checkout={data.checkout} />;
 }
@@ -75,6 +77,8 @@ function CheckoutShippingForm({
       }}
       className={cn("space-y-large-300")}>
       <CheckoutShippingMethods checkout={data} />
+      <LocaleField />
+      <ChannelField />
       <div className={cn("gap-base flex flex-col")}>
         <Button
           type="submit"

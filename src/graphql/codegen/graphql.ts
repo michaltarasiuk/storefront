@@ -29870,18 +29870,6 @@ export type CheckoutValidationErrorFragment = {
   message?: string | null;
 } & {" $fragmentName"?: "CheckoutValidationErrorFragment"};
 
-export type DemoCheckoutCreateMutationVariables = Exact<{
-  input: CheckoutCreateInput;
-}>;
-
-export type DemoCheckoutCreateMutation = {
-  __typename?: "Mutation";
-  checkoutCreate?: {
-    __typename?: "CheckoutCreate";
-    checkout?: {__typename?: "Checkout"; id: string} | null;
-  } | null;
-};
-
 export type CheckoutInformation_CheckoutQueryVariables = Exact<{
   id: Scalars["ID"]["input"];
 }>;
@@ -29927,22 +29915,11 @@ export type CheckoutShipping_CheckoutQuery = {
     | null;
 };
 
-export type ChannelSlugsQueryVariables = Exact<{[key: string]: never}>;
-
-export type ChannelSlugsQuery = {
-  __typename?: "Query";
-  channels?: Array<{
-    __typename?: "Channel";
-    slug: string;
-    isActive: boolean;
-  }> | null;
-};
-
-export type ChannelQueryVariables = Exact<{
+export type ChannelContextValueQueryVariables = Exact<{
   slug: Scalars["String"]["input"];
 }>;
 
-export type ChannelQuery = {
+export type ChannelContextValueQuery = {
   __typename?: "Query";
   channel?: {
     __typename?: "Channel";
@@ -29956,6 +29933,17 @@ export type ChannelQuery = {
       displayGrossPrices: boolean;
     };
   } | null;
+};
+
+export type ChannelSlugsQueryVariables = Exact<{[key: string]: never}>;
+
+export type ChannelSlugsQuery = {
+  __typename?: "Query";
+  channels?: Array<{
+    __typename?: "Channel";
+    slug: string;
+    isActive: boolean;
+  }> | null;
 };
 
 export type AddressFieldset_AddressFragment = {
@@ -31256,63 +31244,6 @@ export const CheckoutShippingMethodUpdateDocument = {
   CheckoutShippingMethodUpdateMutation,
   CheckoutShippingMethodUpdateMutationVariables
 >;
-export const DemoCheckoutCreateDocument = {
-  kind: "Document",
-  definitions: [
-    {
-      kind: "OperationDefinition",
-      operation: "mutation",
-      name: {kind: "Name", value: "DemoCheckoutCreate"},
-      variableDefinitions: [
-        {
-          kind: "VariableDefinition",
-          variable: {kind: "Variable", name: {kind: "Name", value: "input"}},
-          type: {
-            kind: "NonNullType",
-            type: {
-              kind: "NamedType",
-              name: {kind: "Name", value: "CheckoutCreateInput"},
-            },
-          },
-        },
-      ],
-      selectionSet: {
-        kind: "SelectionSet",
-        selections: [
-          {
-            kind: "Field",
-            name: {kind: "Name", value: "checkoutCreate"},
-            arguments: [
-              {
-                kind: "Argument",
-                name: {kind: "Name", value: "input"},
-                value: {kind: "Variable", name: {kind: "Name", value: "input"}},
-              },
-            ],
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                {
-                  kind: "Field",
-                  name: {kind: "Name", value: "checkout"},
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {kind: "Field", name: {kind: "Name", value: "id"}},
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<
-  DemoCheckoutCreateMutation,
-  DemoCheckoutCreateMutationVariables
->;
 export const CheckoutInformation_CheckoutDocument = {
   kind: "Document",
   definitions: [
@@ -31691,39 +31622,13 @@ export const CheckoutShipping_CheckoutDocument = {
   CheckoutShipping_CheckoutQuery,
   CheckoutShipping_CheckoutQueryVariables
 >;
-export const ChannelSlugsDocument = {
+export const ChannelContextValueDocument = {
   kind: "Document",
   definitions: [
     {
       kind: "OperationDefinition",
       operation: "query",
-      name: {kind: "Name", value: "ChannelSlugs"},
-      selectionSet: {
-        kind: "SelectionSet",
-        selections: [
-          {
-            kind: "Field",
-            name: {kind: "Name", value: "channels"},
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                {kind: "Field", name: {kind: "Name", value: "slug"}},
-                {kind: "Field", name: {kind: "Name", value: "isActive"}},
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<ChannelSlugsQuery, ChannelSlugsQueryVariables>;
-export const ChannelDocument = {
-  kind: "Document",
-  definitions: [
-    {
-      kind: "OperationDefinition",
-      operation: "query",
-      name: {kind: "Name", value: "Channel"},
+      name: {kind: "Name", value: "ChannelContextValue"},
       variableDefinitions: [
         {
           kind: "VariableDefinition",
@@ -31781,7 +31686,36 @@ export const ChannelDocument = {
       },
     },
   ],
-} as unknown as DocumentNode<ChannelQuery, ChannelQueryVariables>;
+} as unknown as DocumentNode<
+  ChannelContextValueQuery,
+  ChannelContextValueQueryVariables
+>;
+export const ChannelSlugsDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: {kind: "Name", value: "ChannelSlugs"},
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "channels"},
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {kind: "Field", name: {kind: "Name", value: "slug"}},
+                {kind: "Field", name: {kind: "Name", value: "isActive"}},
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<ChannelSlugsQuery, ChannelSlugsQueryVariables>;
 export const AddressValidationRulesDocument = {
   kind: "Document",
   definitions: [
