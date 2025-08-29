@@ -29,7 +29,7 @@ export async function GET({nextUrl}: NextRequest) {
   }
   const redirectUrl = new URL(
     joinPathSegments(...getBasePath(nextUrl.pathname), Routes.account.signin),
-    origin,
+    nextUrl.origin,
   );
   redirectUrl.searchParams.set("email", confirmationParams.email);
   return NextResponse.redirect(redirectUrl);

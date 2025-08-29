@@ -1,4 +1,10 @@
 import type {NextConfig} from "next";
 
-const nextConfig: NextConfig = {};
+const nextConfig: NextConfig = {
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
+};
 export default nextConfig;
