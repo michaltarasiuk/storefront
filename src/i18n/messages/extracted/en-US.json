@@ -5,14 +5,8 @@
   "/bIuBb": {
     "defaultMessage": "Order number (high to low)"
   },
-  "/j5hls": {
-    "defaultMessage": "Apartment, suite, etc"
-  },
   "0Azlrb": {
     "defaultMessage": "Manage"
-  },
-  "1RBA9b": {
-    "defaultMessage": "Country Area"
   },
   "2/2yg+": {
     "defaultMessage": "Add"
@@ -65,8 +59,14 @@
   "Akc1Gk": {
     "defaultMessage": "Return to shipping"
   },
+  "AuwpCm": {
+    "defaultMessage": "Country area"
+  },
   "BIxs9X": {
     "defaultMessage": "This is my default address"
+  },
+  "BWpuSS": {
+    "defaultMessage": "City area"
   },
   "C9WQ46": {
     "defaultMessage": "Order Status Tabs"
@@ -134,6 +134,9 @@
   "NmK6zy": {
     "defaultMessage": "Payment"
   },
+  "O95R3Z": {
+    "defaultMessage": "Phone"
+  },
   "PRlD0A": {
     "defaultMessage": "Shipping"
   },
@@ -167,8 +170,8 @@
   "ZMXbRJ": {
     "defaultMessage": "Select Language"
   },
-  "auXRdm": {
-    "defaultMessage": "Email me with news and offers"
+  "ZP5fRS": {
+    "defaultMessage": "Street address 1"
   },
   "b7BHTd": {
     "defaultMessage": "Show order summary"
@@ -277,6 +280,9 @@
   },
   "vx0nkZ": {
     "defaultMessage": "Privacy Policy"
+  },
+  "xULK8s": {
+    "defaultMessage": "Street address 2"
   },
   "xmcVZ0": {
     "defaultMessage": "Search"

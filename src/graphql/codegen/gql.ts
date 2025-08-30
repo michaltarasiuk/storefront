@@ -31,10 +31,10 @@ type Documents = {
   "\n  query CheckoutInformation_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutInformationForm_Checkout\n    }\n  }\n": typeof types.CheckoutInformation_CheckoutDocument;
   "\n  query CheckoutPayment_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutPaymentForm_Checkout\n    }\n  }\n": typeof types.CheckoutPayment_CheckoutDocument;
   "\n  query CheckoutShipping_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutShippingForm_Checkout\n    }\n  }\n": typeof types.CheckoutShipping_CheckoutDocument;
-  "\n  fragment AddressFields_Address on Address {\n    id\n    country {\n      code\n    }\n    companyName\n    streetAddress1\n    streetAddress2\n    postalCode\n    countryArea\n    city\n  }\n": typeof types.AddressFields_AddressFragmentDoc;
-  "\n  query AddressFields_AddressValidationRules($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      allowedFields\n      requiredFields\n      countryAreaChoices {\n        raw\n        verbose\n      }\n    }\n  }\n": typeof types.AddressFields_AddressValidationRulesDocument;
+  "\n  fragment AddressFields_Address on Address {\n    id\n    country {\n      code\n    }\n    firstName\n    lastName\n    companyName\n    phone\n    streetAddress1\n    streetAddress2\n    postalCode\n    countryArea\n    city\n    cityArea\n  }\n": typeof types.AddressFields_AddressFragmentDoc;
   "\n  fragment Money_Money on Money {\n    currency\n    amount\n  }\n": typeof types.Money_MoneyFragmentDoc;
   "\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money\n    }\n    gross {\n      ...Money_Money\n    }\n  }\n": typeof types.TaxedMoney_TaxedMoneyFragmentDoc;
+  "\n  query AddressValidationRules($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      allowedFields\n      requiredFields\n      upperFields\n      countryAreaChoices {\n        raw\n        verbose\n      }\n      cityChoices {\n        raw\n        verbose\n      }\n      cityAreaChoices {\n        raw\n        verbose\n      }\n    }\n  }\n": typeof types.AddressValidationRulesDocument;
   "\n  fragment AccountValidationError on AccountError {\n    field\n    message\n  }\n": typeof types.AccountValidationErrorFragmentDoc;
   "\n  query ChannelContextValue($slug: String!) {\n    channel(slug: $slug) {\n      countries {\n        code\n        country\n      }\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n": typeof types.ChannelContextValueDocument;
   "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n": typeof types.ChannelSlugsDocument;
@@ -75,14 +75,14 @@ const documents: Documents = {
     types.CheckoutPayment_CheckoutDocument,
   "\n  query CheckoutShipping_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutShippingForm_Checkout\n    }\n  }\n":
     types.CheckoutShipping_CheckoutDocument,
-  "\n  fragment AddressFields_Address on Address {\n    id\n    country {\n      code\n    }\n    companyName\n    streetAddress1\n    streetAddress2\n    postalCode\n    countryArea\n    city\n  }\n":
+  "\n  fragment AddressFields_Address on Address {\n    id\n    country {\n      code\n    }\n    firstName\n    lastName\n    companyName\n    phone\n    streetAddress1\n    streetAddress2\n    postalCode\n    countryArea\n    city\n    cityArea\n  }\n":
     types.AddressFields_AddressFragmentDoc,
-  "\n  query AddressFields_AddressValidationRules($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      allowedFields\n      requiredFields\n      countryAreaChoices {\n        raw\n        verbose\n      }\n    }\n  }\n":
-    types.AddressFields_AddressValidationRulesDocument,
   "\n  fragment Money_Money on Money {\n    currency\n    amount\n  }\n":
     types.Money_MoneyFragmentDoc,
   "\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money\n    }\n    gross {\n      ...Money_Money\n    }\n  }\n":
     types.TaxedMoney_TaxedMoneyFragmentDoc,
+  "\n  query AddressValidationRules($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      allowedFields\n      requiredFields\n      upperFields\n      countryAreaChoices {\n        raw\n        verbose\n      }\n      cityChoices {\n        raw\n        verbose\n      }\n      cityAreaChoices {\n        raw\n        verbose\n      }\n    }\n  }\n":
+    types.AddressValidationRulesDocument,
   "\n  fragment AccountValidationError on AccountError {\n    field\n    message\n  }\n":
     types.AccountValidationErrorFragmentDoc,
   "\n  query ChannelContextValue($slug: String!) {\n    channel(slug: $slug) {\n      countries {\n        code\n        country\n      }\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n":
@@ -213,14 +213,8 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  fragment AddressFields_Address on Address {\n    id\n    country {\n      code\n    }\n    companyName\n    streetAddress1\n    streetAddress2\n    postalCode\n    countryArea\n    city\n  }\n",
-): (typeof documents)["\n  fragment AddressFields_Address on Address {\n    id\n    country {\n      code\n    }\n    companyName\n    streetAddress1\n    streetAddress2\n    postalCode\n    countryArea\n    city\n  }\n"];
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function graphql(
-  source: "\n  query AddressFields_AddressValidationRules($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      allowedFields\n      requiredFields\n      countryAreaChoices {\n        raw\n        verbose\n      }\n    }\n  }\n",
-): (typeof documents)["\n  query AddressFields_AddressValidationRules($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      allowedFields\n      requiredFields\n      countryAreaChoices {\n        raw\n        verbose\n      }\n    }\n  }\n"];
+  source: "\n  fragment AddressFields_Address on Address {\n    id\n    country {\n      code\n    }\n    firstName\n    lastName\n    companyName\n    phone\n    streetAddress1\n    streetAddress2\n    postalCode\n    countryArea\n    city\n    cityArea\n  }\n",
+): (typeof documents)["\n  fragment AddressFields_Address on Address {\n    id\n    country {\n      code\n    }\n    firstName\n    lastName\n    companyName\n    phone\n    streetAddress1\n    streetAddress2\n    postalCode\n    countryArea\n    city\n    cityArea\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -233,6 +227,12 @@ export function graphql(
 export function graphql(
   source: "\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money\n    }\n    gross {\n      ...Money_Money\n    }\n  }\n",
 ): (typeof documents)["\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money\n    }\n    gross {\n      ...Money_Money\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  query AddressValidationRules($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      allowedFields\n      requiredFields\n      upperFields\n      countryAreaChoices {\n        raw\n        verbose\n      }\n      cityChoices {\n        raw\n        verbose\n      }\n      cityAreaChoices {\n        raw\n        verbose\n      }\n    }\n  }\n",
+): (typeof documents)["\n  query AddressValidationRules($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      allowedFields\n      requiredFields\n      upperFields\n      countryAreaChoices {\n        raw\n        verbose\n      }\n      cityChoices {\n        raw\n        verbose\n      }\n      cityAreaChoices {\n        raw\n        verbose\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

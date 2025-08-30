@@ -1,14 +1,15 @@
 "use client";
 
+import {HttpLink} from "@apollo/client";
 import {
   ApolloClient,
   ApolloNextAppProvider,
   InMemoryCache,
 } from "@apollo/client-integration-nextjs";
 
-import {InMemoryCacheConfig} from "./in-memory-cache-config";
-import {HttpLink} from "@apollo/client";
 import {env} from "@/env";
+
+import {InMemoryCacheConfig} from "./in-memory-cache-config";
 
 export function ApolloProvider({children}: {children: React.ReactNode}) {
   return (
@@ -24,6 +25,5 @@ function makeClient() {
     link: new HttpLink({
       uri: env.NEXT_PUBLIC_SALEOR_GRAPHQL_URL,
     }),
-    dataMasking: true,
   });
 }

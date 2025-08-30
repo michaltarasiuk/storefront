@@ -11,22 +11,10 @@
       "value": "Order number (high to low)"
     }
   ],
-  "/j5hls": [
-    {
-      "type": 0,
-      "value": "Apartment, suite, etc"
-    }
-  ],
   "0Azlrb": [
     {
       "type": 0,
       "value": "Manage"
-    }
-  ],
-  "1RBA9b": [
-    {
-      "type": 0,
-      "value": "Country Area"
     }
   ],
   "2/2yg+": [
@@ -131,10 +119,22 @@
       "value": "Return to shipping"
     }
   ],
+  "AuwpCm": [
+    {
+      "type": 0,
+      "value": "Country area"
+    }
+  ],
   "BIxs9X": [
     {
       "type": 0,
       "value": "This is my default address"
+    }
+  ],
+  "BWpuSS": [
+    {
+      "type": 0,
+      "value": "City area"
     }
   ],
   "C9WQ46": [
@@ -277,6 +277,12 @@
       "value": "Payment"
     }
   ],
+  "O95R3Z": [
+    {
+      "type": 0,
+      "value": "Phone"
+    }
+  ],
   "PRlD0A": [
     {
       "type": 0,
@@ -343,10 +349,10 @@
       "value": "Select Language"
     }
   ],
-  "auXRdm": [
+  "ZP5fRS": [
     {
       "type": 0,
-      "value": "Email me with news and offers"
+      "value": "Street address 1"
     }
   ],
   "b7BHTd": [
@@ -563,6 +569,12 @@
     {
       "type": 0,
       "value": "Privacy Policy"
+    }
+  ],
+  "xULK8s": [
+    {
+      "type": 0,
+      "value": "Street address 2"
     }
   ],
   "xmcVZ0": [

@@ -2,7 +2,6 @@
 
 import {type FragmentType, useFragment} from "@apollo/client";
 
-import {Checkbox, SkeletonCheckbox} from "@/components/Checkbox";
 import {Heading, SkeletonHeading} from "@/components/Heading";
 import {SkeletonInput} from "@/components/Input";
 import {TextField} from "@/components/TextField";
@@ -45,12 +44,6 @@ export function CheckoutContactSection({
         })}
         isRequired
       />
-      <Checkbox>
-        <FormattedMessage
-          id="auXRdm"
-          defaultMessage="Email me with news and offers"
-        />
-      </Checkbox>
     </section>
   );
 }
@@ -60,7 +53,6 @@ export function SkeletonContactSection() {
     <div className={cn("space-y-base")}>
       <SkeletonHeading />
       <SkeletonInput />
-      <SkeletonCheckbox />
     </div>
   );
 }

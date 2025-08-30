@@ -29906,32 +29906,18 @@ export type CheckoutShipping_CheckoutQuery = {
 export type AddressFields_AddressFragment = {
   __typename?: "Address";
   id: string;
+  firstName: string;
+  lastName: string;
   companyName: string;
+  phone?: string | null;
   streetAddress1: string;
   streetAddress2: string;
   postalCode: string;
   countryArea: string;
   city: string;
+  cityArea: string;
   country: {__typename?: "CountryDisplay"; code: string};
 } & {" $fragmentName"?: "AddressFields_AddressFragment"};
-
-export type AddressFields_AddressValidationRulesQueryVariables = Exact<{
-  countryCode: CountryCode;
-}>;
-
-export type AddressFields_AddressValidationRulesQuery = {
-  __typename?: "Query";
-  addressValidationRules?: {
-    __typename?: "AddressValidationData";
-    allowedFields: Array<string>;
-    requiredFields: Array<string>;
-    countryAreaChoices: Array<{
-      __typename?: "ChoiceValue";
-      raw?: string | null;
-      verbose?: string | null;
-    }>;
-  } | null;
-};
 
 export type Money_MoneyFragment = {
   __typename?: "Money";
@@ -29948,6 +29934,35 @@ export type TaxedMoney_TaxedMoneyFragment = {
     " $fragmentRefs"?: {Money_MoneyFragment: Money_MoneyFragment};
   };
 } & {" $fragmentName"?: "TaxedMoney_TaxedMoneyFragment"};
+
+export type AddressValidationRulesQueryVariables = Exact<{
+  countryCode: CountryCode;
+}>;
+
+export type AddressValidationRulesQuery = {
+  __typename?: "Query";
+  addressValidationRules?: {
+    __typename?: "AddressValidationData";
+    allowedFields: Array<string>;
+    requiredFields: Array<string>;
+    upperFields: Array<string>;
+    countryAreaChoices: Array<{
+      __typename?: "ChoiceValue";
+      raw?: string | null;
+      verbose?: string | null;
+    }>;
+    cityChoices: Array<{
+      __typename?: "ChoiceValue";
+      raw?: string | null;
+      verbose?: string | null;
+    }>;
+    cityAreaChoices: Array<{
+      __typename?: "ChoiceValue";
+      raw?: string | null;
+      verbose?: string | null;
+    }>;
+  } | null;
+};
 
 export type AccountValidationErrorFragment = {
   __typename?: "AccountError";
@@ -30036,12 +30051,16 @@ export const AddressFields_AddressFragmentDoc = {
               ],
             },
           },
+          {kind: "Field", name: {kind: "Name", value: "firstName"}},
+          {kind: "Field", name: {kind: "Name", value: "lastName"}},
           {kind: "Field", name: {kind: "Name", value: "companyName"}},
+          {kind: "Field", name: {kind: "Name", value: "phone"}},
           {kind: "Field", name: {kind: "Name", value: "streetAddress1"}},
           {kind: "Field", name: {kind: "Name", value: "streetAddress2"}},
           {kind: "Field", name: {kind: "Name", value: "postalCode"}},
           {kind: "Field", name: {kind: "Name", value: "countryArea"}},
           {kind: "Field", name: {kind: "Name", value: "city"}},
+          {kind: "Field", name: {kind: "Name", value: "cityArea"}},
         ],
       },
     },
@@ -30097,12 +30116,16 @@ export const CheckoutShippingAddress_CheckoutFragmentDoc = {
               ],
             },
           },
+          {kind: "Field", name: {kind: "Name", value: "firstName"}},
+          {kind: "Field", name: {kind: "Name", value: "lastName"}},
           {kind: "Field", name: {kind: "Name", value: "companyName"}},
+          {kind: "Field", name: {kind: "Name", value: "phone"}},
           {kind: "Field", name: {kind: "Name", value: "streetAddress1"}},
           {kind: "Field", name: {kind: "Name", value: "streetAddress2"}},
           {kind: "Field", name: {kind: "Name", value: "postalCode"}},
           {kind: "Field", name: {kind: "Name", value: "countryArea"}},
           {kind: "Field", name: {kind: "Name", value: "city"}},
+          {kind: "Field", name: {kind: "Name", value: "cityArea"}},
         ],
       },
     },
@@ -30154,12 +30177,16 @@ export const CheckoutInformationForm_CheckoutFragmentDoc = {
               ],
             },
           },
+          {kind: "Field", name: {kind: "Name", value: "firstName"}},
+          {kind: "Field", name: {kind: "Name", value: "lastName"}},
           {kind: "Field", name: {kind: "Name", value: "companyName"}},
+          {kind: "Field", name: {kind: "Name", value: "phone"}},
           {kind: "Field", name: {kind: "Name", value: "streetAddress1"}},
           {kind: "Field", name: {kind: "Name", value: "streetAddress2"}},
           {kind: "Field", name: {kind: "Name", value: "postalCode"}},
           {kind: "Field", name: {kind: "Name", value: "countryArea"}},
           {kind: "Field", name: {kind: "Name", value: "city"}},
+          {kind: "Field", name: {kind: "Name", value: "cityArea"}},
         ],
       },
     },
@@ -30270,12 +30297,16 @@ export const CheckoutBillingAddressSection_CheckoutFragmentDoc = {
               ],
             },
           },
+          {kind: "Field", name: {kind: "Name", value: "firstName"}},
+          {kind: "Field", name: {kind: "Name", value: "lastName"}},
           {kind: "Field", name: {kind: "Name", value: "companyName"}},
+          {kind: "Field", name: {kind: "Name", value: "phone"}},
           {kind: "Field", name: {kind: "Name", value: "streetAddress1"}},
           {kind: "Field", name: {kind: "Name", value: "streetAddress2"}},
           {kind: "Field", name: {kind: "Name", value: "postalCode"}},
           {kind: "Field", name: {kind: "Name", value: "countryArea"}},
           {kind: "Field", name: {kind: "Name", value: "city"}},
+          {kind: "Field", name: {kind: "Name", value: "cityArea"}},
         ],
       },
     },
@@ -30329,12 +30360,16 @@ export const CheckoutPaymentForm_CheckoutFragmentDoc = {
               ],
             },
           },
+          {kind: "Field", name: {kind: "Name", value: "firstName"}},
+          {kind: "Field", name: {kind: "Name", value: "lastName"}},
           {kind: "Field", name: {kind: "Name", value: "companyName"}},
+          {kind: "Field", name: {kind: "Name", value: "phone"}},
           {kind: "Field", name: {kind: "Name", value: "streetAddress1"}},
           {kind: "Field", name: {kind: "Name", value: "streetAddress2"}},
           {kind: "Field", name: {kind: "Name", value: "postalCode"}},
           {kind: "Field", name: {kind: "Name", value: "countryArea"}},
           {kind: "Field", name: {kind: "Name", value: "city"}},
+          {kind: "Field", name: {kind: "Name", value: "cityArea"}},
         ],
       },
     },
@@ -31314,12 +31349,16 @@ export const CheckoutInformation_CheckoutDocument = {
               ],
             },
           },
+          {kind: "Field", name: {kind: "Name", value: "firstName"}},
+          {kind: "Field", name: {kind: "Name", value: "lastName"}},
           {kind: "Field", name: {kind: "Name", value: "companyName"}},
+          {kind: "Field", name: {kind: "Name", value: "phone"}},
           {kind: "Field", name: {kind: "Name", value: "streetAddress1"}},
           {kind: "Field", name: {kind: "Name", value: "streetAddress2"}},
           {kind: "Field", name: {kind: "Name", value: "postalCode"}},
           {kind: "Field", name: {kind: "Name", value: "countryArea"}},
           {kind: "Field", name: {kind: "Name", value: "city"}},
+          {kind: "Field", name: {kind: "Name", value: "cityArea"}},
         ],
       },
     },
@@ -31440,12 +31479,16 @@ export const CheckoutPayment_CheckoutDocument = {
               ],
             },
           },
+          {kind: "Field", name: {kind: "Name", value: "firstName"}},
+          {kind: "Field", name: {kind: "Name", value: "lastName"}},
           {kind: "Field", name: {kind: "Name", value: "companyName"}},
+          {kind: "Field", name: {kind: "Name", value: "phone"}},
           {kind: "Field", name: {kind: "Name", value: "streetAddress1"}},
           {kind: "Field", name: {kind: "Name", value: "streetAddress2"}},
           {kind: "Field", name: {kind: "Name", value: "postalCode"}},
           {kind: "Field", name: {kind: "Name", value: "countryArea"}},
           {kind: "Field", name: {kind: "Name", value: "city"}},
+          {kind: "Field", name: {kind: "Name", value: "cityArea"}},
         ],
       },
     },
@@ -31606,13 +31649,13 @@ export const CheckoutShipping_CheckoutDocument = {
   CheckoutShipping_CheckoutQuery,
   CheckoutShipping_CheckoutQueryVariables
 >;
-export const AddressFields_AddressValidationRulesDocument = {
+export const AddressValidationRulesDocument = {
   kind: "Document",
   definitions: [
     {
       kind: "OperationDefinition",
       operation: "query",
-      name: {kind: "Name", value: "AddressFields_AddressValidationRules"},
+      name: {kind: "Name", value: "AddressValidationRules"},
       variableDefinitions: [
         {
           kind: "VariableDefinition",
@@ -31650,9 +31693,32 @@ export const AddressFields_AddressValidationRulesDocument = {
               selections: [
                 {kind: "Field", name: {kind: "Name", value: "allowedFields"}},
                 {kind: "Field", name: {kind: "Name", value: "requiredFields"}},
+                {kind: "Field", name: {kind: "Name", value: "upperFields"}},
                 {
                   kind: "Field",
                   name: {kind: "Name", value: "countryAreaChoices"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {kind: "Field", name: {kind: "Name", value: "raw"}},
+                      {kind: "Field", name: {kind: "Name", value: "verbose"}},
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "cityChoices"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {kind: "Field", name: {kind: "Name", value: "raw"}},
+                      {kind: "Field", name: {kind: "Name", value: "verbose"}},
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "cityAreaChoices"},
                   selectionSet: {
                     kind: "SelectionSet",
                     selections: [
@@ -31669,8 +31735,8 @@ export const AddressFields_AddressValidationRulesDocument = {
     },
   ],
 } as unknown as DocumentNode<
-  AddressFields_AddressValidationRulesQuery,
-  AddressFields_AddressValidationRulesQueryVariables
+  AddressValidationRulesQuery,
+  AddressValidationRulesQueryVariables
 >;
 export const ChannelContextValueDocument = {
   kind: "Document",

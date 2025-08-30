@@ -1,12 +1,13 @@
+import {HttpLink} from "@apollo/client";
 import {
   ApolloClient,
   InMemoryCache,
   registerApolloClient,
 } from "@apollo/client-integration-nextjs";
 
-import {InMemoryCacheConfig} from "./in-memory-cache-config";
-import {HttpLink} from "@apollo/client";
 import {env} from "@/env";
+
+import {InMemoryCacheConfig} from "./in-memory-cache-config";
 
 export const {getClient, query, PreloadQuery} = registerApolloClient(() => {
   return new ApolloClient({
@@ -14,6 +15,5 @@ export const {getClient, query, PreloadQuery} = registerApolloClient(() => {
     link: new HttpLink({
       uri: env.NEXT_PUBLIC_SALEOR_GRAPHQL_URL,
     }),
-    dataMasking: true,
   });
 });
