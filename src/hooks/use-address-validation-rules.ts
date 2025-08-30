@@ -24,6 +24,7 @@ const AddressValidationRulesQuery = graphql(`
         raw
         verbose
       }
+      postalCodeExamples
     }
   }
 `);

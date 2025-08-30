@@ -9,16 +9,19 @@ import {graphql} from "@/graphql/codegen";
 import type {AddressFields_AddressFragment} from "@/graphql/codegen/graphql";
 import {useAddressValidationRules} from "@/hooks/use-address-validation-rules";
 import {useLocale} from "@/i18n/hooks/use-locale";
-import {useIntl} from "@/i18n/react-intl";
+import {FormattedMessage, useIntl} from "@/i18n/react-intl";
 import {isCountryCode} from "@/i18n/utils/is-country-code";
 import {localeToCountryCode} from "@/i18n/utils/locale-to-country-code";
+import {QuestionIcon} from "@/icons/QuestionIcon";
 import {ChannelContext} from "@/modules/channels/channel-context";
 import type {AddressSchema} from "@/utils/address";
 import {cn} from "@/utils/cn";
 
+import {IconButton} from "./IconButton";
 import {SkeletonInput} from "./Input";
 import {Select, SelectItem} from "./Select";
 import {TextField} from "./TextField";
+import {Tooltip, TooltipTrigger} from "./Tooltip";
 
 const AddressFields_AddressFragment = graphql(`
   fragment AddressFields_Address on Address {
@@ -81,6 +84,7 @@ export function AddressFields({
     countryAreaChoices,
     cityChoices,
     cityAreaChoices,
+    postalCodeExamples,
     isFieldAllowed,
     isFieldRequired,
   } = useAddressValidationRules(countryCode);
@@ -226,6 +230,22 @@ export function AddressFields({
           id: "3EnruA",
           defaultMessage: "Postal code",
         })}
+        accessory={
+          <TooltipTrigger>
+            <IconButton className={cn("rounded-fully")}>
+              <QuestionIcon />
+            </IconButton>
+            <Tooltip offset={10}>
+              <FormattedMessage
+                id="pfbcZN"
+                defaultMessage="Examples: {examples}"
+                values={{
+                  examples: postalCodeExamples.join(", "),
+                }}
+              />
+            </Tooltip>
+          </TooltipTrigger>
+        }
         isRequired={isFieldRequired("postalCode")}
         className={cn({
           hidden: !isFieldAllowed("postalCode"),
