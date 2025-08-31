@@ -76,8 +76,8 @@ export function Modal({children, size, ...props}: ModalProps) {
     <ModalOverlay
       {...props}
       className={cn(
-        "fixed inset-0 z-50 flex flex-col justify-end bg-black/50 backdrop-blur-xs sm:items-center sm:justify-center",
-        "pt-[calc(var(--spacing-large-300)*2)] sm:px-[calc(var(--spacing-large-500)*2)] sm:py-[calc(var(--spacing-large-400)*3)]",
+        "fixed inset-0 z-50 flex flex-col justify-end bg-black/50 pt-[calc(var(--spacing-large-300)*2)] backdrop-blur-xs",
+        "sm:items-center sm:justify-center sm:px-[calc(var(--spacing-large-500)*2)] sm:py-[calc(var(--spacing-large-400)*3)]",
         "entering:animate-in entering:fade-in-0",
         "exiting:animate-out exiting:fade-out-0",
         props.className,

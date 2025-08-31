@@ -2,6 +2,7 @@
 
 import {type FragmentType, useFragment} from "@apollo/client";
 import {useId} from "react";
+import invariant from "tiny-invariant";
 
 import {Heading, SkeletonHeading} from "@/components/Heading";
 import {Radio} from "@/components/Radio";
@@ -10,13 +11,22 @@ import {graphql} from "@/graphql/codegen";
 import type {ShippingMethods_CheckoutFragment} from "@/graphql/codegen/graphql";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
+import {isDefined} from "@/utils/is-defined";
+
+import {DeliveryDays} from "./DeliveryDays";
 
 const ShippingMethods_CheckoutFragment = graphql(`
   fragment ShippingMethods_Checkout on Checkout {
     id
+    deliveryMethod {
+      ... on ShippingMethod {
+        id
+      }
+    }
     shippingMethods {
       id
       name
+      ...DeliveryDays_ShippingMethod
     }
   }
 `);
@@ -28,9 +38,17 @@ interface ShippingMethodsProps {
 export function ShippingMethods({checkout}: ShippingMethodsProps) {
   const {data, complete} = useFragment({
     fragment: ShippingMethods_CheckoutFragment,
+    fragmentName: "ShippingMethods_Checkout",
     from: checkout,
   });
   const headingId = useId();
+  function getDefaultValue() {
+    if (!isDefined(data.deliveryMethod)) {
+      return;
+    }
+    invariant(data.deliveryMethod.__typename === "ShippingMethod");
+    return data.deliveryMethod.id;
+  }
   if (!complete) {
     return <SkeletonShippingMethods />;
   }
@@ -41,12 +59,16 @@ export function ShippingMethods({checkout}: ShippingMethodsProps) {
       </Heading>
       <RadioGroup
         name="deliveryMethodId"
+        defaultValue={getDefaultValue()}
         variant="group"
         aria-labelledby={headingId}
         isRequired>
-        {data.shippingMethods.map(({id, name}) => (
-          <Radio key={id} value={id}>
-            {name}
+        {data.shippingMethods.map((shippingMethod) => (
+          <Radio
+            key={shippingMethod.id}
+            value={shippingMethod.id}
+            primaryContent={<DeliveryDays shippingMethod={shippingMethod} />}>
+            {shippingMethod.name}
           </Radio>
         ))}
       </RadioGroup>

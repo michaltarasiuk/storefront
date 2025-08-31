@@ -16,8 +16,8 @@ export async function Header({locale}: {locale: Locale}) {
     <header className={cn("bg-base-background px-large-200")}>
       <div
         className={cn(
-          "mx-auto hidden max-w-6xl py-6",
-          "items-center justify-between md:flex",
+          "mx-auto hidden max-w-6xl items-center justify-between py-6",
+          "md:flex",
         )}>
         <nav className={cn("gap-large-500 flex items-center")}>
           <LinkedLogo locale={locale} />
@@ -34,8 +34,8 @@ export async function Header({locale}: {locale: Locale}) {
       </div>
       <div
         className={cn(
-          "relative py-5 md:hidden",
-          "flex items-center justify-center",
+          "relative flex items-center justify-center py-5",
+          "md:hidden",
         )}>
         <SheetTrigger>
           <IconButton

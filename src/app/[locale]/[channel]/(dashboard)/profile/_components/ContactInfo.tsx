@@ -8,7 +8,8 @@ export async function ContactInfo({locale}: {locale: Locale}) {
   return (
     <dl
       className={cn(
-        "gap-x-large-400 gap-y-large-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4",
+        "gap-x-large-400 gap-y-large-200 grid grid-cols-1",
+        "md:grid-cols-2 lg:grid-cols-4",
       )}>
       <ContactField
         label={intl.formatMessage({

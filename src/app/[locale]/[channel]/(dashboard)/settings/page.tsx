@@ -50,7 +50,8 @@ export default async function SettingsPage({params}: SettingsPageProps) {
           </header>
           <aside
             className={cn(
-              "bg-base-background gap-base flex flex-col rounded-lg p-6 md:flex-row md:items-center",
+              "bg-base-background gap-base flex flex-col rounded-lg p-6",
+              "md:flex-row md:items-center",
             )}>
             <Button kind="secondary">
               <FormattedMessage

@@ -17,6 +17,7 @@ export const Routes = {
   checkout: {
     information: "/checkout/information",
     delivery: "/checkout/delivery",
-    payment: "/checkout/payment",
+    billing: "/checkout/billing",
+    review: "/checkout/review",
   },
 };

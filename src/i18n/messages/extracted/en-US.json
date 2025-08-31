@@ -1,9 +1,15 @@
 {
+  "+JsDiH": {
+    "defaultMessage": "Ship to"
+  },
   "/GCoTA": {
     "defaultMessage": "Clear"
   },
   "/bIuBb": {
     "defaultMessage": "Order number (high to low)"
+  },
+  "/hIGOi": {
+    "defaultMessage": "At least {minimumDeliveryDays} business days"
   },
   "0Azlrb": {
     "defaultMessage": "Manage"
@@ -68,8 +74,14 @@
   "BWpuSS": {
     "defaultMessage": "City area"
   },
+  "BY343C": {
+    "defaultMessage": "Change"
+  },
   "C9WQ46": {
     "defaultMessage": "Order Status Tabs"
+  },
+  "CHuzeL": {
+    "defaultMessage": "Up to {maximumDeliveryDays} business days"
   },
   "CyOkb5": {
     "defaultMessage": "Promo Code"
@@ -131,9 +143,6 @@
   "NWiwy9": {
     "defaultMessage": "Show filter and sort options for orders"
   },
-  "NmK6zy": {
-    "defaultMessage": "Payment"
-  },
   "O95R3Z": {
     "defaultMessage": "Phone"
   },
@@ -161,6 +170,9 @@
   "TVieNi": {
     "defaultMessage": "You will be logged out on this device as well."
   },
+  "Tbo377": {
+    "defaultMessage": "Billing"
+  },
   "X7jl6w": {
     "defaultMessage": "Orders"
   },
@@ -172,6 +184,9 @@
   },
   "b7BHTd": {
     "defaultMessage": "Show order summary"
+  },
+  "bHEjjM": {
+    "defaultMessage": "{minimumDeliveryDays} to {maximumDeliveryDays} business days"
   },
   "c7/79+": {
     "defaultMessage": "Billing Address"

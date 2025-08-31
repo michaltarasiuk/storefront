@@ -37,7 +37,7 @@ export async function updateDelivery(_state: unknown, formData: FormData) {
   });
   const {errors = []} = data?.checkoutDeliveryMethodUpdate ?? {};
   if (!errors.length) {
-    redirect(joinPathSegments(locale, channel, Routes.checkout.payment));
+    redirect(joinPathSegments(locale, channel, Routes.checkout.billing));
   }
   return {
     errors: toValidationErrors(errors),

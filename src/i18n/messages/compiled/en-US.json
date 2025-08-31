@@ -1,4 +1,10 @@
 {
+  "+JsDiH": [
+    {
+      "type": 0,
+      "value": "Ship to"
+    }
+  ],
   "/GCoTA": [
     {
       "type": 0,
@@ -9,6 +15,20 @@
     {
       "type": 0,
       "value": "Order number (high to low)"
+    }
+  ],
+  "/hIGOi": [
+    {
+      "type": 0,
+      "value": "At least "
+    },
+    {
+      "type": 1,
+      "value": "minimumDeliveryDays"
+    },
+    {
+      "type": 0,
+      "value": " business days"
     }
   ],
   "0Azlrb": [
@@ -137,10 +157,30 @@
       "value": "City area"
     }
   ],
+  "BY343C": [
+    {
+      "type": 0,
+      "value": "Change"
+    }
+  ],
   "C9WQ46": [
     {
       "type": 0,
       "value": "Order Status Tabs"
+    }
+  ],
+  "CHuzeL": [
+    {
+      "type": 0,
+      "value": "Up to "
+    },
+    {
+      "type": 1,
+      "value": "maximumDeliveryDays"
+    },
+    {
+      "type": 0,
+      "value": " business days"
     }
   ],
   "CyOkb5": [
@@ -271,12 +311,6 @@
       "value": "Show filter and sort options for orders"
     }
   ],
-  "NmK6zy": [
-    {
-      "type": 0,
-      "value": "Payment"
-    }
-  ],
   "O95R3Z": [
     {
       "type": 0,
@@ -331,6 +365,12 @@
       "value": "You will be logged out on this device as well."
     }
   ],
+  "Tbo377": [
+    {
+      "type": 0,
+      "value": "Billing"
+    }
+  ],
   "X7jl6w": [
     {
       "type": 0,
@@ -353,6 +393,24 @@
     {
       "type": 0,
       "value": "Show order summary"
+    }
+  ],
+  "bHEjjM": [
+    {
+      "type": 1,
+      "value": "minimumDeliveryDays"
+    },
+    {
+      "type": 0,
+      "value": " to "
+    },
+    {
+      "type": 1,
+      "value": "maximumDeliveryDays"
+    },
+    {
+      "type": 0,
+      "value": " business days"
     }
   ],
   "c7/79+": [

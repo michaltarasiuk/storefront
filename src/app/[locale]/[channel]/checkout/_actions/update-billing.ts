@@ -6,7 +6,7 @@ import {getCheckoutId} from "@/modules/checkout/utils/cookies";
 import {toValidationErrors} from "@/modules/checkout/utils/validation-errors";
 import {isDefined} from "@/utils/is-defined";
 
-export async function updatePayment(_state: unknown, _formData: FormData) {
+export async function updateBilling(_state: unknown, _formData: FormData) {
   const checkoutId = await getCheckoutId();
   if (!isDefined(checkoutId)) {
     notFound();

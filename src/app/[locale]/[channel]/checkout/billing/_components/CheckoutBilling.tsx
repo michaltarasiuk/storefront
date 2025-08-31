@@ -6,28 +6,30 @@ import {useActionState, useTransition} from "react";
 import invariant from "tiny-invariant";
 
 import {Button} from "@/components/Button";
+import {ChannelField} from "@/components/ChannelField";
 import {Form} from "@/components/Form";
+import {LocaleField} from "@/components/LocaleField";
 import {Routes} from "@/consts/routes";
-import type {CheckoutPayment_CheckoutQuery} from "@/graphql/codegen/graphql";
+import type {CheckoutBilling_CheckoutQuery} from "@/graphql/codegen/graphql";
 import {IntlLink} from "@/i18n/components/IntlLink";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {ChevronLeftIcon} from "@/icons/ChevronLeftIcon";
 import {cn} from "@/utils/cn";
 import {isDefined} from "@/utils/is-defined";
 
-import {updatePayment} from "../../_actions/update-payment";
+import {updateBilling} from "../../_actions/update-billing";
 import {BillingAddress, SkeletonBillingAddress} from "./BillingAddress";
 
-export function CheckoutPaymentForm({
+export function CheckoutBillingForm({
   queryRef,
 }: {
-  queryRef: QueryRef<CheckoutPayment_CheckoutQuery>;
+  queryRef: QueryRef<CheckoutBilling_CheckoutQuery>;
 }) {
   const {data} = useReadQuery(queryRef);
   if (!isDefined(data.checkout)) {
     notFound();
   }
-  const [{errors}, formAction] = useActionState(updatePayment, {
+  const [{errors}, formAction] = useActionState(updateBilling, {
     errors: {},
   });
   const [isPending, startTransition] = useTransition();
@@ -44,7 +46,9 @@ export function CheckoutPaymentForm({
       }}
       className={cn("space-y-large-300")}>
       <BillingAddress checkout={data.checkout} />
-      <CheckoutPaymentActions>
+      <LocaleField />
+      <ChannelField />
+      <CheckoutBillingActions>
         <Button
           type="submit"
           size="large"
@@ -52,30 +56,30 @@ export function CheckoutPaymentForm({
           isDisabled={isPending}>
           <FormattedMessage id="lD3+8a" defaultMessage="Pay" />
         </Button>
-      </CheckoutPaymentActions>
+      </CheckoutBillingActions>
     </Form>
   );
 }
 
-export function SkeletonCheckoutPaymentForm() {
+export function SkeletonCheckoutBillingForm() {
   return (
     <div className={cn("space-y-large-300")}>
       <SkeletonBillingAddress />
-      <CheckoutPaymentActions>
+      <CheckoutBillingActions>
         <Button type="submit" size="large" isDisabled>
           <FormattedMessage id="lD3+8a" defaultMessage="Pay" />
         </Button>
-      </CheckoutPaymentActions>
+      </CheckoutBillingActions>
     </div>
   );
 }
 
-function CheckoutPaymentActions({children}: {children: React.ReactNode}) {
+function CheckoutBillingActions({children}: {children: React.ReactNode}) {
   return (
     <div className={cn("gap-base flex flex-col")}>
       {children}
       <IntlLink href={Routes.checkout.delivery}>
-        <ChevronLeftIcon aria-hidden />
+        <ChevronLeftIcon aria-hidden className={cn("stroke-base-accent")} />
         <FormattedMessage id="Akc1Gk" defaultMessage="Return to shipping" />
       </IntlLink>
     </div>

@@ -11,7 +11,8 @@ export function AddressCards() {
   return (
     <ul
       className={cn(
-        "gap-x-large-400 gap-y-large-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4",
+        "gap-x-large-400 gap-y-large-200 grid grid-cols-1",
+        "md:grid-cols-2 lg:grid-cols-4",
       )}>
       {Addresses.map((address, i) => (
         <li key={i}>

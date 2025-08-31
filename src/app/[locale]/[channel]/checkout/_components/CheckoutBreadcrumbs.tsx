@@ -58,11 +58,11 @@ export function CheckoutBreadcrumbs() {
         }),
       },
       {
-        id: Routes.checkout.payment,
-        href: Routes.checkout.payment,
+        id: Routes.checkout.billing,
+        href: Routes.checkout.billing,
         label: intl.formatMessage({
-          id: "NmK6zy",
-          defaultMessage: "Payment",
+          id: "Tbo377",
+          defaultMessage: "Billing",
         }),
       },
     ] satisfies BreadcrumbItem[];

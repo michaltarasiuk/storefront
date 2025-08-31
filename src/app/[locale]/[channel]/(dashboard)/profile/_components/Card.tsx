@@ -29,7 +29,8 @@ export function CardHeader({
   return (
     <header
       className={cn(
-        "gap-small-200 flex items-center justify-between md:justify-start",
+        "gap-small-200 flex items-center justify-between",
+        "md:justify-start",
         className,
       )}>
       {children}
