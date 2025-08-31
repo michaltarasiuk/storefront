@@ -1,6 +1,7 @@
 "use client";
 
 import {useActionState, useTransition} from "react";
+import invariant from "tiny-invariant";
 
 import {Button} from "@/components/Button";
 import {ChannelField} from "@/components/ChannelField";
@@ -25,8 +26,11 @@ export function SignupForm() {
       validationErrors={errors}
       onSubmit={(event) => {
         event.preventDefault();
-        const formData = new FormData(event.target as HTMLFormElement);
-        startTransition(() => formAction(formData));
+        startTransition(() => {
+          invariant(event.target instanceof HTMLFormElement);
+          const formData = new FormData(event.target);
+          formAction(formData);
+        });
       }}
       className={cn("gap-small-100 flex flex-col")}>
       <FormHeader
