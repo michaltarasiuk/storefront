@@ -48,14 +48,17 @@ export function Heading({children, ...props}: HeadingProps) {
   );
 }
 
-export function SkeletonHeading(props: HeadingProps) {
+export function SkeletonHeading(props: Pick<HeadingProps, "level">) {
+  const contextLevel = use(HeadingLevelContext);
+  const level = props.level ?? contextLevel;
   return (
-    <Heading
-      aria-hidden
-      {...props}
-      className={cn("relative flex items-center", props.className)}>
-      &#8203;
-      <Skeleton className={cn("absolute h-4/5 w-full max-w-36")} />
-    </Heading>
+    <div
+      role="presentation"
+      className={cn(
+        "flex h-[1lh] w-full max-w-36 items-center",
+        heading(level === 1 || level === 2 ? {level} : {}),
+      )}>
+      <Skeleton className={cn("h-[1em] w-full")} />
+    </div>
   );
 }

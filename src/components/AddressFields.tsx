@@ -54,29 +54,20 @@ export function CompletedAddressFields({
   if (!complete) {
     return <SkeletonAddressFields />;
   }
-  return (
-    <AddressFields
-      defaultValues={{
-        ...data,
-        country: data.country.code,
-        phone: data.phone ?? undefined,
-      }}
-    />
-  );
+  return <AddressFields defaultValues={data} />;
 }
 
 type AddressField = keyof z.infer<typeof AddressSchema>;
-type DefaultValues = Partial<Record<AddressField, string>>;
 
 export function AddressFields({
   defaultValues,
 }: {
-  defaultValues?: DefaultValues;
+  defaultValues?: AddressFields_AddressFragment;
 }) {
   const locale = useLocale();
   const [countryCode, setCountryCode] = useState(
-    isCountryCode(defaultValues?.country)
-      ? defaultValues.country
+    isCountryCode(defaultValues?.country.code)
+      ? defaultValues.country.code
       : localeToCountryCode(locale),
   );
   const [isPending, startTransition] = useTransition();
@@ -139,7 +130,7 @@ export function AddressFields({
       </div>
       <TextField
         name={"phone" satisfies AddressField}
-        defaultValue={defaultValues?.phone}
+        defaultValue={defaultValues?.phone ?? undefined}
         label={intl.formatMessage({
           id: "O95R3Z",
           defaultMessage: "Phone",

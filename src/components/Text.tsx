@@ -11,7 +11,9 @@ import {cn} from "@/utils/cn";
 import {text} from "../styles/text";
 import {Skeleton} from "./Skeleton";
 
-interface TextProps extends AriaTextProps, VariantProps<typeof text> {}
+type TextVariants = VariantProps<typeof text>;
+
+interface TextProps extends AriaTextProps, TextVariants {}
 
 export function Text({
   children,
@@ -37,31 +39,30 @@ export function Text({
   );
 }
 
-interface SkeletonTextProps
-  extends Pick<VariantProps<typeof text>, "size">,
-    VariantProps<typeof skeletonText> {
+interface SkeletonTextProps extends VariantProps<typeof skeletonText> {
+  size?: TextVariants["size"];
   className?: string;
 }
 
-export function SkeletonText({inlineSize, ...props}: SkeletonTextProps) {
+export function SkeletonText({inlineSize, size, className}: SkeletonTextProps) {
   return (
-    <Text
-      aria-hidden
-      {...props}
-      className={cn("relative flex w-full items-center", props.className)}>
-      &#8203;
-      <Skeleton
-        className={cn(
-          skeletonText({
-            inlineSize,
-          }),
-        )}
-      />
-    </Text>
+    <div
+      role="presentation"
+      className={cn(
+        skeletonText({
+          inlineSize,
+        }),
+        text({
+          size,
+        }),
+        className,
+      )}>
+      <Skeleton className={cn("h-[1em] w-full")} />
+    </div>
   );
 }
 
-const skeletonText = cva("absolute h-4/5 w-full", {
+const skeletonText = cva("flex h-[1lh] w-full max-w-36 items-center", {
   variants: {
     inlineSize: {
       small: "max-w-20",

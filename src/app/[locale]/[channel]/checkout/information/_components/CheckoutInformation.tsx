@@ -82,7 +82,7 @@ function CheckoutInformationActions({children}: {children: React.ReactNode}) {
     <div className={cn("gap-base flex flex-col")}>
       {children}
       <IntlLink href={Routes.cart}>
-        <ChevronLeftIcon aria-hidden />
+        <ChevronLeftIcon aria-hidden className={cn("stroke-base-accent")} />
         <FormattedMessage id="MRNNXA" defaultMessage="Return to cart" />
       </IntlLink>
     </div>
