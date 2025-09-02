@@ -101,6 +101,10 @@ export function Select<T extends object>({
           <Popover
             className={cn(
               "bg-base-background rounded-base border-base-border shadow-extra-large border",
+              "entering:animate-in entering:fade-in entering:zoom-in-95",
+              "entering:placement-top:slide-in-from-bottom-5 entering:placement-right:slide-in-from-left-5 entering:placement-bottom:slide-in-from-top-5 entering:placement-left:slide-in-from-right-5",
+              "exiting:animate-out exiting:fade-out exiting:zoom-out-95",
+              "exiting:placement-top:slide-out-to-bottom-5 exiting:placement-right:slide-out-to-left-5 exiting:placement-bottom:slide-out-to-top-5 exiting:placement-left:slide-out-to-right-5",
             )}>
             <ListBox
               className={cn(

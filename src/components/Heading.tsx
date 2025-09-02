@@ -53,7 +53,7 @@ export function SkeletonHeading(props: Pick<HeadingProps, "level">) {
   const level = props.level ?? contextLevel;
   return (
     <div
-      role="presentation"
+      aria-hidden
       className={cn(
         "flex h-[1lh] w-full max-w-36 items-center",
         heading(level === 1 || level === 2 ? {level} : {}),

@@ -47,7 +47,7 @@ interface SkeletonTextProps extends VariantProps<typeof skeletonText> {
 export function SkeletonText({inlineSize, size, className}: SkeletonTextProps) {
   return (
     <div
-      role="presentation"
+      aria-hidden
       className={cn(
         skeletonText({
           inlineSize,
