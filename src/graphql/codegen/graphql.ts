@@ -29831,7 +29831,12 @@ export type ShippingMethods_CheckoutFragment = {
     | {__typename?: "Warehouse"}
     | null;
   shippingMethods: Array<
-    {__typename?: "ShippingMethod"; id: string; name: string} & {
+    {
+      __typename?: "ShippingMethod";
+      id: string;
+      name: string;
+      price: {__typename?: "Money"; currency: string; amount: number};
+    } & {
       " $fragmentRefs"?: {
         DeliveryDays_ShippingMethodFragment: DeliveryDays_ShippingMethodFragment;
       };
@@ -29911,12 +29916,8 @@ export type Money_MoneyFragment = {
 
 export type TaxedMoney_TaxedMoneyFragment = {
   __typename?: "TaxedMoney";
-  net: {__typename?: "Money"} & {
-    " $fragmentRefs"?: {Money_MoneyFragment: Money_MoneyFragment};
-  };
-  gross: {__typename?: "Money"} & {
-    " $fragmentRefs"?: {Money_MoneyFragment: Money_MoneyFragment};
-  };
+  net: {__typename?: "Money"; currency: string; amount: number};
+  gross: {__typename?: "Money"; currency: string; amount: number};
 } & {" $fragmentName"?: "TaxedMoney_TaxedMoneyFragment"};
 
 export type AddressValidationRulesQueryVariables = Exact<{
@@ -30110,6 +30111,23 @@ export const BillingAddress_CheckoutFragmentDoc = {
     },
   ],
 } as unknown as DocumentNode<BillingAddress_CheckoutFragment, unknown>;
+export const Money_MoneyFragmentDoc = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "FragmentDefinition",
+      name: {kind: "Name", value: "Money_Money"},
+      typeCondition: {kind: "NamedType", name: {kind: "Name", value: "Money"}},
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {kind: "Field", name: {kind: "Name", value: "currency"}},
+          {kind: "Field", name: {kind: "Name", value: "amount"}},
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<Money_MoneyFragment, unknown>;
 export const DeliveryDays_ShippingMethodFragmentDoc = {
   kind: "Document",
   definitions: [
@@ -30176,12 +30194,43 @@ export const ShippingMethods_CheckoutFragmentDoc = {
                 {kind: "Field", name: {kind: "Name", value: "id"}},
                 {kind: "Field", name: {kind: "Name", value: "name"}},
                 {
+                  kind: "Field",
+                  name: {kind: "Name", value: "price"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "FragmentSpread",
+                        name: {kind: "Name", value: "Money_Money"},
+                        directives: [
+                          {
+                            kind: "Directive",
+                            name: {kind: "Name", value: "unmask"},
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                },
+                {
                   kind: "FragmentSpread",
                   name: {kind: "Name", value: "DeliveryDays_ShippingMethod"},
                 },
               ],
             },
           },
+        ],
+      },
+    },
+    {
+      kind: "FragmentDefinition",
+      name: {kind: "Name", value: "Money_Money"},
+      typeCondition: {kind: "NamedType", name: {kind: "Name", value: "Money"}},
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {kind: "Field", name: {kind: "Name", value: "currency"}},
+          {kind: "Field", name: {kind: "Name", value: "amount"}},
         ],
       },
     },
@@ -30288,23 +30337,6 @@ export const ShippingAddress_CheckoutFragmentDoc = {
     },
   ],
 } as unknown as DocumentNode<ShippingAddress_CheckoutFragment, unknown>;
-export const Money_MoneyFragmentDoc = {
-  kind: "Document",
-  definitions: [
-    {
-      kind: "FragmentDefinition",
-      name: {kind: "Name", value: "Money_Money"},
-      typeCondition: {kind: "NamedType", name: {kind: "Name", value: "Money"}},
-      selectionSet: {
-        kind: "SelectionSet",
-        selections: [
-          {kind: "Field", name: {kind: "Name", value: "currency"}},
-          {kind: "Field", name: {kind: "Name", value: "amount"}},
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<Money_MoneyFragment, unknown>;
 export const TaxedMoney_TaxedMoneyFragmentDoc = {
   kind: "Document",
   definitions: [
@@ -30327,6 +30359,9 @@ export const TaxedMoney_TaxedMoneyFragmentDoc = {
                 {
                   kind: "FragmentSpread",
                   name: {kind: "Name", value: "Money_Money"},
+                  directives: [
+                    {kind: "Directive", name: {kind: "Name", value: "unmask"}},
+                  ],
                 },
               ],
             },
@@ -30340,6 +30375,9 @@ export const TaxedMoney_TaxedMoneyFragmentDoc = {
                 {
                   kind: "FragmentSpread",
                   name: {kind: "Name", value: "Money_Money"},
+                  directives: [
+                    {kind: "Directive", name: {kind: "Name", value: "unmask"}},
+                  ],
                 },
               ],
             },
@@ -31232,6 +31270,18 @@ export const CheckoutDelivery_CheckoutDocument = {
     },
     {
       kind: "FragmentDefinition",
+      name: {kind: "Name", value: "Money_Money"},
+      typeCondition: {kind: "NamedType", name: {kind: "Name", value: "Money"}},
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {kind: "Field", name: {kind: "Name", value: "currency"}},
+          {kind: "Field", name: {kind: "Name", value: "amount"}},
+        ],
+      },
+    },
+    {
+      kind: "FragmentDefinition",
       name: {kind: "Name", value: "DeliveryDays_ShippingMethod"},
       typeCondition: {
         kind: "NamedType",
@@ -31287,6 +31337,25 @@ export const CheckoutDelivery_CheckoutDocument = {
               selections: [
                 {kind: "Field", name: {kind: "Name", value: "id"}},
                 {kind: "Field", name: {kind: "Name", value: "name"}},
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "price"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "FragmentSpread",
+                        name: {kind: "Name", value: "Money_Money"},
+                        directives: [
+                          {
+                            kind: "Directive",
+                            name: {kind: "Name", value: "unmask"},
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                },
                 {
                   kind: "FragmentSpread",
                   name: {kind: "Name", value: "DeliveryDays_ShippingMethod"},

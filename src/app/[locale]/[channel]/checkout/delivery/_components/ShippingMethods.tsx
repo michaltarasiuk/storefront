@@ -5,6 +5,7 @@ import {useId} from "react";
 import invariant from "tiny-invariant";
 
 import {Heading, SkeletonHeading} from "@/components/Heading";
+import {Money} from "@/components/Money";
 import {Radio} from "@/components/Radio";
 import {RadioGroup} from "@/components/RadioGroup";
 import {graphql} from "@/graphql/codegen";
@@ -26,6 +27,9 @@ const ShippingMethods_CheckoutFragment = graphql(`
     shippingMethods {
       id
       name
+      price {
+        ...Money_Money @unmask
+      }
       ...DeliveryDays_ShippingMethod
     }
   }
@@ -67,7 +71,10 @@ export function ShippingMethods({checkout}: ShippingMethodsProps) {
           <Radio
             key={shippingMethod.id}
             value={shippingMethod.id}
-            primaryContent={<DeliveryDays shippingMethod={shippingMethod} />}>
+            primaryContent={<DeliveryDays shippingMethod={shippingMethod} />}
+            secondaryContent={
+              <Money slot="description" money={shippingMethod.price} />
+            }>
             {shippingMethod.name}
           </Radio>
         ))}

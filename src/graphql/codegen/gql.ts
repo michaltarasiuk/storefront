@@ -24,14 +24,14 @@ type Documents = {
   "\n  fragment BillingAddress_Checkout on Checkout {\n    id\n    shippingAddress {\n      ...AddressFields_Address\n    }\n    billingAddress {\n      ...AddressFields_Address\n    }\n  }\n": typeof types.BillingAddress_CheckoutFragmentDoc;
   "\n  query CheckoutBilling_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...BillingAddress_Checkout\n    }\n  }\n": typeof types.CheckoutBilling_CheckoutDocument;
   "\n  fragment DeliveryDays_ShippingMethod on ShippingMethod {\n    id\n    minimumDeliveryDays\n    maximumDeliveryDays\n  }\n": typeof types.DeliveryDays_ShippingMethodFragmentDoc;
-  "\n  fragment ShippingMethods_Checkout on Checkout {\n    id\n    deliveryMethod {\n      ... on ShippingMethod {\n        id\n      }\n    }\n    shippingMethods {\n      id\n      name\n      ...DeliveryDays_ShippingMethod\n    }\n  }\n": typeof types.ShippingMethods_CheckoutFragmentDoc;
+  "\n  fragment ShippingMethods_Checkout on Checkout {\n    id\n    deliveryMethod {\n      ... on ShippingMethod {\n        id\n      }\n    }\n    shippingMethods {\n      id\n      name\n      price {\n        ...Money_Money @unmask\n      }\n      ...DeliveryDays_ShippingMethod\n    }\n  }\n": typeof types.ShippingMethods_CheckoutFragmentDoc;
   "\n  query CheckoutDelivery_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...ShippingMethods_Checkout\n    }\n  }\n": typeof types.CheckoutDelivery_CheckoutDocument;
   "\n  fragment Contact_Checkout on Checkout {\n    id\n    email\n  }\n": typeof types.Contact_CheckoutFragmentDoc;
   "\n  fragment ShippingAddress_Checkout on Checkout {\n    shippingAddress {\n      ...AddressFields_Address\n    }\n  }\n": typeof types.ShippingAddress_CheckoutFragmentDoc;
   "\n  query CheckoutInformation_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...Contact_Checkout\n      ...ShippingAddress_Checkout\n    }\n  }\n": typeof types.CheckoutInformation_CheckoutDocument;
   "\n  fragment AddressFields_Address on Address {\n    id\n    country {\n      code\n    }\n    firstName\n    lastName\n    companyName\n    phone\n    streetAddress1\n    streetAddress2\n    postalCode\n    countryArea\n    city\n    cityArea\n  }\n": typeof types.AddressFields_AddressFragmentDoc;
   "\n  fragment Money_Money on Money {\n    currency\n    amount\n  }\n": typeof types.Money_MoneyFragmentDoc;
-  "\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money\n    }\n    gross {\n      ...Money_Money\n    }\n  }\n": typeof types.TaxedMoney_TaxedMoneyFragmentDoc;
+  "\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money @unmask\n    }\n    gross {\n      ...Money_Money @unmask\n    }\n  }\n": typeof types.TaxedMoney_TaxedMoneyFragmentDoc;
   "\n  query AddressValidationRules($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      allowedFields\n      requiredFields\n      upperFields\n      countryAreaChoices {\n        raw\n        verbose\n      }\n      cityChoices {\n        raw\n        verbose\n      }\n      cityAreaChoices {\n        raw\n        verbose\n      }\n      postalCodeExamples\n    }\n  }\n": typeof types.AddressValidationRulesDocument;
   "\n  fragment AccountValidationError on AccountError {\n    field\n    message\n  }\n": typeof types.AccountValidationErrorFragmentDoc;
   "\n  query ChannelContextValue($slug: String!) {\n    channel(slug: $slug) {\n      countries {\n        code\n        country\n      }\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n": typeof types.ChannelContextValueDocument;
@@ -59,7 +59,7 @@ const documents: Documents = {
     types.CheckoutBilling_CheckoutDocument,
   "\n  fragment DeliveryDays_ShippingMethod on ShippingMethod {\n    id\n    minimumDeliveryDays\n    maximumDeliveryDays\n  }\n":
     types.DeliveryDays_ShippingMethodFragmentDoc,
-  "\n  fragment ShippingMethods_Checkout on Checkout {\n    id\n    deliveryMethod {\n      ... on ShippingMethod {\n        id\n      }\n    }\n    shippingMethods {\n      id\n      name\n      ...DeliveryDays_ShippingMethod\n    }\n  }\n":
+  "\n  fragment ShippingMethods_Checkout on Checkout {\n    id\n    deliveryMethod {\n      ... on ShippingMethod {\n        id\n      }\n    }\n    shippingMethods {\n      id\n      name\n      price {\n        ...Money_Money @unmask\n      }\n      ...DeliveryDays_ShippingMethod\n    }\n  }\n":
     types.ShippingMethods_CheckoutFragmentDoc,
   "\n  query CheckoutDelivery_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...ShippingMethods_Checkout\n    }\n  }\n":
     types.CheckoutDelivery_CheckoutDocument,
@@ -73,7 +73,7 @@ const documents: Documents = {
     types.AddressFields_AddressFragmentDoc,
   "\n  fragment Money_Money on Money {\n    currency\n    amount\n  }\n":
     types.Money_MoneyFragmentDoc,
-  "\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money\n    }\n    gross {\n      ...Money_Money\n    }\n  }\n":
+  "\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money @unmask\n    }\n    gross {\n      ...Money_Money @unmask\n    }\n  }\n":
     types.TaxedMoney_TaxedMoneyFragmentDoc,
   "\n  query AddressValidationRules($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      allowedFields\n      requiredFields\n      upperFields\n      countryAreaChoices {\n        raw\n        verbose\n      }\n      cityChoices {\n        raw\n        verbose\n      }\n      cityAreaChoices {\n        raw\n        verbose\n      }\n      postalCodeExamples\n    }\n  }\n":
     types.AddressValidationRulesDocument,
@@ -165,8 +165,8 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  fragment ShippingMethods_Checkout on Checkout {\n    id\n    deliveryMethod {\n      ... on ShippingMethod {\n        id\n      }\n    }\n    shippingMethods {\n      id\n      name\n      ...DeliveryDays_ShippingMethod\n    }\n  }\n",
-): (typeof documents)["\n  fragment ShippingMethods_Checkout on Checkout {\n    id\n    deliveryMethod {\n      ... on ShippingMethod {\n        id\n      }\n    }\n    shippingMethods {\n      id\n      name\n      ...DeliveryDays_ShippingMethod\n    }\n  }\n"];
+  source: "\n  fragment ShippingMethods_Checkout on Checkout {\n    id\n    deliveryMethod {\n      ... on ShippingMethod {\n        id\n      }\n    }\n    shippingMethods {\n      id\n      name\n      price {\n        ...Money_Money @unmask\n      }\n      ...DeliveryDays_ShippingMethod\n    }\n  }\n",
+): (typeof documents)["\n  fragment ShippingMethods_Checkout on Checkout {\n    id\n    deliveryMethod {\n      ... on ShippingMethod {\n        id\n      }\n    }\n    shippingMethods {\n      id\n      name\n      price {\n        ...Money_Money @unmask\n      }\n      ...DeliveryDays_ShippingMethod\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -207,8 +207,8 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money\n    }\n    gross {\n      ...Money_Money\n    }\n  }\n",
-): (typeof documents)["\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money\n    }\n    gross {\n      ...Money_Money\n    }\n  }\n"];
+  source: "\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money @unmask\n    }\n    gross {\n      ...Money_Money @unmask\n    }\n  }\n",
+): (typeof documents)["\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money @unmask\n    }\n    gross {\n      ...Money_Money @unmask\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

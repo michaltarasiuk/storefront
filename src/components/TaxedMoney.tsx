@@ -1,7 +1,5 @@
 "use client";
 
-import type {FragmentType} from "@apollo/client";
-import {useFragment} from "@apollo/client";
 import {use} from "react";
 
 import {graphql} from "@/graphql/codegen";
@@ -10,36 +8,30 @@ import {ChannelContext} from "@/modules/channels/channel-context";
 
 import {Money} from "./Money";
 import type {Text} from "./Text";
-import {SkeletonText} from "./Text";
 
 const TaxedMoney_TaxedMoneyFragment = graphql(`
   fragment TaxedMoney_TaxedMoney on TaxedMoney {
     net {
-      ...Money_Money
+      ...Money_Money @unmask
     }
     gross {
-      ...Money_Money
+      ...Money_Money @unmask
     }
   }
 `);
 
 interface TaxedMoneyProps extends React.ComponentProps<typeof Text> {
-  taxedMoney: FragmentType<TaxedMoney_TaxedMoneyFragment>;
+  taxedMoney: TaxedMoney_TaxedMoneyFragment;
 }
 
 export function TaxedMoney({taxedMoney, ...props}: TaxedMoneyProps) {
-  const {data, complete} = useFragment({
-    fragment: TaxedMoney_TaxedMoneyFragment,
-    from: taxedMoney,
-  });
-  if (!complete) {
-    return <SkeletonText inlineSize="small" />;
-  }
-  const {taxConfiguration} = use(ChannelContext);
+  const {
+    taxConfiguration: {displayGrossPrices},
+  } = use(ChannelContext);
   return (
     <Money
       {...props}
-      money={taxConfiguration.displayGrossPrices ? data.gross : data.net}
+      money={displayGrossPrices ? taxedMoney.gross : taxedMoney.net}
     />
   );
 }
