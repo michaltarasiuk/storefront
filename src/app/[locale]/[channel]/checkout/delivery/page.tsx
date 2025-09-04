@@ -14,7 +14,7 @@ import {
 const CheckoutDelivery_CheckoutQuery = graphql(`
   query CheckoutDelivery_Checkout($id: ID!) {
     checkout(id: $id) {
-      ...ShippingMethods_Checkout
+      ...Delivery_Checkout
     }
   }
 `);

@@ -103,212 +103,206 @@ export function AddressFields({
           </SelectItem>
         ))}
       </Select>
-      <div
-        className={cn("gap-base flex", {
-          hidden: !isFieldAllowed("name"),
-        })}>
-        <TextField
-          name={"firstName" satisfies AddressField}
-          defaultValue={defaultValues?.firstName}
-          label={intl.formatMessage({
-            id: "pONqz8",
-            defaultMessage: "First name",
-          })}
-          isRequired={isFieldRequired("name")}
-          className={cn("flex-1")}
-        />
-        <TextField
-          name={"lastName" satisfies AddressField}
-          defaultValue={defaultValues?.lastName}
-          label={intl.formatMessage({
-            id: "txUL0F",
-            defaultMessage: "Last name",
-          })}
-          isRequired={isFieldRequired("name")}
-          className={cn("flex-1")}
-        />
-      </div>
-      <TextField
-        name={"phone" satisfies AddressField}
-        defaultValue={defaultValues?.phone ?? undefined}
-        label={intl.formatMessage({
-          id: "O95R3Z",
-          defaultMessage: "Phone",
-        })}
-        isRequired={isFieldRequired("phone")}
-        className={cn({
-          hidden: !isFieldAllowed("phone"),
-        })}
-      />
-      <TextField
-        name={"companyName" satisfies AddressField}
-        defaultValue={defaultValues?.companyName}
-        label={intl.formatMessage({
-          id: "FPGwAt",
-          defaultMessage: "Company name",
-        })}
-        isRequired={isFieldRequired("companyName")}
-        className={cn({
-          hidden: !isFieldAllowed("companyName"),
-        })}
-      />
-      <div
-        className={cn("gap-base flex", {
-          hidden:
-            !isFieldAllowed("streetAddress1") &&
-            !isFieldAllowed("streetAddress2"),
-        })}>
-        <TextField
-          name={"streetAddress1" satisfies AddressField}
-          defaultValue={defaultValues?.streetAddress1}
-          label={intl.formatMessage({
-            id: "ZP5fRS",
-            defaultMessage: "Street address 1",
-          })}
-          isRequired={isFieldRequired("streetAddress1")}
-          className={cn("flex-1", {
-            hidden: !isFieldAllowed("streetAddress1"),
-          })}
-        />
-        <TextField
-          name={"streetAddress2" satisfies AddressField}
-          defaultValue={defaultValues?.streetAddress2}
-          label={intl.formatMessage({
-            id: "xULK8s",
-            defaultMessage: "Street address 2",
-          })}
-          isRequired={isFieldRequired("streetAddress2")}
-          className={cn("flex-1", {
-            hidden: !isFieldAllowed("streetAddress2"),
-          })}
-        />
-      </div>
-      <div
-        className={cn("flex-1", {
-          hidden: !isFieldAllowed("countryArea"),
-        })}>
-        {!countryAreaChoices.length ? (
+      {isFieldAllowed("name") && (
+        <div className={cn("gap-base flex")}>
           <TextField
-            name={"countryArea" satisfies AddressField}
-            defaultValue={defaultValues?.countryArea}
+            name={"firstName" satisfies AddressField}
+            defaultValue={defaultValues?.firstName}
             label={intl.formatMessage({
-              id: "AuwpCm",
-              defaultMessage: "Country area",
+              id: "pONqz8",
+              defaultMessage: "First name",
             })}
-            isRequired={isFieldRequired("countryArea")}
+            isRequired={isFieldRequired("name")}
+            className={cn("flex-1")}
           />
-        ) : (
-          <Select
-            name={"countryArea" satisfies AddressField}
-            defaultSelectedKey={defaultValues?.countryArea}
+          <TextField
+            name={"lastName" satisfies AddressField}
+            defaultValue={defaultValues?.lastName}
             label={intl.formatMessage({
-              id: "AuwpCm",
-              defaultMessage: "Country area",
+              id: "txUL0F",
+              defaultMessage: "Last name",
             })}
-            isRequired={isFieldRequired("countryArea")}>
-            {countryAreaChoices.filter(isValidChoice).map(({raw, verbose}) => (
-              <SelectItem key={raw} id={raw} textValue={verbose}>
-                {verbose}
-              </SelectItem>
-            ))}
-          </Select>
-        )}
-      </div>
-      <TextField
-        name={"postalCode" satisfies AddressField}
-        defaultValue={defaultValues?.postalCode}
-        label={intl.formatMessage({
-          id: "3EnruA",
-          defaultMessage: "Postal code",
-        })}
-        accessory={
-          <TooltipTrigger>
-            <IconButton className={cn("rounded-fully")}>
-              <QuestionIcon />
-            </IconButton>
-            <Tooltip offset={10}>
-              <FormattedMessage
-                id="pfbcZN"
-                defaultMessage="Examples: {examples}"
-                values={{
-                  examples: postalCodeExamples.join(", "),
-                }}
-              />
-            </Tooltip>
-          </TooltipTrigger>
-        }
-        isRequired={isFieldRequired("postalCode")}
-        className={cn({
-          hidden: !isFieldAllowed("postalCode"),
-        })}
-      />
-      <div
-        className={cn("gap-base flex", {
-          hidden: !isFieldAllowed("city") && !isFieldAllowed("cityArea"),
-        })}>
-        <div
-          className={cn("flex-1", {
-            hidden: !isFieldAllowed("city"),
-          })}>
-          {!cityChoices.length ? (
+            isRequired={isFieldRequired("name")}
+            className={cn("flex-1")}
+          />
+        </div>
+      )}
+      {isFieldAllowed("phone") && (
+        <TextField
+          name={"phone" satisfies AddressField}
+          defaultValue={defaultValues?.phone ?? undefined}
+          label={intl.formatMessage({
+            id: "O95R3Z",
+            defaultMessage: "Phone",
+          })}
+          isRequired={isFieldRequired("phone")}
+        />
+      )}
+      {isFieldAllowed("companyName") && (
+        <TextField
+          name={"companyName" satisfies AddressField}
+          defaultValue={defaultValues?.companyName}
+          label={intl.formatMessage({
+            id: "FPGwAt",
+            defaultMessage: "Company name",
+          })}
+          isRequired={isFieldRequired("companyName")}
+        />
+      )}
+      {(isFieldAllowed("streetAddress1") ||
+        isFieldAllowed("streetAddress2")) && (
+        <div className={cn("gap-base flex")}>
+          {isFieldAllowed("streetAddress1") && (
             <TextField
-              name={"city" satisfies AddressField}
-              defaultValue={defaultValues?.city}
+              name={"streetAddress1" satisfies AddressField}
+              defaultValue={defaultValues?.streetAddress1}
               label={intl.formatMessage({
-                id: "TE4fIS",
-                defaultMessage: "City",
+                id: "ZP5fRS",
+                defaultMessage: "Street address 1",
               })}
-              isRequired={isFieldRequired("city")}
+              isRequired={isFieldRequired("streetAddress1")}
+              className={cn("flex-1")}
+            />
+          )}
+          {isFieldAllowed("streetAddress2") && (
+            <TextField
+              name={"streetAddress2" satisfies AddressField}
+              defaultValue={defaultValues?.streetAddress2}
+              label={intl.formatMessage({
+                id: "xULK8s",
+                defaultMessage: "Street address 2",
+              })}
+              isRequired={isFieldRequired("streetAddress2")}
+              className={cn("flex-1")}
+            />
+          )}
+        </div>
+      )}
+      {isFieldAllowed("countryArea") && (
+        <div className={cn("flex-1")}>
+          {!countryAreaChoices.length ? (
+            <TextField
+              name={"countryArea" satisfies AddressField}
+              defaultValue={defaultValues?.countryArea}
+              label={intl.formatMessage({
+                id: "AuwpCm",
+                defaultMessage: "Country area",
+              })}
+              isRequired={isFieldRequired("countryArea")}
             />
           ) : (
             <Select
-              name={"city" satisfies AddressField}
-              defaultSelectedKey={defaultValues?.city}
+              name={"countryArea" satisfies AddressField}
+              defaultSelectedKey={defaultValues?.countryArea}
               label={intl.formatMessage({
-                id: "TE4fIS",
-                defaultMessage: "City",
+                id: "AuwpCm",
+                defaultMessage: "Country area",
               })}
-              isRequired={isFieldRequired("city")}>
-              {cityAreaChoices.filter(isValidChoice).map(({raw, verbose}) => (
-                <SelectItem key={raw} id={raw} textValue={verbose}>
-                  {verbose}
-                </SelectItem>
-              ))}
+              isRequired={isFieldRequired("countryArea")}>
+              {countryAreaChoices
+                .filter(isValidChoice)
+                .map(({raw, verbose}) => (
+                  <SelectItem key={verbose} id={raw} textValue={verbose}>
+                    {verbose}
+                  </SelectItem>
+                ))}
             </Select>
           )}
         </div>
-        <div
-          className={cn("flex-1", {
-            hidden: !isFieldAllowed("cityArea"),
-          })}>
-          {!cityAreaChoices.length ? (
-            <TextField
-              name={"cityArea" satisfies AddressField}
-              defaultValue={defaultValues?.cityArea}
-              label={intl.formatMessage({
-                id: "BWpuSS",
-                defaultMessage: "City area",
-              })}
-              isRequired={isFieldRequired("cityArea")}
-            />
-          ) : (
-            <Select
-              name={"cityArea" satisfies AddressField}
-              defaultSelectedKey={defaultValues?.cityArea}
-              label={intl.formatMessage({
-                id: "BWpuSS",
-                defaultMessage: "City area",
-              })}
-              isRequired={isFieldRequired("cityArea")}>
-              {cityAreaChoices.filter(isValidChoice).map(({raw, verbose}) => (
-                <SelectItem key={raw} id={raw} textValue={verbose}>
-                  {verbose}
-                </SelectItem>
-              ))}
-            </Select>
+      )}
+      {isFieldAllowed("postalCode") && (
+        <TextField
+          name={"postalCode" satisfies AddressField}
+          defaultValue={defaultValues?.postalCode}
+          label={intl.formatMessage({
+            id: "3EnruA",
+            defaultMessage: "Postal code",
+          })}
+          accessory={
+            <TooltipTrigger>
+              <IconButton className={cn("rounded-fully")}>
+                <QuestionIcon />
+              </IconButton>
+              <Tooltip offset={10}>
+                <FormattedMessage
+                  id="pfbcZN"
+                  defaultMessage="Examples: {examples}"
+                  values={{
+                    examples: postalCodeExamples.join(", "),
+                  }}
+                />
+              </Tooltip>
+            </TooltipTrigger>
+          }
+          isRequired={isFieldRequired("postalCode")}
+        />
+      )}
+      {(isFieldAllowed("city") || isFieldAllowed("cityArea")) && (
+        <div className={cn("gap-base flex")}>
+          {isFieldAllowed("city") && (
+            <div className={cn("flex-1")}>
+              {!cityChoices.length ? (
+                <TextField
+                  name={"city" satisfies AddressField}
+                  defaultValue={defaultValues?.city}
+                  label={intl.formatMessage({
+                    id: "TE4fIS",
+                    defaultMessage: "City",
+                  })}
+                  isRequired={isFieldRequired("city")}
+                />
+              ) : (
+                <Select
+                  name={"city" satisfies AddressField}
+                  defaultSelectedKey={defaultValues?.city}
+                  label={intl.formatMessage({
+                    id: "TE4fIS",
+                    defaultMessage: "City",
+                  })}
+                  isRequired={isFieldRequired("city")}>
+                  {cityChoices.filter(isValidChoice).map(({raw, verbose}) => (
+                    <SelectItem key={raw} id={raw} textValue={verbose}>
+                      {verbose}
+                    </SelectItem>
+                  ))}
+                </Select>
+              )}
+            </div>
+          )}
+          {isFieldAllowed("cityArea") && (
+            <div className={cn("flex-1")}>
+              {!cityAreaChoices.length ? (
+                <TextField
+                  name={"cityArea" satisfies AddressField}
+                  defaultValue={defaultValues?.cityArea}
+                  label={intl.formatMessage({
+                    id: "BWpuSS",
+                    defaultMessage: "City area",
+                  })}
+                  isRequired={isFieldRequired("cityArea")}
+                />
+              ) : (
+                <Select
+                  name={"cityArea" satisfies AddressField}
+                  defaultSelectedKey={defaultValues?.cityArea}
+                  label={intl.formatMessage({
+                    id: "BWpuSS",
+                    defaultMessage: "City area",
+                  })}
+                  isRequired={isFieldRequired("cityArea")}>
+                  {cityAreaChoices
+                    .filter(isValidChoice)
+                    .map(({raw, verbose}) => (
+                      <SelectItem key={raw} id={raw} textValue={verbose}>
+                        {verbose}
+                      </SelectItem>
+                    ))}
+                </Select>
+              )}
+            </div>
           )}
         </div>
-      </div>
+      )}
     </fieldset>
   );
 }
@@ -321,7 +315,6 @@ export function SkeletonAddressFields() {
         <SkeletonInput className={cn("flex-1")} />
         <SkeletonInput className={cn("flex-1")} />
       </div>
-      <SkeletonInput />
       <SkeletonInput />
       <div className={cn("gap-base flex")}>
         <SkeletonInput className={cn("flex-1")} />

@@ -22,11 +22,14 @@ interface ContactProps {
 }
 
 export function Contact({checkout}: ContactProps) {
-  const {data} = useFragment({
+  const {data, complete} = useFragment({
     fragment: Contact_CheckoutFragment,
     from: checkout,
   });
   const intl = useIntl();
+  if (!complete) {
+    return <SkeletonContact />;
+  }
   return (
     <section className={cn("space-y-base")}>
       <Heading>
@@ -35,7 +38,7 @@ export function Contact({checkout}: ContactProps) {
       <TextField
         name="email"
         type="email"
-        defaultValue={data?.email ?? undefined}
+        defaultValue={data.email ?? undefined}
         label={intl.formatMessage({
           id: "KinTIy",
           defaultMessage: "Enter email",

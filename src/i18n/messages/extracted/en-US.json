@@ -1,7 +1,4 @@
 {
-  "+JsDiH": {
-    "defaultMessage": "Ship to"
-  },
   "/GCoTA": {
     "defaultMessage": "Clear"
   },
@@ -29,14 +26,8 @@
   "3EnruA": {
     "defaultMessage": "Postal code"
   },
-  "427Jxb": {
-    "defaultMessage": "Buy again"
-  },
   "47FYwb": {
     "defaultMessage": "Cancel"
-  },
-  "4RD+CZ": {
-    "defaultMessage": "Shipping method"
   },
   "5mUL+f": {
     "defaultMessage": "Newest to oldest"
@@ -62,9 +53,6 @@
   "A82IFk": {
     "defaultMessage": "Logging you out..."
   },
-  "Akc1Gk": {
-    "defaultMessage": "Return to shipping"
-  },
   "AuwpCm": {
     "defaultMessage": "Country area"
   },
@@ -73,9 +61,6 @@
   },
   "BWpuSS": {
     "defaultMessage": "City area"
-  },
-  "BY343C": {
-    "defaultMessage": "Change"
   },
   "C9WQ46": {
     "defaultMessage": "Order Status Tabs"
@@ -109,6 +94,9 @@
   },
   "FQyBR6": {
     "defaultMessage": "Table View"
+  },
+  "HJkcfg": {
+    "defaultMessage": "Return to delivery"
   },
   "I2BSqV": {
     "defaultMessage": "Order total (high to low)"
@@ -155,6 +143,9 @@
   "RpOD8c": {
     "defaultMessage": "Sort orders"
   },
+  "RzsKm8": {
+    "defaultMessage": "Shipping methods"
+  },
   "SQJto2": {
     "defaultMessage": "Sign in"
   },
@@ -181,6 +172,9 @@
   },
   "ZP5fRS": {
     "defaultMessage": "Street address 1"
+  },
+  "aAMkSq": {
+    "defaultMessage": "Pick up"
   },
   "b7BHTd": {
     "defaultMessage": "Show order summary"
@@ -266,6 +260,9 @@
   "pONqz8": {
     "defaultMessage": "First name"
   },
+  "pRVSgm": {
+    "defaultMessage": "Collection points"
+  },
   "pfbcZN": {
     "defaultMessage": "Examples: {examples}"
   },
@@ -274,6 +271,9 @@
   },
   "rFxf+e": {
     "defaultMessage": "Please enter your email and password to access your account"
+  },
+  "riCv7f": {
+    "defaultMessage": "Ship"
   },
   "s3O2Si": {
     "defaultMessage": "Log out everywhere"

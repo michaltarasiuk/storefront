@@ -11,13 +11,12 @@ import {Form} from "@/components/Form";
 import {LocaleField} from "@/components/LocaleField";
 import {Routes} from "@/consts/routes";
 import type {CheckoutInformation_CheckoutQuery} from "@/graphql/codegen/graphql";
-import {IntlLink} from "@/i18n/components/IntlLink";
 import {FormattedMessage} from "@/i18n/react-intl";
-import {ChevronLeftIcon} from "@/icons/ChevronLeftIcon";
 import {cn} from "@/utils/cn";
 import {isDefined} from "@/utils/is-defined";
 
 import {updateInformation} from "../../_actions/update-information";
+import {ReturnLink} from "../../_components/ReturnLink";
 import {Contact, SkeletonContact} from "./Contact";
 import {ShippingAddress, SkeletonShippingAddress} from "./ShippingAddress";
 
@@ -50,15 +49,18 @@ export function CheckoutInformationForm({
       <ShippingAddress checkout={data.checkout} />
       <LocaleField />
       <ChannelField />
-      <CheckoutInformationActions>
+      <div className={cn("gap-base flex flex-col")}>
         <Button
           type="submit"
           size="large"
-          isPending={isPending}
-          isDisabled={isPending}>
+          isDisabled={isPending}
+          isPending={isPending}>
           <FormattedMessage id="DgnS8R" defaultMessage="Continue to shipping" />
         </Button>
-      </CheckoutInformationActions>
+        <ReturnLink href={Routes.cart}>
+          <FormattedMessage id="MRNNXA" defaultMessage="Return to cart" />
+        </ReturnLink>
+      </div>
     </Form>
   );
 }
@@ -68,23 +70,14 @@ export function SkeletonCheckoutInformationForm() {
     <div className={cn("space-y-large-300")}>
       <SkeletonContact />
       <SkeletonShippingAddress />
-      <CheckoutInformationActions>
-        <Button type="submit" size="large" isDisabled>
+      <div className={cn("gap-base flex flex-col")}>
+        <Button size="large" isDisabled>
           <FormattedMessage id="DgnS8R" defaultMessage="Continue to shipping" />
         </Button>
-      </CheckoutInformationActions>
-    </div>
-  );
-}
-
-function CheckoutInformationActions({children}: {children: React.ReactNode}) {
-  return (
-    <div className={cn("gap-base flex flex-col")}>
-      {children}
-      <IntlLink href={Routes.cart}>
-        <ChevronLeftIcon aria-hidden className={cn("stroke-base-accent")} />
-        <FormattedMessage id="MRNNXA" defaultMessage="Return to cart" />
-      </IntlLink>
+        <ReturnLink href={Routes.cart}>
+          <FormattedMessage id="MRNNXA" defaultMessage="Return to cart" />
+        </ReturnLink>
+      </div>
     </div>
   );
 }

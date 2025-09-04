@@ -11,14 +11,14 @@ import {Form} from "@/components/Form";
 import {LocaleField} from "@/components/LocaleField";
 import {Routes} from "@/consts/routes";
 import type {CheckoutDelivery_CheckoutQuery} from "@/graphql/codegen/graphql";
-import {IntlLink} from "@/i18n/components/IntlLink";
 import {FormattedMessage} from "@/i18n/react-intl";
-import {ChevronLeftIcon} from "@/icons/ChevronLeftIcon";
 import {cn} from "@/utils/cn";
 import {isDefined} from "@/utils/is-defined";
 
 import {updateDelivery} from "../../_actions/update-delivery";
-import {ShippingMethods, SkeletonShippingMethods} from "./ShippingMethods";
+import {ReturnLink} from "../../_components/ReturnLink";
+import {Delivery} from "./Delivery";
+import {SkeletonDelivery} from "./Delivery";
 
 export function CheckoutDeliveryForm({
   queryRef,
@@ -45,18 +45,24 @@ export function CheckoutDeliveryForm({
         });
       }}
       className={cn("space-y-large-300")}>
-      <ShippingMethods checkout={data.checkout} />
+      <Delivery checkout={data.checkout} />
       <LocaleField />
       <ChannelField />
-      <CheckoutDeliveryActions>
+      <div className={cn("gap-base flex flex-col")}>
         <Button
           type="submit"
           size="large"
-          isPending={isPending}
-          isDisabled={isPending}>
+          isDisabled={isPending}
+          isPending={isPending}>
           <FormattedMessage id="xwOhyd" defaultMessage="Continue to delivery" />
         </Button>
-      </CheckoutDeliveryActions>
+        <ReturnLink href={Routes.checkout.information}>
+          <FormattedMessage
+            id="k2CDuD"
+            defaultMessage="Return to information"
+          />
+        </ReturnLink>
+      </div>
     </Form>
   );
 }
@@ -64,24 +70,18 @@ export function CheckoutDeliveryForm({
 export function SkeletonCheckoutDeliveryForm() {
   return (
     <div className={cn("space-y-large-300")}>
-      <SkeletonShippingMethods />
-      <CheckoutDeliveryActions>
-        <Button type="submit" size="large" isDisabled>
+      <SkeletonDelivery />
+      <div className={cn("gap-base flex flex-col")}>
+        <Button size="large" isDisabled>
           <FormattedMessage id="xwOhyd" defaultMessage="Continue to delivery" />
         </Button>
-      </CheckoutDeliveryActions>
-    </div>
-  );
-}
-
-function CheckoutDeliveryActions({children}: {children: React.ReactNode}) {
-  return (
-    <div className={cn("gap-base flex flex-col")}>
-      {children}
-      <IntlLink href={Routes.checkout.information}>
-        <ChevronLeftIcon aria-hidden className={cn("stroke-base-accent")} />
-        <FormattedMessage id="k2CDuD" defaultMessage="Return to information" />
-      </IntlLink>
+        <ReturnLink href={Routes.checkout.information}>
+          <FormattedMessage
+            id="k2CDuD"
+            defaultMessage="Return to information"
+          />
+        </ReturnLink>
+      </div>
     </div>
   );
 }

@@ -29816,6 +29816,33 @@ export type CheckoutBilling_CheckoutQuery = {
     | null;
 };
 
+export type CollectionPoints_CheckoutFragment = {
+  __typename?: "Checkout";
+  id: string;
+  deliveryMethod?:
+    | {__typename: "ShippingMethod"}
+    | {__typename: "Warehouse"; id: string}
+    | null;
+  availableCollectionPoints: Array<{
+    __typename?: "Warehouse";
+    id: string;
+    name: string;
+  }>;
+} & {" $fragmentName"?: "CollectionPoints_CheckoutFragment"};
+
+export type Delivery_CheckoutFragment = ({
+  __typename?: "Checkout";
+  deliveryMethod?:
+    | {__typename: "ShippingMethod"}
+    | {__typename: "Warehouse"}
+    | null;
+} & {
+  " $fragmentRefs"?: {
+    ShippingMethods_CheckoutFragment: ShippingMethods_CheckoutFragment;
+    CollectionPoints_CheckoutFragment: CollectionPoints_CheckoutFragment;
+  };
+}) & {" $fragmentName"?: "Delivery_CheckoutFragment"};
+
 export type DeliveryDays_ShippingMethodFragment = {
   __typename?: "ShippingMethod";
   id: string;
@@ -29827,8 +29854,8 @@ export type ShippingMethods_CheckoutFragment = {
   __typename?: "Checkout";
   id: string;
   deliveryMethod?:
-    | {__typename?: "ShippingMethod"; id: string}
-    | {__typename?: "Warehouse"}
+    | {__typename: "ShippingMethod"; id: string}
+    | {__typename: "Warehouse"}
     | null;
   shippingMethods: Array<
     {
@@ -29853,7 +29880,7 @@ export type CheckoutDelivery_CheckoutQuery = {
   checkout?:
     | ({__typename?: "Checkout"} & {
         " $fragmentRefs"?: {
-          ShippingMethods_CheckoutFragment: ShippingMethods_CheckoutFragment;
+          Delivery_CheckoutFragment: Delivery_CheckoutFragment;
         };
       })
     | null;
@@ -30169,6 +30196,7 @@ export const ShippingMethods_CheckoutFragmentDoc = {
             selectionSet: {
               kind: "SelectionSet",
               selections: [
+                {kind: "Field", name: {kind: "Name", value: "__typename"}},
                 {
                   kind: "InlineFragment",
                   typeCondition: {
@@ -30252,6 +30280,242 @@ export const ShippingMethods_CheckoutFragmentDoc = {
     },
   ],
 } as unknown as DocumentNode<ShippingMethods_CheckoutFragment, unknown>;
+export const CollectionPoints_CheckoutFragmentDoc = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "FragmentDefinition",
+      name: {kind: "Name", value: "CollectionPoints_Checkout"},
+      typeCondition: {
+        kind: "NamedType",
+        name: {kind: "Name", value: "Checkout"},
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {kind: "Field", name: {kind: "Name", value: "id"}},
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "deliveryMethod"},
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {kind: "Field", name: {kind: "Name", value: "__typename"}},
+                {
+                  kind: "InlineFragment",
+                  typeCondition: {
+                    kind: "NamedType",
+                    name: {kind: "Name", value: "Warehouse"},
+                  },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {kind: "Field", name: {kind: "Name", value: "id"}},
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "availableCollectionPoints"},
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {kind: "Field", name: {kind: "Name", value: "id"}},
+                {kind: "Field", name: {kind: "Name", value: "name"}},
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<CollectionPoints_CheckoutFragment, unknown>;
+export const Delivery_CheckoutFragmentDoc = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "FragmentDefinition",
+      name: {kind: "Name", value: "Delivery_Checkout"},
+      typeCondition: {
+        kind: "NamedType",
+        name: {kind: "Name", value: "Checkout"},
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "deliveryMethod"},
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {kind: "Field", name: {kind: "Name", value: "__typename"}},
+              ],
+            },
+          },
+          {
+            kind: "FragmentSpread",
+            name: {kind: "Name", value: "ShippingMethods_Checkout"},
+          },
+          {
+            kind: "FragmentSpread",
+            name: {kind: "Name", value: "CollectionPoints_Checkout"},
+          },
+        ],
+      },
+    },
+    {
+      kind: "FragmentDefinition",
+      name: {kind: "Name", value: "Money_Money"},
+      typeCondition: {kind: "NamedType", name: {kind: "Name", value: "Money"}},
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {kind: "Field", name: {kind: "Name", value: "currency"}},
+          {kind: "Field", name: {kind: "Name", value: "amount"}},
+        ],
+      },
+    },
+    {
+      kind: "FragmentDefinition",
+      name: {kind: "Name", value: "DeliveryDays_ShippingMethod"},
+      typeCondition: {
+        kind: "NamedType",
+        name: {kind: "Name", value: "ShippingMethod"},
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {kind: "Field", name: {kind: "Name", value: "id"}},
+          {kind: "Field", name: {kind: "Name", value: "minimumDeliveryDays"}},
+          {kind: "Field", name: {kind: "Name", value: "maximumDeliveryDays"}},
+        ],
+      },
+    },
+    {
+      kind: "FragmentDefinition",
+      name: {kind: "Name", value: "ShippingMethods_Checkout"},
+      typeCondition: {
+        kind: "NamedType",
+        name: {kind: "Name", value: "Checkout"},
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {kind: "Field", name: {kind: "Name", value: "id"}},
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "deliveryMethod"},
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {kind: "Field", name: {kind: "Name", value: "__typename"}},
+                {
+                  kind: "InlineFragment",
+                  typeCondition: {
+                    kind: "NamedType",
+                    name: {kind: "Name", value: "ShippingMethod"},
+                  },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {kind: "Field", name: {kind: "Name", value: "id"}},
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "shippingMethods"},
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {kind: "Field", name: {kind: "Name", value: "id"}},
+                {kind: "Field", name: {kind: "Name", value: "name"}},
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "price"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "FragmentSpread",
+                        name: {kind: "Name", value: "Money_Money"},
+                        directives: [
+                          {
+                            kind: "Directive",
+                            name: {kind: "Name", value: "unmask"},
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "FragmentSpread",
+                  name: {kind: "Name", value: "DeliveryDays_ShippingMethod"},
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: "FragmentDefinition",
+      name: {kind: "Name", value: "CollectionPoints_Checkout"},
+      typeCondition: {
+        kind: "NamedType",
+        name: {kind: "Name", value: "Checkout"},
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {kind: "Field", name: {kind: "Name", value: "id"}},
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "deliveryMethod"},
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {kind: "Field", name: {kind: "Name", value: "__typename"}},
+                {
+                  kind: "InlineFragment",
+                  typeCondition: {
+                    kind: "NamedType",
+                    name: {kind: "Name", value: "Warehouse"},
+                  },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {kind: "Field", name: {kind: "Name", value: "id"}},
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "availableCollectionPoints"},
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {kind: "Field", name: {kind: "Name", value: "id"}},
+                {kind: "Field", name: {kind: "Name", value: "name"}},
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<Delivery_CheckoutFragment, unknown>;
 export const Contact_CheckoutFragmentDoc = {
   kind: "Document",
   definitions: [
@@ -31260,7 +31524,7 @@ export const CheckoutDelivery_CheckoutDocument = {
               selections: [
                 {
                   kind: "FragmentSpread",
-                  name: {kind: "Name", value: "ShippingMethods_Checkout"},
+                  name: {kind: "Name", value: "Delivery_Checkout"},
                 },
               ],
             },
@@ -31313,6 +31577,7 @@ export const CheckoutDelivery_CheckoutDocument = {
             selectionSet: {
               kind: "SelectionSet",
               selections: [
+                {kind: "Field", name: {kind: "Name", value: "__typename"}},
                 {
                   kind: "InlineFragment",
                   typeCondition: {
@@ -31362,6 +31627,85 @@ export const CheckoutDelivery_CheckoutDocument = {
                 },
               ],
             },
+          },
+        ],
+      },
+    },
+    {
+      kind: "FragmentDefinition",
+      name: {kind: "Name", value: "CollectionPoints_Checkout"},
+      typeCondition: {
+        kind: "NamedType",
+        name: {kind: "Name", value: "Checkout"},
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {kind: "Field", name: {kind: "Name", value: "id"}},
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "deliveryMethod"},
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {kind: "Field", name: {kind: "Name", value: "__typename"}},
+                {
+                  kind: "InlineFragment",
+                  typeCondition: {
+                    kind: "NamedType",
+                    name: {kind: "Name", value: "Warehouse"},
+                  },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {kind: "Field", name: {kind: "Name", value: "id"}},
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "availableCollectionPoints"},
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {kind: "Field", name: {kind: "Name", value: "id"}},
+                {kind: "Field", name: {kind: "Name", value: "name"}},
+              ],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: "FragmentDefinition",
+      name: {kind: "Name", value: "Delivery_Checkout"},
+      typeCondition: {
+        kind: "NamedType",
+        name: {kind: "Name", value: "Checkout"},
+      },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "deliveryMethod"},
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {kind: "Field", name: {kind: "Name", value: "__typename"}},
+              ],
+            },
+          },
+          {
+            kind: "FragmentSpread",
+            name: {kind: "Name", value: "ShippingMethods_Checkout"},
+          },
+          {
+            kind: "FragmentSpread",
+            name: {kind: "Name", value: "CollectionPoints_Checkout"},
           },
         ],
       },

@@ -1,10 +1,4 @@
 {
-  "+JsDiH": [
-    {
-      "type": 0,
-      "value": "Ship to"
-    }
-  ],
   "/GCoTA": [
     {
       "type": 0,
@@ -67,22 +61,10 @@
       "value": "Postal code"
     }
   ],
-  "427Jxb": [
-    {
-      "type": 0,
-      "value": "Buy again"
-    }
-  ],
   "47FYwb": [
     {
       "type": 0,
       "value": "Cancel"
-    }
-  ],
-  "4RD+CZ": [
-    {
-      "type": 0,
-      "value": "Shipping method"
     }
   ],
   "5mUL+f": [
@@ -133,12 +115,6 @@
       "value": "Logging you out..."
     }
   ],
-  "Akc1Gk": [
-    {
-      "type": 0,
-      "value": "Return to shipping"
-    }
-  ],
   "AuwpCm": [
     {
       "type": 0,
@@ -155,12 +131,6 @@
     {
       "type": 0,
       "value": "City area"
-    }
-  ],
-  "BY343C": [
-    {
-      "type": 0,
-      "value": "Change"
     }
   ],
   "C9WQ46": [
@@ -235,6 +205,12 @@
     {
       "type": 0,
       "value": "Table View"
+    }
+  ],
+  "HJkcfg": [
+    {
+      "type": 0,
+      "value": "Return to delivery"
     }
   ],
   "I2BSqV": [
@@ -335,6 +311,12 @@
       "value": "Sort orders"
     }
   ],
+  "RzsKm8": [
+    {
+      "type": 0,
+      "value": "Shipping methods"
+    }
+  ],
   "SQJto2": [
     {
       "type": 0,
@@ -387,6 +369,12 @@
     {
       "type": 0,
       "value": "Street address 1"
+    }
+  ],
+  "aAMkSq": [
+    {
+      "type": 0,
+      "value": "Pick up"
     }
   ],
   "b7BHTd": [
@@ -569,6 +557,12 @@
       "value": "First name"
     }
   ],
+  "pRVSgm": [
+    {
+      "type": 0,
+      "value": "Collection points"
+    }
+  ],
   "pfbcZN": [
     {
       "type": 0,
@@ -589,6 +583,12 @@
     {
       "type": 0,
       "value": "Please enter your email and password to access your account"
+    }
+  ],
+  "riCv7f": [
+    {
+      "type": 0,
+      "value": "Ship"
     }
   ],
   "s3O2Si": [

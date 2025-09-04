@@ -50,9 +50,9 @@ export function BillingAddress({checkout}: BillingAddressProps) {
         <FormattedMessage id="6orx1c" defaultMessage="Billing address" />
       </Heading>
       <RadioGroup
+        variant="group"
         value={value}
         onChange={(newValue) => setValue(newValue as typeof value)}
-        variant="group"
         aria-labelledby={headingId}>
         <Radio value="yes">
           <FormattedMessage
@@ -82,8 +82,8 @@ export function BillingAddress({checkout}: BillingAddressProps) {
 
 export function SkeletonBillingAddress() {
   return (
-    <section className={cn("space-y-base")}>
+    <div className={cn("space-y-base")}>
       <SkeletonHeading />
-    </section>
+    </div>
   );
 }

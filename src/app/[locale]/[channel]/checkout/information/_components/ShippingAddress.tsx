@@ -22,22 +22,25 @@ const ShippingAddress_CheckoutFragment = graphql(`
   }
 `);
 
-interface CheckoutShippingAddressProps {
+interface ShippingAddressProps {
   checkout: FragmentType<ShippingAddress_CheckoutFragment>;
 }
 
-export function ShippingAddress({checkout}: CheckoutShippingAddressProps) {
+export function ShippingAddress({checkout}: ShippingAddressProps) {
   const {data, complete} = useFragment({
     fragment: ShippingAddress_CheckoutFragment,
     fragmentName: "ShippingAddress_Checkout",
     from: checkout,
   });
+  if (!complete) {
+    return <SkeletonShippingAddress />;
+  }
   return (
     <section className={cn("space-y-base")}>
       <Heading>
         <FormattedMessage id="DP5VOH" defaultMessage="Shipping Address" />
       </Heading>
-      {complete && isDefined(data.shippingAddress) ? (
+      {isDefined(data.shippingAddress) ? (
         <CompletedAddressFields address={data.shippingAddress} />
       ) : (
         <AddressFields />

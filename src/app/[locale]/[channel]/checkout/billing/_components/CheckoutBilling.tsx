@@ -11,13 +11,12 @@ import {Form} from "@/components/Form";
 import {LocaleField} from "@/components/LocaleField";
 import {Routes} from "@/consts/routes";
 import type {CheckoutBilling_CheckoutQuery} from "@/graphql/codegen/graphql";
-import {IntlLink} from "@/i18n/components/IntlLink";
 import {FormattedMessage} from "@/i18n/react-intl";
-import {ChevronLeftIcon} from "@/icons/ChevronLeftIcon";
 import {cn} from "@/utils/cn";
 import {isDefined} from "@/utils/is-defined";
 
 import {updateBilling} from "../../_actions/update-billing";
+import {ReturnLink} from "../../_components/ReturnLink";
 import {BillingAddress, SkeletonBillingAddress} from "./BillingAddress";
 
 export function CheckoutBillingForm({
@@ -48,15 +47,18 @@ export function CheckoutBillingForm({
       <BillingAddress checkout={data.checkout} />
       <LocaleField />
       <ChannelField />
-      <CheckoutBillingActions>
+      <div className={cn("gap-base flex flex-col")}>
         <Button
           type="submit"
           size="large"
-          isPending={isPending}
-          isDisabled={isPending}>
+          isDisabled={isPending}
+          isPending={isPending}>
           <FormattedMessage id="lD3+8a" defaultMessage="Pay" />
         </Button>
-      </CheckoutBillingActions>
+        <ReturnLink href={Routes.checkout.delivery}>
+          <FormattedMessage id="HJkcfg" defaultMessage="Return to delivery" />
+        </ReturnLink>
+      </div>
     </Form>
   );
 }
@@ -65,23 +67,14 @@ export function SkeletonCheckoutBillingForm() {
   return (
     <div className={cn("space-y-large-300")}>
       <SkeletonBillingAddress />
-      <CheckoutBillingActions>
-        <Button type="submit" size="large" isDisabled>
+      <div className={cn("gap-base flex flex-col")}>
+        <Button size="large" isDisabled>
           <FormattedMessage id="lD3+8a" defaultMessage="Pay" />
         </Button>
-      </CheckoutBillingActions>
-    </div>
-  );
-}
-
-function CheckoutBillingActions({children}: {children: React.ReactNode}) {
-  return (
-    <div className={cn("gap-base flex flex-col")}>
-      {children}
-      <IntlLink href={Routes.checkout.delivery}>
-        <ChevronLeftIcon aria-hidden className={cn("stroke-base-accent")} />
-        <FormattedMessage id="Akc1Gk" defaultMessage="Return to shipping" />
-      </IntlLink>
+        <ReturnLink href={Routes.checkout.delivery}>
+          <FormattedMessage id="HJkcfg" defaultMessage="Return to delivery" />
+        </ReturnLink>
+      </div>
     </div>
   );
 }

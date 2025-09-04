@@ -9,7 +9,7 @@ export function WarningIcon(props: React.ComponentProps<"svg">) {
       viewBox="0 0 18 18"
       fill="none"
       {...props}
-      className={cn("stroke-success-icon shrink-0", props.className)}>
+      className={cn("stroke-base-icon shrink-0", props.className)}>
       <path d="M9 7.19922L9 9.89922" strokeWidth="1.4" strokeLinecap="round" />
       <circle cx="9.00006" cy="12.6009" r="0.257143" strokeWidth="1.4" />
       <path

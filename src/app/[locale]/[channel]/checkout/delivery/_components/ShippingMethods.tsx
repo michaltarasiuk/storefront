@@ -2,7 +2,6 @@
 
 import {type FragmentType, useFragment} from "@apollo/client";
 import {useId} from "react";
-import invariant from "tiny-invariant";
 
 import {Heading, SkeletonHeading} from "@/components/Heading";
 import {Money} from "@/components/Money";
@@ -14,12 +13,14 @@ import {FormattedMessage} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
 import {isDefined} from "@/utils/is-defined";
 
+import {isShippingMethod} from "../../_utils/delivery-method";
 import {DeliveryDays} from "./DeliveryDays";
 
 const ShippingMethods_CheckoutFragment = graphql(`
   fragment ShippingMethods_Checkout on Checkout {
     id
     deliveryMethod {
+      __typename
       ... on ShippingMethod {
         id
       }
@@ -46,25 +47,23 @@ export function ShippingMethods({checkout}: ShippingMethodsProps) {
     from: checkout,
   });
   const headingId = useId();
-  function getDefaultValue() {
-    if (!isDefined(data.deliveryMethod)) {
-      return;
-    }
-    invariant(data.deliveryMethod.__typename === "ShippingMethod");
-    return data.deliveryMethod.id;
-  }
   if (!complete) {
     return <SkeletonShippingMethods />;
   }
   return (
     <section className={cn("space-y-base")}>
       <Heading id={headingId}>
-        <FormattedMessage id="4RD+CZ" defaultMessage="Shipping method" />
+        <FormattedMessage id="RzsKm8" defaultMessage="Shipping methods" />
       </Heading>
       <RadioGroup
-        name="deliveryMethodId"
-        defaultValue={getDefaultValue()}
         variant="group"
+        name="deliveryMethodId"
+        defaultValue={
+          isDefined(data.deliveryMethod) &&
+          isShippingMethod(data.deliveryMethod)
+            ? data.deliveryMethod.id
+            : undefined
+        }
         aria-labelledby={headingId}
         isRequired>
         {data.shippingMethods.map((shippingMethod) => (
@@ -90,8 +89,8 @@ export function ShippingMethods({checkout}: ShippingMethodsProps) {
 
 export function SkeletonShippingMethods() {
   return (
-    <section className={cn("space-y-base")}>
+    <div className={cn("space-y-base")}>
       <SkeletonHeading />
-    </section>
+    </div>
   );
 }
