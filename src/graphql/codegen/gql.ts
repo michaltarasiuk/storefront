@@ -23,7 +23,7 @@ type Documents = {
   "\n  mutation AddressUpdate($id: ID!, $address: AddressInput!) {\n    checkoutShippingAddressUpdate(id: $id, shippingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n": typeof types.AddressUpdateDocument;
   "\n  fragment BillingAddress_Checkout on Checkout {\n    id\n    shippingAddress {\n      ...AddressFields_Address\n    }\n    billingAddress {\n      ...AddressFields_Address\n    }\n  }\n": typeof types.BillingAddress_CheckoutFragmentDoc;
   "\n  query CheckoutBilling_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...BillingAddress_Checkout\n    }\n  }\n": typeof types.CheckoutBilling_CheckoutDocument;
-  "\n  fragment CollectionPoints_Checkout on Checkout {\n    id\n    deliveryMethod {\n      __typename\n      ... on Warehouse {\n        id\n      }\n    }\n    availableCollectionPoints {\n      id\n      name\n    }\n  }\n": typeof types.CollectionPoints_CheckoutFragmentDoc;
+  "\n  fragment CollectionPoints_Checkout on Checkout {\n    id\n    deliveryMethod {\n      __typename\n      ... on Warehouse {\n        id\n      }\n    }\n    availableCollectionPoints {\n      id\n      address {\n        companyName\n      }\n    }\n  }\n": typeof types.CollectionPoints_CheckoutFragmentDoc;
   "\n  fragment Delivery_Checkout on Checkout {\n    deliveryMethod {\n      __typename\n    }\n    ...ShippingMethods_Checkout\n    ...CollectionPoints_Checkout\n  }\n": typeof types.Delivery_CheckoutFragmentDoc;
   "\n  fragment DeliveryDays_ShippingMethod on ShippingMethod {\n    id\n    minimumDeliveryDays\n    maximumDeliveryDays\n  }\n": typeof types.DeliveryDays_ShippingMethodFragmentDoc;
   "\n  fragment ShippingMethods_Checkout on Checkout {\n    id\n    deliveryMethod {\n      __typename\n      ... on ShippingMethod {\n        id\n      }\n    }\n    shippingMethods {\n      id\n      name\n      price {\n        ...Money_Money @unmask\n      }\n      ...DeliveryDays_ShippingMethod\n    }\n  }\n": typeof types.ShippingMethods_CheckoutFragmentDoc;
@@ -59,7 +59,7 @@ const documents: Documents = {
     types.BillingAddress_CheckoutFragmentDoc,
   "\n  query CheckoutBilling_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...BillingAddress_Checkout\n    }\n  }\n":
     types.CheckoutBilling_CheckoutDocument,
-  "\n  fragment CollectionPoints_Checkout on Checkout {\n    id\n    deliveryMethod {\n      __typename\n      ... on Warehouse {\n        id\n      }\n    }\n    availableCollectionPoints {\n      id\n      name\n    }\n  }\n":
+  "\n  fragment CollectionPoints_Checkout on Checkout {\n    id\n    deliveryMethod {\n      __typename\n      ... on Warehouse {\n        id\n      }\n    }\n    availableCollectionPoints {\n      id\n      address {\n        companyName\n      }\n    }\n  }\n":
     types.CollectionPoints_CheckoutFragmentDoc,
   "\n  fragment Delivery_Checkout on Checkout {\n    deliveryMethod {\n      __typename\n    }\n    ...ShippingMethods_Checkout\n    ...CollectionPoints_Checkout\n  }\n":
     types.Delivery_CheckoutFragmentDoc,
@@ -165,8 +165,8 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  fragment CollectionPoints_Checkout on Checkout {\n    id\n    deliveryMethod {\n      __typename\n      ... on Warehouse {\n        id\n      }\n    }\n    availableCollectionPoints {\n      id\n      name\n    }\n  }\n",
-): (typeof documents)["\n  fragment CollectionPoints_Checkout on Checkout {\n    id\n    deliveryMethod {\n      __typename\n      ... on Warehouse {\n        id\n      }\n    }\n    availableCollectionPoints {\n      id\n      name\n    }\n  }\n"];
+  source: "\n  fragment CollectionPoints_Checkout on Checkout {\n    id\n    deliveryMethod {\n      __typename\n      ... on Warehouse {\n        id\n      }\n    }\n    availableCollectionPoints {\n      id\n      address {\n        companyName\n      }\n    }\n  }\n",
+): (typeof documents)["\n  fragment CollectionPoints_Checkout on Checkout {\n    id\n    deliveryMethod {\n      __typename\n      ... on Warehouse {\n        id\n      }\n    }\n    availableCollectionPoints {\n      id\n      address {\n        companyName\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

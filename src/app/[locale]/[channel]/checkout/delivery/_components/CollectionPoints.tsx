@@ -25,7 +25,9 @@ const CollectionPoints_CheckoutFragment = graphql(`
     }
     availableCollectionPoints {
       id
-      name
+      address {
+        companyName
+      }
     }
   }
 `);
@@ -62,7 +64,7 @@ export function CollectionPoints({checkout}: CollectionPointsProps) {
         isRequired>
         {data.availableCollectionPoints.map((collectionPoint) => (
           <Radio key={collectionPoint.id} value={collectionPoint.id}>
-            {collectionPoint.name}
+            {collectionPoint.address.companyName}
           </Radio>
         ))}
       </RadioGroup>

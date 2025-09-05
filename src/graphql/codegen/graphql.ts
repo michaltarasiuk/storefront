@@ -29826,7 +29826,7 @@ export type CollectionPoints_CheckoutFragment = {
   availableCollectionPoints: Array<{
     __typename?: "Warehouse";
     id: string;
-    name: string;
+    address: {__typename?: "Address"; companyName: string};
   }>;
 } & {" $fragmentName"?: "CollectionPoints_CheckoutFragment"};
 
@@ -30324,7 +30324,19 @@ export const CollectionPoints_CheckoutFragmentDoc = {
               kind: "SelectionSet",
               selections: [
                 {kind: "Field", name: {kind: "Name", value: "id"}},
-                {kind: "Field", name: {kind: "Name", value: "name"}},
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "address"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: {kind: "Name", value: "companyName"},
+                      },
+                    ],
+                  },
+                },
               ],
             },
           },
@@ -30507,7 +30519,19 @@ export const Delivery_CheckoutFragmentDoc = {
               kind: "SelectionSet",
               selections: [
                 {kind: "Field", name: {kind: "Name", value: "id"}},
-                {kind: "Field", name: {kind: "Name", value: "name"}},
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "address"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: {kind: "Name", value: "companyName"},
+                      },
+                    ],
+                  },
+                },
               ],
             },
           },
@@ -31672,7 +31696,19 @@ export const CheckoutDelivery_CheckoutDocument = {
               kind: "SelectionSet",
               selections: [
                 {kind: "Field", name: {kind: "Name", value: "id"}},
-                {kind: "Field", name: {kind: "Name", value: "name"}},
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "address"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: {kind: "Name", value: "companyName"},
+                      },
+                    ],
+                  },
+                },
               ],
             },
           },

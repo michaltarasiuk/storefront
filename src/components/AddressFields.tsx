@@ -16,6 +16,7 @@ import {QuestionIcon} from "@/icons/QuestionIcon";
 import {ChannelContext} from "@/modules/channels/channel-context";
 import type {AddressSchema} from "@/utils/address";
 import {cn} from "@/utils/cn";
+import {isDefined} from "@/utils/is-defined";
 
 import {IconButton} from "./IconButton";
 import {SkeletonInput} from "./Input";
@@ -192,8 +193,14 @@ export function AddressFields({
             />
           ) : (
             <Select
+              key={countryCode}
               name={"countryArea" satisfies AddressField}
-              defaultSelectedKey={defaultValues?.countryArea}
+              defaultSelectedKey={
+                isDefined(defaultValues) &&
+                countryCode === defaultValues.country.code
+                  ? defaultValues.countryArea
+                  : undefined
+              }
               label={intl.formatMessage({
                 id: "AuwpCm",
                 defaultMessage: "Country area",
