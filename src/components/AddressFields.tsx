@@ -3,10 +3,13 @@
 import type {FragmentType} from "@apollo/client";
 import {useFragment} from "@apollo/client";
 import {use, useState, useTransition} from "react";
-import * as z from "zod";
+import type * as z from "zod";
 
 import {graphql} from "@/graphql/codegen";
-import type {AddressFields_AddressFragment} from "@/graphql/codegen/graphql";
+import type {
+  AddressFields_AddressFragment,
+  ChoiceValue,
+} from "@/graphql/codegen/graphql";
 import {useAddressValidationRules} from "@/hooks/use-address-validation-rules";
 import {useLocale} from "@/i18n/hooks/use-locale";
 import {FormattedMessage, useIntl} from "@/i18n/react-intl";
@@ -67,7 +70,7 @@ export function AddressFields({
 }) {
   const locale = useLocale();
   const [countryCode, setCountryCode] = useState(
-    isCountryCode(defaultValues?.country.code)
+    isDefined(defaultValues) && isCountryCode(defaultValues.country.code)
       ? defaultValues.country.code
       : localeToCountryCode(locale),
   );
@@ -79,6 +82,7 @@ export function AddressFields({
     postalCodeExamples,
     isFieldAllowed,
     isFieldRequired,
+    isFieldUpper,
   } = useAddressValidationRules(countryCode);
   const intl = useIntl();
   return (
@@ -114,6 +118,7 @@ export function AddressFields({
               defaultMessage: "First name",
             })}
             isRequired={isFieldRequired("name")}
+            isUpper={isFieldUpper("name")}
             className={cn("flex-1")}
           />
           <TextField
@@ -124,6 +129,7 @@ export function AddressFields({
               defaultMessage: "Last name",
             })}
             isRequired={isFieldRequired("name")}
+            isUpper={isFieldUpper("name")}
             className={cn("flex-1")}
           />
         </div>
@@ -137,6 +143,7 @@ export function AddressFields({
             defaultMessage: "Phone",
           })}
           isRequired={isFieldRequired("phone")}
+          isUpper={isFieldUpper("phone")}
         />
       )}
       {isFieldAllowed("companyName") && (
@@ -148,6 +155,7 @@ export function AddressFields({
             defaultMessage: "Company name",
           })}
           isRequired={isFieldRequired("companyName")}
+          isUpper={isFieldUpper("companyName")}
         />
       )}
       {(isFieldAllowed("streetAddress1") ||
@@ -162,6 +170,7 @@ export function AddressFields({
                 defaultMessage: "Street address 1",
               })}
               isRequired={isFieldRequired("streetAddress1")}
+              isUpper={isFieldUpper("streetAddress1")}
               className={cn("flex-1")}
             />
           )}
@@ -174,6 +183,7 @@ export function AddressFields({
                 defaultMessage: "Street address 2",
               })}
               isRequired={isFieldRequired("streetAddress2")}
+              isUpper={isFieldUpper("streetAddress2")}
               className={cn("flex-1")}
             />
           )}
@@ -184,12 +194,18 @@ export function AddressFields({
           {!countryAreaChoices.length ? (
             <TextField
               name={"countryArea" satisfies AddressField}
-              defaultValue={defaultValues?.countryArea}
+              defaultValue={
+                isDefined(defaultValues) &&
+                countryCode === defaultValues.country.code
+                  ? defaultValues.countryArea
+                  : undefined
+              }
               label={intl.formatMessage({
                 id: "AuwpCm",
                 defaultMessage: "Country area",
               })}
               isRequired={isFieldRequired("countryArea")}
+              isUpper={isFieldUpper("countryArea")}
             />
           ) : (
             <Select
@@ -207,7 +223,7 @@ export function AddressFields({
               })}
               isRequired={isFieldRequired("countryArea")}>
               {countryAreaChoices
-                .filter(isValidChoice)
+                .filter(isValidChoiceValue)
                 .map(({raw, verbose}) => (
                   <SelectItem key={verbose} id={raw} textValue={verbose}>
                     {verbose}
@@ -242,6 +258,7 @@ export function AddressFields({
             </TooltipTrigger>
           }
           isRequired={isFieldRequired("postalCode")}
+          isUpper={isFieldUpper("postalCode")}
         />
       )}
       {(isFieldAllowed("city") || isFieldAllowed("cityArea")) && (
@@ -257,6 +274,7 @@ export function AddressFields({
                     defaultMessage: "City",
                   })}
                   isRequired={isFieldRequired("city")}
+                  isUpper={isFieldUpper("city")}
                 />
               ) : (
                 <Select
@@ -267,11 +285,13 @@ export function AddressFields({
                     defaultMessage: "City",
                   })}
                   isRequired={isFieldRequired("city")}>
-                  {cityChoices.filter(isValidChoice).map(({raw, verbose}) => (
-                    <SelectItem key={raw} id={raw} textValue={verbose}>
-                      {verbose}
-                    </SelectItem>
-                  ))}
+                  {cityChoices
+                    .filter(isValidChoiceValue)
+                    .map(({raw, verbose}) => (
+                      <SelectItem key={raw} id={raw} textValue={verbose}>
+                        {verbose}
+                      </SelectItem>
+                    ))}
                 </Select>
               )}
             </div>
@@ -287,6 +307,7 @@ export function AddressFields({
                     defaultMessage: "City area",
                   })}
                   isRequired={isFieldRequired("cityArea")}
+                  isUpper={isFieldUpper("cityArea")}
                 />
               ) : (
                 <Select
@@ -298,7 +319,7 @@ export function AddressFields({
                   })}
                   isRequired={isFieldRequired("cityArea")}>
                   {cityAreaChoices
-                    .filter(isValidChoice)
+                    .filter(isValidChoiceValue)
                     .map(({raw, verbose}) => (
                       <SelectItem key={raw} id={raw} textValue={verbose}>
                         {verbose}
@@ -337,10 +358,8 @@ export function SkeletonAddressFields() {
   );
 }
 
-const ChoiceSchema = z.object({
-  raw: z.string(),
-  verbose: z.string(),
-});
-function isValidChoice(value: unknown): value is z.infer<typeof ChoiceSchema> {
-  return ChoiceSchema.safeParse(value).success;
+function isValidChoiceValue(
+  value: ChoiceValue,
+): value is Record<"raw" | "verbose", string> {
+  return isDefined(value.raw) && isDefined(value.verbose);
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import {cva, type VariantProps} from "class-variance-authority";
 import {
   Label,
   TextField as AriaTextField,
@@ -12,7 +13,17 @@ import {FieldError} from "./FieldError";
 import {Input} from "./Input";
 import {Text} from "./Text";
 
-interface TextFieldProps extends AriaTextFieldProps {
+const input = cva(["h-input p-small-100", "[&:not(:placeholder-shown)]:pt-6"], {
+  variants: {
+    isUpper: {
+      true: "[&:not(:placeholder-shown)]:uppercase",
+    },
+  },
+});
+
+interface TextFieldProps
+  extends AriaTextFieldProps,
+    VariantProps<typeof input> {
   label: string;
   description?: string;
   accessory?: React.ReactNode;
@@ -22,6 +33,7 @@ export function TextField({
   label,
   description,
   accessory,
+  isUpper,
   ...props
 }: TextFieldProps) {
   return (
@@ -37,8 +49,9 @@ export function TextField({
         <Input
           placeholder={label}
           className={cn(
-            "h-input p-small-100",
-            "[&:not(:placeholder-shown)]:pt-6",
+            input({
+              isUpper,
+            }),
           )}
         />
         {isDefined(accessory) && (
