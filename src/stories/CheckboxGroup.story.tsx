@@ -23,19 +23,13 @@ const meta = {
       options: ["base", "group"] satisfies CheckboxGroupProps["variant"][],
     },
     isDisabled: {
-      control: {
-        type: "boolean",
-      },
+      control: "boolean",
     },
     isReadOnly: {
-      control: {
-        type: "boolean",
-      },
+      control: "boolean",
     },
     isInvalid: {
-      control: {
-        type: "boolean",
-      },
+      control: "boolean",
     },
   },
 } satisfies Meta<typeof CheckboxGroupDemo>;

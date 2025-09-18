@@ -16,7 +16,6 @@ const meta = {
     },
     autoFocus: {
       control: "boolean",
-      description: "Whether the element should receive focus on render.",
     },
   },
 } satisfies Meta<typeof TextArea>;

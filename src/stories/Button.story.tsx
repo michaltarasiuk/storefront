@@ -36,14 +36,10 @@ const meta = {
       ] satisfies ButtonProps["size"][],
     },
     isDisabled: {
-      control: {
-        type: "boolean",
-      },
+      control: "boolean",
     },
     isPending: {
-      control: {
-        type: "boolean",
-      },
+      control: "boolean",
     },
   },
 } satisfies Meta<typeof Button>;

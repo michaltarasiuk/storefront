@@ -13,24 +13,16 @@ const meta = {
       },
     },
     defaultSelected: {
-      control: {
-        type: "boolean",
-      },
+      control: "boolean",
     },
     isDisabled: {
-      control: {
-        type: "boolean",
-      },
+      control: "boolean",
     },
     isReadOnly: {
-      control: {
-        type: "boolean",
-      },
+      control: "boolean",
     },
     autoFocus: {
-      control: {
-        type: "boolean",
-      },
+      control: "boolean",
     },
   },
 } satisfies Meta<typeof Switch>;
