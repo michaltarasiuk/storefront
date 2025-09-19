@@ -29,6 +29,7 @@ type Documents = {
   "\n  fragment DeliveryDays_ShippingMethod on ShippingMethod {\n    id\n    minimumDeliveryDays\n    maximumDeliveryDays\n  }\n": typeof types.DeliveryDays_ShippingMethodFragmentDoc;
   "\n  fragment ShippingMethods_Checkout on Checkout {\n    id\n    deliveryMethod {\n      __typename\n      ... on ShippingMethod {\n        id\n      }\n    }\n    shippingMethods {\n      id\n      name\n      price {\n        ...Money_Money @unmask\n      }\n      ...DeliveryDays_ShippingMethod\n    }\n  }\n": typeof types.ShippingMethods_CheckoutFragmentDoc;
   "\n  query CheckoutDelivery_Checkout($id: ID!) {\n    checkout(id: $id) {\n      shippingAddress {\n        __typename\n      }\n      ...Delivery_Checkout\n    }\n  }\n": typeof types.CheckoutDelivery_CheckoutDocument;
+  "\n  mutation DemoCheckoutCreate($input: CheckoutCreateInput!) {\n    checkoutCreate(input: $input) {\n      checkout {\n        id\n      }\n    }\n  }\n": typeof types.DemoCheckoutCreateDocument;
   "\n  fragment Contact_Checkout on Checkout {\n    id\n    email\n  }\n": typeof types.Contact_CheckoutFragmentDoc;
   "\n  fragment ShippingAddress_Checkout on Checkout {\n    shippingAddress {\n      ...AddressFields_Address\n    }\n  }\n": typeof types.ShippingAddress_CheckoutFragmentDoc;
   "\n  query CheckoutInformation_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...Contact_Checkout\n      ...ShippingAddress_Checkout\n    }\n  }\n": typeof types.CheckoutInformation_CheckoutDocument;
@@ -72,6 +73,8 @@ const documents: Documents = {
     types.ShippingMethods_CheckoutFragmentDoc,
   "\n  query CheckoutDelivery_Checkout($id: ID!) {\n    checkout(id: $id) {\n      shippingAddress {\n        __typename\n      }\n      ...Delivery_Checkout\n    }\n  }\n":
     types.CheckoutDelivery_CheckoutDocument,
+  "\n  mutation DemoCheckoutCreate($input: CheckoutCreateInput!) {\n    checkoutCreate(input: $input) {\n      checkout {\n        id\n      }\n    }\n  }\n":
+    types.DemoCheckoutCreateDocument,
   "\n  fragment Contact_Checkout on Checkout {\n    id\n    email\n  }\n":
     types.Contact_CheckoutFragmentDoc,
   "\n  fragment ShippingAddress_Checkout on Checkout {\n    shippingAddress {\n      ...AddressFields_Address\n    }\n  }\n":
@@ -200,6 +203,12 @@ export function graphql(
 export function graphql(
   source: "\n  query CheckoutDelivery_Checkout($id: ID!) {\n    checkout(id: $id) {\n      shippingAddress {\n        __typename\n      }\n      ...Delivery_Checkout\n    }\n  }\n",
 ): (typeof documents)["\n  query CheckoutDelivery_Checkout($id: ID!) {\n    checkout(id: $id) {\n      shippingAddress {\n        __typename\n      }\n      ...Delivery_Checkout\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  mutation DemoCheckoutCreate($input: CheckoutCreateInput!) {\n    checkoutCreate(input: $input) {\n      checkout {\n        id\n      }\n    }\n  }\n",
+): (typeof documents)["\n  mutation DemoCheckoutCreate($input: CheckoutCreateInput!) {\n    checkoutCreate(input: $input) {\n      checkout {\n        id\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

@@ -29970,6 +29970,18 @@ export type CheckoutDelivery_CheckoutQuery = {
     | null;
 };
 
+export type DemoCheckoutCreateMutationVariables = Exact<{
+  input: CheckoutCreateInput;
+}>;
+
+export type DemoCheckoutCreateMutation = {
+  __typename?: "Mutation";
+  checkoutCreate?: {
+    __typename?: "CheckoutCreate";
+    checkout?: {__typename?: "Checkout"; id: string} | null;
+  } | null;
+};
+
 export type Contact_CheckoutFragment = {
   __typename?: "Checkout";
   id: string;
@@ -31960,6 +31972,63 @@ export const CheckoutDelivery_CheckoutDocument = {
 } as unknown as DocumentNode<
   CheckoutDelivery_CheckoutQuery,
   CheckoutDelivery_CheckoutQueryVariables
+>;
+export const DemoCheckoutCreateDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "mutation",
+      name: {kind: "Name", value: "DemoCheckoutCreate"},
+      variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: {kind: "Variable", name: {kind: "Name", value: "input"}},
+          type: {
+            kind: "NonNullType",
+            type: {
+              kind: "NamedType",
+              name: {kind: "Name", value: "CheckoutCreateInput"},
+            },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "checkoutCreate"},
+            arguments: [
+              {
+                kind: "Argument",
+                name: {kind: "Name", value: "input"},
+                value: {kind: "Variable", name: {kind: "Name", value: "input"}},
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "checkout"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {kind: "Field", name: {kind: "Name", value: "id"}},
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  DemoCheckoutCreateMutation,
+  DemoCheckoutCreateMutationVariables
 >;
 export const CheckoutInformation_CheckoutDocument = {
   kind: "Document",
