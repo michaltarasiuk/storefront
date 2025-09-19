@@ -3,6 +3,7 @@ import {type NextRequest, NextResponse} from "next/server";
 import {Routes} from "@/consts/routes";
 import {getClient} from "@/graphql/apollo-client";
 import {graphql} from "@/graphql/codegen";
+import type {CheckoutLineInput} from "@/graphql/codegen/graphql";
 import {DefaultLocale} from "@/i18n/consts";
 import {DefaultChannel} from "@/modules/channels/consts";
 import {setCheckoutId} from "@/modules/checkout/utils/cookies";
@@ -25,7 +26,7 @@ export async function GET({nextUrl: {origin}}: NextRequest) {
     variables: {
       input: {
         channel: DefaultChannel,
-        lines: [],
+        lines: CheckoutLines,
       },
     },
   });
@@ -41,3 +42,10 @@ export async function GET({nextUrl: {origin}}: NextRequest) {
   );
   return NextResponse.redirect(new URL(pathname, origin));
 }
+
+const CheckoutLines: CheckoutLineInput[] = [
+  {
+    variantId: "UHJvZHVjdFZhcmlhbnQ6Mzg3",
+    quantity: 1,
+  },
+];
