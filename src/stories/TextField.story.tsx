@@ -5,13 +5,13 @@ import {TextField} from "@/components/TextField";
 const meta = {
   component: TextField,
   argTypes: {
-    isInvalid: {
-      control: "boolean",
-    },
     isDisabled: {
       control: "boolean",
     },
     isReadOnly: {
+      control: "boolean",
+    },
+    isInvalid: {
       control: "boolean",
     },
     autoFocus: {

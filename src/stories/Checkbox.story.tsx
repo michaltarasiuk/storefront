@@ -21,6 +21,9 @@ const meta = {
     isReadOnly: {
       control: "boolean",
     },
+    isInvalid: {
+      control: "boolean",
+    },
     autoFocus: {
       control: "boolean",
     },
