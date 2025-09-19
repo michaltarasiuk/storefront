@@ -119,11 +119,11 @@
   "K3r6DQ": {
     "defaultMessage": "Delete"
   },
-  "KinTIy": {
-    "defaultMessage": "Enter email"
-  },
   "MRNNXA": {
     "defaultMessage": "Return to cart"
+  },
+  "N/nrM1": {
+    "defaultMessage": "Email or phone number"
   },
   "N1cjj/": {
     "defaultMessage": "Email used for login can't be changed"
@@ -236,9 +236,6 @@
   "k81S1y": {
     "defaultMessage": "Logo"
   },
-  "lD3+8a": {
-    "defaultMessage": "Pay"
-  },
   "lcPfsu": {
     "defaultMessage": "Hide order summary"
   },
@@ -295,6 +292,9 @@
   },
   "vqKTqE": {
     "defaultMessage": "Order total (low to high)"
+  },
+  "vqYYF3": {
+    "defaultMessage": "Continue to review"
   },
   "vx0nkZ": {
     "defaultMessage": "Privacy Policy"

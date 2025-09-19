@@ -58,7 +58,7 @@ export function CheckoutBillingForm({
           size="large"
           isDisabled={isPending}
           isPending={isPending}>
-          <FormattedMessage id="lD3+8a" defaultMessage="Pay" />
+          <FormattedMessage id="vqYYF3" defaultMessage="Continue to review" />
         </Button>
         <ReturnLink href={Routes.checkout.delivery}>
           <FormattedMessage id="HJkcfg" defaultMessage="Return to delivery" />
@@ -74,7 +74,7 @@ export function SkeletonCheckoutBillingForm() {
       <SkeletonBillingAddress />
       <div className={cn("gap-base flex flex-col")}>
         <Button size="large" isDisabled>
-          <FormattedMessage id="lD3+8a" defaultMessage="Pay" />
+          <FormattedMessage id="vqYYF3" defaultMessage="Continue to review" />
         </Button>
         <ReturnLink href={Routes.checkout.delivery}>
           <FormattedMessage id="HJkcfg" defaultMessage="Return to delivery" />

@@ -1,7 +1,8 @@
 "use client";
 
 import {type FragmentType, useFragment} from "@apollo/client";
-import {Suspense, useId, useState} from "react";
+import {useId, useState} from "react";
+import {VisuallyHidden} from "react-aria";
 
 import {
   AddressFields,
@@ -44,7 +45,7 @@ export function BillingAddress({checkout}: BillingAddressProps) {
   if (!complete) {
     return <SkeletonAddressFields />;
   }
-  const address = data.billingAddress ?? data.shippingAddress;
+  const {shippingAddress, billingAddress = shippingAddress} = data;
   return (
     <section className={cn("space-y-base")}>
       <Heading id={headingId}>
@@ -68,15 +69,17 @@ export function BillingAddress({checkout}: BillingAddressProps) {
           />
         </Radio>
       </RadioGroup>
-      {value === "no" && (
-        <Suspense fallback={<SkeletonAddressFields />}>
-          {isDefined(address) ? (
-            <CompletedAddressFields address={address} />
-          ) : (
-            <AddressFields />
-          )}
-        </Suspense>
+      {value === "yes" && (
+        <VisuallyHidden>
+          <CompletedAddressFields address={shippingAddress!} />
+        </VisuallyHidden>
       )}
+      {value === "no" &&
+        (isDefined(billingAddress) ? (
+          <CompletedAddressFields address={billingAddress} />
+        ) : (
+          <AddressFields />
+        ))}
     </section>
   );
 }

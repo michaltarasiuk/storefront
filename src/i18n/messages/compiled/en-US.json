@@ -263,16 +263,16 @@
       "value": "Delete"
     }
   ],
-  "KinTIy": [
-    {
-      "type": 0,
-      "value": "Enter email"
-    }
-  ],
   "MRNNXA": [
     {
       "type": 0,
       "value": "Return to cart"
+    }
+  ],
+  "N/nrM1": [
+    {
+      "type": 0,
+      "value": "Email or phone number"
     }
   ],
   "N1cjj/": [
@@ -509,12 +509,6 @@
       "value": "Logo"
     }
   ],
-  "lD3+8a": [
-    {
-      "type": 0,
-      "value": "Pay"
-    }
-  ],
   "lcPfsu": [
     {
       "type": 0,
@@ -631,6 +625,12 @@
     {
       "type": 0,
       "value": "Order total (low to high)"
+    }
+  ],
+  "vqYYF3": [
+    {
+      "type": 0,
+      "value": "Continue to review"
     }
   ],
   "vx0nkZ": [
