@@ -62,7 +62,7 @@ export function SkeletonText({inlineSize, size, className}: SkeletonTextProps) {
   );
 }
 
-const skeletonText = cva("flex h-[1lh] w-full max-w-36 items-center", {
+const skeletonText = cva("flex h-[1lh] w-full items-center", {
   variants: {
     inlineSize: {
       small: "max-w-20",

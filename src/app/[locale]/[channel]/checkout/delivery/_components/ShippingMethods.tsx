@@ -91,7 +91,7 @@ export function SkeletonShippingMethods() {
   return (
     <div className={cn("space-y-base")}>
       <SkeletonHeading />
-      <SkeletonRadioGroup variant="group" label>
+      <SkeletonRadioGroup variant="group">
         <SkeletonRadio />
         <SkeletonRadio />
         <SkeletonRadio />

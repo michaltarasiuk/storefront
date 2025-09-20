@@ -27,7 +27,7 @@ export function Checkbox({
     <AriaCheckbox
       {...props}
       className={cn(
-        "gap-small-100 relative flex cursor-pointer items-center",
+        "gap-small-100 relative flex cursor-pointer",
         "disabled:cursor-default disabled:opacity-50",
         "read-only:opacity-50",
         "group-data-[variant=group]:p-base group-data-[variant=group]:border-control-border group-data-[variant=group]:bg-base-background group-data-[variant=group]:border",
@@ -58,7 +58,6 @@ export function Checkbox({
                 "bg-critical border-critical": isInvalid && isSelected,
                 "bg-control-accent border-control-accent":
                   isSelected && !isInvalid,
-                "my-px": isDefined(primaryContent),
               },
             )}>
             <CheckmarkIcon

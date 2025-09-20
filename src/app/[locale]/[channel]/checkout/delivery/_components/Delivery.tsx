@@ -94,13 +94,16 @@ export function SkeletonDelivery() {
         <SkeletonRadio />
         <SkeletonRadio />
       </SkeletonRadioGroup>
-      <SkeletonRadioGroup variant="group" label>
-        <SkeletonRadio />
-        <SkeletonRadio />
-        <SkeletonRadio />
-        <SkeletonRadio />
-        <SkeletonRadio />
-      </SkeletonRadioGroup>
+      <HeadingGroup>
+        <SkeletonHeading />
+        <SkeletonRadioGroup variant="group">
+          <SkeletonRadio />
+          <SkeletonRadio />
+          <SkeletonRadio />
+          <SkeletonRadio />
+          <SkeletonRadio />
+        </SkeletonRadioGroup>
+      </HeadingGroup>
     </div>
   );
 }

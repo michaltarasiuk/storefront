@@ -26,7 +26,7 @@ export function Radio({
     <AriaRadio
       {...props}
       className={cn(
-        "gap-small-100 group relative flex cursor-pointer items-center",
+        "gap-small-100 group relative flex cursor-pointer",
         "disabled:cursor-default disabled:opacity-50",
         "read-only:opacity-50",
         "group-data-[variant=group]:p-base group-data-[variant=group]:border-control-border group-data-[variant=group]:bg-base-background group-data-[variant=group]:border",
@@ -55,7 +55,6 @@ export function Radio({
                 "border-base-accent": isFocused || isPressed || isSelected,
                 "border-critical ring-critical/50 border-2": isInvalid,
                 "border-7": isSelected,
-                "my-px": isDefined(primaryContent),
               },
             )}
           />
