@@ -1,4 +1,10 @@
 {
+  "+JsDiH": [
+    {
+      "type": 0,
+      "value": "Ship to"
+    }
+  ],
   "/GCoTA": [
     {
       "type": 0,
@@ -131,6 +137,12 @@
     {
       "type": 0,
       "value": "City area"
+    }
+  ],
+  "BY343C": [
+    {
+      "type": 0,
+      "value": "Change"
     }
   ],
   "C9WQ46": [
@@ -643,6 +655,12 @@
     {
       "type": 0,
       "value": "Privacy Policy"
+    }
+  ],
+  "w8g8zN": [
+    {
+      "type": 0,
+      "value": "Complete order"
     }
   ],
   "xULK8s": [

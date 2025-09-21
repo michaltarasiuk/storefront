@@ -7,8 +7,8 @@ import {getCheckoutId} from "@/modules/checkout/utils/cookies";
 import {isDefined} from "@/utils/is-defined";
 
 import {
-  CheckoutInformationForm,
-  SkeletonCheckoutInformationForm,
+  CheckoutInformation,
+  SkeletonCheckoutInformation,
 } from "./_components/CheckoutInformation";
 
 const CheckoutInformation_CheckoutQuery = graphql(`
@@ -32,8 +32,8 @@ export default async function CheckoutInformationPage() {
         id: checkoutId.value,
       }}>
       {(queryRef) => (
-        <Suspense fallback={<SkeletonCheckoutInformationForm />}>
-          <CheckoutInformationForm queryRef={queryRef} />
+        <Suspense fallback={<SkeletonCheckoutInformation />}>
+          <CheckoutInformation queryRef={queryRef} />
         </Suspense>
       )}
     </PreloadQuery>

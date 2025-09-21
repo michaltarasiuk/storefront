@@ -7,8 +7,8 @@ import {getCheckoutId} from "@/modules/checkout/utils/cookies";
 import {isDefined} from "@/utils/is-defined";
 
 import {
-  CheckoutDeliveryForm,
-  SkeletonCheckoutDeliveryForm,
+  CheckoutDelivery,
+  SkeletonCheckoutDelivery,
 } from "./_components/CheckoutDelivery";
 
 const CheckoutDelivery_CheckoutQuery = graphql(`
@@ -17,6 +17,7 @@ const CheckoutDelivery_CheckoutQuery = graphql(`
       shippingAddress {
         __typename
       }
+      ...DeliveryReviewList_Checkout
       ...Delivery_Checkout
     }
   }
@@ -34,8 +35,8 @@ export default async function CheckoutDeliveryPage() {
         id: checkoutId.value,
       }}>
       {(queryRef) => (
-        <Suspense fallback={<SkeletonCheckoutDeliveryForm />}>
-          <CheckoutDeliveryForm queryRef={queryRef} />
+        <Suspense fallback={<SkeletonCheckoutDelivery />}>
+          <CheckoutDelivery queryRef={queryRef} />
         </Suspense>
       )}
     </PreloadQuery>

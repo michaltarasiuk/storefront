@@ -20,7 +20,7 @@ import {ReturnLink} from "../../_components/ReturnLink";
 import {Contact, SkeletonContact} from "./Contact";
 import {ShippingAddress, SkeletonShippingAddress} from "./ShippingAddress";
 
-export function CheckoutInformationForm({
+export function CheckoutInformation({
   queryRef,
 }: {
   queryRef: QueryRef<CheckoutInformation_CheckoutQuery>;
@@ -65,7 +65,7 @@ export function CheckoutInformationForm({
   );
 }
 
-export function SkeletonCheckoutInformationForm() {
+export function SkeletonCheckoutInformation() {
   return (
     <div className={cn("space-y-large-300")}>
       <SkeletonContact />

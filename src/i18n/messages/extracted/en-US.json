@@ -1,4 +1,7 @@
 {
+  "+JsDiH": {
+    "defaultMessage": "Ship to"
+  },
   "/GCoTA": {
     "defaultMessage": "Clear"
   },
@@ -61,6 +64,9 @@
   },
   "BWpuSS": {
     "defaultMessage": "City area"
+  },
+  "BY343C": {
+    "defaultMessage": "Change"
   },
   "C9WQ46": {
     "defaultMessage": "Order Status Tabs"
@@ -301,6 +307,9 @@
   },
   "vx0nkZ": {
     "defaultMessage": "Privacy Policy"
+  },
+  "w8g8zN": {
+    "defaultMessage": "Complete order"
   },
   "xULK8s": {
     "defaultMessage": "Street address 2"

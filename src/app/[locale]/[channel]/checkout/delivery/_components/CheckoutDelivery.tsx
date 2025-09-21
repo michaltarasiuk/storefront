@@ -21,8 +21,12 @@ import {updateDelivery} from "../../_actions/update-delivery";
 import {ReturnLink} from "../../_components/ReturnLink";
 import {Delivery} from "./Delivery";
 import {SkeletonDelivery} from "./Delivery";
+import {
+  DeliveryReviewList,
+  SkeletonDeliveryReviewList,
+} from "./DeliveryReviewList";
 
-export function CheckoutDeliveryForm({
+export function CheckoutDelivery({
   queryRef,
 }: {
   queryRef: QueryRef<CheckoutDelivery_CheckoutQuery>;
@@ -50,6 +54,7 @@ export function CheckoutDeliveryForm({
         });
       }}
       className={cn("space-y-large-300")}>
+      <DeliveryReviewList checkout={data.checkout} />
       <Delivery checkout={data.checkout} />
       <LocaleField />
       <ChannelField />
@@ -72,9 +77,10 @@ export function CheckoutDeliveryForm({
   );
 }
 
-export function SkeletonCheckoutDeliveryForm() {
+export function SkeletonCheckoutDelivery() {
   return (
     <div className={cn("space-y-large-300")}>
+      <SkeletonDeliveryReviewList />
       <SkeletonDelivery />
       <div className={cn("gap-base flex flex-col")}>
         <Button size="large" isDisabled>

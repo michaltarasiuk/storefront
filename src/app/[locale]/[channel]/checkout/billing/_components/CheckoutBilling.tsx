@@ -20,8 +20,12 @@ import {joinPathSegments} from "@/utils/pathname";
 import {updateBilling} from "../../_actions/update-billing";
 import {ReturnLink} from "../../_components/ReturnLink";
 import {BillingAddress, SkeletonBillingAddress} from "./BillingAddress";
+import {
+  BillingReviewList,
+  SkeletonBillingReviewList,
+} from "./BillingReviewList";
 
-export function CheckoutBillingForm({
+export function CheckoutBilling({
   queryRef,
 }: {
   queryRef: QueryRef<CheckoutBilling_CheckoutQuery>;
@@ -49,6 +53,7 @@ export function CheckoutBillingForm({
         });
       }}
       className={cn("space-y-large-300")}>
+      <BillingReviewList checkout={data.checkout} />
       <BillingAddress checkout={data.checkout} />
       <LocaleField />
       <ChannelField />
@@ -68,9 +73,10 @@ export function CheckoutBillingForm({
   );
 }
 
-export function SkeletonCheckoutBillingForm() {
+export function SkeletonCheckoutBilling() {
   return (
     <div className={cn("space-y-large-300")}>
+      <SkeletonBillingReviewList />
       <SkeletonBillingAddress />
       <div className={cn("gap-base flex flex-col")}>
         <Button size="large" isDisabled>

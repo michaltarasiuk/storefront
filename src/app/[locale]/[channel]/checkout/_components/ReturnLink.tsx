@@ -2,18 +2,21 @@ import {IntlLink} from "@/i18n/components/IntlLink";
 import {ChevronLeftIcon} from "@/icons/ChevronLeftIcon";
 import {cn} from "@/utils/cn";
 
-interface ReturnLinkProps {
-  href: string;
-  children: React.ReactNode;
-}
+type ReturnLinkProps = React.ComponentProps<typeof IntlLink>;
 
-export function ReturnLink({href, children}: ReturnLinkProps) {
+export function ReturnLink({children, ...props}: ReturnLinkProps) {
   return (
     <IntlLink
-      href={href}
-      className={cn("gap-small-200 flex items-center justify-center")}>
-      <ChevronLeftIcon aria-hidden className={cn("stroke-base-accent")} />
-      {children}
+      className={cn(
+        props.className,
+        "gap-small-200 flex items-center justify-center",
+      )}>
+      {(renderProps) => (
+        <>
+          <ChevronLeftIcon aria-hidden className={cn("stroke-base-accent")} />
+          {typeof children === "function" ? children(renderProps) : children}
+        </>
+      )}
     </IntlLink>
   );
 }

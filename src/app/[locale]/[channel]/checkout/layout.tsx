@@ -1,16 +1,12 @@
-import {Suspense} from "react";
-
 import {Footer} from "@/components/Footer";
 import {HeadingGroup} from "@/components/Heading";
 import {LinkedLogo} from "@/components/LinkedLogo";
-import {SkeletonSummaryDisclosure} from "@/components/SummaryDisclosure";
 import {cn} from "@/utils/cn";
 
 import {CheckoutBreadcrumbs} from "./_components/CheckoutBreadcrumbs";
 import {
   CheckoutSummary,
   CheckoutSummaryDisclosure,
-  SkeletonCheckoutSummary,
 } from "./_components/CheckoutSummary";
 
 interface CheckoutLayoutProps {
@@ -33,9 +29,7 @@ export default async function CheckoutLayout({children}: CheckoutLayoutProps) {
           <header className={cn("p-large-200 flex", "md:mb-large-200 md:p-0")}>
             <LinkedLogo />
           </header>
-          <Suspense fallback={<SkeletonSummaryDisclosure />}>
-            <CheckoutSummaryDisclosure />
-          </Suspense>
+          <CheckoutSummaryDisclosure />
           <main
             className={cn(
               "p-large-200 space-y-large-300 mb-large-200 grow",
@@ -52,9 +46,7 @@ export default async function CheckoutLayout({children}: CheckoutLayoutProps) {
           className={cn(
             "max-w-shell-order-summary-inline-size p-large-500 space-y-large-200",
           )}>
-          <Suspense fallback={<SkeletonCheckoutSummary />}>
-            <CheckoutSummary />
-          </Suspense>
+          <CheckoutSummary />
         </aside>
       </div>
     </div>
