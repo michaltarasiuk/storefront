@@ -1,4 +1,3 @@
-import {Button} from "@/components/Button";
 import {Heading, HeadingGroup} from "@/components/Heading";
 import {TextBlock} from "@/components/TextBlock";
 import type {Locale} from "@/i18n/consts";
@@ -8,6 +7,7 @@ import {LockIcon} from "@/icons/LockIcon";
 import {cn} from "@/utils/cn";
 
 import {PageTitle} from "../_components/PageTitie";
+import {DeactivateAllTokensButton} from "./_components/DeactivateAllTokensButton";
 
 interface SettingsPageProps {
   params: Promise<{
@@ -53,12 +53,7 @@ export default async function SettingsPage({params}: SettingsPageProps) {
               "bg-base-background gap-base flex flex-col rounded-lg p-6",
               "md:flex-row md:items-center",
             )}>
-            <Button kind="secondary">
-              <FormattedMessage
-                id="s3O2Si"
-                defaultMessage="Log out everywhere"
-              />
-            </Button>
+            <DeactivateAllTokensButton />
             <TextBlock appearance="subdued">
               <FormattedMessage
                 id="TVieNi"

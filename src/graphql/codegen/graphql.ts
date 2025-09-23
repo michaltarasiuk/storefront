@@ -377,6 +377,7 @@ export type AccountRegister = {
   errors: Array<AccountError>;
   /** Informs whether users need to confirm their email address. */
   requiresConfirmation?: Maybe<Scalars["Boolean"]["output"]>;
+  /** @deprecated The field always returns a `User` object constructed from the input data. The `user.id` is always empty. To determine whether the user exists in Saleor, query via an external app with the required permissions. */
   user?: Maybe<User>;
 };
 
@@ -1830,6 +1831,7 @@ export type AttributeCountableEdge = {
  */
 export type AttributeCreate = {
   __typename?: "AttributeCreate";
+  /** The created attribute. */
   attribute?: Maybe<Attribute>;
   /** @deprecated Use `errors` field instead. */
   attributeErrors: Array<AttributeError>;
@@ -2146,6 +2148,7 @@ export type AttributeTypeEnumFilterInput = {
  */
 export type AttributeUpdate = {
   __typename?: "AttributeUpdate";
+  /** The updated attribute. */
   attribute?: Maybe<Attribute>;
   /** @deprecated Use `errors` field instead. */
   attributeErrors: Array<AttributeError>;
@@ -14752,6 +14755,7 @@ export enum OrderChargeStatusEnum {
 export type OrderConfirm = {
   __typename?: "OrderConfirm";
   errors: Array<OrderError>;
+  /** Order which has been confirmed. */
   order?: Maybe<Order>;
   /** @deprecated Use `errors` field instead. */
   orderErrors: Array<OrderError>;
@@ -29764,6 +29768,15 @@ export type ConfirmAccountMutation = {
   } | null;
 };
 
+export type DeactivateAllTokensMutationVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type DeactivateAllTokensMutation = {
+  __typename?: "Mutation";
+  tokensDeactivateAll?: {__typename: "DeactivateAllUserTokens"} | null;
+};
+
 export type AddPromoCodeMutationVariables = Exact<{
   id: Scalars["ID"]["input"];
   promoCode: Scalars["String"]["input"];
@@ -31171,6 +31184,34 @@ export const ConfirmAccountDocument = {
 } as unknown as DocumentNode<
   ConfirmAccountMutation,
   ConfirmAccountMutationVariables
+>;
+export const DeactivateAllTokensDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "mutation",
+      name: {kind: "Name", value: "DeactivateAllTokens"},
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "tokensDeactivateAll"},
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {kind: "Field", name: {kind: "Name", value: "__typename"}},
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  DeactivateAllTokensMutation,
+  DeactivateAllTokensMutationVariables
 >;
 export const AddPromoCodeDocument = {
   kind: "Document",
