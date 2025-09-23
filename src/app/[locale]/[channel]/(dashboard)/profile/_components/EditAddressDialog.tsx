@@ -1,8 +1,9 @@
 "use client";
 
+import {Suspense} from "react";
 import {Button} from "react-aria-components";
 
-import {AddressFields} from "@/components/AddressFields";
+import {AddressFields, SkeletonAddressFields} from "@/components/AddressFields";
 import {Dialog, DialogHeader, DialogTrigger, Modal} from "@/components/Dialog";
 import {Form} from "@/components/Form";
 import {useIntl} from "@/i18n/react-intl";
@@ -55,7 +56,9 @@ export function EditAddressDialog({children}: {children: React.ReactNode}) {
 function EditAddressForm({cancelButton}: {cancelButton: React.ReactNode}) {
   return (
     <Form className={cn("space-y-base")}>
-      <AddressFields />
+      <Suspense fallback={<SkeletonAddressFields />}>
+        <AddressFields />
+      </Suspense>
       <div className={cn("gap-base flex justify-between")}>
         <DeleteAddressDialog />
         <div className={cn("space-x-base flex")}>

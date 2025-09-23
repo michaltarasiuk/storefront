@@ -1,8 +1,9 @@
 "use client";
 
+import {Suspense} from "react";
 import {Button} from "react-aria-components";
 
-import {AddressFields} from "@/components/AddressFields";
+import {AddressFields, SkeletonAddressFields} from "@/components/AddressFields";
 import {Checkbox} from "@/components/Checkbox";
 import {Dialog, DialogHeader, DialogTrigger, Modal} from "@/components/Dialog";
 import {Form} from "@/components/Form";
@@ -60,7 +61,9 @@ function AddAddressForm({cancelButton}: {cancelButton: React.ReactNode}) {
           defaultMessage="This is my default address"
         />
       </Checkbox>
-      <AddressFields />
+      <Suspense fallback={<SkeletonAddressFields />}>
+        <AddressFields />
+      </Suspense>
       <div className={cn("gap-base flex justify-end")}>
         {cancelButton}
         <SaveButton />

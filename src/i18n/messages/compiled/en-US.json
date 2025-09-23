@@ -5,12 +5,6 @@
       "value": "Ship to"
     }
   ],
-  "/+LHBr": [
-    {
-      "type": 0,
-      "value": "Estimated taxes"
-    }
-  ],
   "/Da0uc": [
     {
       "type": 0,
@@ -613,6 +607,12 @@
     {
       "type": 1,
       "value": "examples"
+    }
+  ],
+  "r+dgiv": [
+    {
+      "type": 0,
+      "value": "Taxes"
     }
   ],
   "r5sWuC": [

@@ -2,9 +2,6 @@
   "+JsDiH": {
     "defaultMessage": "Ship to"
   },
-  "/+LHBr": {
-    "defaultMessage": "Estimated taxes"
-  },
   "/Da0uc": {
     "defaultMessage": "Enter shipping address"
   },
@@ -286,6 +283,9 @@
   },
   "pfbcZN": {
     "defaultMessage": "Examples: {examples}"
+  },
+  "r+dgiv": {
+    "defaultMessage": "Taxes"
   },
   "r5sWuC": {
     "defaultMessage": "Last 12 months"

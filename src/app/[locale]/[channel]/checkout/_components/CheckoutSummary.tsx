@@ -8,19 +8,6 @@ import {
   SkeletonCheckoutMoneyLines,
 } from "./CheckoutMoneyLines";
 
-export function CheckoutSummaryDisclosure() {
-  return (
-    <SummaryDisclosure
-      taxedMoney={{
-        gross: {amount: 0, currency: "USD"},
-        net: {amount: 0, currency: "USD"},
-      }}
-      className={cn("md:hidden")}>
-      <CheckoutSummary />
-    </SummaryDisclosure>
-  );
-}
-
 export function CheckoutSummary() {
   return (
     <>
@@ -37,5 +24,18 @@ export function SkeletonCheckoutSummary() {
       <SkeletonAddPromoCodeForm />
       <SkeletonCheckoutMoneyLines />
     </>
+  );
+}
+
+export function CheckoutSummaryDisclosure() {
+  return (
+    <SummaryDisclosure
+      taxedMoney={{
+        gross: {amount: 0, currency: "USD"},
+        net: {amount: 0, currency: "USD"},
+      }}
+      className={cn("md:hidden")}>
+      <CheckoutSummary />
+    </SummaryDisclosure>
   );
 }

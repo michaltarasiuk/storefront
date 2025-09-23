@@ -3,7 +3,7 @@ import {SkeletonText, Text} from "@/components/Text";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
 
-export function CheckoutMoneyLines() {
+export function OrderMoneyLines() {
   return (
     <div className={cn("space-y-small-300")}>
       <div className={cn("flex justify-between")}>
@@ -21,12 +21,12 @@ export function CheckoutMoneyLines() {
         <Text>
           <FormattedMessage id="PRlD0A" defaultMessage="Shipping" />
         </Text>
-        <Text appearance="subdued">
-          <FormattedMessage
-            id="/Da0uc"
-            defaultMessage="Enter shipping address"
-          />
-        </Text>
+        <Money
+          money={{
+            currency: "USD",
+            amount: 0,
+          }}
+        />
       </div>
       <div className={cn("flex justify-between")}>
         <Text>
@@ -56,7 +56,7 @@ export function CheckoutMoneyLines() {
   );
 }
 
-export function SkeletonCheckoutMoneyLines() {
+export function SkeletonOrderMoneyLines() {
   return (
     <div className={cn("space-y-small-300")}>
       <div className={cn("flex justify-between")}>

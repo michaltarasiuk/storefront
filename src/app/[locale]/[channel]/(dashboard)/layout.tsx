@@ -14,7 +14,7 @@ export default async function DashboardLayout({
     <div className={cn("flex min-h-dvh flex-col")}>
       <Header />
       <main className={cn("bg-base-background-subdued px-large-200 grow")}>
-        <div className={cn("mx-auto max-w-6xl")}>{children}</div>
+        <div className={cn("mb-large-500 mx-auto max-w-6xl")}>{children}</div>
       </main>
       <Footer variant="subdued" />
     </div>

@@ -1,10 +1,9 @@
 import {Suspense} from "react";
 
-import {
-  SkeletonSummaryDisclosure,
-  SummaryDisclosure,
-} from "@/components/SummaryDisclosure";
+import {SkeletonSummaryDisclosure} from "@/components/SummaryDisclosure";
 import {cn} from "@/utils/cn";
+
+import {OrderSummaryDisclosure} from "./_components/OrderSummary";
 
 export default async function OrderPage() {
   return (
@@ -18,14 +17,7 @@ function Order() {
   return (
     <>
       <div className={cn("mb-small-200 md:hidden")}>
-        <SummaryDisclosure
-          taxedMoney={{
-            net: {amount: 0, currency: "USD"},
-            gross: {amount: 0, currency: "USD"},
-          }}
-          className={cn("-mx-large-200")}>
-          {null}
-        </SummaryDisclosure>
+        <OrderSummaryDisclosure />
       </div>
     </>
   );

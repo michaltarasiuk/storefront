@@ -32,8 +32,8 @@ export default async function CheckoutLayout({children}: CheckoutLayoutProps) {
           <CheckoutSummaryDisclosure />
           <main
             className={cn(
-              "p-large-200 space-y-large-300 mb-large-200 grow",
-              "md:p-0",
+              "p-large-200 space-y-large-300 mb-0 grow",
+              "md:mb-large-200 md:p-0",
             )}>
             <CheckoutBreadcrumbs />
             <HeadingGroup>{children}</HeadingGroup>
