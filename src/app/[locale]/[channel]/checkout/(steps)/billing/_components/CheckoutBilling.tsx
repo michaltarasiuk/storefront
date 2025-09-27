@@ -10,38 +10,37 @@ import {ChannelField} from "@/components/ChannelField";
 import {Form} from "@/components/Form";
 import {LocaleField} from "@/components/LocaleField";
 import {Routes} from "@/consts/routes";
-import type {CheckoutDelivery_CheckoutQuery} from "@/graphql/codegen/graphql";
-import {usePathnameContext} from "@/hooks/use-pathname-context";
+import type {CheckoutBilling_CheckoutQuery} from "@/graphql/codegen/graphql";
+import {useBasePathname} from "@/hooks/use-base-pathname";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
 import {isDefined} from "@/utils/is-defined";
 import {joinPathSegments} from "@/utils/pathname";
 
-import {updateDelivery} from "../../_actions/update-delivery";
+import {updateBilling} from "../../_actions/update-billing";
 import {ReturnLink} from "../../_components/ReturnLink";
-import {Delivery} from "./Delivery";
-import {SkeletonDelivery} from "./Delivery";
+import {BillingAddress, SkeletonBillingAddress} from "./BillingAddress";
 import {
-  DeliveryReviewList,
-  SkeletonDeliveryReviewList,
-} from "./DeliveryReviewList";
+  BillingReviewList,
+  SkeletonBillingReviewList,
+} from "./BillingReviewList";
 
-export function CheckoutDelivery({
+export function CheckoutBilling({
   queryRef,
 }: {
-  queryRef: QueryRef<CheckoutDelivery_CheckoutQuery>;
+  queryRef: QueryRef<CheckoutBilling_CheckoutQuery>;
 }) {
   const {data} = useReadQuery(queryRef);
-  const pathnameContext = usePathnameContext();
-  if (!isDefined(data.checkout)) {
-    notFound();
-  } else if (!isDefined(data.checkout.shippingAddress)) {
-    redirect(joinPathSegments(...pathnameContext, Routes.checkout.information));
-  }
-  const [{errors}, formAction] = useActionState(updateDelivery, {
+  const [{errors}, formAction] = useActionState(updateBilling, {
     errors: {},
   });
+  const basePathname = useBasePathname();
   const [isPending, startTransition] = useTransition();
+  if (!isDefined(data.checkout)) {
+    notFound();
+  } else if (!isDefined(data.checkout.deliveryMethod)) {
+    redirect(joinPathSegments(...basePathname, Routes.checkout.delivery));
+  }
   return (
     <Form
       validationErrors={errors}
@@ -54,8 +53,8 @@ export function CheckoutDelivery({
         });
       }}
       className={cn("space-y-large-300")}>
-      <DeliveryReviewList checkout={data.checkout} />
-      <Delivery checkout={data.checkout} />
+      <BillingReviewList checkout={data.checkout} />
+      <BillingAddress checkout={data.checkout} />
       <LocaleField />
       <ChannelField />
       <div className={cn("gap-base flex flex-col")}>
@@ -64,33 +63,27 @@ export function CheckoutDelivery({
           size="large"
           isDisabled={isPending}
           isPending={isPending}>
-          <FormattedMessage id="xwOhyd" defaultMessage="Continue to delivery" />
+          <FormattedMessage id="vqYYF3" defaultMessage="Continue to review" />
         </Button>
-        <ReturnLink href={Routes.checkout.information}>
-          <FormattedMessage
-            id="k2CDuD"
-            defaultMessage="Return to information"
-          />
+        <ReturnLink href={Routes.checkout.delivery}>
+          <FormattedMessage id="HJkcfg" defaultMessage="Return to delivery" />
         </ReturnLink>
       </div>
     </Form>
   );
 }
 
-export function SkeletonCheckoutDelivery() {
+export function SkeletonCheckoutBilling() {
   return (
     <div className={cn("space-y-large-300")}>
-      <SkeletonDeliveryReviewList />
-      <SkeletonDelivery />
+      <SkeletonBillingReviewList />
+      <SkeletonBillingAddress />
       <div className={cn("gap-base flex flex-col")}>
         <Button size="large" isDisabled>
-          <FormattedMessage id="xwOhyd" defaultMessage="Continue to delivery" />
+          <FormattedMessage id="vqYYF3" defaultMessage="Continue to review" />
         </Button>
-        <ReturnLink href={Routes.checkout.information}>
-          <FormattedMessage
-            id="k2CDuD"
-            defaultMessage="Return to information"
-          />
+        <ReturnLink href={Routes.checkout.delivery}>
+          <FormattedMessage id="HJkcfg" defaultMessage="Return to delivery" />
         </ReturnLink>
       </div>
     </div>

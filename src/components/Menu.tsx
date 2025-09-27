@@ -10,7 +10,7 @@ import {
   Popover,
 } from "react-aria-components";
 
-import {usePathnameContext} from "@/hooks/use-pathname-context";
+import {useBasePathname} from "@/hooks/use-base-pathname";
 import {isDefined} from "@/utils/is-defined";
 import {joinPathSegments} from "@/utils/pathname";
 
@@ -63,9 +63,9 @@ export function MenuItem<T extends object>({
   ...props
 }: MenuItemProps<T>) {
   const pathname = usePathname();
-  const pathnameContext = usePathnameContext();
+  const basePathname = useBasePathname();
   const href = isDefined(props.href)
-    ? joinPathSegments(...pathnameContext, props.href)
+    ? joinPathSegments(...basePathname, props.href)
     : undefined;
   return (
     <AriaMenuItem

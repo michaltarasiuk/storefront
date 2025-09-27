@@ -14,11 +14,7 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-interface RootLayoutProps {
-  children: React.ReactNode;
-}
-
-export default async function RootLayout({children}: RootLayoutProps) {
+export default async function RootLayout({children}: LayoutProps<"/">) {
   return (
     <Html>
       <body>

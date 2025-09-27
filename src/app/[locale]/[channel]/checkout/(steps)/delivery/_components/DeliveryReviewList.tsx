@@ -5,75 +5,66 @@ import {type FragmentType, useFragment} from "@apollo/client";
 import {SkeletonText, Text} from "@/components/Text";
 import {Routes} from "@/consts/routes";
 import {graphql} from "@/graphql/codegen";
-import type {BillingReviewList_CheckoutFragment} from "@/graphql/codegen/graphql";
+import type {DeliveryReviewList_CheckoutFragment} from "@/graphql/codegen/graphql";
 import {useIntl} from "@/i18n/react-intl";
 import {isDefined} from "@/utils/is-defined";
 
 import {
+  ReviewItem,
   ReviewList,
-  ReviewTerm,
+  SkeletonReviewItem,
   SkeletonReviewList,
-  SkeletonReviewTerm,
-} from "../../_components/ReviewList";
+} from "../../../_components/ReviewList";
 
-const BillingReviewList_CheckoutFragment = graphql(`
-  fragment BillingReviewList_Checkout on Checkout {
+const DeliveryReviewList_CheckoutFragment = graphql(`
+  fragment DeliveryReviewList_Checkout on Checkout {
     id
     email
   }
 `);
 
-interface BillingReviewListProps {
-  checkout: FragmentType<BillingReviewList_CheckoutFragment>;
+interface DeliveryReviewListProps {
+  checkout: FragmentType<DeliveryReviewList_CheckoutFragment>;
 }
 
-export function BillingReviewList({checkout}: BillingReviewListProps) {
+export function DeliveryReviewList({checkout}: DeliveryReviewListProps) {
   const {data, complete} = useFragment({
-    fragment: BillingReviewList_CheckoutFragment,
+    fragment: DeliveryReviewList_CheckoutFragment,
     from: checkout,
   });
   const intl = useIntl();
   if (!complete) {
-    return <SkeletonBillingReviewList />;
+    return <SkeletonDeliveryReviewList />;
   }
   return (
     <ReviewList>
       {isDefined(data.email) && (
-        <ReviewTerm
+        <ReviewItem
           label={intl.formatMessage({
             id: "zFegDD",
             defaultMessage: "Contact",
           })}
           href={Routes.checkout.information}>
           <Text>{data.email}</Text>
-        </ReviewTerm>
+        </ReviewItem>
       )}
-      <ReviewTerm
+      <ReviewItem
         label={intl.formatMessage({
           id: "+JsDiH",
           defaultMessage: "Ship to",
         })}
         href={Routes.checkout.information}>
         <SkeletonText />
-      </ReviewTerm>
-      <ReviewTerm
-        label={intl.formatMessage({
-          id: "drqP2L",
-          defaultMessage: "Delivery",
-        })}
-        href={Routes.checkout.delivery}>
-        <SkeletonText />
-      </ReviewTerm>
+      </ReviewItem>
     </ReviewList>
   );
 }
 
-export function SkeletonBillingReviewList() {
+export function SkeletonDeliveryReviewList() {
   return (
     <SkeletonReviewList>
-      <SkeletonReviewTerm />
-      <SkeletonReviewTerm />
-      <SkeletonReviewTerm />
+      <SkeletonReviewItem />
+      <SkeletonReviewItem />
     </SkeletonReviewList>
   );
 }

@@ -10,37 +10,38 @@ import {ChannelField} from "@/components/ChannelField";
 import {Form} from "@/components/Form";
 import {LocaleField} from "@/components/LocaleField";
 import {Routes} from "@/consts/routes";
-import type {CheckoutBilling_CheckoutQuery} from "@/graphql/codegen/graphql";
-import {usePathnameContext} from "@/hooks/use-pathname-context";
+import type {CheckoutDelivery_CheckoutQuery} from "@/graphql/codegen/graphql";
+import {useBasePathname} from "@/hooks/use-base-pathname";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
 import {isDefined} from "@/utils/is-defined";
 import {joinPathSegments} from "@/utils/pathname";
 
-import {updateBilling} from "../../_actions/update-billing";
+import {updateDelivery} from "../../_actions/update-delivery";
 import {ReturnLink} from "../../_components/ReturnLink";
-import {BillingAddress, SkeletonBillingAddress} from "./BillingAddress";
+import {Delivery} from "./Delivery";
+import {SkeletonDelivery} from "./Delivery";
 import {
-  BillingReviewList,
-  SkeletonBillingReviewList,
-} from "./BillingReviewList";
+  DeliveryReviewList,
+  SkeletonDeliveryReviewList,
+} from "./DeliveryReviewList";
 
-export function CheckoutBilling({
+export function CheckoutDelivery({
   queryRef,
 }: {
-  queryRef: QueryRef<CheckoutBilling_CheckoutQuery>;
+  queryRef: QueryRef<CheckoutDelivery_CheckoutQuery>;
 }) {
   const {data} = useReadQuery(queryRef);
-  const pathnameContext = usePathnameContext();
-  if (!isDefined(data.checkout)) {
-    notFound();
-  } else if (!isDefined(data.checkout.deliveryMethod)) {
-    redirect(joinPathSegments(...pathnameContext, Routes.checkout.delivery));
-  }
-  const [{errors}, formAction] = useActionState(updateBilling, {
+  const [{errors}, formAction] = useActionState(updateDelivery, {
     errors: {},
   });
+  const basePathname = useBasePathname();
   const [isPending, startTransition] = useTransition();
+  if (!isDefined(data.checkout)) {
+    notFound();
+  } else if (!isDefined(data.checkout.shippingAddress)) {
+    redirect(joinPathSegments(...basePathname, Routes.checkout.information));
+  }
   return (
     <Form
       validationErrors={errors}
@@ -53,8 +54,8 @@ export function CheckoutBilling({
         });
       }}
       className={cn("space-y-large-300")}>
-      <BillingReviewList checkout={data.checkout} />
-      <BillingAddress checkout={data.checkout} />
+      <DeliveryReviewList checkout={data.checkout} />
+      <Delivery checkout={data.checkout} />
       <LocaleField />
       <ChannelField />
       <div className={cn("gap-base flex flex-col")}>
@@ -63,27 +64,33 @@ export function CheckoutBilling({
           size="large"
           isDisabled={isPending}
           isPending={isPending}>
-          <FormattedMessage id="vqYYF3" defaultMessage="Continue to review" />
+          <FormattedMessage id="xwOhyd" defaultMessage="Continue to delivery" />
         </Button>
-        <ReturnLink href={Routes.checkout.delivery}>
-          <FormattedMessage id="HJkcfg" defaultMessage="Return to delivery" />
+        <ReturnLink href={Routes.checkout.information}>
+          <FormattedMessage
+            id="k2CDuD"
+            defaultMessage="Return to information"
+          />
         </ReturnLink>
       </div>
     </Form>
   );
 }
 
-export function SkeletonCheckoutBilling() {
+export function SkeletonCheckoutDelivery() {
   return (
     <div className={cn("space-y-large-300")}>
-      <SkeletonBillingReviewList />
-      <SkeletonBillingAddress />
+      <SkeletonDeliveryReviewList />
+      <SkeletonDelivery />
       <div className={cn("gap-base flex flex-col")}>
         <Button size="large" isDisabled>
-          <FormattedMessage id="vqYYF3" defaultMessage="Continue to review" />
+          <FormattedMessage id="xwOhyd" defaultMessage="Continue to delivery" />
         </Button>
-        <ReturnLink href={Routes.checkout.delivery}>
-          <FormattedMessage id="HJkcfg" defaultMessage="Return to delivery" />
+        <ReturnLink href={Routes.checkout.information}>
+          <FormattedMessage
+            id="k2CDuD"
+            defaultMessage="Return to information"
+          />
         </ReturnLink>
       </div>
     </div>

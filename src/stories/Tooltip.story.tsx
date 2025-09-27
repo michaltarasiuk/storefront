@@ -5,48 +5,38 @@ import type {TooltipProps} from "react-aria-components";
 import {Button} from "@/components/Button";
 import {Tooltip, TooltipTrigger} from "@/components/Tooltip";
 
-interface TooltipExampleProps
-  extends Pick<
-      TooltipTriggerProps,
-      "isDisabled" | "delay" | "closeDelay" | "defaultOpen"
-    >,
-    Pick<
-      TooltipProps,
-      "placement" | "containerPadding" | "offset" | "shouldFlip"
-    > {}
+type TooltipExampleProps = Pick<
+  TooltipTriggerProps,
+  "defaultOpen" | "delay" | "closeDelay" | "isDisabled"
+> &
+  Pick<
+    TooltipProps,
+    "placement" | "containerPadding" | "offset" | "shouldFlip"
+  >;
 
-function TooltipExample({
-  isDisabled,
+function TooltipDemo({
+  defaultOpen,
   delay,
   closeDelay,
-  defaultOpen,
-  placement,
-  containerPadding,
-  offset,
-  shouldFlip,
+  isDisabled,
+  ...props
 }: TooltipExampleProps) {
   return (
     <TooltipTrigger
-      isDisabled={isDisabled}
+      defaultOpen={defaultOpen}
       delay={delay}
       closeDelay={closeDelay}
-      defaultOpen={defaultOpen}>
+      isDisabled={isDisabled}>
       <Button>Hover me</Button>
-      <Tooltip
-        placement={placement}
-        containerPadding={containerPadding}
-        offset={offset}
-        shouldFlip={shouldFlip}>
-        This is a tooltip message.
-      </Tooltip>
+      <Tooltip {...props}>This is a tooltip message.</Tooltip>
     </TooltipTrigger>
   );
 }
 
 const meta = {
-  component: TooltipExample,
+  component: TooltipDemo,
   argTypes: {
-    isDisabled: {
+    defaultOpen: {
       control: "boolean",
     },
     delay: {
@@ -55,7 +45,7 @@ const meta = {
     closeDelay: {
       control: "number",
     },
-    defaultOpen: {
+    isDisabled: {
       control: "boolean",
     },
     placement: {
@@ -101,7 +91,7 @@ const meta = {
         "Whether the element should flip its orientation (e.g. top to bottom or left to right) when there is insufficient space to render",
     },
   },
-} satisfies Meta<typeof TooltipExample>;
+} satisfies Meta<typeof TooltipDemo>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

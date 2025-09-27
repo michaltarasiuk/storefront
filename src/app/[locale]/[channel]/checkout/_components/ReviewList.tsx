@@ -5,25 +5,24 @@ import {cn} from "@/utils/cn";
 
 export function ReviewList({children}: {children: React.ReactNode}) {
   return (
-    <div
-      className={cn("rounded-base border-control-border px-large-100 border")}>
+    <div className={cn("rounded-base border-base-border px-large-100 border")}>
       {children}
     </div>
   );
 }
 
-interface ReviewTermProps {
+interface ReviewItemProps {
   label: string;
-  children: React.ReactNode;
   href: string;
+  children: React.ReactNode;
 }
 
-export function ReviewTerm({label, children, href}: ReviewTermProps) {
+export function ReviewItem({label, href, children}: ReviewItemProps) {
   return (
     <div
       className={cn(
         "py-small-100 gap-base flex items-start",
-        "not-last:border-control-border not-last:border-b",
+        "not-last:border-base-border not-last:border-b",
       )}>
       <div className={cn("flex flex-1 flex-col")}>
         <Text appearance="subdued">{label}</Text>
@@ -38,13 +37,13 @@ export function ReviewTerm({label, children, href}: ReviewTermProps) {
 
 export function SkeletonReviewList({children}: {children: React.ReactNode}) {
   return (
-    <dl className={cn("rounded-base border-base-border px-large-100 border")}>
+    <div className={cn("rounded-base border-base-border px-large-100 border")}>
       {children}
-    </dl>
+    </div>
   );
 }
 
-export function SkeletonReviewTerm() {
+export function SkeletonReviewItem() {
   return (
     <div
       className={cn(

@@ -5,12 +5,11 @@ import {Sheet, SheetTrigger} from "@/components/Sheet";
 import {HamburgerIcon} from "@/icons/HamburgerIcon";
 import {cn} from "@/utils/cn";
 
+type SheetTriggerProps = React.ComponentProps<typeof SheetTrigger>;
 type SheetProps = React.ComponentProps<typeof Sheet>;
 
-interface SheetDemoProps {
-  defaultOpen?: boolean;
-  side?: SheetProps["side"];
-}
+type SheetDemoProps = Pick<SheetTriggerProps, "defaultOpen"> &
+  Pick<SheetProps, "side">;
 
 function SheetDemo({defaultOpen, side}: SheetDemoProps) {
   return (

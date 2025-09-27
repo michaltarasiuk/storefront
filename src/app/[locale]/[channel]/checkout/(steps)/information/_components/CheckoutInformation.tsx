@@ -26,13 +26,13 @@ export function CheckoutInformation({
   queryRef: QueryRef<CheckoutInformation_CheckoutQuery>;
 }) {
   const {data} = useReadQuery(queryRef);
-  if (!isDefined(data.checkout)) {
-    notFound();
-  }
   const [{errors}, formAction] = useActionState(updateInformation, {
     errors: {},
   });
   const [isPending, startTransition] = useTransition();
+  if (!isDefined(data.checkout)) {
+    notFound();
+  }
   return (
     <Form
       validationErrors={errors}

@@ -23,7 +23,7 @@ export function CheckoutReview({
     notFound();
   }
   return (
-    <div className={cn("gap-large-300 flex flex-col")}>
+    <div className={cn("space-y-large-300")}>
       <OrderReviewList checkout={data.checkout} />
       <CompleteOrderButton />
     </div>
@@ -32,7 +32,7 @@ export function CheckoutReview({
 
 export function SkeletonCheckoutReview() {
   return (
-    <div className={cn("gap-large-300 flex flex-col")}>
+    <div className={cn("space-y-large-300")}>
       <SkeletonOrderReviewList />
       <SkeletonCompleteOrderButton />
     </div>

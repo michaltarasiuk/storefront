@@ -146,6 +146,9 @@
   "NWiwy9": {
     "defaultMessage": "Show filter and sort options for orders"
   },
+  "NfwDx2": {
+    "defaultMessage": "Order details"
+  },
   "O95R3Z": {
     "defaultMessage": "Phone"
   },
@@ -188,6 +191,9 @@
   "X7jl6w": {
     "defaultMessage": "Orders"
   },
+  "Yywm0p": {
+    "defaultMessage": "Continue shopping"
+  },
   "ZMXbRJ": {
     "defaultMessage": "Select Language"
   },
@@ -229,6 +235,9 @@
   },
   "fiC9xB": {
     "defaultMessage": "Shipping Policy"
+  },
+  "g/jo36": {
+    "defaultMessage": "Save my information for a faster checkout"
   },
   "i7vqD3": {
     "defaultMessage": "Oldest to newest"
@@ -280,9 +289,6 @@
   },
   "pRVSgm": {
     "defaultMessage": "Collection points"
-  },
-  "pfbcZN": {
-    "defaultMessage": "Examples: {examples}"
   },
   "r+dgiv": {
     "defaultMessage": "Taxes"

@@ -1,10 +1,11 @@
 import {useSuspenseQuery} from "@apollo/client";
+import invariant from "tiny-invariant";
 import type * as z from "zod";
 
 import {graphql} from "@/graphql/codegen";
 import type {CountryCode} from "@/graphql/codegen/graphql";
 import type {AddressSchema} from "@/utils/address";
-import {raise} from "@/utils/raise";
+import {isDefined} from "@/utils/is-defined";
 
 const AddressValidationRulesQuery = graphql(`
   query AddressValidationRules($countryCode: CountryCode!) {
@@ -24,7 +25,6 @@ const AddressValidationRulesQuery = graphql(`
         raw
         verbose
       }
-      postalCodeExamples
     }
   }
 `);
@@ -35,14 +35,13 @@ export function useAddressValidationRules(countryCode: CountryCode) {
       countryCode,
     },
   });
+  invariant(isDefined(data.addressValidationRules));
   const {
     allowedFields,
     requiredFields,
     upperFields,
     ...addressValidationRules
-  } =
-    data.addressValidationRules ??
-    raise(`No address rules for: ${countryCode}`);
+  } = data.addressValidationRules;
   return {
     isFieldAllowed(field: AddressField) {
       return allowedFields.includes(field);
@@ -56,6 +55,7 @@ export function useAddressValidationRules(countryCode: CountryCode) {
     ...addressValidationRules,
   };
 }
+
 type AddressField =
   | "name"
   | Exclude<keyof z.infer<typeof AddressSchema>, "firstName" | "lastName">;

@@ -13,8 +13,8 @@ import {joinPathSegments} from "@/utils/pathname";
 const CompleteCheckoutMuatation = graphql(`
   mutation CompleteCheckout($id: ID!) {
     checkoutComplete(id: $id) {
-      errors {
-        __typename
+      order {
+        id
       }
     }
   }
@@ -31,8 +31,9 @@ export async function completeCheckout(locale: Locale, channel: string) {
       id: checkoutId.value,
     },
   });
-  const {errors = []} = data?.checkoutComplete ?? {};
-  if (!errors.length) {
-    redirect(joinPathSegments(locale, channel, Routes.checkout.thankYou));
+  const {order} = data?.checkoutComplete ?? {};
+  if (!isDefined(order)) {
+    return;
   }
+  redirect(joinPathSegments(locale, channel, Routes.checkout.order(order.id)));
 }

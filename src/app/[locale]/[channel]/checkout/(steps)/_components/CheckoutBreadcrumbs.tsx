@@ -4,7 +4,7 @@ import {usePathname} from "next/navigation";
 
 import {BreadcrumbLink, Breadcrumbs} from "@/components/Breadcrumbs";
 import {Routes} from "@/consts/routes";
-import {usePathnameContext} from "@/hooks/use-pathname-context";
+import {useBasePathname} from "@/hooks/use-base-pathname";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {joinPathSegments} from "@/utils/pathname";
 
@@ -12,7 +12,7 @@ type BreadcrumbLinkProps = React.ComponentProps<typeof BreadcrumbLink>;
 
 export function CheckoutBreadcrumbs() {
   const pathname = usePathname();
-  const [locale, channel] = usePathnameContext();
+  const [locale, channel] = useBasePathname();
   const pathWithoutLocaleAndChannel = pathname
     .replace(joinPathSegments(locale), "")
     .replace(joinPathSegments(channel), "");

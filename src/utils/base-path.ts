@@ -1,7 +1,7 @@
-import invariant from "tiny-invariant";
 import * as z from "zod";
 
-import {Locales} from "@/i18n/consts";
+import {DefaultLocale, Locales} from "@/i18n/consts";
+import {DefaultChannel} from "@/modules/channel/consts";
 
 import {splitPathSegments} from "./pathname";
 
@@ -11,8 +11,7 @@ export const BasePathSchema = z.object({
 });
 
 export function getBasePath(pathname: string) {
-  const [locale, channel] = splitPathSegments(pathname);
-  invariant(locale);
-  invariant(channel);
+  const [locale = DefaultLocale, channel = DefaultChannel] =
+    splitPathSegments(pathname);
   return [locale, channel] as const;
 }

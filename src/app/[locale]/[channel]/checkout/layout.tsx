@@ -1,19 +1,15 @@
 import {Footer} from "@/components/Footer";
-import {HeadingGroup} from "@/components/Heading";
 import {LinkedLogo} from "@/components/LinkedLogo";
 import {cn} from "@/utils/cn";
 
-import {CheckoutBreadcrumbs} from "./_components/CheckoutBreadcrumbs";
 import {
   CheckoutSummary,
   CheckoutSummaryDisclosure,
 } from "./_components/CheckoutSummary";
 
-interface CheckoutLayoutProps {
-  children: React.ReactNode;
-}
-
-export default async function CheckoutLayout({children}: CheckoutLayoutProps) {
+export default async function CheckoutLayout({
+  children,
+}: LayoutProps<"/[locale]/[channel]/checkout">) {
   return (
     <div
       className={cn(
@@ -35,8 +31,7 @@ export default async function CheckoutLayout({children}: CheckoutLayoutProps) {
               "p-large-200 space-y-large-300 mb-0 grow",
               "md:mb-large-200 md:p-0",
             )}>
-            <CheckoutBreadcrumbs />
-            <HeadingGroup>{children}</HeadingGroup>
+            {children}
           </main>
           <Footer />
         </div>

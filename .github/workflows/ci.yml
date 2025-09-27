@@ -30,5 +30,19 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Get Playwright version
+        id: playwright-version
+        run: echo "version=$(bunx playwright --version | cut -d' ' -f2)" >> $GITHUB_OUTPUT
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ steps.playwright-version.outputs.version }}
+
+      - name: Install Playwright browsers
+        run: bunx playwright install --with-deps
+
       - name: Run CI
         run: bun run ci

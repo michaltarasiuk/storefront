@@ -1,17 +1,10 @@
-import {type Locale, Locales} from "@/i18n/consts";
+import {Locales} from "@/i18n/consts";
 import {IntlProvider} from "@/i18n/IntlProvider";
-
-interface LocaleLayoutProps {
-  children: React.ReactNode;
-  params: Promise<{
-    locale: Locale;
-  }>;
-}
 
 export default async function LocaleLayout({
   children,
   params,
-}: LocaleLayoutProps) {
+}: LayoutProps<"/[locale]">) {
   const {locale} = await params;
   return <IntlProvider locale={locale}>{children}</IntlProvider>;
 }

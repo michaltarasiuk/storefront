@@ -1,11 +1,9 @@
 import {LinkedLogo} from "@/components/LinkedLogo";
 import {cn} from "@/utils/cn";
 
-interface AuthLayoutProps {
-  children: React.ReactNode;
-}
-
-export default async function AuthLayout({children}: AuthLayoutProps) {
+export default async function AuthLayout({
+  children,
+}: LayoutProps<"/[locale]/[channel]">) {
   return (
     <div
       className={cn(

@@ -4,7 +4,7 @@ import {use} from "react";
 
 import {graphql} from "@/graphql/codegen";
 import type {TaxedMoney_TaxedMoneyFragment} from "@/graphql/codegen/graphql";
-import {ChannelContext} from "@/modules/channels/channel-context";
+import {ChannelContext} from "@/modules/channel/channel-context";
 
 import {Money} from "./Money";
 import type {Text} from "./Text";

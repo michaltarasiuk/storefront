@@ -1,6 +1,5 @@
 import {Heading, HeadingGroup} from "@/components/Heading";
 import {TextBlock} from "@/components/TextBlock";
-import type {Locale} from "@/i18n/consts";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {getIntl} from "@/i18n/utils/get-intl";
 import {LockIcon} from "@/icons/LockIcon";
@@ -9,13 +8,9 @@ import {cn} from "@/utils/cn";
 import {PageTitle} from "../_components/PageTitie";
 import {DeactivateAllTokensButton} from "./_components/DeactivateAllTokensButton";
 
-interface SettingsPageProps {
-  params: Promise<{
-    locale: Locale;
-  }>;
-}
-
-export default async function SettingsPage({params}: SettingsPageProps) {
+export default async function SettingsPage({
+  params,
+}: PageProps<"/[locale]/[channel]/settings">) {
   const {locale} = await params;
   const intl = await getIntl(locale);
   return (

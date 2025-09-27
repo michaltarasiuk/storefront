@@ -1,16 +1,19 @@
-import type {Locale} from "./consts";
+import {DefaultLocale} from "./consts";
 import {I18nProvider as AriaI18nProvider} from "./react-aria-components";
 import {IntlProvider as ReactIntlProvider} from "./react-intl";
 import {getIntl} from "./utils/get-intl";
+import {isLocaleSupported} from "./utils/is-locale-supported";
 
 export async function IntlProvider({
   children,
   locale,
 }: {
   children: React.ReactNode;
-  locale: Locale;
+  locale: string;
 }) {
-  const intl = await getIntl(locale);
+  const intl = await getIntl(
+    isLocaleSupported(locale) ? locale : DefaultLocale,
+  );
   return (
     <ReactIntlProvider
       locale={intl.locale}

@@ -1,9 +1,8 @@
-import type {Locale} from "@/i18n/consts";
 import {getIntl} from "@/i18n/utils/get-intl";
 import {text} from "@/styles/text";
 import {cn} from "@/utils/cn";
 
-export async function ContactInfo({locale}: {locale: Locale}) {
+export async function ContactInfo({locale}: {locale: string}) {
   const intl = await getIntl(locale);
   return (
     <dl
