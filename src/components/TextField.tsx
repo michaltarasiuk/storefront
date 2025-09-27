@@ -15,7 +15,7 @@ import {Text} from "./Text";
 
 const input = cva(["h-input p-small-100", "[&:not(:placeholder-shown)]:pt-6"], {
   variants: {
-    isUpper: {
+    isUppercased: {
       true: "[&:not(:placeholder-shown)]:uppercase",
     },
   },
@@ -33,7 +33,7 @@ export function TextField({
   label,
   description,
   accessory,
-  isUpper,
+  isUppercased,
   ...props
 }: TextFieldProps) {
   return (
@@ -50,7 +50,7 @@ export function TextField({
           placeholder={label}
           className={cn(
             input({
-              isUpper,
+              isUppercased,
             }),
           )}
         />

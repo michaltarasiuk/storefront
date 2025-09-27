@@ -49,7 +49,7 @@ export function useAddressValidationRules(countryCode: CountryCode) {
     isFieldRequired(field: AddressField) {
       return requiredFields.includes(field);
     },
-    isFieldUpper(field: AddressField) {
+    isFieldUppercased(field: AddressField) {
       return upperFields.includes(field);
     },
     ...addressValidationRules,

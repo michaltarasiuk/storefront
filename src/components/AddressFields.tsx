@@ -79,7 +79,7 @@ export function AddressFields({
     cityAreaChoices,
     isFieldAllowed,
     isFieldRequired,
-    isFieldUpper,
+    isFieldUppercased,
   } = useAddressValidationRules(countryCode);
   const intl = useIntl();
   return (
@@ -115,7 +115,7 @@ export function AddressFields({
               defaultMessage: "First name",
             })}
             isRequired={isFieldRequired("name")}
-            isUpper={isFieldUpper("name")}
+            isUppercased={isFieldUppercased("name")}
             className={cn("flex-1")}
           />
           <TextField
@@ -126,7 +126,7 @@ export function AddressFields({
               defaultMessage: "Last name",
             })}
             isRequired={isFieldRequired("name")}
-            isUpper={isFieldUpper("name")}
+            isUppercased={isFieldUppercased("name")}
             className={cn("flex-1")}
           />
         </div>
@@ -140,7 +140,7 @@ export function AddressFields({
             defaultMessage: "Phone",
           })}
           isRequired={isFieldRequired("phone")}
-          isUpper={isFieldUpper("phone")}
+          isUppercased={isFieldUppercased("phone")}
         />
       )}
       {isFieldAllowed("companyName") && (
@@ -152,7 +152,7 @@ export function AddressFields({
             defaultMessage: "Company name",
           })}
           isRequired={isFieldRequired("companyName")}
-          isUpper={isFieldUpper("companyName")}
+          isUppercased={isFieldUppercased("companyName")}
         />
       )}
       {(isFieldAllowed("streetAddress1") ||
@@ -167,7 +167,7 @@ export function AddressFields({
                 defaultMessage: "Street address 1",
               })}
               isRequired={isFieldRequired("streetAddress1")}
-              isUpper={isFieldUpper("streetAddress1")}
+              isUppercased={isFieldUppercased("streetAddress1")}
               className={cn("flex-1")}
             />
           )}
@@ -180,7 +180,7 @@ export function AddressFields({
                 defaultMessage: "Street address 2",
               })}
               isRequired={isFieldRequired("streetAddress2")}
-              isUpper={isFieldUpper("streetAddress2")}
+              isUppercased={isFieldUppercased("streetAddress2")}
               className={cn("flex-1")}
             />
           )}
@@ -202,7 +202,7 @@ export function AddressFields({
                 defaultMessage: "Country area",
               })}
               isRequired={isFieldRequired("countryArea")}
-              isUpper={isFieldUpper("countryArea")}
+              isUppercased={isFieldUppercased("countryArea")}
             />
           ) : (
             <Select
@@ -239,7 +239,7 @@ export function AddressFields({
             defaultMessage: "Postal code",
           })}
           isRequired={isFieldRequired("postalCode")}
-          isUpper={isFieldUpper("postalCode")}
+          isUppercased={isFieldUppercased("postalCode")}
         />
       )}
       {(isFieldAllowed("city") || isFieldAllowed("cityArea")) && (
@@ -255,7 +255,7 @@ export function AddressFields({
                     defaultMessage: "City",
                   })}
                   isRequired={isFieldRequired("city")}
-                  isUpper={isFieldUpper("city")}
+                  isUppercased={isFieldUppercased("city")}
                 />
               ) : (
                 <Select
@@ -288,7 +288,7 @@ export function AddressFields({
                     defaultMessage: "City area",
                   })}
                   isRequired={isFieldRequired("cityArea")}
-                  isUpper={isFieldUpper("cityArea")}
+                  isUppercased={isFieldUppercased("cityArea")}
                 />
               ) : (
                 <Select
