@@ -55,7 +55,7 @@ export function SkeletonHeading(props: Pick<HeadingProps, "level">) {
     <div
       aria-hidden
       className={cn(
-        "flex h-[1lh] w-full max-w-36 items-center",
+        "flex h-[1lh] w-full max-w-42 items-center",
         heading(level === 1 || level === 2 ? {level} : {}),
       )}>
       <Skeleton className={cn("h-[1em] w-full")} />

@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import "@/styles/brands/plant.css";
+import "@/styles/brands/saleor.css";
 
 import type {Viewport} from "next";
 

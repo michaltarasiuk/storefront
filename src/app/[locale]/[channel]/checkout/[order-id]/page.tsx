@@ -12,15 +12,15 @@ import {
 const CheckoutOrder_OrderQuery = graphql(`
   query CheckoutOrder_Order($id: ID!) {
     order(id: $id) {
-      __typename
+      ...OrderSummary_Order
     }
   }
 `);
 
 export default async function CheckoutOrderPage({
   params,
-}: PageProps<"/[locale]/[channel]/checkout/[id]">) {
-  const {id} = await params;
+}: PageProps<"/[locale]/[channel]/checkout/[order-id]">) {
+  const {"order-id": id} = await params;
   return (
     <PreloadQuery
       query={CheckoutOrder_OrderQuery}

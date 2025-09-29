@@ -45,6 +45,14 @@ export async function GET({nextUrl: {origin}}: NextRequest) {
 
 const CheckoutLines: CheckoutLineInput[] = [
   {
+    variantId: "UHJvZHVjdFZhcmlhbnQ6Mzg0",
+    quantity: 1,
+  },
+  {
+    variantId: "UHJvZHVjdFZhcmlhbnQ6Mzg2",
+    quantity: 1,
+  },
+  {
     variantId: "UHJvZHVjdFZhcmlhbnQ6Mzg3",
     quantity: 1,
   },

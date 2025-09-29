@@ -1,16 +1,54 @@
-import {ProductList} from "@/components/ProductList";
-import {SummaryDisclosure} from "@/components/SummaryDisclosure";
+"use client";
+
+import {type FragmentType, useFragment} from "@apollo/client";
+
+import {
+  SkeletonSummaryDisclosure,
+  SummaryDisclosure,
+} from "@/components/SummaryDisclosure";
+import {graphql} from "@/graphql/codegen";
+import type {CheckoutSummary_CheckoutFragment} from "@/graphql/codegen/graphql";
+import {
+  CheckoutLines,
+  SkeletonCheckoutLines,
+} from "@/modules/checkout/components/CheckoutLines";
+import {
+  CheckoutMoneyLines,
+  SkeletonCheckoutMoneyLines,
+} from "@/modules/checkout/components/CheckoutMoneyLines";
 import {cn} from "@/utils/cn";
 
-import {AddPromoCodeForm} from "./AddPromoCodeForm";
-import {CheckoutMoneyLines} from "./CheckoutMoneyLines";
+import {AddPromoCodeForm, SkeletonAddPromoCodeForm} from "./AddPromoCodeForm";
 
-export function CheckoutSummary() {
+const CheckoutSummary_CheckoutFragment = graphql(`
+  fragment CheckoutSummary_Checkout on Checkout {
+    id
+    totalPrice {
+      ...TaxedMoney_TaxedMoney @unmask
+    }
+    ...CheckoutLines_Checkout
+    ...CheckoutMoneyLines_Checkout
+  }
+`);
+
+interface CheckoutSummaryProps {
+  checkout: FragmentType<CheckoutSummary_CheckoutFragment>;
+}
+
+export function CheckoutSummary({checkout}: CheckoutSummaryProps) {
+  const {data, complete} = useFragment({
+    fragment: CheckoutSummary_CheckoutFragment,
+    fragmentName: "CheckoutSummary_Checkout",
+    from: checkout,
+  });
+  if (!complete) {
+    return <SkeletonCheckoutSummary />;
+  }
   const checkoutSummary = (
     <>
-      <ProductList />
+      <CheckoutLines checkout={data} />
       <AddPromoCodeForm />
-      <CheckoutMoneyLines />
+      <CheckoutMoneyLines checkout={data} />
     </>
   );
   return (
@@ -19,13 +57,23 @@ export function CheckoutSummary() {
         {checkoutSummary}
       </div>
       <SummaryDisclosure
-        taxedMoney={{
-          gross: {amount: 0, currency: "USD"},
-          net: {amount: 0, currency: "USD"},
-        }}
+        taxedMoney={data.totalPrice}
         className={cn("md:hidden")}>
         {checkoutSummary}
       </SummaryDisclosure>
+    </>
+  );
+}
+
+export function SkeletonCheckoutSummary() {
+  return (
+    <>
+      <div className={cn("space-y-large-200 hidden", "md:block")}>
+        <SkeletonCheckoutLines />
+        <SkeletonAddPromoCodeForm />
+        <SkeletonCheckoutMoneyLines />
+      </div>
+      <SkeletonSummaryDisclosure className={cn("md:hidden")} />
     </>
   );
 }

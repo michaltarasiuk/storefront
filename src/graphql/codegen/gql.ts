@@ -18,6 +18,13 @@ type Documents = {
   "\n  mutation Signup($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      requiresConfirmation\n      errors {\n        ...AccountValidationError @unmask\n      }\n    }\n  }\n": typeof types.SignupDocument;
   "\n  mutation ConfirmAccount($email: String!, $token: String!) {\n    confirmAccount(email: $email, token: $token) {\n      user {\n        isActive\n      }\n    }\n  }\n": typeof types.ConfirmAccountDocument;
   "\n  mutation DeactivateAllTokens {\n    tokensDeactivateAll {\n      __typename\n    }\n  }\n": typeof types.DeactivateAllTokensDocument;
+  "\n  mutation AddPromoCode($id: ID!, $promoCode: String!) {\n    checkoutAddPromoCode(id: $id, promoCode: $promoCode) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n": typeof types.AddPromoCodeDocument;
+  "\n  mutation CompleteCheckout($id: ID!) {\n    checkoutComplete(id: $id) {\n      order {\n        id\n      }\n    }\n  }\n": typeof types.CompleteCheckoutDocument;
+  "\n  mutation BillingAddressUpdate($id: ID!, $billingAddress: AddressInput!) {\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $billingAddress) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n": typeof types.BillingAddressUpdateDocument;
+  "\n  mutation DeliveryMethodUpdate($id: ID!, $deliveryMethodId: ID!) {\n    checkoutDeliveryMethodUpdate(id: $id, deliveryMethodId: $deliveryMethodId) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n": typeof types.DeliveryMethodUpdateDocument;
+  "\n  mutation EmailUpdate($id: ID!, $email: String!) {\n    checkoutEmailUpdate(id: $id, email: $email) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n": typeof types.EmailUpdateDocument;
+  "\n  mutation AddressUpdate($id: ID!, $address: AddressInput!) {\n    checkoutShippingAddressUpdate(id: $id, shippingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n": typeof types.AddressUpdateDocument;
+  "\n  fragment CheckoutSummary_Checkout on Checkout {\n    id\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    ...CheckoutLines_Checkout\n    ...CheckoutMoneyLines_Checkout\n  }\n": typeof types.CheckoutSummary_CheckoutFragmentDoc;
   "\n  fragment BillingAddress_Checkout on Checkout {\n    id\n    shippingAddress {\n      ...AddressFields_Address\n    }\n    billingAddress {\n      ...AddressFields_Address\n    }\n  }\n": typeof types.BillingAddress_CheckoutFragmentDoc;
   "\n  fragment BillingReviewList_Checkout on Checkout {\n    id\n    email\n  }\n": typeof types.BillingReviewList_CheckoutFragmentDoc;
   "\n  query CheckoutBilling_Checkout($id: ID!) {\n    checkout(id: $id) {\n      deliveryMethod {\n        __typename\n      }\n      ...BillingReviewList_Checkout\n      ...BillingAddress_Checkout\n    }\n  }\n": typeof types.CheckoutBilling_CheckoutDocument;
@@ -30,25 +37,27 @@ type Documents = {
   "\n  fragment Contact_Checkout on Checkout {\n    id\n    email\n  }\n": typeof types.Contact_CheckoutFragmentDoc;
   "\n  fragment ShippingAddress_Checkout on Checkout {\n    shippingAddress {\n      ...AddressFields_Address\n    }\n  }\n": typeof types.ShippingAddress_CheckoutFragmentDoc;
   "\n  query CheckoutInformation_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...Contact_Checkout\n      ...ShippingAddress_Checkout\n    }\n  }\n": typeof types.CheckoutInformation_CheckoutDocument;
+  "\n  query CheckoutSteps_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutSummary_Checkout\n    }\n  }\n": typeof types.CheckoutSteps_CheckoutDocument;
   "\n  fragment OrderReviewList_Checkout on Checkout {\n    id\n    email\n  }\n": typeof types.OrderReviewList_CheckoutFragmentDoc;
   "\n  query CheckoutReview_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...OrderReviewList_Checkout\n    }\n  }\n": typeof types.CheckoutReview_CheckoutDocument;
-  "\n  mutation AddPromoCode($id: ID!, $promoCode: String!) {\n    checkoutAddPromoCode(id: $id, promoCode: $promoCode) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n": typeof types.AddPromoCodeDocument;
-  "\n  mutation CompleteCheckout($id: ID!) {\n    checkoutComplete(id: $id) {\n      order {\n        id\n      }\n    }\n  }\n": typeof types.CompleteCheckoutDocument;
-  "\n  mutation BillingAddressUpdate($id: ID!, $billingAddress: AddressInput!) {\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $billingAddress) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n": typeof types.BillingAddressUpdateDocument;
-  "\n  mutation DeliveryMethodUpdate($id: ID!, $deliveryMethodId: ID!) {\n    checkoutDeliveryMethodUpdate(id: $id, deliveryMethodId: $deliveryMethodId) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n": typeof types.DeliveryMethodUpdateDocument;
-  "\n  mutation EmailUpdate($id: ID!, $email: String!) {\n    checkoutEmailUpdate(id: $id, email: $email) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n": typeof types.EmailUpdateDocument;
-  "\n  mutation AddressUpdate($id: ID!, $address: AddressInput!) {\n    checkoutShippingAddressUpdate(id: $id, shippingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n": typeof types.AddressUpdateDocument;
+  "\n  fragment OrderSummary_Order on Order {\n    id\n    total {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    ...OrderLines_Order\n    ...OrderMoneyLines_Order\n  }\n": typeof types.OrderSummary_OrderFragmentDoc;
+  "\n  query CheckoutOrder_Order($id: ID!) {\n    order(id: $id) {\n      ...OrderSummary_Order\n    }\n  }\n": typeof types.CheckoutOrder_OrderDocument;
   "\n  mutation DemoCheckoutCreate($input: CheckoutCreateInput!) {\n    checkoutCreate(input: $input) {\n      checkout {\n        id\n      }\n    }\n  }\n": typeof types.DemoCheckoutCreateDocument;
-  "\n  query CheckoutOrder_Order($id: ID!) {\n    order(id: $id) {\n      __typename\n    }\n  }\n": typeof types.CheckoutOrder_OrderDocument;
   "\n  fragment AddressFields_Address on Address {\n    id\n    country {\n      code\n    }\n    firstName\n    lastName\n    companyName\n    phone\n    streetAddress1\n    streetAddress2\n    postalCode\n    countryArea\n    city\n    cityArea\n  }\n": typeof types.AddressFields_AddressFragmentDoc;
   "\n  fragment Money_Money on Money {\n    currency\n    amount\n  }\n": typeof types.Money_MoneyFragmentDoc;
+  "\n  fragment ProductThumbnail_Product on Product {\n    id\n    thumbnail {\n      url\n      alt\n    }\n  }\n": typeof types.ProductThumbnail_ProductFragmentDoc;
   "\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money @unmask\n    }\n    gross {\n      ...Money_Money @unmask\n    }\n  }\n": typeof types.TaxedMoney_TaxedMoneyFragmentDoc;
-  "\n  query AddressFormat($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      addressFormat\n    }\n  }\n": typeof types.AddressFormatDocument;
   "\n  query AddressValidationRules($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      allowedFields\n      requiredFields\n      upperFields\n      countryAreaChoices {\n        raw\n        verbose\n      }\n      cityChoices {\n        raw\n        verbose\n      }\n      cityAreaChoices {\n        raw\n        verbose\n      }\n    }\n  }\n": typeof types.AddressValidationRulesDocument;
   "\n  fragment AccountValidationError on AccountError {\n    field\n    message\n  }\n": typeof types.AccountValidationErrorFragmentDoc;
   "\n  query ChannelContextValue($slug: String!) {\n    channel(slug: $slug) {\n      countries {\n        code\n        country\n      }\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n": typeof types.ChannelContextValueDocument;
   "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n": typeof types.ChannelSlugsDocument;
+  "\n  fragment CheckoutLine_Checkout on CheckoutLine {\n    id\n    quantity\n    variant {\n      product {\n        name\n        ...ProductThumbnail_Product\n      }\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n": typeof types.CheckoutLine_CheckoutFragmentDoc;
+  "\n  fragment CheckoutLines_Checkout on Checkout {\n    id\n    lines {\n      id\n      ...CheckoutLine_Checkout\n    }\n  }\n": typeof types.CheckoutLines_CheckoutFragmentDoc;
+  "\n  fragment CheckoutMoneyLines_Checkout on Checkout {\n    id\n    subtotalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n": typeof types.CheckoutMoneyLines_CheckoutFragmentDoc;
   "\n  fragment CheckoutValidationError on CheckoutError {\n    field\n    message\n  }\n": typeof types.CheckoutValidationErrorFragmentDoc;
+  "\n  fragment OrderLine_Order on OrderLine {\n    id\n    quantity\n    variant {\n      product {\n        name\n        ...ProductThumbnail_Product\n      }\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n": typeof types.OrderLine_OrderFragmentDoc;
+  "\n  fragment OrderLines_Order on Order {\n    id\n    lines {\n      id\n      ...OrderLine_Order\n    }\n  }\n": typeof types.OrderLines_OrderFragmentDoc;
+  "\n  fragment OrderMoneyLines_Order on Order {\n    id\n    subtotal {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    total {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n": typeof types.OrderMoneyLines_OrderFragmentDoc;
 };
 const documents: Documents = {
   "\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n      refreshToken\n      errors {\n        ...AccountValidationError @unmask\n      }\n    }\n  }\n":
@@ -59,6 +68,20 @@ const documents: Documents = {
     types.ConfirmAccountDocument,
   "\n  mutation DeactivateAllTokens {\n    tokensDeactivateAll {\n      __typename\n    }\n  }\n":
     types.DeactivateAllTokensDocument,
+  "\n  mutation AddPromoCode($id: ID!, $promoCode: String!) {\n    checkoutAddPromoCode(id: $id, promoCode: $promoCode) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n":
+    types.AddPromoCodeDocument,
+  "\n  mutation CompleteCheckout($id: ID!) {\n    checkoutComplete(id: $id) {\n      order {\n        id\n      }\n    }\n  }\n":
+    types.CompleteCheckoutDocument,
+  "\n  mutation BillingAddressUpdate($id: ID!, $billingAddress: AddressInput!) {\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $billingAddress) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n":
+    types.BillingAddressUpdateDocument,
+  "\n  mutation DeliveryMethodUpdate($id: ID!, $deliveryMethodId: ID!) {\n    checkoutDeliveryMethodUpdate(id: $id, deliveryMethodId: $deliveryMethodId) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n":
+    types.DeliveryMethodUpdateDocument,
+  "\n  mutation EmailUpdate($id: ID!, $email: String!) {\n    checkoutEmailUpdate(id: $id, email: $email) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n":
+    types.EmailUpdateDocument,
+  "\n  mutation AddressUpdate($id: ID!, $address: AddressInput!) {\n    checkoutShippingAddressUpdate(id: $id, shippingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n":
+    types.AddressUpdateDocument,
+  "\n  fragment CheckoutSummary_Checkout on Checkout {\n    id\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    ...CheckoutLines_Checkout\n    ...CheckoutMoneyLines_Checkout\n  }\n":
+    types.CheckoutSummary_CheckoutFragmentDoc,
   "\n  fragment BillingAddress_Checkout on Checkout {\n    id\n    shippingAddress {\n      ...AddressFields_Address\n    }\n    billingAddress {\n      ...AddressFields_Address\n    }\n  }\n":
     types.BillingAddress_CheckoutFragmentDoc,
   "\n  fragment BillingReviewList_Checkout on Checkout {\n    id\n    email\n  }\n":
@@ -83,34 +106,26 @@ const documents: Documents = {
     types.ShippingAddress_CheckoutFragmentDoc,
   "\n  query CheckoutInformation_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...Contact_Checkout\n      ...ShippingAddress_Checkout\n    }\n  }\n":
     types.CheckoutInformation_CheckoutDocument,
+  "\n  query CheckoutSteps_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutSummary_Checkout\n    }\n  }\n":
+    types.CheckoutSteps_CheckoutDocument,
   "\n  fragment OrderReviewList_Checkout on Checkout {\n    id\n    email\n  }\n":
     types.OrderReviewList_CheckoutFragmentDoc,
   "\n  query CheckoutReview_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...OrderReviewList_Checkout\n    }\n  }\n":
     types.CheckoutReview_CheckoutDocument,
-  "\n  mutation AddPromoCode($id: ID!, $promoCode: String!) {\n    checkoutAddPromoCode(id: $id, promoCode: $promoCode) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n":
-    types.AddPromoCodeDocument,
-  "\n  mutation CompleteCheckout($id: ID!) {\n    checkoutComplete(id: $id) {\n      order {\n        id\n      }\n    }\n  }\n":
-    types.CompleteCheckoutDocument,
-  "\n  mutation BillingAddressUpdate($id: ID!, $billingAddress: AddressInput!) {\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $billingAddress) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n":
-    types.BillingAddressUpdateDocument,
-  "\n  mutation DeliveryMethodUpdate($id: ID!, $deliveryMethodId: ID!) {\n    checkoutDeliveryMethodUpdate(id: $id, deliveryMethodId: $deliveryMethodId) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n":
-    types.DeliveryMethodUpdateDocument,
-  "\n  mutation EmailUpdate($id: ID!, $email: String!) {\n    checkoutEmailUpdate(id: $id, email: $email) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n":
-    types.EmailUpdateDocument,
-  "\n  mutation AddressUpdate($id: ID!, $address: AddressInput!) {\n    checkoutShippingAddressUpdate(id: $id, shippingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n":
-    types.AddressUpdateDocument,
+  "\n  fragment OrderSummary_Order on Order {\n    id\n    total {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    ...OrderLines_Order\n    ...OrderMoneyLines_Order\n  }\n":
+    types.OrderSummary_OrderFragmentDoc,
+  "\n  query CheckoutOrder_Order($id: ID!) {\n    order(id: $id) {\n      ...OrderSummary_Order\n    }\n  }\n":
+    types.CheckoutOrder_OrderDocument,
   "\n  mutation DemoCheckoutCreate($input: CheckoutCreateInput!) {\n    checkoutCreate(input: $input) {\n      checkout {\n        id\n      }\n    }\n  }\n":
     types.DemoCheckoutCreateDocument,
-  "\n  query CheckoutOrder_Order($id: ID!) {\n    order(id: $id) {\n      __typename\n    }\n  }\n":
-    types.CheckoutOrder_OrderDocument,
   "\n  fragment AddressFields_Address on Address {\n    id\n    country {\n      code\n    }\n    firstName\n    lastName\n    companyName\n    phone\n    streetAddress1\n    streetAddress2\n    postalCode\n    countryArea\n    city\n    cityArea\n  }\n":
     types.AddressFields_AddressFragmentDoc,
   "\n  fragment Money_Money on Money {\n    currency\n    amount\n  }\n":
     types.Money_MoneyFragmentDoc,
+  "\n  fragment ProductThumbnail_Product on Product {\n    id\n    thumbnail {\n      url\n      alt\n    }\n  }\n":
+    types.ProductThumbnail_ProductFragmentDoc,
   "\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money @unmask\n    }\n    gross {\n      ...Money_Money @unmask\n    }\n  }\n":
     types.TaxedMoney_TaxedMoneyFragmentDoc,
-  "\n  query AddressFormat($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      addressFormat\n    }\n  }\n":
-    types.AddressFormatDocument,
   "\n  query AddressValidationRules($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      allowedFields\n      requiredFields\n      upperFields\n      countryAreaChoices {\n        raw\n        verbose\n      }\n      cityChoices {\n        raw\n        verbose\n      }\n      cityAreaChoices {\n        raw\n        verbose\n      }\n    }\n  }\n":
     types.AddressValidationRulesDocument,
   "\n  fragment AccountValidationError on AccountError {\n    field\n    message\n  }\n":
@@ -119,8 +134,20 @@ const documents: Documents = {
     types.ChannelContextValueDocument,
   "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n":
     types.ChannelSlugsDocument,
+  "\n  fragment CheckoutLine_Checkout on CheckoutLine {\n    id\n    quantity\n    variant {\n      product {\n        name\n        ...ProductThumbnail_Product\n      }\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n":
+    types.CheckoutLine_CheckoutFragmentDoc,
+  "\n  fragment CheckoutLines_Checkout on Checkout {\n    id\n    lines {\n      id\n      ...CheckoutLine_Checkout\n    }\n  }\n":
+    types.CheckoutLines_CheckoutFragmentDoc,
+  "\n  fragment CheckoutMoneyLines_Checkout on Checkout {\n    id\n    subtotalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n":
+    types.CheckoutMoneyLines_CheckoutFragmentDoc,
   "\n  fragment CheckoutValidationError on CheckoutError {\n    field\n    message\n  }\n":
     types.CheckoutValidationErrorFragmentDoc,
+  "\n  fragment OrderLine_Order on OrderLine {\n    id\n    quantity\n    variant {\n      product {\n        name\n        ...ProductThumbnail_Product\n      }\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n":
+    types.OrderLine_OrderFragmentDoc,
+  "\n  fragment OrderLines_Order on Order {\n    id\n    lines {\n      id\n      ...OrderLine_Order\n    }\n  }\n":
+    types.OrderLines_OrderFragmentDoc,
+  "\n  fragment OrderMoneyLines_Order on Order {\n    id\n    subtotal {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    total {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n":
+    types.OrderMoneyLines_OrderFragmentDoc,
 };
 
 /**
@@ -161,6 +188,48 @@ export function graphql(
 export function graphql(
   source: "\n  mutation DeactivateAllTokens {\n    tokensDeactivateAll {\n      __typename\n    }\n  }\n",
 ): (typeof documents)["\n  mutation DeactivateAllTokens {\n    tokensDeactivateAll {\n      __typename\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  mutation AddPromoCode($id: ID!, $promoCode: String!) {\n    checkoutAddPromoCode(id: $id, promoCode: $promoCode) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n",
+): (typeof documents)["\n  mutation AddPromoCode($id: ID!, $promoCode: String!) {\n    checkoutAddPromoCode(id: $id, promoCode: $promoCode) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  mutation CompleteCheckout($id: ID!) {\n    checkoutComplete(id: $id) {\n      order {\n        id\n      }\n    }\n  }\n",
+): (typeof documents)["\n  mutation CompleteCheckout($id: ID!) {\n    checkoutComplete(id: $id) {\n      order {\n        id\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  mutation BillingAddressUpdate($id: ID!, $billingAddress: AddressInput!) {\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $billingAddress) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n",
+): (typeof documents)["\n  mutation BillingAddressUpdate($id: ID!, $billingAddress: AddressInput!) {\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $billingAddress) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  mutation DeliveryMethodUpdate($id: ID!, $deliveryMethodId: ID!) {\n    checkoutDeliveryMethodUpdate(id: $id, deliveryMethodId: $deliveryMethodId) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n",
+): (typeof documents)["\n  mutation DeliveryMethodUpdate($id: ID!, $deliveryMethodId: ID!) {\n    checkoutDeliveryMethodUpdate(id: $id, deliveryMethodId: $deliveryMethodId) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  mutation EmailUpdate($id: ID!, $email: String!) {\n    checkoutEmailUpdate(id: $id, email: $email) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n",
+): (typeof documents)["\n  mutation EmailUpdate($id: ID!, $email: String!) {\n    checkoutEmailUpdate(id: $id, email: $email) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  mutation AddressUpdate($id: ID!, $address: AddressInput!) {\n    checkoutShippingAddressUpdate(id: $id, shippingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n",
+): (typeof documents)["\n  mutation AddressUpdate($id: ID!, $address: AddressInput!) {\n    checkoutShippingAddressUpdate(id: $id, shippingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  fragment CheckoutSummary_Checkout on Checkout {\n    id\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    ...CheckoutLines_Checkout\n    ...CheckoutMoneyLines_Checkout\n  }\n",
+): (typeof documents)["\n  fragment CheckoutSummary_Checkout on Checkout {\n    id\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    ...CheckoutLines_Checkout\n    ...CheckoutMoneyLines_Checkout\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -237,6 +306,12 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
+  source: "\n  query CheckoutSteps_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutSummary_Checkout\n    }\n  }\n",
+): (typeof documents)["\n  query CheckoutSteps_Checkout($id: ID!) {\n    checkout(id: $id) {\n      ...CheckoutSummary_Checkout\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
   source: "\n  fragment OrderReviewList_Checkout on Checkout {\n    id\n    email\n  }\n",
 ): (typeof documents)["\n  fragment OrderReviewList_Checkout on Checkout {\n    id\n    email\n  }\n"];
 /**
@@ -249,50 +324,20 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  mutation AddPromoCode($id: ID!, $promoCode: String!) {\n    checkoutAddPromoCode(id: $id, promoCode: $promoCode) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n",
-): (typeof documents)["\n  mutation AddPromoCode($id: ID!, $promoCode: String!) {\n    checkoutAddPromoCode(id: $id, promoCode: $promoCode) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n"];
+  source: "\n  fragment OrderSummary_Order on Order {\n    id\n    total {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    ...OrderLines_Order\n    ...OrderMoneyLines_Order\n  }\n",
+): (typeof documents)["\n  fragment OrderSummary_Order on Order {\n    id\n    total {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    ...OrderLines_Order\n    ...OrderMoneyLines_Order\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  mutation CompleteCheckout($id: ID!) {\n    checkoutComplete(id: $id) {\n      order {\n        id\n      }\n    }\n  }\n",
-): (typeof documents)["\n  mutation CompleteCheckout($id: ID!) {\n    checkoutComplete(id: $id) {\n      order {\n        id\n      }\n    }\n  }\n"];
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function graphql(
-  source: "\n  mutation BillingAddressUpdate($id: ID!, $billingAddress: AddressInput!) {\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $billingAddress) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n",
-): (typeof documents)["\n  mutation BillingAddressUpdate($id: ID!, $billingAddress: AddressInput!) {\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $billingAddress) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n"];
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function graphql(
-  source: "\n  mutation DeliveryMethodUpdate($id: ID!, $deliveryMethodId: ID!) {\n    checkoutDeliveryMethodUpdate(id: $id, deliveryMethodId: $deliveryMethodId) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n",
-): (typeof documents)["\n  mutation DeliveryMethodUpdate($id: ID!, $deliveryMethodId: ID!) {\n    checkoutDeliveryMethodUpdate(id: $id, deliveryMethodId: $deliveryMethodId) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n"];
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function graphql(
-  source: "\n  mutation EmailUpdate($id: ID!, $email: String!) {\n    checkoutEmailUpdate(id: $id, email: $email) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n",
-): (typeof documents)["\n  mutation EmailUpdate($id: ID!, $email: String!) {\n    checkoutEmailUpdate(id: $id, email: $email) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n"];
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function graphql(
-  source: "\n  mutation AddressUpdate($id: ID!, $address: AddressInput!) {\n    checkoutShippingAddressUpdate(id: $id, shippingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n",
-): (typeof documents)["\n  mutation AddressUpdate($id: ID!, $address: AddressInput!) {\n    checkoutShippingAddressUpdate(id: $id, shippingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n    checkoutBillingAddressUpdate(id: $id, billingAddress: $address) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n"];
+  source: "\n  query CheckoutOrder_Order($id: ID!) {\n    order(id: $id) {\n      ...OrderSummary_Order\n    }\n  }\n",
+): (typeof documents)["\n  query CheckoutOrder_Order($id: ID!) {\n    order(id: $id) {\n      ...OrderSummary_Order\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
   source: "\n  mutation DemoCheckoutCreate($input: CheckoutCreateInput!) {\n    checkoutCreate(input: $input) {\n      checkout {\n        id\n      }\n    }\n  }\n",
 ): (typeof documents)["\n  mutation DemoCheckoutCreate($input: CheckoutCreateInput!) {\n    checkoutCreate(input: $input) {\n      checkout {\n        id\n      }\n    }\n  }\n"];
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function graphql(
-  source: "\n  query CheckoutOrder_Order($id: ID!) {\n    order(id: $id) {\n      __typename\n    }\n  }\n",
-): (typeof documents)["\n  query CheckoutOrder_Order($id: ID!) {\n    order(id: $id) {\n      __typename\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -309,14 +354,14 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money @unmask\n    }\n    gross {\n      ...Money_Money @unmask\n    }\n  }\n",
-): (typeof documents)["\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money @unmask\n    }\n    gross {\n      ...Money_Money @unmask\n    }\n  }\n"];
+  source: "\n  fragment ProductThumbnail_Product on Product {\n    id\n    thumbnail {\n      url\n      alt\n    }\n  }\n",
+): (typeof documents)["\n  fragment ProductThumbnail_Product on Product {\n    id\n    thumbnail {\n      url\n      alt\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  query AddressFormat($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      addressFormat\n    }\n  }\n",
-): (typeof documents)["\n  query AddressFormat($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      addressFormat\n    }\n  }\n"];
+  source: "\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money @unmask\n    }\n    gross {\n      ...Money_Money @unmask\n    }\n  }\n",
+): (typeof documents)["\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money @unmask\n    }\n    gross {\n      ...Money_Money @unmask\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -345,8 +390,44 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
+  source: "\n  fragment CheckoutLine_Checkout on CheckoutLine {\n    id\n    quantity\n    variant {\n      product {\n        name\n        ...ProductThumbnail_Product\n      }\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n",
+): (typeof documents)["\n  fragment CheckoutLine_Checkout on CheckoutLine {\n    id\n    quantity\n    variant {\n      product {\n        name\n        ...ProductThumbnail_Product\n      }\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  fragment CheckoutLines_Checkout on Checkout {\n    id\n    lines {\n      id\n      ...CheckoutLine_Checkout\n    }\n  }\n",
+): (typeof documents)["\n  fragment CheckoutLines_Checkout on Checkout {\n    id\n    lines {\n      id\n      ...CheckoutLine_Checkout\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  fragment CheckoutMoneyLines_Checkout on Checkout {\n    id\n    subtotalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n",
+): (typeof documents)["\n  fragment CheckoutMoneyLines_Checkout on Checkout {\n    id\n    subtotalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
   source: "\n  fragment CheckoutValidationError on CheckoutError {\n    field\n    message\n  }\n",
 ): (typeof documents)["\n  fragment CheckoutValidationError on CheckoutError {\n    field\n    message\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  fragment OrderLine_Order on OrderLine {\n    id\n    quantity\n    variant {\n      product {\n        name\n        ...ProductThumbnail_Product\n      }\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n",
+): (typeof documents)["\n  fragment OrderLine_Order on OrderLine {\n    id\n    quantity\n    variant {\n      product {\n        name\n        ...ProductThumbnail_Product\n      }\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  fragment OrderLines_Order on Order {\n    id\n    lines {\n      id\n      ...OrderLine_Order\n    }\n  }\n",
+): (typeof documents)["\n  fragment OrderLines_Order on Order {\n    id\n    lines {\n      id\n      ...OrderLine_Order\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  fragment OrderMoneyLines_Order on Order {\n    id\n    subtotal {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    total {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n",
+): (typeof documents)["\n  fragment OrderMoneyLines_Order on Order {\n    id\n    subtotal {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    total {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

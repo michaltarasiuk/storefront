@@ -14,7 +14,7 @@ import type {
 import {getCheckoutId} from "@/modules/checkout/utils/cookies";
 import {toValidationErrors} from "@/modules/checkout/utils/validation-errors";
 import {AddressSchema} from "@/utils/address";
-import {BasePathSchema} from "@/utils/base-path";
+import {BasePathnameSchema} from "@/utils/base-pathname";
 import {isDefined} from "@/utils/is-defined";
 import {joinPathSegments} from "@/utils/pathname";
 
@@ -75,7 +75,7 @@ export async function updateInformation(_state: unknown, formData: FormData) {
 const FormSchema = z.object({
   email: z.email(),
   ...AddressSchema.shape,
-  ...BasePathSchema.shape,
+  ...BasePathnameSchema.shape,
 });
 function parseFormData(formData: FormData) {
   return FormSchema.parse(Object.fromEntries(formData));

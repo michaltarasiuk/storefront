@@ -1,16 +1,43 @@
-import {HeadingGroup} from "@/components/Heading";
+import {notFound} from "next/navigation";
+import {Suspense} from "react";
 
-import {CheckoutLayout} from "../_components/CheckoutLayout";
-import {CheckoutBreadcrumbs} from "./_components/CheckoutBreadcrumbs";
-import {CheckoutSummary} from "./_components/CheckoutSummary";
+import {PreloadQuery} from "@/graphql/apollo-client";
+import {graphql} from "@/graphql/codegen";
+import {getCheckoutId} from "@/modules/checkout/utils/cookies";
+import {isDefined} from "@/utils/is-defined";
 
-export default function CheckoutStepsLayout({
+import {
+  CheckoutSteps,
+  SkeletonCheckoutSteps,
+} from "./_components/CheckoutSteps";
+
+const CheckoutSteps_CheckoutQuery = graphql(`
+  query CheckoutSteps_Checkout($id: ID!) {
+    checkout(id: $id) {
+      ...CheckoutSummary_Checkout
+    }
+  }
+`);
+
+export default async function CheckoutStepsLayout({
   children,
 }: LayoutProps<"/[locale]/[channel]/checkout">) {
+  const checkoutId = await getCheckoutId();
+  if (!isDefined(checkoutId)) {
+    notFound();
+  }
   return (
-    <CheckoutLayout summary={<CheckoutSummary />}>
-      <CheckoutBreadcrumbs />
-      <HeadingGroup>{children}</HeadingGroup>
-    </CheckoutLayout>
+    <PreloadQuery
+      query={CheckoutSteps_CheckoutQuery}
+      variables={{
+        id: checkoutId.value,
+      }}>
+      {(queryRef) => (
+        <Suspense
+          fallback={<SkeletonCheckoutSteps>{children}</SkeletonCheckoutSteps>}>
+          <CheckoutSteps queryRef={queryRef}>{children}</CheckoutSteps>
+        </Suspense>
+      )}
+    </PreloadQuery>
   );
 }

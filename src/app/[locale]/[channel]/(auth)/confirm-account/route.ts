@@ -4,7 +4,7 @@ import {Routes} from "@/consts/routes";
 import {getClient} from "@/graphql/apollo-client";
 import {graphql} from "@/graphql/codegen";
 import type {ConfirmAccountMutationVariables} from "@/graphql/codegen/graphql";
-import {getBasePath} from "@/utils/base-path";
+import {getBasePathname} from "@/utils/base-pathname";
 import {isDefined} from "@/utils/is-defined";
 import {joinPathSegments} from "@/utils/pathname";
 
@@ -28,7 +28,10 @@ export async function GET({nextUrl}: NextRequest) {
     return NextResponse.json(null, {status: 400});
   }
   const redirectUrl = new URL(
-    joinPathSegments(...getBasePath(nextUrl.pathname), Routes.account.signin),
+    joinPathSegments(
+      ...getBasePathname(nextUrl.pathname),
+      Routes.account.signin,
+    ),
     nextUrl.origin,
   );
   redirectUrl.searchParams.set("email", confirmationParams.email);

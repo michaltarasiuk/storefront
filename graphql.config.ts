@@ -11,7 +11,7 @@ loadEnvConfig(__dirname);
 
 const config: IGraphQLConfig = {
   schema: [
-    process.env.NEXT_PUBLIC_SALEOR_GRAPHQL_URL!,
+    process.env.NEXT_PUBLIC_SALEOR_GRAPHQL_ENDPOINT!,
     "src/graphql/client-directives.graphql",
   ],
   documents: ["src/**/*.{ts,tsx}"],

@@ -23,7 +23,7 @@ function makeClient() {
   return new ApolloClient({
     cache: new InMemoryCache(InMemoryCacheConfig),
     link: new HttpLink({
-      uri: env.NEXT_PUBLIC_SALEOR_GRAPHQL_URL,
+      uri: env.NEXT_PUBLIC_SALEOR_GRAPHQL_ENDPOINT,
     }),
   });
 }

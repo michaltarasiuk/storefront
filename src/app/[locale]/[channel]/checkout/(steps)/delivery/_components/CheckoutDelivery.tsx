@@ -64,7 +64,7 @@ export function CheckoutDelivery({
           size="large"
           isDisabled={isPending}
           isPending={isPending}>
-          <FormattedMessage id="xwOhyd" defaultMessage="Continue to delivery" />
+          <FormattedMessage id="0s5kDf" defaultMessage="Continue to billing" />
         </Button>
         <ReturnLink href={Routes.checkout.information}>
           <FormattedMessage

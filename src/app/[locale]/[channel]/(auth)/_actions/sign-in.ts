@@ -11,7 +11,7 @@ import {
   setRefreshTokenCookie,
 } from "@/modules/account/utils/cookies";
 import {toValidationErrors} from "@/modules/account/utils/validation-errors";
-import {BasePathSchema} from "@/utils/base-path";
+import {BasePathnameSchema} from "@/utils/base-pathname";
 import {isDefined} from "@/utils/is-defined";
 import {joinPathSegments} from "@/utils/pathname";
 
@@ -50,7 +50,7 @@ export async function signIn(_state: unknown, formData: FormData) {
 const FormDataSchema = z.object({
   email: z.email(),
   password: z.string(),
-  ...BasePathSchema.shape,
+  ...BasePathnameSchema.shape,
 });
 function parseFormData(formData: FormData) {
   return FormDataSchema.parse(Object.fromEntries(formData));

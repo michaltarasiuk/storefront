@@ -4,7 +4,7 @@ import {graphql} from "@/graphql/codegen";
 import type {CheckoutValidationErrorFragment} from "@/graphql/codegen/graphql";
 import {isDefined} from "@/utils/is-defined";
 
-graphql(`
+const CheckoutValidationErrorFragment = graphql(`
   fragment CheckoutValidationError on CheckoutError {
     field
     message

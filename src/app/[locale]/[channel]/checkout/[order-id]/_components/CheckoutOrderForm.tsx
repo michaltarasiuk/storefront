@@ -1,14 +1,12 @@
 "use client";
 
-import {type QueryRef, useReadQuery} from "@apollo/client";
-import {notFound, useRouter} from "next/navigation";
+import {useRouter} from "next/navigation";
 import {useTransition} from "react";
 
 import {Button} from "@/components/Button";
 import {Checkbox, SkeletonCheckbox} from "@/components/Checkbox";
 import {Divider} from "@/components/Divider";
 import {Routes} from "@/consts/routes";
-import type {CheckoutOrder_OrderQuery} from "@/graphql/codegen/graphql";
 import {useBasePathname} from "@/hooks/use-base-pathname";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {
@@ -16,21 +14,12 @@ import {
   SkeletonOrderDetails,
 } from "@/modules/order/components/OrderDetails";
 import {cn} from "@/utils/cn";
-import {isDefined} from "@/utils/is-defined";
 import {joinPathSegments} from "@/utils/pathname";
 
-export function CheckoutOrder({
-  queryRef,
-}: {
-  queryRef: QueryRef<CheckoutOrder_OrderQuery>;
-}) {
-  const {data} = useReadQuery(queryRef);
+export function CheckoutOrderForm() {
   const router = useRouter();
   const basePathname = useBasePathname();
   const [isPending, startTransition] = useTransition();
-  if (!isDefined(data.order)) {
-    notFound();
-  }
   return (
     <form
       className={cn("space-y-large-300")}
@@ -66,7 +55,7 @@ export function CheckoutOrder({
   );
 }
 
-export function SkeletonCheckoutOrder() {
+export function SkeletonCheckoutOrderForm() {
   return (
     <div className={cn("space-y-large-300")}>
       <div

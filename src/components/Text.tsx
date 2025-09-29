@@ -40,8 +40,9 @@ export function Text({
   );
 }
 
-interface SkeletonTextProps extends VariantProps<typeof skeletonText> {
-  size?: TextVariants["size"];
+interface SkeletonTextProps
+  extends VariantProps<typeof skeletonText>,
+    Pick<TextVariants, "size"> {
   className?: string;
 }
 
@@ -58,7 +59,7 @@ export function SkeletonText({inlineSize, size, className}: SkeletonTextProps) {
         }),
         className,
       )}>
-      <Skeleton className={cn("h-[1em] w-full")} />
+      <Skeleton className={cn("h-[1em] flex-1")} />
     </div>
   );
 }
@@ -67,8 +68,8 @@ const skeletonText = cva("flex h-[1lh] w-full items-center", {
   variants: {
     inlineSize: {
       small: "max-w-20",
-      base: "max-w-44",
-      large: "max-w-64",
+      base: "max-w-32",
+      large: "max-w-42",
     },
   },
   defaultVariants: {

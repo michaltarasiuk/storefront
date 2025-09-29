@@ -55,7 +55,7 @@ export function CheckoutInformation({
           size="large"
           isDisabled={isPending}
           isPending={isPending}>
-          <FormattedMessage id="DgnS8R" defaultMessage="Continue to shipping" />
+          <FormattedMessage id="xwOhyd" defaultMessage="Continue to delivery" />
         </Button>
         <ReturnLink href={Routes.cart}>
           <FormattedMessage id="MRNNXA" defaultMessage="Return to cart" />

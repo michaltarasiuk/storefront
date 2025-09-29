@@ -1,0 +1,113 @@
+:root {
+  --color-base-background: #f0f7fc;
+  --color-base-background-subdued: #e1eef8;
+  --color-base-border: #c5dff0;
+  --color-base-icon: #1773b0;
+  --color-base-text: #0a3d5c;
+  --color-base-text-subdued: #5a8eb0;
+  --color-base-text-contrast: #ffffff;
+  --color-base-accent: #1773b0;
+  --color-base-accent-contrast: #ffffff;
+  --color-base-decorative: #1773b0;
+
+  --color-control-background: #ffffff;
+  --color-control-background-subdued: #f0f7fc;
+  --color-control-border: #1773b0;
+  --color-control-icon: #1773b0;
+  --color-control-text: #0a3d5c;
+  --color-control-text-subdued: #5a8eb0;
+  --color-control-text-contrast: #ffffff;
+  --color-control-accent: #1773b0;
+  --color-control-accent-contrast: #ffffff;
+  --color-control-decorative: #1773b0;
+
+  --color-control-selected-background: #d6ebf7;
+  --color-control-selected-background-subdued: #1773b0;
+  --color-control-selected-border: #1773b0;
+  --color-control-selected-icon: #ffffff;
+  --color-control-selected-text: #0a3d5c;
+  --color-control-selected-text-subdued: #5a8eb0;
+  --color-control-selected-text-contrast: #1773b0;
+  --color-control-selected-accent: #ffffff;
+  --color-control-selected-accent-contrast: #1773b0;
+  --color-control-selected-decorative: #ffffff;
+
+  --color-primary-button-background: #1773b0;
+  --color-primary-button-background-subdued: #1773b0;
+  --color-primary-button-border: #1773b0;
+  --color-primary-button-icon: #ffffff;
+  --color-primary-button-text: #ffffff;
+  --color-primary-button-text-subdued: #ffffff;
+  --color-primary-button-text-contrast: #000000;
+  --color-primary-button-accent: #ffffff;
+  --color-primary-button-accent-contrast: #000000;
+  --color-primary-button-decorative: #ffffff;
+
+  --color-primary-button-hover-background: #145a8c;
+  --color-primary-button-hover-background-subdued: #145a8c;
+  --color-primary-button-hover-border: #145a8c;
+  --color-primary-button-hover-icon: #ffffff;
+  --color-primary-button-hover-text: #ffffff;
+  --color-primary-button-hover-text-subdued: #ffffff;
+  --color-primary-button-hover-text-contrast: #000000;
+  --color-primary-button-hover-accent: #ffffff;
+  --color-primary-button-hover-accent-contrast: #000000;
+  --color-primary-button-hover-decorative: #ffffff;
+
+  --color-secondary-button-background: #ffffff;
+  --color-secondary-button-background-subdued: #ffffff;
+  --color-secondary-button-border: #1773b0;
+  --color-secondary-button-icon: #1773b0;
+  --color-secondary-button-text: #1773b0;
+  --color-secondary-button-text-subdued: #1773b0;
+  --color-secondary-button-text-contrast: #ffffff;
+  --color-secondary-button-accent: #1773b0;
+  --color-secondary-button-accent-contrast: #ffffff;
+  --color-secondary-button-decorative: #1773b0;
+
+  --color-secondary-button-hover-background: #f0f7fc;
+  --color-secondary-button-hover-background-subdued: #f0f7fc;
+  --color-secondary-button-hover-border: #1773b0;
+  --color-secondary-button-hover-icon: #145a8c;
+  --color-secondary-button-hover-text: #145a8c;
+  --color-secondary-button-hover-text-subdued: #145a8c;
+  --color-secondary-button-hover-text-contrast: #ffffff;
+  --color-secondary-button-hover-accent: #145a8c;
+  --color-secondary-button-hover-accent-contrast: #ffffff;
+  --color-secondary-button-hover-decorative: #145a8c;
+
+  --color-critical: #dd1d1d;
+  --color-critical-background: #fef6f6;
+  --color-critical-background-subdued: #feecec;
+  --color-critical-border: #fdd8d8;
+  --color-critical-icon: #e92020;
+  --color-critical-text: #420000;
+  --color-critical-text-subdued: #640707;
+  --color-critical-text-contrast: #ffffff;
+
+  --color-info: #0a3d5c;
+  --color-info-background: #f0f7fc;
+  --color-info-background-subdued: #e1eef8;
+  --color-info-border: #c5dff0;
+  --color-info-icon: #1773b0;
+  --color-info-text: #0a3d5c;
+  --color-info-text-subdued: #5a8eb0;
+
+  --color-warning: #8f6900;
+  --color-warning-background: #fff5eb;
+  --color-warning-background-subdued: #ffeedb;
+  --color-warning-border: #ffdeb2;
+  --color-warning-icon: #997000;
+  --color-warning-text: #241700;
+  --color-warning-text-subdued: #423100;
+
+  --color-success: #4d7a50;
+  --color-success-background: #eafbea;
+  --color-success-background-subdued: #ddf8de;
+  --color-success-border: #b1f2b4;
+  --color-success-icon: #528456;
+  --color-success-text: #101e11;
+  --color-success-text-subdued: #528456;
+
+  --color-disabled-input-background: #f8f8f8;
+}

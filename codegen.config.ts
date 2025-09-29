@@ -10,7 +10,7 @@ const __dirname = dirname(__filename);
 loadEnvConfig(__dirname);
 
 const config: CodegenConfig = {
-  schema: process.env.NEXT_PUBLIC_SALEOR_GRAPHQL_URL!,
+  schema: process.env.NEXT_PUBLIC_SALEOR_GRAPHQL_ENDPOINT!,
   documents: ["src/**/*.{ts,tsx}"],
   generates: {
     "./src/graphql/codegen/": {
