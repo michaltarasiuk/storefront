@@ -56,7 +56,7 @@ export function SummaryDisclosure({
                   )}
                 </Text>
               </div>
-              <TaxedMoney taxedMoney={taxedMoney} />
+              <TaxedMoney taxedMoney={taxedMoney} emphasis="semibold" />
             </Button>
           </Heading>
           <DisclosurePanel
