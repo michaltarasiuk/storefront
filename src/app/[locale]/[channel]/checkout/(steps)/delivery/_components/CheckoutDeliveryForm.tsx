@@ -90,7 +90,7 @@ export function SkeletonCheckoutDeliveryForm() {
       <SkeletonDeliverySection />
       <div className={cn("gap-base flex flex-col")}>
         <Button size="large" isDisabled>
-          <FormattedMessage id="xwOhyd" defaultMessage="Continue to delivery" />
+          <FormattedMessage id="0s5kDf" defaultMessage="Continue to billing" />
         </Button>
         <ReturnLink href={Routes.checkout.information}>
           <FormattedMessage
