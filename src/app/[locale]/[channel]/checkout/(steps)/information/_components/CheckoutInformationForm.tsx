@@ -49,7 +49,7 @@ export function CheckoutInformationForm({
   return (
     <Form
       validationErrors={errors}
-      onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
+      onSubmit={(event) => {
         event.preventDefault();
         startTransition(() => {
           invariant(event.target instanceof HTMLFormElement);

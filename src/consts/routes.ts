@@ -1,3 +1,5 @@
+import {joinPathSegments} from "@/utils/pathname";
+
 export const Routes = {
   home: "/",
   cart: "/cart",
@@ -9,7 +11,7 @@ export const Routes = {
     profile: "/profile",
     settings: "/settings",
     order(id: string) {
-      return `/orders/${id}`;
+      return joinPathSegments(this.orders, id);
     },
   },
   checkout: {
@@ -18,7 +20,7 @@ export const Routes = {
     billing: "/checkout/billing",
     review: "/checkout/review",
     order(id: string) {
-      return `/checkout/${id}`;
+      return joinPathSegments("checkout", id);
     },
   },
 };

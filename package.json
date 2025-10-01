@@ -33,7 +33,6 @@
     "react-aria": "^3.42.0",
     "react-aria-components": "^1.10.1",
     "react-dom": "^19.0.0",
-    "react-error-boundary": "^6.0.0",
     "react-intl": "^7.1.11",
     "react-stately": "^3.41.0",
     "server-only": "^0.0.1",

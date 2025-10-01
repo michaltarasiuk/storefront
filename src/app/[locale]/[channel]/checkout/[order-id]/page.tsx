@@ -1,6 +1,5 @@
 import {Suspense} from "react";
 
-import {NotFoundBoundary} from "@/components/NotFoundBoundary";
 import {PreloadQuery} from "@/graphql/apollo-client";
 import {graphql} from "@/graphql/codegen";
 
@@ -28,11 +27,9 @@ export default async function CheckoutOrderPage({
         id,
       }}>
       {(queryRef) => (
-        <NotFoundBoundary>
-          <Suspense fallback={<SkeletonCheckoutOrder />}>
-            <CheckoutOrder queryRef={queryRef} />
-          </Suspense>
-        </NotFoundBoundary>
+        <Suspense fallback={<SkeletonCheckoutOrder />}>
+          <CheckoutOrder queryRef={queryRef} />
+        </Suspense>
       )}
     </PreloadQuery>
   );
