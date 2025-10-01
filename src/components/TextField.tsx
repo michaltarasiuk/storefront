@@ -13,7 +13,7 @@ import {FieldError} from "./FieldError";
 import {Input} from "./Input";
 import {Text} from "./Text";
 
-const input = cva(["h-input p-small-100", "[&:not(:placeholder-shown)]:pt-6"], {
+const input = cva(["p-small-100 h-13", "[&:not(:placeholder-shown)]:pt-6"], {
   variants: {
     isUppercased: {
       true: "[&:not(:placeholder-shown)]:uppercase",

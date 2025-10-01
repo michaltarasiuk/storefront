@@ -43,7 +43,7 @@ export function AddPromoCodeForm() {
         type="submit"
         isPending={isPending}
         isDisabled={isPending}
-        className={cn("max-h-input")}>
+        className={cn("max-h-13")}>
         <FormattedMessage id="EWw/tK" defaultMessage="Apply" />
       </Button>
     </Form>

@@ -55,7 +55,7 @@ export function Select<T extends object>({
         <>
           <Button
             className={cn(
-              "rounded-base border-control-border bg-control-background h-input p-small-100 relative flex w-full cursor-pointer items-center justify-between border transition-all",
+              "rounded-base border-control-border bg-control-background p-small-100 relative flex h-13 w-full cursor-pointer items-center justify-between border transition-all",
               {
                 "pt-6": isDefined(selectedKey),
                 "border-critical ring-critical ring-1": isInvalid,

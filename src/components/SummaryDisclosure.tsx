@@ -78,13 +78,7 @@ export function SummaryDisclosure({
   );
 }
 
-interface SkeletonSummaryDisclosureProps {
-  className?: string;
-}
-
-export function SkeletonSummaryDisclosure({
-  className,
-}: SkeletonSummaryDisclosureProps) {
+export function SkeletonSummaryDisclosure({className}: {className?: string}) {
   return (
     <div
       className={cn(

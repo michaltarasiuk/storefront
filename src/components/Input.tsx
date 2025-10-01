@@ -27,7 +27,7 @@ export function SkeletonInput({className}: {className?: string}) {
   return (
     <div
       className={cn(
-        "h-input rounded-base border-base-border p-base flex items-center border",
+        "rounded-base border-base-border p-base flex h-13 items-center border",
         className,
       )}>
       <SkeletonText />

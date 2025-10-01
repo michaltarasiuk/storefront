@@ -34,10 +34,7 @@ export function NumberField({label, description, ...props}: NumberFieldProps) {
         </Label>
         <Input
           placeholder={label}
-          className={cn(
-            "h-input p-small-100",
-            "[&:not(:placeholder-shown)]:pt-6",
-          )}
+          className={cn("p-small-100 h-13", "[&:not(:placeholder-shown)]:pt-6")}
         />
         <NumberFieldControls />
       </div>
