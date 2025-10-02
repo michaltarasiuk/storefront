@@ -44,7 +44,11 @@ const menuItem = cva(
   {
     variants: {
       critical: {
-        true: "text-critical hover:bg-critical-background-subdued",
+        true: [
+          "text-critical",
+          "hover:bg-critical-background-subdued",
+          "focus-visible:bg-critical-background-subdued",
+        ],
       },
       current: {
         true: "underline underline-offset-2",
