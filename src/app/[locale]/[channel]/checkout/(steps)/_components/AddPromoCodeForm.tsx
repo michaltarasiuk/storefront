@@ -43,7 +43,7 @@ export function AddPromoCodeForm() {
         type="submit"
         isPending={isPending}
         isDisabled={isPending}
-        className={cn("max-h-13")}>
+        className={cn("max-h-field-height")}>
         <FormattedMessage id="EWw/tK" defaultMessage="Apply" />
       </Button>
     </Form>
@@ -54,7 +54,7 @@ export function SkeletonAddPromoCodeForm() {
   return (
     <div className={cn("gap-base flex")}>
       <SkeletonInput className={cn("flex-1")} />
-      <Button isDisabled>
+      <Button isDisabled className={cn("min-h-field-height")}>
         <FormattedMessage id="EWw/tK" defaultMessage="Apply" />
       </Button>
     </div>
