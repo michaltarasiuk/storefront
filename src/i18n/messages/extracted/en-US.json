@@ -2,9 +2,6 @@
   "+JsDiH": {
     "defaultMessage": "Ship to"
   },
-  "/Da0uc": {
-    "defaultMessage": "Enter shipping address"
-  },
   "/GCoTA": {
     "defaultMessage": "Clear"
   },
@@ -16,6 +13,9 @@
   },
   "0Azlrb": {
     "defaultMessage": "Manage"
+  },
+  "0s5kDf": {
+    "defaultMessage": "Continue to billing"
   },
   "2/2yg+": {
     "defaultMessage": "Add"
@@ -86,9 +86,6 @@
   "DP5VOH": {
     "defaultMessage": "Shipping Address"
   },
-  "DgnS8R": {
-    "defaultMessage": "Continue to shipping"
-  },
   "Dxd1uB": {
     "defaultMessage": "Shop"
   },
@@ -103,6 +100,9 @@
   },
   "FQyBR6": {
     "defaultMessage": "Table View"
+  },
+  "Fce58X": {
+    "defaultMessage": "No delivery charge"
   },
   "HJkcfg": {
     "defaultMessage": "Return to delivery"
@@ -152,11 +152,11 @@
   "O95R3Z": {
     "defaultMessage": "Phone"
   },
-  "PRlD0A": {
-    "defaultMessage": "Shipping"
-  },
   "PlBReU": {
     "defaultMessage": "Log out"
+  },
+  "Qu4wRW": {
+    "defaultMessage": "Select delivery method"
   },
   "R+J5ox": {
     "defaultMessage": "Review"

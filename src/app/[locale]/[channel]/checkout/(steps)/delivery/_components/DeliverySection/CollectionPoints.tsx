@@ -10,9 +10,8 @@ import {graphql} from "@/graphql/codegen";
 import type {CollectionPoints_CheckoutFragment} from "@/graphql/codegen/graphql";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
+import {isCollectionPoint} from "@/utils/delivery-method";
 import {isDefined} from "@/utils/is-defined";
-
-import {isCollectionPoint} from "../../../_utils/delivery-method";
 
 const CollectionPoints_CheckoutFragment = graphql(`
   fragment CollectionPoints_Checkout on Checkout {

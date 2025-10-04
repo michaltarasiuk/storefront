@@ -11,9 +11,9 @@ import {graphql} from "@/graphql/codegen";
 import type {ShippingMethods_CheckoutFragment} from "@/graphql/codegen/graphql";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
+import {isShippingMethod} from "@/utils/delivery-method";
 import {isDefined} from "@/utils/is-defined";
 
-import {isShippingMethod} from "../../../_utils/delivery-method";
 import {DeliveryDays} from "./DeliveryDays";
 
 const ShippingMethods_CheckoutFragment = graphql(`

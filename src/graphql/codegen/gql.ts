@@ -55,11 +55,11 @@ type Documents = {
   "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n": typeof types.ChannelSlugsDocument;
   "\n  fragment CheckoutLine_Checkout on CheckoutLine {\n    id\n    quantity\n    variant {\n      product {\n        name\n        ...ProductThumbnail_Product\n      }\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n": typeof types.CheckoutLine_CheckoutFragmentDoc;
   "\n  fragment CheckoutLines_Checkout on Checkout {\n    id\n    lines {\n      id\n      ...CheckoutLine_Checkout\n    }\n  }\n": typeof types.CheckoutLines_CheckoutFragmentDoc;
-  "\n  fragment CheckoutMoneyLines_Checkout on Checkout {\n    id\n    subtotalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n": typeof types.CheckoutMoneyLines_CheckoutFragmentDoc;
+  "\n  fragment CheckoutMoneyLines_Checkout on Checkout {\n    id\n    subtotalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    deliveryMethod {\n      __typename\n      ... on ShippingMethod {\n        price {\n          ...Money_Money @unmask\n        }\n      }\n    }\n    totalPrice {\n      tax {\n        ...Money_Money @unmask\n      }\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n": typeof types.CheckoutMoneyLines_CheckoutFragmentDoc;
   "\n  fragment CheckoutValidationError on CheckoutError {\n    field\n    message\n  }\n": typeof types.CheckoutValidationErrorFragmentDoc;
   "\n  fragment OrderLine_Order on OrderLine {\n    id\n    quantity\n    variant {\n      product {\n        name\n        ...ProductThumbnail_Product\n      }\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n": typeof types.OrderLine_OrderFragmentDoc;
   "\n  fragment OrderLines_Order on Order {\n    id\n    lines {\n      id\n      ...OrderLine_Order\n    }\n  }\n": typeof types.OrderLines_OrderFragmentDoc;
-  "\n  fragment OrderMoneyLines_Order on Order {\n    id\n    subtotal {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    total {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n": typeof types.OrderMoneyLines_OrderFragmentDoc;
+  "\n  fragment OrderMoneyLines_Order on Order {\n    id\n    subtotal {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    deliveryMethod {\n      __typename\n      ... on ShippingMethod {\n        price {\n          ...Money_Money @unmask\n        }\n      }\n    }\n    total {\n      tax {\n        ...Money_Money @unmask\n      }\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n": typeof types.OrderMoneyLines_OrderFragmentDoc;
 };
 const documents: Documents = {
   "\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n      refreshToken\n      errors {\n        ...AccountValidationError @unmask\n      }\n    }\n  }\n":
@@ -144,7 +144,7 @@ const documents: Documents = {
     types.CheckoutLine_CheckoutFragmentDoc,
   "\n  fragment CheckoutLines_Checkout on Checkout {\n    id\n    lines {\n      id\n      ...CheckoutLine_Checkout\n    }\n  }\n":
     types.CheckoutLines_CheckoutFragmentDoc,
-  "\n  fragment CheckoutMoneyLines_Checkout on Checkout {\n    id\n    subtotalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n":
+  "\n  fragment CheckoutMoneyLines_Checkout on Checkout {\n    id\n    subtotalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    deliveryMethod {\n      __typename\n      ... on ShippingMethod {\n        price {\n          ...Money_Money @unmask\n        }\n      }\n    }\n    totalPrice {\n      tax {\n        ...Money_Money @unmask\n      }\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n":
     types.CheckoutMoneyLines_CheckoutFragmentDoc,
   "\n  fragment CheckoutValidationError on CheckoutError {\n    field\n    message\n  }\n":
     types.CheckoutValidationErrorFragmentDoc,
@@ -152,7 +152,7 @@ const documents: Documents = {
     types.OrderLine_OrderFragmentDoc,
   "\n  fragment OrderLines_Order on Order {\n    id\n    lines {\n      id\n      ...OrderLine_Order\n    }\n  }\n":
     types.OrderLines_OrderFragmentDoc,
-  "\n  fragment OrderMoneyLines_Order on Order {\n    id\n    subtotal {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    total {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n":
+  "\n  fragment OrderMoneyLines_Order on Order {\n    id\n    subtotal {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    deliveryMethod {\n      __typename\n      ... on ShippingMethod {\n        price {\n          ...Money_Money @unmask\n        }\n      }\n    }\n    total {\n      tax {\n        ...Money_Money @unmask\n      }\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n":
     types.OrderMoneyLines_OrderFragmentDoc,
 };
 
@@ -420,8 +420,8 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  fragment CheckoutMoneyLines_Checkout on Checkout {\n    id\n    subtotalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n",
-): (typeof documents)["\n  fragment CheckoutMoneyLines_Checkout on Checkout {\n    id\n    subtotalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n"];
+  source: "\n  fragment CheckoutMoneyLines_Checkout on Checkout {\n    id\n    subtotalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    deliveryMethod {\n      __typename\n      ... on ShippingMethod {\n        price {\n          ...Money_Money @unmask\n        }\n      }\n    }\n    totalPrice {\n      tax {\n        ...Money_Money @unmask\n      }\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n",
+): (typeof documents)["\n  fragment CheckoutMoneyLines_Checkout on Checkout {\n    id\n    subtotalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    deliveryMethod {\n      __typename\n      ... on ShippingMethod {\n        price {\n          ...Money_Money @unmask\n        }\n      }\n    }\n    totalPrice {\n      tax {\n        ...Money_Money @unmask\n      }\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -444,8 +444,8 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  fragment OrderMoneyLines_Order on Order {\n    id\n    subtotal {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    total {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n",
-): (typeof documents)["\n  fragment OrderMoneyLines_Order on Order {\n    id\n    subtotal {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    total {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n"];
+  source: "\n  fragment OrderMoneyLines_Order on Order {\n    id\n    subtotal {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    deliveryMethod {\n      __typename\n      ... on ShippingMethod {\n        price {\n          ...Money_Money @unmask\n        }\n      }\n    }\n    total {\n      tax {\n        ...Money_Money @unmask\n      }\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n",
+): (typeof documents)["\n  fragment OrderMoneyLines_Order on Order {\n    id\n    subtotal {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    deliveryMethod {\n      __typename\n      ... on ShippingMethod {\n        price {\n          ...Money_Money @unmask\n        }\n      }\n    }\n    total {\n      tax {\n        ...Money_Money @unmask\n      }\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

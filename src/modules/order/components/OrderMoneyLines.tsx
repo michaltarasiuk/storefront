@@ -9,6 +9,8 @@ import {graphql} from "@/graphql/codegen";
 import type {OrderMoneyLines_OrderFragment} from "@/graphql/codegen/graphql";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
+import {isShippingMethod} from "@/utils/delivery-method";
+import {isDefined} from "@/utils/is-defined";
 
 const OrderMoneyLines_OrderFragment = graphql(`
   fragment OrderMoneyLines_Order on Order {
@@ -16,7 +18,18 @@ const OrderMoneyLines_OrderFragment = graphql(`
     subtotal {
       ...TaxedMoney_TaxedMoney @unmask
     }
+    deliveryMethod {
+      __typename
+      ... on ShippingMethod {
+        price {
+          ...Money_Money @unmask
+        }
+      }
+    }
     total {
+      tax {
+        ...Money_Money @unmask
+      }
       ...TaxedMoney_TaxedMoney @unmask
     }
   }
@@ -45,25 +58,30 @@ export function OrderMoneyLines({order}: OrderMoneyLinesProps) {
       </div>
       <div className={cn("flex justify-between")}>
         <Text>
-          <FormattedMessage id="PRlD0A" defaultMessage="Shipping" />
+          <FormattedMessage id="drqP2L" defaultMessage="Delivery" />
         </Text>
-        <Money
-          money={{
-            currency: "USD",
-            amount: 0,
-          }}
-        />
+        {!isDefined(data.deliveryMethod) ? (
+          <Text appearance="subdued">
+            <FormattedMessage
+              id="Qu4wRW"
+              defaultMessage="Select delivery method"
+            />
+          </Text>
+        ) : !isShippingMethod(data.deliveryMethod) ? (
+          <Text emphasis="semibold">
+            <FormattedMessage id="Fce58X" defaultMessage="No delivery charge" />
+          </Text>
+        ) : (
+          <Text>
+            <Money money={data.deliveryMethod.price} />
+          </Text>
+        )}
       </div>
       <div className={cn("flex justify-between")}>
         <Text>
           <FormattedMessage id="r+dgiv" defaultMessage="Taxes" />
         </Text>
-        <Money
-          money={{
-            currency: "USD",
-            amount: 0,
-          }}
-        />
+        <Money money={data.total.tax} />
       </div>
       <div className={cn("flex justify-between")}>
         <Text size="large" emphasis="semibold">

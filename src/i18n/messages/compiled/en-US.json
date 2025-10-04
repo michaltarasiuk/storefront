@@ -5,12 +5,6 @@
       "value": "Ship to"
     }
   ],
-  "/Da0uc": [
-    {
-      "type": 0,
-      "value": "Enter shipping address"
-    }
-  ],
   "/GCoTA": [
     {
       "type": 0,
@@ -41,6 +35,12 @@
     {
       "type": 0,
       "value": "Manage"
+    }
+  ],
+  "0s5kDf": [
+    {
+      "type": 0,
+      "value": "Continue to billing"
     }
   ],
   "2/2yg+": [
@@ -189,12 +189,6 @@
       "value": "Shipping Address"
     }
   ],
-  "DgnS8R": [
-    {
-      "type": 0,
-      "value": "Continue to shipping"
-    }
-  ],
   "Dxd1uB": [
     {
       "type": 0,
@@ -223,6 +217,12 @@
     {
       "type": 0,
       "value": "Table View"
+    }
+  ],
+  "Fce58X": [
+    {
+      "type": 0,
+      "value": "No delivery charge"
     }
   ],
   "HJkcfg": [
@@ -329,16 +329,16 @@
       "value": "Phone"
     }
   ],
-  "PRlD0A": [
-    {
-      "type": 0,
-      "value": "Shipping"
-    }
-  ],
   "PlBReU": [
     {
       "type": 0,
       "value": "Log out"
+    }
+  ],
+  "Qu4wRW": [
+    {
+      "type": 0,
+      "value": "Select delivery method"
     }
   ],
   "R+J5ox": [
