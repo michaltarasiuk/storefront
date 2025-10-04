@@ -47,6 +47,7 @@ export function Select<T extends object>({
     <AriaSelect
       selectedKey={selectedKey}
       {...props}
+      className={cn("leading-field-line-height", props.className)}
       onSelectionChange={(key) => {
         setSelectedKey(key);
         props.onSelectionChange?.(key);
@@ -55,9 +56,10 @@ export function Select<T extends object>({
         <>
           <Button
             className={cn(
-              "rounded-base border-control-border bg-control-background p-small-100 relative flex h-13 w-full cursor-pointer items-center justify-between border transition-all",
+              "rounded-base border-control-border bg-control-background px-field-padding-inline py-empty-field-padding-block h-field-height relative flex w-full cursor-pointer items-center justify-between border transition-all",
               {
-                "pt-6": isDefined(selectedKey),
+                "pt-filled-field-padding-block-start pb-filled-field-padding-block-end":
+                  isDefined(selectedKey),
                 "border-critical ring-critical ring-1": isInvalid,
                 "ring-control-accent/50 border-control-accent shadow-none ring-3 outline-none":
                   isFocused,
@@ -66,7 +68,7 @@ export function Select<T extends object>({
             )}>
             <Label
               className={cn(
-                "text-control-text-subdued font-primary text-small start-small-100 top-small-100 pointer-events-none absolute translate-y-full leading-[1] opacity-0 transition-all",
+                "text-control-text-subdued font-primary text-small start-label-inset-inline-start top-label-inset-block-start pointer-events-none absolute translate-y-1/4 opacity-0 transition-all",
                 {
                   "translate-y-0 opacity-100": isDefined(selectedKey),
                 },

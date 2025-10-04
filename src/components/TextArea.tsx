@@ -26,6 +26,7 @@ export function TextArea({label, description, ...props}: TextAreaProps) {
     <TextField
       value={value}
       {...props}
+      className={cn("leading-field-line-height", props.className)}
       onChange={(newValue) => {
         setValue(newValue);
         props.onChange?.(newValue);
@@ -38,7 +39,7 @@ export function TextArea({label, description, ...props}: TextAreaProps) {
         )}>
         <Label
           className={cn(
-            "text-control-text-subdued font-primary text-small top-small-100 pointer-events-none absolute start-3 ms-px translate-y-full leading-[1] opacity-0 transition-all",
+            "text-control-text-subdued font-primary text-field-label top-label-inset-block-start start-label-inset-inline-start pointer-events-none absolute translate-y-1/4 opacity-0 transition-all",
             "group-has-[textarea:not(:placeholder-shown)]:translate-y-0 group-has-[textarea:not(:placeholder-shown)]:opacity-100",
           )}>
           {label}
@@ -46,8 +47,8 @@ export function TextArea({label, description, ...props}: TextAreaProps) {
         <AriaTextArea
           placeholder={label}
           className={cn(
-            "rounded-base border-control-border bg-control-background p-small-100 resize-none overflow-hidden border transition-all [grid-area:1/1/2/2]",
-            "placeholder:text-control-text-subdued [&:not(:placeholder-shown)]:pt-6",
+            "rounded-base text-field-value border-control-border bg-control-background px-field-padding-inline py-field-padding-block resize-none overflow-hidden border transition-all [grid-area:1/1/2/2]",
+            "placeholder:text-control-text-subdued [&:not(:placeholder-shown)]:pt-filled-field-padding-block-start [&:not(:placeholder-shown)]:pb-filled-field-padding-block-end",
             "focus:ring-control-accent/50 focus:border-control-accent outline-none focus:ring-3",
             "invalid:border-critical invalid:ring-critical invalid:ring-1",
             "disabled:bg-disabled-input-background disabled:opacity-50",

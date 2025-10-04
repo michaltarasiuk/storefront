@@ -23,18 +23,23 @@ interface NumberFieldProps extends AriaNumberFieldProps {
 
 export function NumberField({label, description, ...props}: NumberFieldProps) {
   return (
-    <AriaNumberField {...props}>
+    <AriaNumberField
+      {...props}
+      className={cn("leading-field-line-height", props.className)}>
       <div className={cn("group relative flex items-center")}>
         <Label
           className={cn(
-            "text-control-text-subdued font-primary text-small pointer-events-none absolute start-3 top-3 ms-px translate-y-full leading-[1] opacity-0 transition-all",
+            "text-control-text-subdued font-primary text-field-label start-label-inset-inline-start top-label-inset-block-start pointer-events-none absolute translate-y-1/4 opacity-0 transition-all",
             "group-has-[input:not(:placeholder-shown)]:translate-y-0 group-has-[input:not(:placeholder-shown)]:opacity-100",
           )}>
           {label}
         </Label>
         <Input
           placeholder={label}
-          className={cn("p-small-100 h-13", "[&:not(:placeholder-shown)]:pt-6")}
+          className={cn(
+            "px-field-padding-inline py-empty-field-padding-block h-field-height",
+            "[&:not(:placeholder-shown)]:pt-filled-field-padding-block-start [&:not(:placeholder-shown)]:pb-filled-field-padding-block-end",
+          )}
         />
         <NumberFieldControls />
       </div>

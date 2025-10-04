@@ -17,6 +17,9 @@ const meta = {
     autoFocus: {
       control: "boolean",
     },
+    isUppercased: {
+      control: "boolean",
+    },
   },
 } satisfies Meta<typeof TextField>;
 

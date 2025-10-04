@@ -15,6 +15,8 @@ const twMerge = extendTailwindMerge({
         "text-base",
         "text-small",
         "text-extra-small",
+        "text-field-label",
+        "text-field-value",
       ],
     },
   },

@@ -22,23 +22,27 @@ interface SearchFieldProps extends AriaSearchFieldProps {
 
 export function SearchField({label, description, ...props}: SearchFieldProps) {
   return (
-    <AriaSearchField {...props}>
+    <AriaSearchField
+      {...props}
+      className={cn("leading-field-line-height", props.className)}>
       {({isEmpty}) => (
         <>
           <div className={cn("relative flex items-center")}>
             <MagnifyIcon
               aria-hidden
-              className={cn("start-small-100 pointer-events-none absolute")}
+              className={cn(
+                "start-field-padding-inline pointer-events-none absolute",
+              )}
             />
             <Input
               placeholder={label}
               className={cn(
                 "py-small-300 px-large-500",
-                "appearance-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden [&::-webkit-search-results-button]:hidden [&::-webkit-search-results-decoration]:hidden",
+                "[&::-webkit-search-cancel-button]:hidden",
               )}
             />
             {!isEmpty && (
-              <IconButton className={cn("end-small-100 absolute")}>
+              <IconButton className={cn("end-field-padding-inline absolute")}>
                 <CloseIcon aria-hidden className={cn("size-3.5")} />
               </IconButton>
             )}

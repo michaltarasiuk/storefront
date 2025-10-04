@@ -138,6 +138,45 @@
   --spacing-small-500: 0.1875rem; /* 3px */
   --spacing-none: 0rem; /* 0px */
 
+  --spacing-field-line-height: 1.5;
+  --spacing-field-label-height: calc(
+    var(--text-field-label) * var(--spacing-field-line-height)
+  );
+  --spacing-field-value-height: calc(
+    var(--text-field-value) * var(--spacing-field-line-height)
+  );
+  --spacing-field-padding-inline: var(--spacing-small-100);
+  --spacing-field-padding-block: var(--spacing-small-100);
+  --spacing-field-height: calc(
+    var(--text-field-label) + var(--text-field-value) +
+      var(--spacing-field-padding-block) * 2
+  );
+  --spacing-empty-field-padding-block: calc(
+    (var(--spacing-field-height) - var(--spacing-field-value-height)) / 2
+  );
+  --spacing-filled-field-padding-block-start: calc(
+    (
+        var(--spacing-field-height) - var(--spacing-field-value-height) -
+          var(--text-field-label)
+      ) /
+      2 + var(--text-field-label) + 1.5px
+  );
+  --spacing-filled-field-padding-block-end: calc(
+    var(--spacing-field-height) -
+      var(--spacing-filled-field-padding-block-start) -
+      var(--spacing-field-value-height)
+  );
+  --spacing-label-inset-inline-start: calc(
+    var(--spacing-field-padding-inline) + 1px
+  );
+  --spacing-label-inset-block-start: calc(
+    (
+        var(--spacing-field-height) - var(--text-field-value) -
+          var(--spacing-field-label-height)
+      ) /
+      2 - 1px
+  );
+
   --spacing-shell-main-inline-size: 36.25rem; /* 580px */
   --spacing-shell-order-summary-inline-size: 30rem; /* 480px */
   --spacing-shell-section-columns-offset: calc(
@@ -158,6 +197,9 @@
   --text-base: 0.875rem; /* 14px */
   --text-small: 0.75rem; /* 12px */
   --text-extra-small: 0.625rem; /* 10px */
+
+  --text-field-label: var(--text-small);
+  --text-field-value: var(--text-base);
 
   --shadow-extra-small:
     0px -1px 2px rgba(0, 0, 0, 0.04), 0px 2px 4px rgba(0, 0, 0, 0.08);

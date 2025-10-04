@@ -13,13 +13,19 @@ import {FieldError} from "./FieldError";
 import {Input} from "./Input";
 import {Text} from "./Text";
 
-const input = cva(["p-small-100 h-13", "[&:not(:placeholder-shown)]:pt-6"], {
-  variants: {
-    isUppercased: {
-      true: "[&:not(:placeholder-shown)]:uppercase",
+const input = cva(
+  [
+    "px-field-padding-inline py-empty-field-padding-block h-field-height",
+    "[&:not(:placeholder-shown)]:pt-filled-field-padding-block-start [&:not(:placeholder-shown)]:pb-filled-field-padding-block-end",
+  ],
+  {
+    variants: {
+      isUppercased: {
+        true: "[&:not(:placeholder-shown)]:uppercase",
+      },
     },
   },
-});
+);
 
 interface TextFieldProps
   extends AriaTextFieldProps,
@@ -37,11 +43,13 @@ export function TextField({
   ...props
 }: TextFieldProps) {
   return (
-    <AriaTextField {...props}>
+    <AriaTextField
+      {...props}
+      className={cn("leading-field-line-height", props.className)}>
       <div className={cn("group relative flex items-center")}>
         <Label
           className={cn(
-            "text-control-text-subdued font-primary text-small top-small-100 start-small-100 pointer-events-none absolute ms-px translate-y-full leading-[1] opacity-0 transition-all",
+            "text-control-text-subdued font-primary text-field-label start-label-inset-inline-start top-label-inset-block-start pointer-events-none absolute translate-y-1/4 opacity-0 transition-all",
             "group-has-[input:not(:placeholder-shown)]:translate-y-0 group-has-[input:not(:placeholder-shown)]:opacity-100",
           )}>
           {label}
@@ -55,7 +63,9 @@ export function TextField({
           )}
         />
         {isDefined(accessory) && (
-          <div className={cn("end-small-100 absolute")}>{accessory}</div>
+          <div className={cn("end-field-padding-inline absolute")}>
+            {accessory}
+          </div>
         )}
       </div>
       {isDefined(description) && (
