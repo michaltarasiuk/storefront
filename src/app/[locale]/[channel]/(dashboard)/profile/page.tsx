@@ -5,9 +5,9 @@ import {cn} from "@/utils/cn";
 import {PageTitle} from "../_components/PageTitie";
 import {AddAddressDialog} from "./_components/AddAddressDialog";
 import {AddressCards} from "./_components/AddressCards";
-import {Card, CardHeader, CardTitle} from "./_components/Card";
 import {ContactInfo} from "./_components/ContactInfo";
 import {EditProfileDialog} from "./_components/EditProfileDialog";
+import {Section, SectionHeader, SectionTitle} from "./_components/Section";
 
 export default async function ProfilePage({
   params,
@@ -23,22 +23,22 @@ export default async function ProfilePage({
         })}
       />
       <div className={cn("space-y-large-300")}>
-        <Card>
-          <CardHeader>
-            <CardTitle>Kristin Watson</CardTitle>
+        <Section>
+          <SectionHeader>
+            <SectionTitle>Kristin Watson</SectionTitle>
             <EditProfileDialog />
-          </CardHeader>
+          </SectionHeader>
           <ContactInfo locale={locale} />
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>
+        </Section>
+        <Section>
+          <SectionHeader>
+            <SectionTitle>
               <FormattedMessage id="e6Ph5+" defaultMessage="Address" />
-            </CardTitle>
+            </SectionTitle>
             <AddAddressDialog />
-          </CardHeader>
+          </SectionHeader>
           <AddressCards />
-        </Card>
+        </Section>
       </div>
     </>
   );

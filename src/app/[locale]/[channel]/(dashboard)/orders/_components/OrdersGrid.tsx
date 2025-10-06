@@ -4,7 +4,7 @@ import {OrderCard, SkeletonOrderCard} from "./OrderCard";
 
 export function OrdersGrid() {
   return (
-    <OrdersGridList>
+    <ul className={cn("grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3")}>
       <li>
         <OrderCard />
       </li>
@@ -14,30 +14,22 @@ export function OrdersGrid() {
       <li>
         <OrderCard />
       </li>
-    </OrdersGridList>
+    </ul>
   );
 }
 
 export function OrdersGridSkeleton() {
   return (
-    <OrdersGridList>
-      <li>
+    <div className={cn("grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3")}>
+      <div>
         <SkeletonOrderCard />
-      </li>
-      <li>
+      </div>
+      <div>
         <SkeletonOrderCard />
-      </li>
-      <li>
+      </div>
+      <div>
         <SkeletonOrderCard />
-      </li>
-    </OrdersGridList>
-  );
-}
-
-function OrdersGridList({children}: {children: React.ReactNode}) {
-  return (
-    <ul className={cn("grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3")}>
-      {children}
-    </ul>
+      </div>
+    </div>
   );
 }
