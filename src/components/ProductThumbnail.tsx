@@ -13,21 +13,6 @@ import {cn} from "../utils/cn";
 import {isDefined} from "../utils/is-defined";
 import {Skeleton} from "./Skeleton";
 
-const productThumbnail = cva(
-  "rounded-base border-base-border bg-base-background relative flex items-center justify-center overflow-hidden border",
-  {
-    variants: {
-      size: {
-        small: "size-10",
-        base: "size-16",
-      },
-    },
-    defaultVariants: {
-      size: "base",
-    },
-  },
-);
-
 const ProductThumbnail_ProductFragment = graphql(`
   fragment ProductThumbnail_Product on Product {
     id
@@ -38,7 +23,7 @@ const ProductThumbnail_ProductFragment = graphql(`
   }
 `);
 
-interface ProductThumbnailProps extends VariantProps<typeof productThumbnail> {
+interface ProductThumbnailProps extends ThumbnailVariants {
   product: FragmentType<ProductThumbnail_ProductFragment>;
 }
 
@@ -50,29 +35,44 @@ export function ProductThumbnail({product, size}: ProductThumbnailProps) {
   const [error, setError] = useState(false);
   if (!complete) {
     return <SkeletonProductThumbnail size={size} />;
+  } else if (!isDefined(data.thumbnail) || error) {
+    return <PlaceholderProductThumbnail size={size} />;
   }
   return (
     <div
       className={cn(
-        productThumbnail({
+        "rounded-base border-base-border bg-base-background relative flex items-center justify-center overflow-hidden border",
+        thumbnail({
           size,
         }),
       )}>
-      {isDefined(data.thumbnail) && !error ? (
-        <Image
-          src={data.thumbnail.url}
-          alt={data.thumbnail.alt ?? ""}
-          fill
-          onError={() => setError(true)}
-        />
-      ) : (
-        <PlaceholderImageIcon aria-hidden />
-      )}
+      <Image
+        src={data.thumbnail.url}
+        alt={data.thumbnail.alt ?? ""}
+        fill
+        onError={() => setError(true)}
+      />
     </div>
   );
 }
 
-const skeletonProductThumbnail = cva(null, {
+export function PlaceholderProductThumbnail(props: ThumbnailVariants) {
+  return (
+    <div
+      className={cn(
+        "rounded-base border-base-border bg-base-background flex items-center justify-center border",
+        thumbnail(props),
+      )}>
+      <PlaceholderImageIcon aria-hidden />
+    </div>
+  );
+}
+
+export function SkeletonProductThumbnail(props: ThumbnailVariants) {
+  return <Skeleton className={cn(thumbnail(props))} />;
+}
+
+const thumbnail = cva(null, {
   variants: {
     size: {
       small: "size-10",
@@ -84,8 +84,4 @@ const skeletonProductThumbnail = cva(null, {
   },
 });
 
-export function SkeletonProductThumbnail(
-  props: VariantProps<typeof skeletonProductThumbnail>,
-) {
-  return <Skeleton className={cn(skeletonProductThumbnail(props))} />;
-}
+type ThumbnailVariants = VariantProps<typeof thumbnail>;

@@ -3,6 +3,7 @@
 import {type FragmentType, useFragment} from "@apollo/client";
 
 import {
+  PlaceholderProductThumbnail,
   ProductThumbnail,
   SkeletonProductThumbnail,
 } from "@/components/ProductThumbnail";
@@ -10,6 +11,7 @@ import {TaxedMoney} from "@/components/TaxedMoney";
 import {SkeletonText, Text} from "@/components/Text";
 import {graphql} from "@/graphql/codegen";
 import type {OrderLine_OrderFragment} from "@/graphql/codegen/graphql";
+import {useIntl} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";
 import {isDefined} from "@/utils/is-defined";
 
@@ -39,16 +41,26 @@ export function OrderLine({orderLine}: OrderLineProps) {
     fragmentName: "OrderLine_Order",
     from: orderLine,
   });
+  const intl = useIntl();
   if (!complete) {
     return <SkeletonOrderLine />;
-  } else if (!isDefined(data.variant)) {
-    return null;
   }
   return (
     <div className={cn("gap-base flex items-center justify-between")}>
-      <ProductThumbnail product={data.variant.product} />
+      {isDefined(data.variant) ? (
+        <ProductThumbnail product={data.variant.product} />
+      ) : (
+        <PlaceholderProductThumbnail />
+      )}
       <div className={cn("flex-1")}>
-        <Text>{data.variant.product.name}</Text>
+        <Text>
+          {isDefined(data.variant)
+            ? data.variant.product.name
+            : intl.formatMessage({
+                id: "3kbIhS",
+                defaultMessage: "Untitled",
+              })}
+        </Text>
       </div>
       <TaxedMoney taxedMoney={data.totalPrice} />
     </div>

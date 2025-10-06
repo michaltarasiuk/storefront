@@ -30220,6 +30220,17 @@ export type AccountValidationErrorFragment = {
   message?: string | null;
 } & {" $fragmentName"?: "AccountValidationErrorFragment"};
 
+export type ChannelSlugsQueryVariables = Exact<{[key: string]: never}>;
+
+export type ChannelSlugsQuery = {
+  __typename?: "Query";
+  channels?: Array<{
+    __typename?: "Channel";
+    slug: string;
+    isActive: boolean;
+  }> | null;
+};
+
 export type ChannelContextValueQueryVariables = Exact<{
   slug: Scalars["String"]["input"];
 }>;
@@ -30238,17 +30249,6 @@ export type ChannelContextValueQuery = {
       displayGrossPrices: boolean;
     };
   } | null;
-};
-
-export type ChannelSlugsQueryVariables = Exact<{[key: string]: never}>;
-
-export type ChannelSlugsQuery = {
-  __typename?: "Query";
-  channels?: Array<{
-    __typename?: "Channel";
-    slug: string;
-    isActive: boolean;
-  }> | null;
 };
 
 export type CheckoutLine_CheckoutFragment = {
@@ -36423,6 +36423,32 @@ export const AddressValidationRulesDocument = {
   AddressValidationRulesQuery,
   AddressValidationRulesQueryVariables
 >;
+export const ChannelSlugsDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: {kind: "Name", value: "ChannelSlugs"},
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "channels"},
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {kind: "Field", name: {kind: "Name", value: "slug"}},
+                {kind: "Field", name: {kind: "Name", value: "isActive"}},
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<ChannelSlugsQuery, ChannelSlugsQueryVariables>;
 export const ChannelContextValueDocument = {
   kind: "Document",
   definitions: [
@@ -36491,29 +36517,3 @@ export const ChannelContextValueDocument = {
   ChannelContextValueQuery,
   ChannelContextValueQueryVariables
 >;
-export const ChannelSlugsDocument = {
-  kind: "Document",
-  definitions: [
-    {
-      kind: "OperationDefinition",
-      operation: "query",
-      name: {kind: "Name", value: "ChannelSlugs"},
-      selectionSet: {
-        kind: "SelectionSet",
-        selections: [
-          {
-            kind: "Field",
-            name: {kind: "Name", value: "channels"},
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                {kind: "Field", name: {kind: "Name", value: "slug"}},
-                {kind: "Field", name: {kind: "Name", value: "isActive"}},
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<ChannelSlugsQuery, ChannelSlugsQueryVariables>;

@@ -51,8 +51,8 @@ type Documents = {
   "\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money @unmask\n    }\n    gross {\n      ...Money_Money @unmask\n    }\n  }\n": typeof types.TaxedMoney_TaxedMoneyFragmentDoc;
   "\n  query AddressValidationRules($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      allowedFields\n      requiredFields\n      upperFields\n      countryAreaChoices {\n        raw\n        verbose\n      }\n      cityChoices {\n        raw\n        verbose\n      }\n      cityAreaChoices {\n        raw\n        verbose\n      }\n    }\n  }\n": typeof types.AddressValidationRulesDocument;
   "\n  fragment AccountValidationError on AccountError {\n    field\n    message\n  }\n": typeof types.AccountValidationErrorFragmentDoc;
-  "\n  query ChannelContextValue($slug: String!) {\n    channel(slug: $slug) {\n      countries {\n        code\n        country\n      }\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n": typeof types.ChannelContextValueDocument;
   "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n": typeof types.ChannelSlugsDocument;
+  "\n  query ChannelContextValue($slug: String!) {\n    channel(slug: $slug) {\n      countries {\n        code\n        country\n      }\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n": typeof types.ChannelContextValueDocument;
   "\n  fragment CheckoutLine_Checkout on CheckoutLine {\n    id\n    quantity\n    variant {\n      product {\n        name\n        ...ProductThumbnail_Product\n      }\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n": typeof types.CheckoutLine_CheckoutFragmentDoc;
   "\n  fragment CheckoutLines_Checkout on Checkout {\n    id\n    lines {\n      id\n      ...CheckoutLine_Checkout\n    }\n  }\n": typeof types.CheckoutLines_CheckoutFragmentDoc;
   "\n  fragment CheckoutMoneyLines_Checkout on Checkout {\n    id\n    subtotalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    deliveryMethod {\n      __typename\n      ... on ShippingMethod {\n        price {\n          ...Money_Money @unmask\n        }\n      }\n    }\n    totalPrice {\n      tax {\n        ...Money_Money @unmask\n      }\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n": typeof types.CheckoutMoneyLines_CheckoutFragmentDoc;
@@ -136,10 +136,10 @@ const documents: Documents = {
     types.AddressValidationRulesDocument,
   "\n  fragment AccountValidationError on AccountError {\n    field\n    message\n  }\n":
     types.AccountValidationErrorFragmentDoc,
-  "\n  query ChannelContextValue($slug: String!) {\n    channel(slug: $slug) {\n      countries {\n        code\n        country\n      }\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n":
-    types.ChannelContextValueDocument,
   "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n":
     types.ChannelSlugsDocument,
+  "\n  query ChannelContextValue($slug: String!) {\n    channel(slug: $slug) {\n      countries {\n        code\n        country\n      }\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n":
+    types.ChannelContextValueDocument,
   "\n  fragment CheckoutLine_Checkout on CheckoutLine {\n    id\n    quantity\n    variant {\n      product {\n        name\n        ...ProductThumbnail_Product\n      }\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n":
     types.CheckoutLine_CheckoutFragmentDoc,
   "\n  fragment CheckoutLines_Checkout on Checkout {\n    id\n    lines {\n      id\n      ...CheckoutLine_Checkout\n    }\n  }\n":
@@ -396,14 +396,14 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  query ChannelContextValue($slug: String!) {\n    channel(slug: $slug) {\n      countries {\n        code\n        country\n      }\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n",
-): (typeof documents)["\n  query ChannelContextValue($slug: String!) {\n    channel(slug: $slug) {\n      countries {\n        code\n        country\n      }\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n"];
+  source: "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n",
+): (typeof documents)["\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n",
-): (typeof documents)["\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n"];
+  source: "\n  query ChannelContextValue($slug: String!) {\n    channel(slug: $slug) {\n      countries {\n        code\n        country\n      }\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n",
+): (typeof documents)["\n  query ChannelContextValue($slug: String!) {\n    channel(slug: $slug) {\n      countries {\n        code\n        country\n      }\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
