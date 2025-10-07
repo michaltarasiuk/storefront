@@ -1,5 +1,4 @@
 import "@/styles/globals.css";
-import "@/styles/themes/saleor-theme.css";
 
 import type {Viewport} from "next";
 
