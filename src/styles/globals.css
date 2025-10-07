@@ -7,6 +7,12 @@
 }
 
 @theme {
+  --color-*: initial;
+  --text-*: initial;
+  --shadow-*: initial;
+
+  --color-black: #000000;
+
   --color-base-background: #ffffff;
   --color-base-background-subdued: #f5f5f5;
   --color-base-border: #dedede;
