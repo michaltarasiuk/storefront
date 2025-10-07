@@ -1,12 +1,8 @@
 "use client";
 
-import {Inter} from "next/font/google";
 import {useLocale} from "react-aria";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
+import {fontInter} from "@/config/fonts";
 
 export function Html({children}: {children: React.ReactNode}) {
   const {locale, direction} = useLocale();
@@ -14,7 +10,7 @@ export function Html({children}: {children: React.ReactNode}) {
     <html
       lang={locale}
       dir={direction}
-      className={`${inter.className} ${inter.variable}`}>
+      className={`${fontInter.className} ${fontInter.variable}`}>
       {children}
     </html>
   );
