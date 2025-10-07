@@ -6,7 +6,7 @@ import {useTransition} from "react";
 import {Button} from "@/components/Button";
 import {Checkbox, SkeletonCheckbox} from "@/components/Checkbox";
 import {Divider} from "@/components/Divider";
-import {Routes} from "@/consts/routes";
+import {Routes} from "@/config/routes";
 import {useBasePathname} from "@/hooks/use-base-pathname";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {

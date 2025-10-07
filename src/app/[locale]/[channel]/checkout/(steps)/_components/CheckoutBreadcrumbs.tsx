@@ -3,7 +3,7 @@
 import {usePathname} from "next/navigation";
 
 import {BreadcrumbLink, Breadcrumbs} from "@/components/Breadcrumbs";
-import {Routes} from "@/consts/routes";
+import {Routes} from "@/config/routes";
 import {useBasePathname} from "@/hooks/use-base-pathname";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {joinPathSegments} from "@/utils/pathname";

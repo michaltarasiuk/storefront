@@ -4,7 +4,7 @@ import {type QueryRef, useReadQuery} from "@apollo/client";
 import {notFound, redirect} from "next/navigation";
 
 import {HeadingGroup} from "@/components/Heading";
-import {Routes} from "@/consts/routes";
+import {Routes} from "@/config/routes";
 import type {CheckoutBilling_CheckoutQuery} from "@/graphql/codegen/graphql";
 import {useBasePathname} from "@/hooks/use-base-pathname";
 import {isDefined} from "@/utils/is-defined";

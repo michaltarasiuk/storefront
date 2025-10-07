@@ -8,7 +8,7 @@ import {Button} from "@/components/Button";
 import {ChannelField} from "@/components/ChannelField";
 import {Form} from "@/components/Form";
 import {LocaleField} from "@/components/LocaleField";
-import {Routes} from "@/consts/routes";
+import {Routes} from "@/config/routes";
 import {graphql} from "@/graphql/codegen";
 import type {CheckoutInformationForm_CheckoutFragment} from "@/graphql/codegen/graphql";
 import {FormattedMessage} from "@/i18n/react-intl";

@@ -3,7 +3,7 @@
 import {type FragmentType, useFragment} from "@apollo/client";
 
 import {SkeletonText, Text} from "@/components/Text";
-import {Routes} from "@/consts/routes";
+import {Routes} from "@/config/routes";
 import {graphql} from "@/graphql/codegen";
 import type {OrderReviewList_CheckoutFragment} from "@/graphql/codegen/graphql";
 import {useIntl} from "@/i18n/react-intl";

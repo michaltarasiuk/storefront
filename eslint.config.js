@@ -89,7 +89,7 @@ const eslintConfig = [
       "react-refresh/only-export-components": "off",
     },
   },
-  globalIgnores([".next"]),
+  globalIgnores([".next", "next-env.d.ts"]),
   ...storybook.configs["flat/recommended"],
 ];
 export default eslintConfig;

@@ -3,7 +3,7 @@
 import {redirect} from "next/navigation";
 import * as z from "zod";
 
-import {Routes} from "@/consts/routes";
+import {Routes} from "@/config/routes";
 import {getClient} from "@/graphql/apollo-client";
 import {graphql} from "@/graphql/codegen";
 import {
