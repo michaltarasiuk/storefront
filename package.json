@@ -16,7 +16,8 @@
     "extract-compile": "bun run extract && bun run compile-folder",
     "generate": "graphql-codegen --config codegen.config.ts",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "husky"
   },
   "dependencies": {
     "@apollo/client": "^3.13.8",
@@ -74,6 +75,8 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-storybook": "^9.1.6",
     "graphql-config": "^5.1.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.3",
     "playwright": "^1.55.0",
     "postcss-load-config": "^6.0.1",
     "prettier": "3.6.0",
@@ -82,5 +85,6 @@
     "tailwindcss": "^4",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

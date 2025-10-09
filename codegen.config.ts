@@ -16,7 +16,7 @@ invariant(
   "Environment variable NEXT_PUBLIC_SALEOR_GRAPHQL_ENDPOINT must be defined.",
 );
 
-const config: CodegenConfig = {
+const codegenConfig: CodegenConfig = {
   schema: saleorGraphqlEndpoint,
   documents: ["src/**/*.{ts,tsx}"],
   generates: {
@@ -41,4 +41,4 @@ const config: CodegenConfig = {
     afterAllFileWrite: ["bun run prettier --write"],
   },
 };
-export default config;
+export default codegenConfig;
