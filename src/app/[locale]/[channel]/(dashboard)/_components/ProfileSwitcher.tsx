@@ -5,7 +5,7 @@ import {Button} from "react-aria-components";
 
 import {Avatar} from "@/components/Avatar";
 import {Menu, MenuItem, MenuTrigger} from "@/components/Menu";
-import {Routes} from "@/config/routes";
+import {Routes} from "@/consts/routes";
 import {useBasePathname} from "@/hooks/use-base-pathname";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {ChevronDownIcon} from "@/icons/ChevronDownIcon";

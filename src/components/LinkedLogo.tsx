@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import {Routes} from "@/config/routes";
+import {Routes} from "@/consts/routes";
 import {IntlLink} from "@/i18n/components/IntlLink";
 import {useIntl} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";

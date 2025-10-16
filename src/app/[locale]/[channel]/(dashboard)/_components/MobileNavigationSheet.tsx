@@ -2,7 +2,7 @@
 
 import {DialogTrigger} from "@/components/Dialog";
 import {Sheet} from "@/components/Sheet";
-import {Routes} from "@/config/routes";
+import {Routes} from "@/consts/routes";
 import {useBasePathname} from "@/hooks/use-base-pathname";
 import {FormattedMessage} from "@/i18n/react-intl";
 import {cn} from "@/utils/cn";

@@ -1,6 +1,6 @@
 import {type NextRequest, NextResponse} from "next/server";
 
-import {Routes} from "@/config/routes";
+import {Routes} from "@/consts/routes";
 import {getClient} from "@/graphql/apollo-client";
 import {graphql} from "@/graphql/codegen";
 import type {CheckoutLineInput} from "@/graphql/codegen/graphql";

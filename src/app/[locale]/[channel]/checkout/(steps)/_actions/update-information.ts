@@ -4,7 +4,7 @@ import type {ApolloClient} from "@apollo/client";
 import {notFound, redirect} from "next/navigation";
 import * as z from "zod";
 
-import {Routes} from "@/config/routes";
+import {Routes} from "@/consts/routes";
 import {getClient} from "@/graphql/apollo-client";
 import {graphql} from "@/graphql/codegen";
 import type {

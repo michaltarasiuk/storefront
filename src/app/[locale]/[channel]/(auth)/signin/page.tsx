@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-import {Routes} from "@/config/routes";
+import {Routes} from "@/consts/routes";
 import {IntlLink} from "@/i18n/components/IntlLink";
 import {FormattedMessage} from "@/i18n/react-intl";
 

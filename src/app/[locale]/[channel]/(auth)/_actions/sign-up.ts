@@ -2,7 +2,7 @@
 
 import * as z from "zod";
 
-import {Routes} from "@/config/routes";
+import {Routes} from "@/consts/routes";
 import {env} from "@/env";
 import {getClient} from "@/graphql/apollo-client";
 import {graphql} from "@/graphql/codegen";
