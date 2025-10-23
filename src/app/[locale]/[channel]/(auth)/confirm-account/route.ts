@@ -4,9 +4,8 @@ import {Routes} from "@/consts/routes";
 import {getClient} from "@/graphql/apollo-client";
 import {graphql} from "@/graphql/codegen";
 import type {ConfirmAccountMutationVariables} from "@/graphql/codegen/graphql";
-import {getBasePathname} from "@/utils/base-pathname";
 import {isDefined} from "@/utils/is-defined";
-import {joinPathSegments} from "@/utils/pathname";
+import {getBasePathname, joinPathSegments} from "@/utils/pathname";
 
 const ConfirmAccountMutation = graphql(`
   mutation ConfirmAccount($email: String!, $token: String!) {

@@ -11,9 +11,8 @@ import {
   setRefreshTokenCookie,
 } from "@/modules/account/utils/cookies";
 import {toValidationErrors} from "@/modules/account/utils/validation-errors";
-import {BasePathnameSchema} from "@/utils/base-pathname";
 import {isDefined} from "@/utils/is-defined";
-import {joinPathSegments} from "@/utils/pathname";
+import {BasePathnameSchema, joinPathSegments} from "@/utils/pathname";
 
 const SigninMutation = graphql(`
   mutation Signin($email: String!, $password: String!) {

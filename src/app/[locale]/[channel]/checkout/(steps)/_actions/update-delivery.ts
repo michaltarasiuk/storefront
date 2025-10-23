@@ -8,9 +8,8 @@ import {getClient} from "@/graphql/apollo-client";
 import {graphql} from "@/graphql/codegen";
 import {getCheckoutId} from "@/modules/checkout/utils/cookies";
 import {toValidationErrors} from "@/modules/checkout/utils/validation-errors";
-import {BasePathnameSchema} from "@/utils/base-pathname";
 import {isDefined} from "@/utils/is-defined";
-import {joinPathSegments} from "@/utils/pathname";
+import {BasePathnameSchema, joinPathSegments} from "@/utils/pathname";
 
 const DeliveryMethodUpdateMutation = graphql(`
   mutation DeliveryMethodUpdate($id: ID!, $deliveryMethodId: ID!) {

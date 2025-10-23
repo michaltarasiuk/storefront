@@ -14,9 +14,8 @@ import type {
 import {getCheckoutId} from "@/modules/checkout/utils/cookies";
 import {toValidationErrors} from "@/modules/checkout/utils/validation-errors";
 import {AddressSchema} from "@/utils/address";
-import {BasePathnameSchema} from "@/utils/base-pathname";
 import {isDefined} from "@/utils/is-defined";
-import {joinPathSegments} from "@/utils/pathname";
+import {BasePathnameSchema, joinPathSegments} from "@/utils/pathname";
 
 const EmailUpdateMutation = graphql(`
   mutation EmailUpdate($id: ID!, $email: String!) {
