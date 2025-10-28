@@ -1,5 +1,3 @@
-"use client";
-
 import {cva} from "cva";
 import {
   Button,

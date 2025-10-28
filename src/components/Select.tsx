@@ -40,17 +40,17 @@ export function Select<T extends object>({
   children,
   ...props
 }: SelectProps<T>) {
-  const [selectedKey, setSelectedKey] = useState<Key | null>(
-    (props.selectedKey ?? props.defaultSelectedKey) || null,
+  const [value, setValue] = useState<Key | null>(
+    (props.value ?? props.defaultValue) || null,
   );
   return (
     <AriaSelect
-      selectedKey={selectedKey}
+      value={value}
       {...props}
       className={cn("leading-field-line-height", props.className)}
-      onSelectionChange={(key) => {
-        setSelectedKey(key);
-        props.onSelectionChange?.(key);
+      onChange={(key) => {
+        setValue(key);
+        props.onChange?.(key);
       }}>
       {({isDisabled, isFocused, isInvalid, isOpen}) => (
         <>
@@ -59,7 +59,7 @@ export function Select<T extends object>({
               "rounded-base border-control-border bg-control-background px-field-padding-inline py-empty-field-padding-block h-field-height relative flex w-full cursor-pointer items-center justify-between border transition-all",
               {
                 "pt-filled-field-padding-block-start pb-filled-field-padding-block-end":
-                  isDefined(selectedKey),
+                  isDefined(value),
                 "border-critical ring-critical ring-1": isInvalid,
                 "ring-control-accent/50 border-control-accent shadow-none ring-3 outline-none":
                   isFocused,
@@ -70,7 +70,7 @@ export function Select<T extends object>({
               className={cn(
                 "text-control-text-subdued font-primary text-small start-label-inset-inline-start top-label-inset-block-start pointer-events-none absolute translate-y-1/4 opacity-0 transition-all",
                 {
-                  "translate-y-0 opacity-100": isDefined(selectedKey),
+                  "translate-y-0 opacity-100": isDefined(value),
                 },
               )}>
               {label}

@@ -23,7 +23,7 @@ const divider = cva("border-base-border", {
     {
       orientation: "horizontal",
       size: "small",
-      className: "border-t-1",
+      className: "border-t-px",
     },
     {
       orientation: "horizontal",
@@ -43,7 +43,7 @@ const divider = cva("border-base-border", {
     {
       orientation: "vertical",
       size: "small",
-      className: "border-s-1",
+      className: "border-s-px",
     },
     {
       orientation: "vertical",
