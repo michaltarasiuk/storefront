@@ -6,7 +6,7 @@ import {
   type TextProps as AriaTextProps,
 } from "react-aria-components";
 
-import {cn} from "@/utils/cn";
+import {cn} from "#app/utils/cn";
 
 import {text} from "../styles/text";
 import {Skeleton} from "./Skeleton";

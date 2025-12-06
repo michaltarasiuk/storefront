@@ -2,9 +2,9 @@
 
 import {usePathname} from "next/navigation";
 
-import {Link} from "@/components/Link";
-import {isDefined} from "@/utils/is-defined";
-import {joinPathSegments} from "@/utils/pathname";
+import {Link} from "#app/components/Link";
+import {isDefined} from "#app/utils/is-defined";
+import {joinPathSegments} from "#app/utils/pathname";
 
 import {useBasePathname} from "../../hooks/use-base-pathname";
 

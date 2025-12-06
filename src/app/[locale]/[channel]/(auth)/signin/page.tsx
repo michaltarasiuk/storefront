@@ -1,8 +1,8 @@
 import * as z from "zod";
 
-import {Routes} from "@/consts/routes";
-import {IntlLink} from "@/i18n/components/IntlLink";
-import {FormattedMessage} from "@/i18n/react-intl";
+import {Routes} from "#app/consts/routes";
+import {IntlLink} from "#app/i18n/components/IntlLink";
+import {FormattedMessage} from "#app/i18n/react-intl";
 
 import {SigninForm} from "../_components/SigninForm";
 

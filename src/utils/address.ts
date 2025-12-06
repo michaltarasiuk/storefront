@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-import {CountryCode} from "@/graphql/codegen/graphql";
+import {CountryCode} from "#app/graphql/codegen/graphql";
 
 export const AddressSchema = z.object({
   country: z.enum(CountryCode),

@@ -1,6 +1,6 @@
-import {IntlLink} from "@/i18n/components/IntlLink";
-import {ChevronLeftIcon} from "@/icons/ChevronLeftIcon";
-import {cn} from "@/utils/cn";
+import {IntlLink} from "#app/i18n/components/IntlLink";
+import {ChevronLeftIcon} from "#app/icons/ChevronLeftIcon";
+import {cn} from "#app/utils/cn";
 
 type ReturnLinkProps = React.ComponentProps<typeof IntlLink>;
 

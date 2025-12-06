@@ -1,6 +1,6 @@
-import {Footer} from "@/components/Footer";
-import {LinkedLogo} from "@/components/LinkedLogo";
-import {cn} from "@/utils/cn";
+import {Footer} from "#app/components/Footer";
+import {LinkedLogo} from "#app/components/LinkedLogo";
+import {cn} from "#app/utils/cn";
 
 interface CheckoutLayoutProps {
   children: React.ReactNode;

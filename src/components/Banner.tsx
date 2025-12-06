@@ -6,7 +6,7 @@ import {
   Heading,
 } from "react-aria-components";
 
-import {text} from "@/styles/text";
+import {text} from "#app/styles/text";
 
 import {ChevronDownIcon} from "../icons/ChevronDownIcon";
 import {ChevronUpIcon} from "../icons/ChevronUpIcon";

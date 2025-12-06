@@ -5,18 +5,18 @@ import {type FragmentType, useFragment} from "@apollo/client";
 import {
   SkeletonSummaryDisclosure,
   SummaryDisclosure,
-} from "@/components/SummaryDisclosure";
-import {graphql} from "@/graphql/codegen";
-import type {CheckoutSummary_CheckoutFragment} from "@/graphql/codegen/graphql";
+} from "#app/components/SummaryDisclosure";
+import {graphql} from "#app/graphql/codegen";
+import type {CheckoutSummary_CheckoutFragment} from "#app/graphql/codegen/graphql";
 import {
   CheckoutLines,
   SkeletonCheckoutLines,
-} from "@/modules/checkout/components/CheckoutLines";
+} from "#app/modules/checkout/components/CheckoutLines";
 import {
   CheckoutMoneyLines,
   SkeletonCheckoutMoneyLines,
-} from "@/modules/checkout/components/CheckoutMoneyLines";
-import {cn} from "@/utils/cn";
+} from "#app/modules/checkout/components/CheckoutMoneyLines";
+import {cn} from "#app/utils/cn";
 
 import {AddPromoCodeForm, SkeletonAddPromoCodeForm} from "./AddPromoCodeForm";
 

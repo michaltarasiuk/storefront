@@ -6,8 +6,8 @@ import {
   type TooltipProps,
 } from "react-aria-components";
 
-import {text} from "@/styles/text";
-import {cn} from "@/utils/cn";
+import {text} from "#app/styles/text";
+import {cn} from "#app/utils/cn";
 
 export {TooltipTrigger} from "react-aria-components";
 

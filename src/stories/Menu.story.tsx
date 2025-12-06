@@ -1,7 +1,7 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {Button} from "@/components/Button";
-import {Menu, MenuItem, MenuTrigger} from "@/components/Menu";
+import {Button} from "#app/components/Button";
+import {Menu, MenuItem, MenuTrigger} from "#app/components/Menu";
 
 type MenuProps = React.ComponentProps<typeof Menu>;
 

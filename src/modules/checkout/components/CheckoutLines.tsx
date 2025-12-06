@@ -2,9 +2,9 @@
 
 import {type FragmentType, useFragment} from "@apollo/client";
 
-import {graphql} from "@/graphql/codegen";
-import type {CheckoutLines_CheckoutFragment} from "@/graphql/codegen/graphql";
-import {cn} from "@/utils/cn";
+import {graphql} from "#app/graphql/codegen";
+import type {CheckoutLines_CheckoutFragment} from "#app/graphql/codegen/graphql";
+import {cn} from "#app/utils/cn";
 
 import {CheckoutLine, SkeletonCheckoutLine} from "./CheckoutLine";
 

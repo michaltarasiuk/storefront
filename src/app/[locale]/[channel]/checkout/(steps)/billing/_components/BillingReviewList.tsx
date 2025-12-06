@@ -2,12 +2,12 @@
 
 import {type FragmentType, useFragment} from "@apollo/client";
 
-import {SkeletonText, Text} from "@/components/Text";
-import {Routes} from "@/consts/routes";
-import {graphql} from "@/graphql/codegen";
-import type {BillingReviewList_CheckoutFragment} from "@/graphql/codegen/graphql";
-import {useIntl} from "@/i18n/react-intl";
-import {isDefined} from "@/utils/is-defined";
+import {SkeletonText, Text} from "#app/components/Text";
+import {Routes} from "#app/consts/routes";
+import {graphql} from "#app/graphql/codegen";
+import type {BillingReviewList_CheckoutFragment} from "#app/graphql/codegen/graphql";
+import {useIntl} from "#app/i18n/react-intl";
+import {isDefined} from "#app/utils/is-defined";
 
 import {
   ReviewItem,

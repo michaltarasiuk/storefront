@@ -7,7 +7,7 @@ import {
   type ToggleButtonProps,
 } from "react-aria-components";
 
-import {cn} from "@/utils/cn";
+import {cn} from "#app/utils/cn";
 
 export function ToggleButtonGroup({
   children,

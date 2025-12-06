@@ -1,10 +1,10 @@
 "use client";
 
-import {Button} from "@/components/Button";
-import {Dialog, DialogTrigger, Modal} from "@/components/Dialog";
-import {Text} from "@/components/Text";
-import {FormattedMessage, useIntl} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
+import {Button} from "#app/components/Button";
+import {Dialog, DialogTrigger, Modal} from "#app/components/Dialog";
+import {Text} from "#app/components/Text";
+import {FormattedMessage, useIntl} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
 
 export function DeleteAddressDialog() {
   const intl = useIntl();

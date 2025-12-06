@@ -6,7 +6,7 @@ import {
   type PopoverProps,
 } from "react-aria-components";
 
-import {cn} from "@/utils/cn";
+import {cn} from "#app/utils/cn";
 
 export {DialogTrigger as PopoverTrigger} from "react-aria-components";
 

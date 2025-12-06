@@ -1,7 +1,7 @@
 import {cva, type VariantProps} from "cva";
 
-import {SpinnerIcon} from "@/icons/SpinnerIcon";
-import {cn} from "@/utils/cn";
+import {SpinnerIcon} from "#app/icons/SpinnerIcon";
+import {cn} from "#app/utils/cn";
 
 const spinner = cva("animate-spin", {
   variants: {

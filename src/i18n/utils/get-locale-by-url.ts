@@ -1,6 +1,6 @@
 import {URLPattern} from "next/server";
 
-import {isDefined} from "@/utils/is-defined";
+import {isDefined} from "#app/utils/is-defined";
 
 import {type Locale, Locales} from "../consts";
 

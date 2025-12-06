@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {Spinner} from "@/components/Spinner";
+import {Spinner} from "#app/components/Spinner";
 
 type SpinnerProps = React.ComponentProps<typeof Spinner>;
 

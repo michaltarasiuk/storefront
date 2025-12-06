@@ -2,9 +2,9 @@ import "@/styles/globals.css";
 
 import type {Preview} from "@storybook/nextjs-vite";
 
-import {DefaultLocale} from "@/i18n/consts";
-import {IntlProvider} from "@/i18n/react-intl";
-import {DefaultChannel} from "@/modules/channel/consts";
+import {DefaultLocale} from "#app/i18n/consts";
+import {IntlProvider} from "#app/i18n/react-intl";
+import {DefaultChannel} from "#app/modules/channel/consts";
 
 const preview: Preview = {
   decorators: [

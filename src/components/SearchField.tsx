@@ -5,11 +5,11 @@ import {
   type SearchFieldProps as AriaSearchFieldProps,
 } from "react-aria-components";
 
-import {Text} from "@/components/Text";
-import {CloseIcon} from "@/icons/CloseIcon";
-import {MagnifyIcon} from "@/icons/MagnifyIcon";
-import {cn} from "@/utils/cn";
-import {isDefined} from "@/utils/is-defined";
+import {Text} from "#app/components/Text";
+import {CloseIcon} from "#app/icons/CloseIcon";
+import {MagnifyIcon} from "#app/icons/MagnifyIcon";
+import {cn} from "#app/utils/cn";
+import {isDefined} from "#app/utils/is-defined";
 
 import {FieldError} from "./FieldError";
 import {IconButton} from "./IconButton";

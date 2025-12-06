@@ -2,10 +2,10 @@
 
 import {useTransition} from "react";
 
-import {Button} from "@/components/Button";
-import {useBasePathname} from "@/hooks/use-base-pathname";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
+import {Button} from "#app/components/Button";
+import {useBasePathname} from "#app/hooks/use-base-pathname";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
 
 import {completeCheckout} from "../../_actions/complete-checkout";
 

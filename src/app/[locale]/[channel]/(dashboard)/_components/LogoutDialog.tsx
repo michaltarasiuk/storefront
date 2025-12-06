@@ -1,8 +1,8 @@
-import {Dialog, Modal} from "@/components/Dialog";
-import {Spinner} from "@/components/Spinner";
-import {Text} from "@/components/Text";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
+import {Dialog, Modal} from "#app/components/Dialog";
+import {Spinner} from "#app/components/Spinner";
+import {Text} from "#app/components/Text";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
 
 export function LogoutDialog({isOpen}: {isOpen?: boolean}) {
   return (

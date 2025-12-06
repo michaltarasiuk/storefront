@@ -1,7 +1,7 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {Select, SelectItem} from "@/components/Select";
-import {CountryCode} from "@/graphql/codegen/graphql";
+import {Select, SelectItem} from "#app/components/Select";
+import {CountryCode} from "#app/graphql/codegen/graphql";
 
 const Countries = [
   CountryCode.Us,

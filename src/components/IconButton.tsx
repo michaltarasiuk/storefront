@@ -3,7 +3,7 @@
 import {cva, type VariantProps} from "cva";
 import {Button, type ButtonProps, type LinkProps} from "react-aria-components";
 
-import {IntlLink} from "@/i18n/components/IntlLink";
+import {IntlLink} from "#app/i18n/components/IntlLink";
 
 import {cn} from "../utils/cn";
 

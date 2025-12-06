@@ -1,5 +1,5 @@
-import {Locales} from "@/i18n/consts";
-import {IntlProvider} from "@/i18n/IntlProvider";
+import {Locales} from "#app/i18n/consts";
+import {IntlProvider} from "#app/i18n/IntlProvider";
 
 export default async function LocaleLayout({
   children,

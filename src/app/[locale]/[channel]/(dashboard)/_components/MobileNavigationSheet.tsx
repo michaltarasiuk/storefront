@@ -1,11 +1,11 @@
 "use client";
 
-import {DialogTrigger} from "@/components/Dialog";
-import {Sheet} from "@/components/Sheet";
-import {Routes} from "@/consts/routes";
-import {useBasePathname} from "@/hooks/use-base-pathname";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
+import {DialogTrigger} from "#app/components/Dialog";
+import {Sheet} from "#app/components/Sheet";
+import {Routes} from "#app/consts/routes";
+import {useBasePathname} from "#app/hooks/use-base-pathname";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
 
 import {logOut} from "../_actions/log-out";
 import {LogoutDialog} from "./LogoutDialog";

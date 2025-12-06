@@ -4,15 +4,15 @@ import {type FragmentType, useFragment} from "@apollo/client";
 import {useActionState, useTransition} from "react";
 import invariant from "tiny-invariant";
 
-import {Button} from "@/components/Button";
-import {ChannelField} from "@/components/ChannelField";
-import {Form} from "@/components/Form";
-import {LocaleField} from "@/components/LocaleField";
-import {Routes} from "@/consts/routes";
-import {graphql} from "@/graphql/codegen";
-import type {CheckoutBillingForm_CheckoutFragment} from "@/graphql/codegen/graphql";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
+import {Button} from "#app/components/Button";
+import {ChannelField} from "#app/components/ChannelField";
+import {Form} from "#app/components/Form";
+import {LocaleField} from "#app/components/LocaleField";
+import {Routes} from "#app/consts/routes";
+import {graphql} from "#app/graphql/codegen";
+import type {CheckoutBillingForm_CheckoutFragment} from "#app/graphql/codegen/graphql";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
 
 import {updateCheckoutBilling} from "../../_actions/update-billing";
 import {ReturnLink} from "../../_components/ReturnLink";

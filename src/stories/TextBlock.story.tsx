@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {TextBlock} from "@/components/TextBlock";
+import {TextBlock} from "#app/components/TextBlock";
 
 type TextBlockProps = React.ComponentProps<typeof TextBlock>;
 

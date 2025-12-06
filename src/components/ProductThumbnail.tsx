@@ -5,8 +5,8 @@ import {cva, type VariantProps} from "cva";
 import Image from "next/image";
 import {useState} from "react";
 
-import {graphql} from "@/graphql/codegen";
-import type {ProductThumbnail_ProductFragment} from "@/graphql/codegen/graphql";
+import {graphql} from "#app/graphql/codegen";
+import type {ProductThumbnail_ProductFragment} from "#app/graphql/codegen/graphql";
 
 import {PlaceholderImageIcon} from "../icons/PlaceholderImageIcon";
 import {cn} from "../utils/cn";

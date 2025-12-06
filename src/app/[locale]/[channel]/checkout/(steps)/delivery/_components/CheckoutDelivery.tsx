@@ -3,12 +3,12 @@
 import {type QueryRef, useReadQuery} from "@apollo/client";
 import {notFound, redirect} from "next/navigation";
 
-import {HeadingGroup} from "@/components/Heading";
-import {Routes} from "@/consts/routes";
-import type {CheckoutDelivery_CheckoutQuery} from "@/graphql/codegen/graphql";
-import {useBasePathname} from "@/hooks/use-base-pathname";
-import {isDefined} from "@/utils/is-defined";
-import {joinPathSegments} from "@/utils/pathname";
+import {HeadingGroup} from "#app/components/Heading";
+import {Routes} from "#app/consts/routes";
+import type {CheckoutDelivery_CheckoutQuery} from "#app/graphql/codegen/graphql";
+import {useBasePathname} from "#app/hooks/use-base-pathname";
+import {isDefined} from "#app/utils/is-defined";
+import {joinPathSegments} from "#app/utils/pathname";
 
 import {CheckoutLayout} from "../../../_components/CheckoutLayout";
 import {CheckoutBreadcrumbs} from "../../_components/CheckoutBreadcrumbs";

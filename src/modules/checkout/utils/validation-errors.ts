@@ -1,8 +1,8 @@
 import type {ValidationErrors} from "@react-types/shared";
 
-import {graphql} from "@/graphql/codegen";
-import type {CheckoutValidationErrorFragment} from "@/graphql/codegen/graphql";
-import {isDefined} from "@/utils/is-defined";
+import {graphql} from "#app/graphql/codegen";
+import type {CheckoutValidationErrorFragment} from "#app/graphql/codegen/graphql";
+import {isDefined} from "#app/utils/is-defined";
 
 const CheckoutValidationErrorFragment = graphql(`
   fragment CheckoutValidationError on CheckoutError {

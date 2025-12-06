@@ -4,7 +4,7 @@ import {cva, type VariantProps} from "cva";
 import {useSeparator} from "react-aria";
 import type {SeparatorProps} from "react-aria-components";
 
-import {cn} from "@/utils/cn";
+import {cn} from "#app/utils/cn";
 
 const divider = cva("border-base-border", {
   variants: {

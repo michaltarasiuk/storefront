@@ -3,14 +3,14 @@
 import {useId, useState} from "react";
 import {Button} from "react-aria-components";
 
-import {Avatar} from "@/components/Avatar";
-import {Menu, MenuItem, MenuTrigger} from "@/components/Menu";
-import {Routes} from "@/consts/routes";
-import {useBasePathname} from "@/hooks/use-base-pathname";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {ChevronDownIcon} from "@/icons/ChevronDownIcon";
-import {ChevronUpIcon} from "@/icons/ChevronUpIcon";
-import {cn} from "@/utils/cn";
+import {Avatar} from "#app/components/Avatar";
+import {Menu, MenuItem, MenuTrigger} from "#app/components/Menu";
+import {Routes} from "#app/consts/routes";
+import {useBasePathname} from "#app/hooks/use-base-pathname";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {ChevronDownIcon} from "#app/icons/ChevronDownIcon";
+import {ChevronUpIcon} from "#app/icons/ChevronUpIcon";
+import {cn} from "#app/utils/cn";
 
 import {logOut} from "../_actions/log-out";
 import {LogoutDialog} from "./LogoutDialog";

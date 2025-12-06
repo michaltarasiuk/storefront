@@ -9,7 +9,7 @@ import {
   type TabProps as AriaTabProps,
 } from "react-aria-components";
 
-import {text} from "@/styles/text";
+import {text} from "#app/styles/text";
 
 import {cn} from "../utils/cn";
 import {isDefined} from "../utils/is-defined";

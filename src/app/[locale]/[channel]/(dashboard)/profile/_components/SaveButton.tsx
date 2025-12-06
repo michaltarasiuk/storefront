@@ -2,8 +2,8 @@
 
 import {useFormStatus} from "react-dom";
 
-import {Button} from "@/components/Button";
-import {FormattedMessage} from "@/i18n/react-intl";
+import {Button} from "#app/components/Button";
+import {FormattedMessage} from "#app/i18n/react-intl";
 
 export function SaveButton() {
   const {pending} = useFormStatus();

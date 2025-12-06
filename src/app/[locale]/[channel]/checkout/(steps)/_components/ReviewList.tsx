@@ -1,7 +1,7 @@
-import {SkeletonText, Text} from "@/components/Text";
-import {IntlLink} from "@/i18n/components/IntlLink";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
+import {SkeletonText, Text} from "#app/components/Text";
+import {IntlLink} from "#app/i18n/components/IntlLink";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
 
 export function ReviewList({children}: {children: React.ReactNode}) {
   return (

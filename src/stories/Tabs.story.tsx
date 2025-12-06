@@ -1,10 +1,10 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 import {useId} from "react";
 
-import {Tab, TabList, TabPanel, Tabs} from "@/components/Tabs";
-import {Text} from "@/components/Text";
-import {ClockIcon} from "@/icons/ClockIcon";
-import {OrderBoxIcon} from "@/icons/OrderBoxIcon";
+import {Tab, TabList, TabPanel, Tabs} from "#app/components/Tabs";
+import {Text} from "#app/components/Text";
+import {ClockIcon} from "#app/icons/ClockIcon";
+import {OrderBoxIcon} from "#app/icons/OrderBoxIcon";
 
 function TabsStory() {
   const confirmedTabId = useId();

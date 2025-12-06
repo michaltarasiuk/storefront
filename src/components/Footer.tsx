@@ -1,9 +1,9 @@
 import {cva, type VariantProps} from "cva";
 import {Suspense} from "react";
 
-import {IntlLink} from "@/i18n/components/IntlLink";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
+import {IntlLink} from "#app/i18n/components/IntlLink";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
 
 import {LanguageSelector, LanguageSelectorButton} from "./LanguageSelector";
 

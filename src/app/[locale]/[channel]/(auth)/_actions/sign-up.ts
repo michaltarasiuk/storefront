@@ -2,13 +2,13 @@
 
 import * as z from "zod";
 
-import {Routes} from "@/consts/routes";
-import {env} from "@/env";
-import {getClient} from "@/graphql/apollo-client";
-import {graphql} from "@/graphql/codegen";
-import {localeToLanguageCode} from "@/i18n/utils/locale-to-language-code";
-import {toValidationErrors} from "@/modules/account/utils/validation-errors";
-import {BasePathnameSchema, joinPathSegments} from "@/utils/pathname";
+import {Routes} from "#app/consts/routes";
+import {env} from "#app/env";
+import {getClient} from "#app/graphql/apollo-client";
+import {graphql} from "#app/graphql/codegen";
+import {localeToLanguageCode} from "#app/i18n/utils/locale-to-language-code";
+import {toValidationErrors} from "#app/modules/account/utils/validation-errors";
+import {BasePathnameSchema, joinPathSegments} from "#app/utils/pathname";
 
 import {signIn} from "./sign-in";
 

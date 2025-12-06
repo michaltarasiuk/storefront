@@ -10,9 +10,9 @@ import {
   Popover,
 } from "react-aria-components";
 
-import {useBasePathname} from "@/hooks/use-base-pathname";
-import {isDefined} from "@/utils/is-defined";
-import {joinPathSegments} from "@/utils/pathname";
+import {useBasePathname} from "#app/hooks/use-base-pathname";
+import {isDefined} from "#app/utils/is-defined";
+import {joinPathSegments} from "#app/utils/pathname";
 
 import {cn} from "../utils/cn";
 

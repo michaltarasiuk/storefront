@@ -8,10 +8,10 @@ import {
   Heading,
 } from "react-aria-components";
 
-import type {TaxedMoney_TaxedMoneyFragment} from "@/graphql/codegen/graphql";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {CartIcon} from "@/icons/CartIcon";
-import {cn} from "@/utils/cn";
+import type {TaxedMoney_TaxedMoneyFragment} from "#app/graphql/codegen/graphql";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {CartIcon} from "#app/icons/CartIcon";
+import {cn} from "#app/utils/cn";
 
 import {TaxedMoney} from "./TaxedMoney";
 import {SkeletonText} from "./Text";

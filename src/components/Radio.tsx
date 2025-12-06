@@ -5,7 +5,7 @@ import {
   type RadioProps as AriaRadioProps,
 } from "react-aria-components";
 
-import {isDefined} from "@/utils/is-defined";
+import {isDefined} from "#app/utils/is-defined";
 
 import {text} from "../styles/text";
 import {cn} from "../utils/cn";

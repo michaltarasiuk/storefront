@@ -5,7 +5,7 @@ import {
   registerApolloClient,
 } from "@apollo/client-integration-nextjs";
 
-import {env} from "@/env";
+import {env} from "#app/env";
 
 import {InMemoryCacheConfig} from "./in-memory-cache-config";
 

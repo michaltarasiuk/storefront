@@ -1,7 +1,7 @@
 import {Suspense} from "react";
 
-import {PreloadQuery} from "@/graphql/apollo-client";
-import {graphql} from "@/graphql/codegen";
+import {PreloadQuery} from "#app/graphql/apollo-client";
+import {graphql} from "#app/graphql/codegen";
 
 import {
   CheckoutOrder,

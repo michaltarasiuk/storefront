@@ -6,13 +6,13 @@ import {
   AddressFields,
   CompletedAddressFields,
   SkeletonAddressFields,
-} from "@/components/AddressFields";
-import {Heading, SkeletonHeading} from "@/components/Heading";
-import {graphql} from "@/graphql/codegen";
-import type {ShippingAddress_CheckoutFragment} from "@/graphql/codegen/graphql";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
-import {isDefined} from "@/utils/is-defined";
+} from "#app/components/AddressFields";
+import {Heading, SkeletonHeading} from "#app/components/Heading";
+import {graphql} from "#app/graphql/codegen";
+import type {ShippingAddress_CheckoutFragment} from "#app/graphql/codegen/graphql";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
+import {isDefined} from "#app/utils/is-defined";
 
 const ShippingAddress_CheckoutFragment = graphql(`
   fragment ShippingAddress_Checkout on Checkout {

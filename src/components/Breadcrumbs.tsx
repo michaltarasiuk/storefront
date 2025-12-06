@@ -6,9 +6,9 @@ import {
   type BreadcrumbsProps,
 } from "react-aria-components";
 
-import {IntlLink} from "@/i18n/components/IntlLink";
-import {ChevronRightIcon} from "@/icons/ChevronRightIcon";
-import {cn} from "@/utils/cn";
+import {IntlLink} from "#app/i18n/components/IntlLink";
+import {ChevronRightIcon} from "#app/icons/ChevronRightIcon";
+import {cn} from "#app/utils/cn";
 
 interface BreadcrumbItem extends BreadcrumbLinkProps {
   id: string;

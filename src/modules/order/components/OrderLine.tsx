@@ -6,14 +6,14 @@ import {
   PlaceholderProductThumbnail,
   ProductThumbnail,
   SkeletonProductThumbnail,
-} from "@/components/ProductThumbnail";
-import {TaxedMoney} from "@/components/TaxedMoney";
-import {SkeletonText, Text} from "@/components/Text";
-import {graphql} from "@/graphql/codegen";
-import type {OrderLine_OrderFragment} from "@/graphql/codegen/graphql";
-import {useIntl} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
-import {isDefined} from "@/utils/is-defined";
+} from "#app/components/ProductThumbnail";
+import {TaxedMoney} from "#app/components/TaxedMoney";
+import {SkeletonText, Text} from "#app/components/Text";
+import {graphql} from "#app/graphql/codegen";
+import type {OrderLine_OrderFragment} from "#app/graphql/codegen/graphql";
+import {useIntl} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
+import {isDefined} from "#app/utils/is-defined";
 
 const OrderLine_OrderFragment = graphql(`
   fragment OrderLine_Order on OrderLine {

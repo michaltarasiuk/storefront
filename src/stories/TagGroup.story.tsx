@@ -1,8 +1,8 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 import {useListData} from "react-stately";
 
-import {Tag, TagGroup} from "@/components/TagGroup";
-import {DiscountIcon} from "@/icons/DiscountIcon";
+import {Tag, TagGroup} from "#app/components/TagGroup";
+import {DiscountIcon} from "#app/icons/DiscountIcon";
 
 type TagGroupStoryProps = React.ComponentProps<typeof TagGroup>;
 

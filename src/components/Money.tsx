@@ -2,8 +2,8 @@
 
 import {useNumberFormatter} from "react-aria";
 
-import {graphql} from "@/graphql/codegen";
-import type {Money_MoneyFragment} from "@/graphql/codegen/graphql";
+import {graphql} from "#app/graphql/codegen";
+import type {Money_MoneyFragment} from "#app/graphql/codegen/graphql";
 
 import {Text} from "./Text";
 

@@ -17,12 +17,12 @@ import {
   SelectValue,
 } from "react-aria-components";
 
-import {CheckmarkIcon} from "@/icons/CheckmarkIcon";
-import {ChevronDownIcon} from "@/icons/ChevronDownIcon";
-import {ChevronUpIcon} from "@/icons/ChevronUpIcon";
-import {text} from "@/styles/text";
-import {cn} from "@/utils/cn";
-import {isDefined} from "@/utils/is-defined";
+import {CheckmarkIcon} from "#app/icons/CheckmarkIcon";
+import {ChevronDownIcon} from "#app/icons/ChevronDownIcon";
+import {ChevronUpIcon} from "#app/icons/ChevronUpIcon";
+import {text} from "#app/styles/text";
+import {cn} from "#app/utils/cn";
+import {isDefined} from "#app/utils/is-defined";
 
 import {FieldError} from "./FieldError";
 import {Text} from "./Text";

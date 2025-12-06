@@ -1,8 +1,8 @@
 "use client";
 
-import {Avatar} from "@/components/Avatar";
-import {Text} from "@/components/Text";
-import {cn} from "@/utils/cn";
+import {Avatar} from "#app/components/Avatar";
+import {Text} from "#app/components/Text";
+import {cn} from "#app/utils/cn";
 
 export function ProfileCard() {
   return (

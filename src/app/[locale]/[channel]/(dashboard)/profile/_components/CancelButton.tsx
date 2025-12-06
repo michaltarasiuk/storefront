@@ -1,5 +1,5 @@
-import {Button} from "@/components/Button";
-import {FormattedMessage} from "@/i18n/react-intl";
+import {Button} from "#app/components/Button";
+import {FormattedMessage} from "#app/i18n/react-intl";
 
 export function CancelButton({onPress}: {onPress: () => void}) {
   return (

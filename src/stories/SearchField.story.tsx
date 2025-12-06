@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {SearchField} from "@/components/SearchField";
+import {SearchField} from "#app/components/SearchField";
 
 const meta = {
   component: SearchField,

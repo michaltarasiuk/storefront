@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {Heading, HeadingGroup} from "@/components/Heading";
+import {Heading, HeadingGroup} from "#app/components/Heading";
 
 function HeadingStory() {
   return (

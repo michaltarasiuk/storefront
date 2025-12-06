@@ -1,7 +1,7 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 import type {VariantProps} from "cva";
 
-import {Text} from "@/components/Text";
+import {Text} from "#app/components/Text";
 
 type TextProps = VariantProps<typeof Text>;
 

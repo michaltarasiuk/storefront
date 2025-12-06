@@ -1,9 +1,9 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {Button} from "@/components/Button";
-import {ContentPlaceholder} from "@/components/ContentPlaceholder";
-import {Dialog, DialogTrigger, Modal} from "@/components/Dialog";
-import {cn} from "@/utils/cn";
+import {Button} from "#app/components/Button";
+import {ContentPlaceholder} from "#app/components/ContentPlaceholder";
+import {Dialog, DialogTrigger, Modal} from "#app/components/Dialog";
+import {cn} from "#app/utils/cn";
 
 type DialogTriggerProps = React.ComponentProps<typeof DialogTrigger>;
 type ModalProps = React.ComponentProps<typeof Modal>;

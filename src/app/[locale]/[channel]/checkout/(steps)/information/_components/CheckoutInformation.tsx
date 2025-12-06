@@ -3,9 +3,9 @@
 import {type QueryRef, useReadQuery} from "@apollo/client";
 import {notFound} from "next/navigation";
 
-import {HeadingGroup} from "@/components/Heading";
-import type {CheckoutInformation_CheckoutQuery} from "@/graphql/codegen/graphql";
-import {isDefined} from "@/utils/is-defined";
+import {HeadingGroup} from "#app/components/Heading";
+import type {CheckoutInformation_CheckoutQuery} from "#app/graphql/codegen/graphql";
+import {isDefined} from "#app/utils/is-defined";
 
 import {CheckoutLayout} from "../../../_components/CheckoutLayout";
 import {CheckoutBreadcrumbs} from "../../_components/CheckoutBreadcrumbs";

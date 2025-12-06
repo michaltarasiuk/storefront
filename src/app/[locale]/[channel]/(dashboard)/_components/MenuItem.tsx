@@ -3,9 +3,9 @@
 import {cva} from "cva";
 import {Button, type ButtonProps, type LinkProps} from "react-aria-components";
 
-import {IntlLink} from "@/i18n/components/IntlLink";
-import {text} from "@/styles/text";
-import {cn} from "@/utils/cn";
+import {IntlLink} from "#app/i18n/components/IntlLink";
+import {text} from "#app/styles/text";
+import {cn} from "#app/utils/cn";
 
 const menuItem = cva([
   "px-base py-small-100 rounded-base w-full cursor-pointer text-start",

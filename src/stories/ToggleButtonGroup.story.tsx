@@ -1,7 +1,10 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {Text} from "@/components/Text";
-import {ToggleButton, ToggleButtonGroup} from "@/components/ToggleButtonGroup";
+import {Text} from "#app/components/Text";
+import {
+  ToggleButton,
+  ToggleButtonGroup,
+} from "#app/components/ToggleButtonGroup";
 
 function ToggleButtonGroupStory() {
   return (

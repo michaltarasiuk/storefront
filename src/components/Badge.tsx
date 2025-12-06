@@ -1,7 +1,7 @@
 import {cva, type VariantProps} from "cva";
 
-import {text} from "@/styles/text";
-import {cn} from "@/utils/cn";
+import {text} from "#app/styles/text";
+import {cn} from "#app/utils/cn";
 
 const badge = cva(
   "px-small-300 gap-small-400 rounded-fully inline-flex items-center justify-center border py-px",

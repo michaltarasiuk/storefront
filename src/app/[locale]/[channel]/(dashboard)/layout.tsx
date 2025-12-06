@@ -1,5 +1,5 @@
-import {Footer} from "@/components/Footer";
-import {cn} from "@/utils/cn";
+import {Footer} from "#app/components/Footer";
+import {cn} from "#app/utils/cn";
 
 import {Header} from "./_components/Header";
 

@@ -3,17 +3,17 @@
 import {type FragmentType, useFragment} from "@apollo/client";
 import {useId, useState} from "react";
 
-import {Heading, HeadingGroup, SkeletonHeading} from "@/components/Heading";
-import {Radio, SkeletonRadio} from "@/components/Radio";
-import {RadioGroup, SkeletonRadioGroup} from "@/components/RadioGroup";
-import {graphql} from "@/graphql/codegen";
-import type {DeliverySection_CheckoutFragment} from "@/graphql/codegen/graphql";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {StoreIcon} from "@/icons/StoreIcon";
-import {TruckIcon} from "@/icons/TruckIcon";
-import {cn} from "@/utils/cn";
-import {isCollectionPoint} from "@/utils/delivery-method";
-import {isDefined} from "@/utils/is-defined";
+import {Heading, HeadingGroup, SkeletonHeading} from "#app/components/Heading";
+import {Radio, SkeletonRadio} from "#app/components/Radio";
+import {RadioGroup, SkeletonRadioGroup} from "#app/components/RadioGroup";
+import {graphql} from "#app/graphql/codegen";
+import type {DeliverySection_CheckoutFragment} from "#app/graphql/codegen/graphql";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {StoreIcon} from "#app/icons/StoreIcon";
+import {TruckIcon} from "#app/icons/TruckIcon";
+import {cn} from "#app/utils/cn";
+import {isCollectionPoint} from "#app/utils/delivery-method";
+import {isDefined} from "#app/utils/is-defined";
 
 import {CollectionPoints} from "./DeliverySection/CollectionPoints";
 import {ShippingMethods} from "./DeliverySection/ShippingMethods";

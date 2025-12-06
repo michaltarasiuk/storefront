@@ -1,10 +1,10 @@
 import {type FragmentType, useFragment} from "@apollo/client";
 
-import {SkeletonText, Text} from "@/components/Text";
-import {graphql} from "@/graphql/codegen";
-import type {DeliveryDays_ShippingMethodFragment} from "@/graphql/codegen/graphql";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {isDefined} from "@/utils/is-defined";
+import {SkeletonText, Text} from "#app/components/Text";
+import {graphql} from "#app/graphql/codegen";
+import type {DeliveryDays_ShippingMethodFragment} from "#app/graphql/codegen/graphql";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {isDefined} from "#app/utils/is-defined";
 
 const DeliveryDays_ShippingMethodFragment = graphql(`
   fragment DeliveryDays_ShippingMethod on ShippingMethod {

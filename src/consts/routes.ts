@@ -1,4 +1,4 @@
-import {joinPathSegments} from "@/utils/pathname";
+import {joinPathSegments} from "#app/utils/pathname";
 
 export const Routes = {
   home: "/",

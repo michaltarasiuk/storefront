@@ -1,4 +1,4 @@
-import {cn} from "@/utils/cn";
+import {cn} from "#app/utils/cn";
 
 export function CheckmarkIcon(props: React.ComponentProps<"svg">) {
   return (

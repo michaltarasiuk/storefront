@@ -1,7 +1,7 @@
-import {env} from "@/env";
-import {query} from "@/graphql/apollo-client";
-import {graphql} from "@/graphql/codegen";
-import {isDefined} from "@/utils/is-defined";
+import {env} from "#app/env";
+import {query} from "#app/graphql/apollo-client";
+import {graphql} from "#app/graphql/codegen";
+import {isDefined} from "#app/utils/is-defined";
 
 const ChannelContextValueQuery = graphql(`
   query ChannelContextValue($slug: String!) {

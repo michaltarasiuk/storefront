@@ -1,5 +1,5 @@
-import {LinkedLogo} from "@/components/LinkedLogo";
-import {cn} from "@/utils/cn";
+import {LinkedLogo} from "#app/components/LinkedLogo";
+import {cn} from "#app/utils/cn";
 
 export default async function AuthLayout({
   children,

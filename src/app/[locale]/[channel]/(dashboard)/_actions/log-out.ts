@@ -2,10 +2,10 @@
 
 import {redirect} from "next/navigation";
 
-import {Routes} from "@/consts/routes";
-import type {Locale} from "@/i18n/consts";
-import {removeSessionCookies} from "@/modules/account/utils/cookies";
-import {joinPathSegments} from "@/utils/pathname";
+import {Routes} from "#app/consts/routes";
+import type {Locale} from "#app/i18n/consts";
+import {removeSessionCookies} from "#app/modules/account/utils/cookies";
+import {joinPathSegments} from "#app/utils/pathname";
 
 export async function logOut(locale: Locale, channel: string) {
   await removeSessionCookies();

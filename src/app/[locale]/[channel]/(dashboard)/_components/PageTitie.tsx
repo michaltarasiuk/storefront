@@ -1,5 +1,5 @@
-import {Heading} from "@/components/Heading";
-import {cn} from "@/utils/cn";
+import {Heading} from "#app/components/Heading";
+import {cn} from "#app/utils/cn";
 
 export function PageTitle({
   title,

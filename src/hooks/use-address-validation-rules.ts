@@ -2,10 +2,10 @@ import {useSuspenseQuery} from "@apollo/client";
 import invariant from "tiny-invariant";
 import type * as z from "zod";
 
-import {graphql} from "@/graphql/codegen";
-import type {CountryCode} from "@/graphql/codegen/graphql";
-import type {AddressSchema} from "@/utils/address";
-import {isDefined} from "@/utils/is-defined";
+import {graphql} from "#app/graphql/codegen";
+import type {CountryCode} from "#app/graphql/codegen/graphql";
+import type {AddressSchema} from "#app/utils/address";
+import {isDefined} from "#app/utils/is-defined";
 
 type AddressField =
   | "name"

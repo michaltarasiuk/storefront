@@ -1,5 +1,5 @@
-import {CountryCode} from "@/graphql/codegen/graphql";
-import {assertNever} from "@/utils/assert-never";
+import {CountryCode} from "#app/graphql/codegen/graphql";
+import {assertNever} from "#app/utils/assert-never";
 
 import type {Locale} from "../consts";
 

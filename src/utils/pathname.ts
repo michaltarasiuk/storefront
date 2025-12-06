@@ -1,7 +1,7 @@
 import * as z from "zod";
 
-import {DefaultLocale, Locales} from "@/i18n/consts";
-import {DefaultChannel} from "@/modules/channel/consts";
+import {DefaultLocale, Locales} from "#app/i18n/consts";
+import {DefaultChannel} from "#app/modules/channel/consts";
 
 export const BasePathnameSchema = z.object({
   locale: z.enum(Locales),

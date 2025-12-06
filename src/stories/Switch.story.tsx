@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {Switch} from "@/components/Switch";
+import {Switch} from "#app/components/Switch";
 
 const meta = {
   component: Switch,

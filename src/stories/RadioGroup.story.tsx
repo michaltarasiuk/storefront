@@ -1,7 +1,7 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {Radio} from "@/components/Radio";
-import {RadioGroup} from "@/components/RadioGroup";
+import {Radio} from "#app/components/Radio";
+import {RadioGroup} from "#app/components/RadioGroup";
 
 type RadioGroupProps = React.ComponentProps<typeof RadioGroup>;
 

@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {Button} from "@/components/Button";
+import {Button} from "#app/components/Button";
 
 type ButtonProps = React.ComponentProps<typeof Button>;
 

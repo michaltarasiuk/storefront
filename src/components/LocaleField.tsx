@@ -2,7 +2,7 @@
 
 import {Input} from "react-aria-components";
 
-import {useLocale} from "@/i18n/hooks/use-locale";
+import {useLocale} from "#app/i18n/hooks/use-locale";
 
 export function LocaleField() {
   const locale = useLocale();

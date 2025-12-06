@@ -3,12 +3,12 @@
 import {useActionState, useTransition} from "react";
 import invariant from "tiny-invariant";
 
-import {Button} from "@/components/Button";
-import {Form} from "@/components/Form";
-import {SkeletonInput} from "@/components/Input";
-import {TextField} from "@/components/TextField";
-import {FormattedMessage, useIntl} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
+import {Button} from "#app/components/Button";
+import {Form} from "#app/components/Form";
+import {SkeletonInput} from "#app/components/Input";
+import {TextField} from "#app/components/TextField";
+import {FormattedMessage, useIntl} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
 
 import {addPromoCode} from "../_actions/add-promo-code";
 

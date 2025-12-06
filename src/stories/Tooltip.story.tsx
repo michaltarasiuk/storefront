@@ -2,8 +2,8 @@ import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 import type {TooltipTriggerProps} from "react-aria";
 import type {TooltipProps} from "react-aria-components";
 
-import {Button} from "@/components/Button";
-import {Tooltip, TooltipTrigger} from "@/components/Tooltip";
+import {Button} from "#app/components/Button";
+import {Tooltip, TooltipTrigger} from "#app/components/Tooltip";
 
 type TooltipStoryProps = Pick<
   TooltipTriggerProps,

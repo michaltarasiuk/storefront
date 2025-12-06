@@ -12,10 +12,10 @@ import {
   TagList,
 } from "react-aria-components";
 
-import {CloseIcon} from "@/icons/CloseIcon";
-import {text} from "@/styles/text";
-import {cn} from "@/utils/cn";
-import {isDefined} from "@/utils/is-defined";
+import {CloseIcon} from "#app/icons/CloseIcon";
+import {text} from "#app/styles/text";
+import {cn} from "#app/utils/cn";
+import {isDefined} from "#app/utils/is-defined";
 
 import {IconButton} from "./IconButton";
 import {Text} from "./Text";

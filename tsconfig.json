@@ -14,8 +14,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "@/messages/*": ["./messages/*"]
+      "#app/*": ["./src/*"],
+      "#messages/*": ["./messages/*"]
     },
     "plugins": [{"name": "next"}],
     "noEmit": true,

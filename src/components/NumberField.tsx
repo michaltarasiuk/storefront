@@ -6,8 +6,8 @@ import {
   type NumberFieldProps as AriaNumberFieldProps,
 } from "react-aria-components";
 
-import {MinusIcon} from "@/icons/MinusIcon";
-import {PlusIcon} from "@/icons/PlusIcon";
+import {MinusIcon} from "#app/icons/MinusIcon";
+import {PlusIcon} from "#app/icons/PlusIcon";
 
 import {cn} from "../utils/cn";
 import {isDefined} from "../utils/is-defined";

@@ -3,13 +3,13 @@
 import {useActionState, useTransition} from "react";
 import invariant from "tiny-invariant";
 
-import {Button} from "@/components/Button";
-import {ChannelField} from "@/components/ChannelField";
-import {Form} from "@/components/Form";
-import {LocaleField} from "@/components/LocaleField";
-import {TextField} from "@/components/TextField";
-import {FormattedMessage, useIntl} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
+import {Button} from "#app/components/Button";
+import {ChannelField} from "#app/components/ChannelField";
+import {Form} from "#app/components/Form";
+import {LocaleField} from "#app/components/LocaleField";
+import {TextField} from "#app/components/TextField";
+import {FormattedMessage, useIntl} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
 
 import {signUp} from "../_actions/sign-up";
 import {FormHeader} from "./FormHeader";

@@ -1,12 +1,12 @@
 "use client";
 
-import {Dialog, DialogTrigger, Modal} from "@/components/Dialog";
-import {Form} from "@/components/Form";
-import {IconButton} from "@/components/IconButton";
-import {TextField} from "@/components/TextField";
-import {useIntl} from "@/i18n/react-intl";
-import {PenIcon} from "@/icons/PenIcon";
-import {cn} from "@/utils/cn";
+import {Dialog, DialogTrigger, Modal} from "#app/components/Dialog";
+import {Form} from "#app/components/Form";
+import {IconButton} from "#app/components/IconButton";
+import {TextField} from "#app/components/TextField";
+import {useIntl} from "#app/i18n/react-intl";
+import {PenIcon} from "#app/icons/PenIcon";
+import {cn} from "#app/utils/cn";
 
 import {CancelButton} from "./CancelButton";
 import {SaveButton} from "./SaveButton";

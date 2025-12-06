@@ -2,7 +2,7 @@
 
 import {useLocale} from "react-aria";
 
-import {fontInter} from "@/styles/fonts";
+import {fontInter} from "#app/styles/fonts";
 
 export function Html({children}: {children: React.ReactNode}) {
   const {locale, direction} = useLocale();

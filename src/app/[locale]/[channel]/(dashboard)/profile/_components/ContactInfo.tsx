@@ -1,6 +1,6 @@
-import {getIntl} from "@/i18n/utils/get-intl";
-import {text} from "@/styles/text";
-import {cn} from "@/utils/cn";
+import {getIntl} from "#app/i18n/utils/get-intl";
+import {text} from "#app/styles/text";
+import {cn} from "#app/utils/cn";
 
 export async function ContactInfo({locale}: {locale: string}) {
   const intl = await getIntl(locale);

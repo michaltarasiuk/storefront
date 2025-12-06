@@ -1,11 +1,11 @@
 import {type NextRequest, NextResponse} from "next/server";
 
-import {Routes} from "@/consts/routes";
-import {getClient} from "@/graphql/apollo-client";
-import {graphql} from "@/graphql/codegen";
-import type {ConfirmAccountMutationVariables} from "@/graphql/codegen/graphql";
-import {isDefined} from "@/utils/is-defined";
-import {getBasePathname, joinPathSegments} from "@/utils/pathname";
+import {Routes} from "#app/consts/routes";
+import {getClient} from "#app/graphql/apollo-client";
+import {graphql} from "#app/graphql/codegen";
+import type {ConfirmAccountMutationVariables} from "#app/graphql/codegen/graphql";
+import {isDefined} from "#app/utils/is-defined";
+import {getBasePathname, joinPathSegments} from "#app/utils/pathname";
 
 const ConfirmAccountMutation = graphql(`
   mutation ConfirmAccount($email: String!, $token: String!) {

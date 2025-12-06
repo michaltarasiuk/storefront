@@ -3,8 +3,8 @@
 import {type QueryRef, useReadQuery} from "@apollo/client";
 import {notFound} from "next/navigation";
 
-import type {CheckoutOrder_OrderQuery} from "@/graphql/codegen/graphql";
-import {isDefined} from "@/utils/is-defined";
+import type {CheckoutOrder_OrderQuery} from "#app/graphql/codegen/graphql";
+import {isDefined} from "#app/utils/is-defined";
 
 import {CheckoutLayout} from "../../_components/CheckoutLayout";
 import {

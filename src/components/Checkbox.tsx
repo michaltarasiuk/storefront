@@ -5,7 +5,7 @@ import {
   type CheckboxProps as AriaCheckboxProps,
 } from "react-aria-components";
 
-import {isDefined} from "@/utils/is-defined";
+import {isDefined} from "#app/utils/is-defined";
 
 import {CheckmarkIcon} from "../icons/CheckmarkIcon";
 import {text} from "../styles/text";

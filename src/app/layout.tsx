@@ -1,9 +1,9 @@
-import "@/styles/globals.css";
-import "@/styles/themes/plant-theme.css";
+import "#app/styles/globals.css";
+import "#app/styles/themes/plant-theme.css";
 
 import type {Viewport} from "next";
 
-import {ApolloProvider} from "@/graphql/ApolloProvider";
+import {ApolloProvider} from "#app/graphql/ApolloProvider";
 
 import {Html} from "./_components/Html";
 import {RouterProvider} from "./_components/RouterProvider";

@@ -1,10 +1,10 @@
-import {IconButton} from "@/components/IconButton";
-import {LinkedLogo} from "@/components/LinkedLogo";
-import {SheetTrigger} from "@/components/Sheet";
-import {Routes} from "@/consts/routes";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {HamburgerIcon} from "@/icons/HamburgerIcon";
-import {cn} from "@/utils/cn";
+import {IconButton} from "#app/components/IconButton";
+import {LinkedLogo} from "#app/components/LinkedLogo";
+import {SheetTrigger} from "#app/components/Sheet";
+import {Routes} from "#app/consts/routes";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {HamburgerIcon} from "#app/icons/HamburgerIcon";
+import {cn} from "#app/utils/cn";
 
 import {MenuItemLink} from "./MenuItem";
 import {MobileNavigationSheet} from "./MobileNavigationSheet";

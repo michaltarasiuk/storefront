@@ -3,8 +3,8 @@ import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 import {
   LanguageSelectorAutocomplete,
   LanguageSelectorButton,
-} from "@/components/LanguageSelector";
-import {Popover, PopoverTrigger} from "@/components/Popover";
+} from "#app/components/LanguageSelector";
+import {Popover, PopoverTrigger} from "#app/components/Popover";
 
 type PopoverStoryProps = React.ComponentProps<typeof Popover>;
 

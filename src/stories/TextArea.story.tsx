@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {TextArea} from "@/components/TextArea";
+import {TextArea} from "#app/components/TextArea";
 
 const meta = {
   component: TextArea,

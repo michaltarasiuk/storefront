@@ -8,15 +8,15 @@ import {
   AddressFields,
   CompletedAddressFields,
   SkeletonAddressFields,
-} from "@/components/AddressFields";
-import {Heading, SkeletonHeading} from "@/components/Heading";
-import {Radio, SkeletonRadio} from "@/components/Radio";
-import {RadioGroup, SkeletonRadioGroup} from "@/components/RadioGroup";
-import {graphql} from "@/graphql/codegen";
-import type {BillingAddress_CheckoutFragment} from "@/graphql/codegen/graphql";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
-import {isDefined} from "@/utils/is-defined";
+} from "#app/components/AddressFields";
+import {Heading, SkeletonHeading} from "#app/components/Heading";
+import {Radio, SkeletonRadio} from "#app/components/Radio";
+import {RadioGroup, SkeletonRadioGroup} from "#app/components/RadioGroup";
+import {graphql} from "#app/graphql/codegen";
+import type {BillingAddress_CheckoutFragment} from "#app/graphql/codegen/graphql";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
+import {isDefined} from "#app/utils/is-defined";
 
 const BillingAddress_CheckoutFragment = graphql(`
   fragment BillingAddress_Checkout on Checkout {

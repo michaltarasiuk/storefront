@@ -1,6 +1,6 @@
-import {Heading, SkeletonHeading} from "@/components/Heading";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
+import {Heading, SkeletonHeading} from "#app/components/Heading";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
 
 export function OrderDetails() {
   return (

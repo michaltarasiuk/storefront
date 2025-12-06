@@ -3,13 +3,16 @@
 import {Suspense} from "react";
 import {Button} from "react-aria-components";
 
-import {AddressFields, SkeletonAddressFields} from "@/components/AddressFields";
-import {Checkbox} from "@/components/Checkbox";
-import {Dialog, DialogTrigger, Modal} from "@/components/Dialog";
-import {Form} from "@/components/Form";
-import {FormattedMessage, useIntl} from "@/i18n/react-intl";
-import {PlusIcon} from "@/icons/PlusIcon";
-import {cn} from "@/utils/cn";
+import {
+  AddressFields,
+  SkeletonAddressFields,
+} from "#app/components/AddressFields";
+import {Checkbox} from "#app/components/Checkbox";
+import {Dialog, DialogTrigger, Modal} from "#app/components/Dialog";
+import {Form} from "#app/components/Form";
+import {FormattedMessage, useIntl} from "#app/i18n/react-intl";
+import {PlusIcon} from "#app/icons/PlusIcon";
+import {cn} from "#app/utils/cn";
 
 import {CancelButton} from "./CancelButton";
 import {SaveButton} from "./SaveButton";

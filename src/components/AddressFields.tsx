@@ -5,20 +5,20 @@ import {useFragment} from "@apollo/client";
 import {use, useState, useTransition} from "react";
 import type * as z from "zod";
 
-import {graphql} from "@/graphql/codegen";
+import {graphql} from "#app/graphql/codegen";
 import type {
   AddressFields_AddressFragment,
   ChoiceValue,
-} from "@/graphql/codegen/graphql";
-import {useAddressValidationRules} from "@/hooks/use-address-validation-rules";
-import {useLocale} from "@/i18n/hooks/use-locale";
-import {useIntl} from "@/i18n/react-intl";
-import {isCountryCode} from "@/i18n/utils/is-country-code";
-import {localeToCountryCode} from "@/i18n/utils/locale-to-country-code";
-import {ChannelContext} from "@/modules/channel/channel-context";
-import type {AddressSchema} from "@/utils/address";
-import {cn} from "@/utils/cn";
-import {isDefined} from "@/utils/is-defined";
+} from "#app/graphql/codegen/graphql";
+import {useAddressValidationRules} from "#app/hooks/use-address-validation-rules";
+import {useLocale} from "#app/i18n/hooks/use-locale";
+import {useIntl} from "#app/i18n/react-intl";
+import {isCountryCode} from "#app/i18n/utils/is-country-code";
+import {localeToCountryCode} from "#app/i18n/utils/locale-to-country-code";
+import {ChannelContext} from "#app/modules/channel/channel-context";
+import type {AddressSchema} from "#app/utils/address";
+import {cn} from "#app/utils/cn";
+import {isDefined} from "#app/utils/is-defined";
 
 import {SkeletonInput} from "./Input";
 import {Select, SelectItem} from "./Select";

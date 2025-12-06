@@ -1,6 +1,6 @@
-import {FormattedMessage} from "@/i18n/react-intl";
-import {getIntl} from "@/i18n/utils/get-intl";
-import {cn} from "@/utils/cn";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {getIntl} from "#app/i18n/utils/get-intl";
+import {cn} from "#app/utils/cn";
 
 import {PageTitle} from "../_components/PageTitie";
 import {AddAddressDialog} from "./_components/AddAddressDialog";

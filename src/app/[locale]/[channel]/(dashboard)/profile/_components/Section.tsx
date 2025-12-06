@@ -1,5 +1,5 @@
-import {Text} from "@/components/Text";
-import {cn} from "@/utils/cn";
+import {Text} from "#app/components/Text";
+import {cn} from "#app/utils/cn";
 
 export function Section({children}: {children: React.ReactNode}) {
   return (

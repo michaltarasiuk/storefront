@@ -5,15 +5,15 @@ import {type FragmentType, useFragment} from "@apollo/client";
 import {
   SkeletonSummaryDisclosure,
   SummaryDisclosure,
-} from "@/components/SummaryDisclosure";
-import {graphql} from "@/graphql/codegen";
-import type {OrderSummary_OrderFragment} from "@/graphql/codegen/graphql";
-import {OrderLines} from "@/modules/order/components/OrderLines";
+} from "#app/components/SummaryDisclosure";
+import {graphql} from "#app/graphql/codegen";
+import type {OrderSummary_OrderFragment} from "#app/graphql/codegen/graphql";
+import {OrderLines} from "#app/modules/order/components/OrderLines";
 import {
   OrderMoneyLines,
   SkeletonOrderMoneyLines,
-} from "@/modules/order/components/OrderMoneyLines";
-import {cn} from "@/utils/cn";
+} from "#app/modules/order/components/OrderMoneyLines";
+import {cn} from "#app/utils/cn";
 
 const OrderSummary_OrderFragment = graphql(`
   fragment OrderSummary_Order on Order {

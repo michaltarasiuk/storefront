@@ -2,7 +2,7 @@
 
 import {use} from "react";
 
-import {assertNever} from "@/utils/assert-never";
+import {assertNever} from "#app/utils/assert-never";
 
 import {OrderViewContext} from "../_utils/order-view-context";
 import {OrdersGrid, SkeletonOrdersGrid} from "./OrdersGrid";

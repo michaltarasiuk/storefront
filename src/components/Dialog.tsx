@@ -11,9 +11,9 @@ import {
   type DialogProps as AriaDialogProps,
 } from "react-aria-components";
 
-import {CloseIcon} from "@/icons/CloseIcon";
-import {cn} from "@/utils/cn";
-import {isDefined} from "@/utils/is-defined";
+import {CloseIcon} from "#app/icons/CloseIcon";
+import {cn} from "#app/utils/cn";
+import {isDefined} from "#app/utils/is-defined";
 
 import {Heading} from "./Heading";
 import {IconButton} from "./IconButton";

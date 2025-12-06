@@ -2,14 +2,14 @@
 
 import {type FragmentType, useFragment} from "@apollo/client";
 
-import {Money} from "@/components/Money";
-import {TaxedMoney} from "@/components/TaxedMoney";
-import {SkeletonText, Text} from "@/components/Text";
-import {graphql} from "@/graphql/codegen";
-import type {CheckoutMoneyLines_CheckoutFragment} from "@/graphql/codegen/graphql";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
-import {isDefined} from "@/utils/is-defined";
+import {Money} from "#app/components/Money";
+import {TaxedMoney} from "#app/components/TaxedMoney";
+import {SkeletonText, Text} from "#app/components/Text";
+import {graphql} from "#app/graphql/codegen";
+import type {CheckoutMoneyLines_CheckoutFragment} from "#app/graphql/codegen/graphql";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
+import {isDefined} from "#app/utils/is-defined";
 
 const CheckoutMoneyLines_CheckoutFragment = graphql(`
   fragment CheckoutMoneyLines_Checkout on Checkout {

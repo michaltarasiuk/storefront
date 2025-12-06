@@ -2,16 +2,16 @@
 
 import {Button} from "react-aria-components";
 
-import {useIsMobile} from "@/hooks/use-is-mobile";
-import {Locales} from "@/i18n/consts";
-import {useLocale} from "@/i18n/hooks/use-locale";
-import {useSetLocale} from "@/i18n/hooks/use-set-locale";
-import {useIntl} from "@/i18n/react-intl";
-import {getLanguageDisplayName} from "@/i18n/utils/get-language-display-name";
-import {isLocaleSupported} from "@/i18n/utils/is-locale-supported";
-import {ChevronDownIcon} from "@/icons/ChevronDownIcon";
-import {text} from "@/styles/text";
-import {cn} from "@/utils/cn";
+import {useIsMobile} from "#app/hooks/use-is-mobile";
+import {Locales} from "#app/i18n/consts";
+import {useLocale} from "#app/i18n/hooks/use-locale";
+import {useSetLocale} from "#app/i18n/hooks/use-set-locale";
+import {useIntl} from "#app/i18n/react-intl";
+import {getLanguageDisplayName} from "#app/i18n/utils/get-language-display-name";
+import {isLocaleSupported} from "#app/i18n/utils/is-locale-supported";
+import {ChevronDownIcon} from "#app/icons/ChevronDownIcon";
+import {text} from "#app/styles/text";
+import {cn} from "#app/utils/cn";
 
 import {Autocomplete, AutocompleteItem} from "./Autocomplete";
 import {Dialog, DialogTrigger, Modal} from "./Dialog";

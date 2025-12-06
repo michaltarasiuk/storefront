@@ -2,13 +2,13 @@
 
 import {notFound, redirect} from "next/navigation";
 
-import {Routes} from "@/consts/routes";
-import {getClient} from "@/graphql/apollo-client";
-import {graphql} from "@/graphql/codegen";
-import type {Locale} from "@/i18n/consts";
-import {getCheckoutId} from "@/modules/checkout/utils/cookies";
-import {isDefined} from "@/utils/is-defined";
-import {joinPathSegments} from "@/utils/pathname";
+import {Routes} from "#app/consts/routes";
+import {getClient} from "#app/graphql/apollo-client";
+import {graphql} from "#app/graphql/codegen";
+import type {Locale} from "#app/i18n/consts";
+import {getCheckoutId} from "#app/modules/checkout/utils/cookies";
+import {isDefined} from "#app/utils/is-defined";
+import {joinPathSegments} from "#app/utils/pathname";
 
 const CompleteCheckoutMuatation = graphql(`
   mutation CompleteCheckout($id: ID!) {

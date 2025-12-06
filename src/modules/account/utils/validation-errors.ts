@@ -1,8 +1,8 @@
 import type {ValidationErrors} from "@react-types/shared";
 
-import {graphql} from "@/graphql/codegen";
-import type {AccountValidationErrorFragment} from "@/graphql/codegen/graphql";
-import {isDefined} from "@/utils/is-defined";
+import {graphql} from "#app/graphql/codegen";
+import type {AccountValidationErrorFragment} from "#app/graphql/codegen/graphql";
+import {isDefined} from "#app/utils/is-defined";
 
 const AccountValidationErrorFragment = graphql(`
   fragment AccountValidationError on AccountError {

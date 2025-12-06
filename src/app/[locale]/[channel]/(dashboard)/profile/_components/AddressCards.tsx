@@ -1,9 +1,9 @@
 "use client";
 
-import {Text} from "@/components/Text";
-import {useIntl} from "@/i18n/react-intl";
-import {PenIcon} from "@/icons/PenIcon";
-import {cn} from "@/utils/cn";
+import {Text} from "#app/components/Text";
+import {useIntl} from "#app/i18n/react-intl";
+import {PenIcon} from "#app/icons/PenIcon";
+import {cn} from "#app/utils/cn";
 
 import {EditAddressDialog} from "./EditAddressDialog";
 

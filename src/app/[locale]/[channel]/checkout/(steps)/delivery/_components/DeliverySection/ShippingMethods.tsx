@@ -3,16 +3,16 @@
 import {type FragmentType, useFragment} from "@apollo/client";
 import {useId} from "react";
 
-import {Heading, SkeletonHeading} from "@/components/Heading";
-import {Money} from "@/components/Money";
-import {Radio, SkeletonRadio} from "@/components/Radio";
-import {RadioGroup, SkeletonRadioGroup} from "@/components/RadioGroup";
-import {graphql} from "@/graphql/codegen";
-import type {ShippingMethods_CheckoutFragment} from "@/graphql/codegen/graphql";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
-import {isShippingMethod} from "@/utils/delivery-method";
-import {isDefined} from "@/utils/is-defined";
+import {Heading, SkeletonHeading} from "#app/components/Heading";
+import {Money} from "#app/components/Money";
+import {Radio, SkeletonRadio} from "#app/components/Radio";
+import {RadioGroup, SkeletonRadioGroup} from "#app/components/RadioGroup";
+import {graphql} from "#app/graphql/codegen";
+import type {ShippingMethods_CheckoutFragment} from "#app/graphql/codegen/graphql";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
+import {isShippingMethod} from "#app/utils/delivery-method";
+import {isDefined} from "#app/utils/is-defined";
 
 import {DeliveryDays} from "./DeliveryDays";
 

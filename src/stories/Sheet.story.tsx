@@ -1,10 +1,10 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {ContentPlaceholder} from "@/components/ContentPlaceholder";
-import {IconButton} from "@/components/IconButton";
-import {Sheet, SheetTrigger} from "@/components/Sheet";
-import {HamburgerIcon} from "@/icons/HamburgerIcon";
-import {cn} from "@/utils/cn";
+import {ContentPlaceholder} from "#app/components/ContentPlaceholder";
+import {IconButton} from "#app/components/IconButton";
+import {Sheet, SheetTrigger} from "#app/components/Sheet";
+import {HamburgerIcon} from "#app/icons/HamburgerIcon";
+import {cn} from "#app/utils/cn";
 
 type SheetTriggerProps = React.ComponentProps<typeof SheetTrigger>;
 type SheetProps = React.ComponentProps<typeof Sheet>;

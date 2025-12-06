@@ -6,7 +6,7 @@ import {
   type ButtonProps as AriaButtonProps,
 } from "react-aria-components";
 
-import {cn} from "@/utils/cn";
+import {cn} from "#app/utils/cn";
 
 import {Spinner} from "./Spinner";
 

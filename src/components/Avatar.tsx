@@ -1,6 +1,6 @@
 import {cva, type VariantProps} from "cva";
 
-import {text} from "@/styles/text";
+import {text} from "#app/styles/text";
 
 import {ProfileIcon} from "../icons/ProfileIcon";
 import {cn} from "../utils/cn";

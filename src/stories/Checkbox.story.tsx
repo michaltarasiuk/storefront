@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {Checkbox} from "@/components/Checkbox";
+import {Checkbox} from "#app/components/Checkbox";
 
 const meta = {
   component: Checkbox,

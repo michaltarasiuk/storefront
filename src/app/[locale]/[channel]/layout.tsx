@@ -1,10 +1,10 @@
 import {notFound} from "next/navigation";
 
-import {getClient} from "@/graphql/apollo-client";
-import {ChannelProvider} from "@/modules/channel/ChannelProvider";
-import {queryActiveChannelSlugs} from "@/modules/channel/utils/query-active-channel-slugs";
-import {queryChannelContextValue} from "@/modules/channel/utils/query-channel-context-value";
-import {isDefined} from "@/utils/is-defined";
+import {getClient} from "#app/graphql/apollo-client";
+import {ChannelProvider} from "#app/modules/channel/ChannelProvider";
+import {queryActiveChannelSlugs} from "#app/modules/channel/utils/query-active-channel-slugs";
+import {queryChannelContextValue} from "#app/modules/channel/utils/query-channel-context-value";
+import {isDefined} from "#app/utils/is-defined";
 
 export default async function ChannelLayout({
   children,

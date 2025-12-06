@@ -1,14 +1,14 @@
 "use client";
 
-import {Button} from "@/components/Button";
-import {Skeleton} from "@/components/Skeleton";
-import {SkeletonText} from "@/components/Text";
-import {Text} from "@/components/Text";
-import {Routes} from "@/consts/routes";
-import {IntlLink} from "@/i18n/components/IntlLink";
-import {FormattedDate, FormattedMessage} from "@/i18n/react-intl";
-import {SuccessIcon} from "@/icons/SuccessIcon";
-import {cn} from "@/utils/cn";
+import {Button} from "#app/components/Button";
+import {Skeleton} from "#app/components/Skeleton";
+import {SkeletonText} from "#app/components/Text";
+import {Text} from "#app/components/Text";
+import {Routes} from "#app/consts/routes";
+import {IntlLink} from "#app/i18n/components/IntlLink";
+import {FormattedDate, FormattedMessage} from "#app/i18n/react-intl";
+import {SuccessIcon} from "#app/icons/SuccessIcon";
+import {cn} from "#app/utils/cn";
 
 export function OrderCard() {
   return (

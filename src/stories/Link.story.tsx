@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {Link} from "@/components/Link";
+import {Link} from "#app/components/Link";
 
 const meta = {
   component: Link,

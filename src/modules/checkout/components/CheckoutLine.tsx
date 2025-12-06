@@ -5,12 +5,12 @@ import {type FragmentType, useFragment} from "@apollo/client";
 import {
   ProductThumbnail,
   SkeletonProductThumbnail,
-} from "@/components/ProductThumbnail";
-import {TaxedMoney} from "@/components/TaxedMoney";
-import {SkeletonText, Text} from "@/components/Text";
-import {graphql} from "@/graphql/codegen";
-import type {CheckoutLine_CheckoutFragment} from "@/graphql/codegen/graphql";
-import {cn} from "@/utils/cn";
+} from "#app/components/ProductThumbnail";
+import {TaxedMoney} from "#app/components/TaxedMoney";
+import {SkeletonText, Text} from "#app/components/Text";
+import {graphql} from "#app/graphql/codegen";
+import type {CheckoutLine_CheckoutFragment} from "#app/graphql/codegen/graphql";
+import {cn} from "#app/utils/cn";
 
 const CheckoutLine_CheckoutFragment = graphql(`
   fragment CheckoutLine_Checkout on CheckoutLine {

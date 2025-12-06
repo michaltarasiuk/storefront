@@ -1,7 +1,7 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {Checkbox} from "@/components/Checkbox";
-import {CheckboxGroup} from "@/components/CheckboxGroup";
+import {Checkbox} from "#app/components/Checkbox";
+import {CheckboxGroup} from "#app/components/CheckboxGroup";
 
 type CheckboxGroupProps = React.ComponentProps<typeof CheckboxGroup>;
 

@@ -1,7 +1,7 @@
 import {cookies} from "next/headers";
 
-import {ciEquals} from "@/utils/ci-equals";
-import {isDefined} from "@/utils/is-defined";
+import {ciEquals} from "#app/utils/ci-equals";
+import {isDefined} from "#app/utils/is-defined";
 
 import {Locales, NextLocaleCookieName} from "../consts";
 

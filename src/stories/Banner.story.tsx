@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {Banner} from "@/components/Banner";
+import {Banner} from "#app/components/Banner";
 
 type BannerProps = React.ComponentProps<typeof Banner>;
 

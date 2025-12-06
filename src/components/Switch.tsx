@@ -2,9 +2,9 @@
 
 import {Switch as AriaSwitch, type SwitchProps} from "react-aria-components";
 
-import {CheckmarkIcon} from "@/icons/CheckmarkIcon";
-import {text} from "@/styles/text";
-import {cn} from "@/utils/cn";
+import {CheckmarkIcon} from "#app/icons/CheckmarkIcon";
+import {text} from "#app/styles/text";
+import {cn} from "#app/utils/cn";
 
 export function Switch({children, ...props}: SwitchProps) {
   return (

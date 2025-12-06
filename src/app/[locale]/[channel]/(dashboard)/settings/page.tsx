@@ -1,9 +1,9 @@
-import {Heading, HeadingGroup} from "@/components/Heading";
-import {TextBlock} from "@/components/TextBlock";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {getIntl} from "@/i18n/utils/get-intl";
-import {LockIcon} from "@/icons/LockIcon";
-import {cn} from "@/utils/cn";
+import {Heading, HeadingGroup} from "#app/components/Heading";
+import {TextBlock} from "#app/components/TextBlock";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {getIntl} from "#app/i18n/utils/get-intl";
+import {LockIcon} from "#app/icons/LockIcon";
+import {cn} from "#app/utils/cn";
 
 import {PageTitle} from "../_components/PageTitie";
 import {DeactivateAllTokensButton} from "./_components/DeactivateAllTokensButton";

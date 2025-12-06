@@ -2,7 +2,7 @@
 
 import {Input} from "react-aria-components";
 
-import {useChannel} from "@/modules/channel/hooks/use-channel";
+import {useChannel} from "#app/modules/channel/hooks/use-channel";
 
 export function ChannelField() {
   const channel = useChannel();

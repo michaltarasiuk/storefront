@@ -2,13 +2,13 @@
 
 import {type FragmentType, useFragment} from "@apollo/client";
 
-import {Heading, SkeletonHeading} from "@/components/Heading";
-import {SkeletonInput} from "@/components/Input";
-import {TextField} from "@/components/TextField";
-import {graphql} from "@/graphql/codegen";
-import type {ContactSection_CheckoutFragment} from "@/graphql/codegen/graphql";
-import {FormattedMessage, useIntl} from "@/i18n/react-intl";
-import {cn} from "@/utils/cn";
+import {Heading, SkeletonHeading} from "#app/components/Heading";
+import {SkeletonInput} from "#app/components/Input";
+import {TextField} from "#app/components/TextField";
+import {graphql} from "#app/graphql/codegen";
+import type {ContactSection_CheckoutFragment} from "#app/graphql/codegen/graphql";
+import {FormattedMessage, useIntl} from "#app/i18n/react-intl";
+import {cn} from "#app/utils/cn";
 
 const ContactSection_CheckoutFragment = graphql(`
   fragment ContactSection_Checkout on Checkout {

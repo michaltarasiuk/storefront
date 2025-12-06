@@ -3,11 +3,11 @@
 import {notFound} from "next/navigation";
 import invariant from "tiny-invariant";
 
-import {getClient} from "@/graphql/apollo-client";
-import {graphql} from "@/graphql/codegen";
-import {getCheckoutId} from "@/modules/checkout/utils/cookies";
-import {toValidationErrors} from "@/modules/checkout/utils/validation-errors";
-import {isDefined} from "@/utils/is-defined";
+import {getClient} from "#app/graphql/apollo-client";
+import {graphql} from "#app/graphql/codegen";
+import {getCheckoutId} from "#app/modules/checkout/utils/cookies";
+import {toValidationErrors} from "#app/modules/checkout/utils/validation-errors";
+import {isDefined} from "#app/utils/is-defined";
 
 const AddPromoCodeMutation = graphql(`
   mutation AddPromoCode($id: ID!, $promoCode: String!) {

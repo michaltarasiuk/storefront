@@ -2,11 +2,11 @@
 
 import {usePathname} from "next/navigation";
 
-import {BreadcrumbLink, Breadcrumbs} from "@/components/Breadcrumbs";
-import {Routes} from "@/consts/routes";
-import {useBasePathname} from "@/hooks/use-base-pathname";
-import {FormattedMessage} from "@/i18n/react-intl";
-import {joinPathSegments} from "@/utils/pathname";
+import {BreadcrumbLink, Breadcrumbs} from "#app/components/Breadcrumbs";
+import {Routes} from "#app/consts/routes";
+import {useBasePathname} from "#app/hooks/use-base-pathname";
+import {FormattedMessage} from "#app/i18n/react-intl";
+import {joinPathSegments} from "#app/utils/pathname";
 
 type BreadcrumbLinkProps = React.ComponentProps<typeof BreadcrumbLink>;
 

@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from "@storybook/nextjs-vite";
 
-import {Avatar} from "@/components/Avatar";
+import {Avatar} from "#app/components/Avatar";
 
 type AvatarProps = React.ComponentProps<typeof Avatar>;
 

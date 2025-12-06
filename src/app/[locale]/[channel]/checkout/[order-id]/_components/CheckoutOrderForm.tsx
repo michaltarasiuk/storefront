@@ -3,18 +3,18 @@
 import {useRouter} from "next/navigation";
 import {useTransition} from "react";
 
-import {Button} from "@/components/Button";
-import {Checkbox, SkeletonCheckbox} from "@/components/Checkbox";
-import {Divider} from "@/components/Divider";
-import {Routes} from "@/consts/routes";
-import {useBasePathname} from "@/hooks/use-base-pathname";
-import {FormattedMessage} from "@/i18n/react-intl";
+import {Button} from "#app/components/Button";
+import {Checkbox, SkeletonCheckbox} from "#app/components/Checkbox";
+import {Divider} from "#app/components/Divider";
+import {Routes} from "#app/consts/routes";
+import {useBasePathname} from "#app/hooks/use-base-pathname";
+import {FormattedMessage} from "#app/i18n/react-intl";
 import {
   OrderDetails,
   SkeletonOrderDetails,
-} from "@/modules/order/components/OrderDetails";
-import {cn} from "@/utils/cn";
-import {joinPathSegments} from "@/utils/pathname";
+} from "#app/modules/order/components/OrderDetails";
+import {cn} from "#app/utils/cn";
+import {joinPathSegments} from "#app/utils/pathname";
 
 export function CheckoutOrderForm() {
   const router = useRouter();
