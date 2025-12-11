@@ -3,7 +3,7 @@
 import {usePathname} from "next/navigation";
 
 import {BreadcrumbLink, Breadcrumbs} from "#app/components/Breadcrumbs";
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import {useBasePathname} from "#app/hooks/use-base-pathname";
 import {FormattedMessage} from "#app/i18n/react-intl";
 import {joinPathSegments} from "#app/utils/pathname";
@@ -16,7 +16,7 @@ export function CheckoutBreadcrumbs() {
   const pathWithoutLocaleAndChannel = pathname
     .replace(joinPathSegments(locale), "")
     .replace(joinPathSegments(channel), "");
-  const isReviewPage = Routes.checkout.review === pathWithoutLocaleAndChannel;
+  const isReviewPage = routes.checkout.review === pathWithoutLocaleAndChannel;
   function getBreadcrumbLinkProps(href: string): BreadcrumbLinkProps {
     return {
       href,
@@ -27,20 +27,20 @@ export function CheckoutBreadcrumbs() {
   }
   return (
     <Breadcrumbs>
-      <BreadcrumbLink {...getBreadcrumbLinkProps(Routes.cart)}>
+      <BreadcrumbLink {...getBreadcrumbLinkProps(routes.cart)}>
         <FormattedMessage id="2tqQFl" defaultMessage="Cart" />
       </BreadcrumbLink>
-      <BreadcrumbLink {...getBreadcrumbLinkProps(Routes.checkout.information)}>
+      <BreadcrumbLink {...getBreadcrumbLinkProps(routes.checkout.information)}>
         <FormattedMessage id="E80WrK" defaultMessage="Information" />
       </BreadcrumbLink>
-      <BreadcrumbLink {...getBreadcrumbLinkProps(Routes.checkout.delivery)}>
+      <BreadcrumbLink {...getBreadcrumbLinkProps(routes.checkout.delivery)}>
         <FormattedMessage id="drqP2L" defaultMessage="Delivery" />
       </BreadcrumbLink>
-      <BreadcrumbLink {...getBreadcrumbLinkProps(Routes.checkout.billing)}>
+      <BreadcrumbLink {...getBreadcrumbLinkProps(routes.checkout.billing)}>
         <FormattedMessage id="Tbo377" defaultMessage="Billing" />
       </BreadcrumbLink>
       {isReviewPage && (
-        <BreadcrumbLink href={Routes.checkout.review}>
+        <BreadcrumbLink href={routes.checkout.review}>
           <FormattedMessage id="R+J5ox" defaultMessage="Review" />
         </BreadcrumbLink>
       )}
@@ -50,15 +50,15 @@ export function CheckoutBreadcrumbs() {
 
 function getBreadcrumbIndex(href: string): number {
   switch (href) {
-    case Routes.cart:
+    case routes.cart:
       return 0;
-    case Routes.checkout.information:
+    case routes.checkout.information:
       return 1;
-    case Routes.checkout.delivery:
+    case routes.checkout.delivery:
       return 2;
-    case Routes.checkout.billing:
+    case routes.checkout.billing:
       return 3;
-    case Routes.checkout.review:
+    case routes.checkout.review:
       return 4;
     default:
       return -1;

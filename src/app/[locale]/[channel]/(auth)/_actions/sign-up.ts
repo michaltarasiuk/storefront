@@ -2,13 +2,13 @@
 
 import * as z from "zod";
 
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import {env} from "#app/env";
 import {getClient} from "#app/graphql/apollo-client";
 import {graphql} from "#app/graphql/codegen";
 import {localeToLanguageCode} from "#app/i18n/utils/locale-to-language-code";
 import {toValidationErrors} from "#app/modules/account/utils/validation-errors";
-import {BasePathnameSchema, joinPathSegments} from "#app/utils/pathname";
+import {basePathnameSchema, joinPathSegments} from "#app/utils/pathname";
 
 import {signIn} from "./sign-in";
 
@@ -28,7 +28,7 @@ export async function signUp(_state: unknown, formData: FormData) {
   const languageCode = localeToLanguageCode(locale);
   const redirectUrl = String(
     new URL(
-      joinPathSegments(locale, channel, Routes.account.confirmAccount),
+      joinPathSegments(locale, channel, routes.account.confirmAccount),
       env.NEXT_PUBLIC_SITE_URL,
     ),
   );
@@ -57,7 +57,7 @@ export async function signUp(_state: unknown, formData: FormData) {
 const FormDataSchema = z.object({
   email: z.email(),
   password: z.string(),
-  ...BasePathnameSchema.shape,
+  ...basePathnameSchema.shape,
 });
 function parseFormData(formData: FormData) {
   return FormDataSchema.parse(Object.fromEntries(formData));

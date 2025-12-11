@@ -3,7 +3,7 @@
 import {type FragmentType, useFragment} from "@apollo/client";
 
 import {SkeletonText, Text} from "#app/components/Text";
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import {graphql} from "#app/graphql/codegen";
 import type {OrderReviewList_CheckoutFragment} from "#app/graphql/codegen/graphql";
 import {useIntl} from "#app/i18n/react-intl";
@@ -44,7 +44,7 @@ export function OrderReviewList({checkout}: OrderReviewListProps) {
             id: "zFegDD",
             defaultMessage: "Contact",
           })}
-          href={Routes.checkout.information}>
+          href={routes.checkout.information}>
           <Text>{data.email}</Text>
         </ReviewItem>
       )}
@@ -53,7 +53,7 @@ export function OrderReviewList({checkout}: OrderReviewListProps) {
           id: "+JsDiH",
           defaultMessage: "Ship to",
         })}
-        href={Routes.checkout.information}>
+        href={routes.checkout.information}>
         <SkeletonText />
       </ReviewItem>
       <ReviewItem
@@ -61,7 +61,7 @@ export function OrderReviewList({checkout}: OrderReviewListProps) {
           id: "drqP2L",
           defaultMessage: "Delivery",
         })}
-        href={Routes.checkout.delivery}>
+        href={routes.checkout.delivery}>
         <SkeletonText />
       </ReviewItem>
     </ReviewList>

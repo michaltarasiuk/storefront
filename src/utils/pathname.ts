@@ -3,7 +3,7 @@ import * as z from "zod";
 import {DefaultLocale, Locales} from "#app/i18n/consts";
 import {DefaultChannel} from "#app/modules/channel/consts";
 
-export const BasePathnameSchema = z.object({
+export const basePathnameSchema = z.object({
   locale: z.enum(Locales),
   channel: z.string(),
 });

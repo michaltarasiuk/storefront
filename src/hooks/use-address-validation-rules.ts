@@ -4,12 +4,12 @@ import type * as z from "zod";
 
 import {graphql} from "#app/graphql/codegen";
 import type {CountryCode} from "#app/graphql/codegen/graphql";
-import type {AddressSchema} from "#app/utils/address";
+import type {addressSchema} from "#app/utils/address";
 import {isDefined} from "#app/utils/is-defined";
 
 type AddressField =
   | "name"
-  | Exclude<keyof z.infer<typeof AddressSchema>, "firstName" | "lastName">;
+  | Exclude<keyof z.infer<typeof addressSchema>, "firstName" | "lastName">;
 
 export function useAddressValidationRules(countryCode: CountryCode) {
   const {data} = useSuspenseQuery(AddressValidationRulesQuery, {

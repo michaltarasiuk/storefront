@@ -8,7 +8,7 @@ import {Button} from "#app/components/Button";
 import {ChannelField} from "#app/components/ChannelField";
 import {Form} from "#app/components/Form";
 import {LocaleField} from "#app/components/LocaleField";
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import {graphql} from "#app/graphql/codegen";
 import type {CheckoutInformationForm_CheckoutFragment} from "#app/graphql/codegen/graphql";
 import {FormattedMessage} from "#app/i18n/react-intl";
@@ -70,7 +70,7 @@ export function CheckoutInformationForm({
           isPending={isPending}>
           <FormattedMessage id="xwOhyd" defaultMessage="Continue to delivery" />
         </Button>
-        <ReturnLink href={Routes.cart}>
+        <ReturnLink href={routes.cart}>
           <FormattedMessage id="MRNNXA" defaultMessage="Return to cart" />
         </ReturnLink>
       </div>
@@ -87,7 +87,7 @@ export function SkeletonCheckoutInformationForm() {
         <Button size="large" isDisabled>
           <FormattedMessage id="xwOhyd" defaultMessage="Continue to delivery" />
         </Button>
-        <ReturnLink href={Routes.cart}>
+        <ReturnLink href={routes.cart}>
           <FormattedMessage id="MRNNXA" defaultMessage="Return to cart" />
         </ReturnLink>
       </div>

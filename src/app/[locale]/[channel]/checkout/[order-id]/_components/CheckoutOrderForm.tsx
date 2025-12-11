@@ -6,7 +6,7 @@ import {useTransition} from "react";
 import {Button} from "#app/components/Button";
 import {Checkbox, SkeletonCheckbox} from "#app/components/Checkbox";
 import {Divider} from "#app/components/Divider";
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import {useBasePathname} from "#app/hooks/use-base-pathname";
 import {FormattedMessage} from "#app/i18n/react-intl";
 import {
@@ -25,7 +25,7 @@ export function CheckoutOrderForm() {
       className={cn("space-y-large-300")}
       onSubmit={() =>
         startTransition(() =>
-          router.push(joinPathSegments(...basePathname, Routes.home)),
+          router.push(joinPathSegments(...basePathname, routes.home)),
         )
       }>
       <div

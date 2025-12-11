@@ -4,7 +4,7 @@ import {type QueryRef, useReadQuery} from "@apollo/client";
 import {notFound, redirect} from "next/navigation";
 
 import {HeadingGroup} from "#app/components/Heading";
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import type {CheckoutBilling_CheckoutQuery} from "#app/graphql/codegen/graphql";
 import {useBasePathname} from "#app/hooks/use-base-pathname";
 import {isDefined} from "#app/utils/is-defined";
@@ -31,7 +31,7 @@ export function CheckoutBilling({queryRef}: CheckoutBillingProps) {
   if (!isDefined(data.checkout)) {
     notFound();
   } else if (!isDefined(data.checkout.deliveryMethod)) {
-    redirect(joinPathSegments(...basePathname, Routes.checkout.delivery));
+    redirect(joinPathSegments(...basePathname, routes.checkout.delivery));
   }
   return (
     <CheckoutLayout summary={<CheckoutSummary checkout={data.checkout} />}>

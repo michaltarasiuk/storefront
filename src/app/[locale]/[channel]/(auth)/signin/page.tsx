@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import {IntlLink} from "#app/i18n/components/IntlLink";
 import {FormattedMessage} from "#app/i18n/react-intl";
 
@@ -13,7 +13,7 @@ export default async function SigninPage({
   return (
     <>
       <SigninForm defaultEmail={email} />
-      <IntlLink href={Routes.account.signup}>
+      <IntlLink href={routes.account.signup}>
         <FormattedMessage
           id="jq3zbE"
           defaultMessage="Don't have an account? Sign up"

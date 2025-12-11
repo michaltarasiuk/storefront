@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import {IntlLink} from "#app/i18n/components/IntlLink";
 import {useIntl} from "#app/i18n/react-intl";
 import {cn} from "#app/utils/cn";
@@ -10,7 +10,7 @@ import {cn} from "#app/utils/cn";
 export function LinkedLogo() {
   const intl = useIntl();
   return (
-    <IntlLink href={Routes.home} className={cn("flex")}>
+    <IntlLink href={routes.home} className={cn("flex")}>
       <Image
         src="/logo.png"
         alt={intl.formatMessage({

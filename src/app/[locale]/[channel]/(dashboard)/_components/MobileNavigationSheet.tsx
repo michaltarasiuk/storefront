@@ -2,7 +2,7 @@
 
 import {DialogTrigger} from "#app/components/Dialog";
 import {Sheet} from "#app/components/Sheet";
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import {useBasePathname} from "#app/hooks/use-base-pathname";
 import {FormattedMessage} from "#app/i18n/react-intl";
 import {cn} from "#app/utils/cn";
@@ -26,24 +26,24 @@ export function MobileNavigationSheet() {
               <ProfileCard />
             </li>
             <li>
-              <MenuItemLink href={Routes.home} onPress={close}>
+              <MenuItemLink href={routes.home} onPress={close}>
                 <FormattedMessage id="Dxd1uB" defaultMessage="Shop" />
               </MenuItemLink>
             </li>
             <li>
-              <MenuItemLink href={Routes.account.orders} onPress={close}>
+              <MenuItemLink href={routes.account.orders} onPress={close}>
                 <FormattedMessage id="X7jl6w" defaultMessage="Orders" />
               </MenuItemLink>
             </li>
           </ul>
           <ul className={cn("pt-base gap-base flex flex-col")}>
             <li>
-              <MenuItemLink href={Routes.account.profile} onPress={close}>
+              <MenuItemLink href={routes.account.profile} onPress={close}>
                 <FormattedMessage id="itPgxd" defaultMessage="Profile" />
               </MenuItemLink>
             </li>
             <li>
-              <MenuItemLink href={Routes.account.settings} onPress={close}>
+              <MenuItemLink href={routes.account.settings} onPress={close}>
                 <FormattedMessage id="D3idYv" defaultMessage="Settings" />
               </MenuItemLink>
             </li>

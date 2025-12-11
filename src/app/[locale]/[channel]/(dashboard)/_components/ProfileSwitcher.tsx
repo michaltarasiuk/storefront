@@ -5,7 +5,7 @@ import {Button} from "react-aria-components";
 
 import {Avatar} from "#app/components/Avatar";
 import {Menu, MenuItem, MenuTrigger} from "#app/components/Menu";
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import {useBasePathname} from "#app/hooks/use-base-pathname";
 import {FormattedMessage} from "#app/i18n/react-intl";
 import {ChevronDownIcon} from "#app/icons/ChevronDownIcon";
@@ -49,10 +49,10 @@ export function ProfileSwitcher() {
               await logOut(...basePathname);
             }
           }}>
-          <MenuItem href={Routes.account.profile}>
+          <MenuItem href={routes.account.profile}>
             <FormattedMessage id="itPgxd" defaultMessage="Profile" />
           </MenuItem>
-          <MenuItem href={Routes.account.settings}>
+          <MenuItem href={routes.account.settings}>
             <FormattedMessage id="D3idYv" defaultMessage="Settings" />
           </MenuItem>
           <MenuItem id={logoutDialogId}>

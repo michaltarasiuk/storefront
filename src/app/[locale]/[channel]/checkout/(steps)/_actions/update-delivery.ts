@@ -3,13 +3,13 @@
 import {notFound, redirect} from "next/navigation";
 import * as z from "zod";
 
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import {getClient} from "#app/graphql/apollo-client";
 import {graphql} from "#app/graphql/codegen";
 import {getCheckoutId} from "#app/modules/checkout/utils/cookies";
 import {toValidationErrors} from "#app/modules/checkout/utils/validation-errors";
 import {isDefined} from "#app/utils/is-defined";
-import {BasePathnameSchema, joinPathSegments} from "#app/utils/pathname";
+import {basePathnameSchema, joinPathSegments} from "#app/utils/pathname";
 
 const DeliveryMethodUpdateMutation = graphql(`
   mutation DeliveryMethodUpdate($id: ID!, $deliveryMethodId: ID!) {
@@ -39,7 +39,7 @@ export async function updateCheckoutDelivery(
   });
   const {errors = []} = data?.checkoutDeliveryMethodUpdate ?? {};
   if (!errors.length) {
-    redirect(joinPathSegments(locale, channel, Routes.checkout.billing));
+    redirect(joinPathSegments(locale, channel, routes.checkout.billing));
   }
   return {
     errors: toValidationErrors(errors),
@@ -48,7 +48,7 @@ export async function updateCheckoutDelivery(
 
 const FormSchema = z.object({
   deliveryMethodId: z.string(),
-  ...BasePathnameSchema.shape,
+  ...basePathnameSchema.shape,
 });
 function parseFormData(formData: FormData) {
   return FormSchema.parse(Object.fromEntries(formData));

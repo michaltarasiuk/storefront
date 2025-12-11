@@ -4,7 +4,7 @@ import type {ApolloClient} from "@apollo/client";
 import {notFound, redirect} from "next/navigation";
 import * as z from "zod";
 
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import {getClient} from "#app/graphql/apollo-client";
 import {graphql} from "#app/graphql/codegen";
 import type {
@@ -13,9 +13,9 @@ import type {
 } from "#app/graphql/codegen/graphql";
 import {getCheckoutId} from "#app/modules/checkout/utils/cookies";
 import {toValidationErrors} from "#app/modules/checkout/utils/validation-errors";
-import {AddressSchema} from "#app/utils/address";
+import {addressSchema} from "#app/utils/address";
 import {isDefined} from "#app/utils/is-defined";
-import {BasePathnameSchema, joinPathSegments} from "#app/utils/pathname";
+import {basePathnameSchema, joinPathSegments} from "#app/utils/pathname";
 
 const EmailUpdateMutation = graphql(`
   mutation EmailUpdate($id: ID!, $email: String!) {
@@ -67,7 +67,7 @@ export async function updateCheckoutInformation(
     ...(emailUpdate?.errors ?? []),
   ];
   if (!errors.length) {
-    redirect(joinPathSegments(locale, channel, Routes.checkout.delivery));
+    redirect(joinPathSegments(locale, channel, routes.checkout.delivery));
   }
   return {
     errors: toValidationErrors(errors),
@@ -76,8 +76,8 @@ export async function updateCheckoutInformation(
 
 const FormSchema = z.object({
   email: z.email(),
-  ...AddressSchema.shape,
-  ...BasePathnameSchema.shape,
+  ...addressSchema.shape,
+  ...basePathnameSchema.shape,
 });
 function parseFormData(formData: FormData) {
   return FormSchema.parse(Object.fromEntries(formData));

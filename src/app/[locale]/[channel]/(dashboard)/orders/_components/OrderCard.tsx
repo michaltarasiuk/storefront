@@ -4,7 +4,7 @@ import {Button} from "#app/components/Button";
 import {Skeleton} from "#app/components/Skeleton";
 import {SkeletonText} from "#app/components/Text";
 import {Text} from "#app/components/Text";
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import {IntlLink} from "#app/i18n/components/IntlLink";
 import {FormattedDate, FormattedMessage} from "#app/i18n/react-intl";
 import {SuccessIcon} from "#app/icons/SuccessIcon";
@@ -109,7 +109,7 @@ function OrderCardRoot({children}: {children: React.ReactNode}) {
 function OrderCardLink({id}: {id: string}) {
   return (
     <IntlLink
-      href={Routes.account.order(id)}
+      href={routes.account.order(id)}
       className={cn(
         "rounded-large absolute inset-0",
         "hover:shadow-small transition-shadow",

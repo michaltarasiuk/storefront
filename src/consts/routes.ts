@@ -1,6 +1,6 @@
 import {joinPathSegments} from "#app/utils/pathname";
 
-export const Routes = {
+export const routes = {
   home: "/",
   cart: "/cart",
   account: {

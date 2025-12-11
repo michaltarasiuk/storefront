@@ -8,7 +8,7 @@ import {Button} from "#app/components/Button";
 import {ChannelField} from "#app/components/ChannelField";
 import {Form} from "#app/components/Form";
 import {LocaleField} from "#app/components/LocaleField";
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import {graphql} from "#app/graphql/codegen";
 import type {CheckoutBillingForm_CheckoutFragment} from "#app/graphql/codegen/graphql";
 import {FormattedMessage} from "#app/i18n/react-intl";
@@ -71,7 +71,7 @@ export function CheckoutBillingForm({checkout}: CheckoutBillingFormProps) {
           isPending={isPending}>
           <FormattedMessage id="vqYYF3" defaultMessage="Continue to review" />
         </Button>
-        <ReturnLink href={Routes.checkout.delivery}>
+        <ReturnLink href={routes.checkout.delivery}>
           <FormattedMessage id="HJkcfg" defaultMessage="Return to delivery" />
         </ReturnLink>
       </div>
@@ -88,7 +88,7 @@ export function SkeletonCheckoutBillingForm() {
         <Button size="large" isDisabled>
           <FormattedMessage id="vqYYF3" defaultMessage="Continue to review" />
         </Button>
-        <ReturnLink href={Routes.checkout.delivery}>
+        <ReturnLink href={routes.checkout.delivery}>
           <FormattedMessage id="HJkcfg" defaultMessage="Return to delivery" />
         </ReturnLink>
       </div>

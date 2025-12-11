@@ -2,7 +2,7 @@
 
 import {notFound, redirect} from "next/navigation";
 
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import {getClient} from "#app/graphql/apollo-client";
 import {graphql} from "#app/graphql/codegen";
 import type {Locale} from "#app/i18n/consts";
@@ -35,5 +35,5 @@ export async function completeCheckout(locale: Locale, channel: string) {
   if (!isDefined(order)) {
     return;
   }
-  redirect(joinPathSegments(locale, channel, Routes.checkout.order(order.id)));
+  redirect(joinPathSegments(locale, channel, routes.checkout.order(order.id)));
 }

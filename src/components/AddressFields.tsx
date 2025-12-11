@@ -16,7 +16,7 @@ import {useIntl} from "#app/i18n/react-intl";
 import {isCountryCode} from "#app/i18n/utils/is-country-code";
 import {localeToCountryCode} from "#app/i18n/utils/locale-to-country-code";
 import {ChannelContext} from "#app/modules/channel/channel-context";
-import type {AddressSchema} from "#app/utils/address";
+import type {addressSchema} from "#app/utils/address";
 import {cn} from "#app/utils/cn";
 import {isDefined} from "#app/utils/is-defined";
 
@@ -58,7 +58,7 @@ export function CompletedAddressFields({
   return <AddressFields defaultValues={data} />;
 }
 
-type AddressField = keyof z.infer<typeof AddressSchema>;
+type AddressField = keyof z.infer<typeof addressSchema>;
 
 export function AddressFields({
   defaultValues,

@@ -1,4 +1,4 @@
-import {Routes} from "#app/consts/routes";
+import {routes} from "#app/consts/routes";
 import {IntlLink} from "#app/i18n/components/IntlLink";
 import {FormattedMessage} from "#app/i18n/react-intl";
 
@@ -8,7 +8,7 @@ export default function SignupPage() {
   return (
     <>
       <SignupForm />
-      <IntlLink href={Routes.account.signin}>
+      <IntlLink href={routes.account.signin}>
         <FormattedMessage
           id="JapGs4"
           defaultMessage="Already have an account? Sign in"
