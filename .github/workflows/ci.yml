@@ -14,6 +14,7 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     env:
+      AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
       SALEOR_AUTH_TOKEN: ${{ secrets.SALEOR_AUTH_TOKEN }}
       NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
       NEXT_PUBLIC_SALEOR_ORIGIN: ${{ vars.NEXT_PUBLIC_SALEOR_ORIGIN }}
