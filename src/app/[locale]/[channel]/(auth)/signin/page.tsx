@@ -4,16 +4,17 @@ import {ROUTES} from "#app/consts/routes";
 import {IntlLink} from "#app/i18n/components/IntlLink";
 import {FormattedMessage} from "#app/i18n/react-intl";
 
-import {SigninForm} from "../_components/SigninForm";
+import {SignInForm} from "../_components/SignInForm";
 
-export default async function SigninPage({
-  searchParams,
-}: PageProps<"/[locale]/[channel]/signin">) {
-  const {email} = SearchParamsSchema.parse(await searchParams);
+export default async function SignInPage(
+  props: PageProps<"/[locale]/[channel]/signin">,
+) {
+  const searchParams = await props.searchParams;
+  const {email} = SearchParamsSchema.parse(searchParams);
   return (
     <>
-      <SigninForm defaultEmail={email} />
-      <IntlLink href={ROUTES.account.signup}>
+      <SignInForm defaultEmail={email} />
+      <IntlLink href={ROUTES.auth.signup}>
         <FormattedMessage
           id="jq3zbE"
           defaultMessage="Don't have an account? Sign up"

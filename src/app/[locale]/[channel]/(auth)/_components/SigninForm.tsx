@@ -12,11 +12,11 @@ import {FormattedMessage, useIntl} from "#app/i18n/react-intl";
 import {cn} from "#app/utils/cn";
 import {isDefined} from "#app/utils/is-defined";
 
-import {signIn} from "../_actions/sign-in";
+import {signInAction} from "../_actions/sign-in";
 import {FormHeader} from "./FormHeader";
 
-export function SigninForm({defaultEmail}: {defaultEmail?: string}) {
-  const [{errors}, formAction] = useActionState(signIn, {
+export function SignInForm({defaultEmail}: {defaultEmail?: string}) {
+  const [{errors}, formAction] = useActionState(signInAction, {
     errors: {},
   });
   const [isPending, startTransition] = useTransition();

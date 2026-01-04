@@ -17,7 +17,7 @@ const ChannelContextValueQuery = graphql(`
   }
 `);
 
-export async function queryChannelContextValue(slug: string) {
+export async function getChannelContextValue(slug: string) {
   const {data} = await query({
     query: ChannelContextValueQuery,
     variables: {
@@ -30,7 +30,7 @@ export async function queryChannelContextValue(slug: string) {
     },
   });
   if (!isDefined(data.channel)) {
-    return;
+    return null;
   }
   return {
     ...data.channel,

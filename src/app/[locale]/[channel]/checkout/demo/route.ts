@@ -8,7 +8,7 @@ import {DefaultLocale} from "#app/i18n/consts";
 import {DefaultChannel} from "#app/modules/channel/consts";
 import {setCheckoutId} from "#app/modules/checkout/utils/cookies";
 import {isDefined} from "#app/utils/is-defined";
-import {joinPathSegments} from "#app/utils/pathname";
+import {joinPathname} from "#app/utils/pathname";
 
 const DemoCheckoutCreateMutation = graphql(`
   mutation DemoCheckoutCreate($input: CheckoutCreateInput!) {
@@ -35,7 +35,7 @@ export async function GET({nextUrl: {origin}}: NextRequest) {
     return NextResponse.json(null, {status: 400});
   }
   await setCheckoutId(checkoutId);
-  const pathname = joinPathSegments(
+  const pathname = joinPathname(
     DefaultLocale,
     DefaultChannel,
     ROUTES.checkout.information,

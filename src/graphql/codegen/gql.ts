@@ -14,8 +14,7 @@ import {TypedDocumentNode as DocumentNode} from "@graphql-typed-document-node/co
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
-  "\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n      refreshToken\n      errors {\n        ...AccountValidationError @unmask\n      }\n    }\n  }\n": typeof types.SigninDocument;
-  "\n  mutation Signup($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      requiresConfirmation\n      errors {\n        ...AccountValidationError @unmask\n      }\n    }\n  }\n": typeof types.SignupDocument;
+  "\n  mutation SignUp($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      requiresConfirmation\n      errors {\n        ...AccountValidationError @unmask\n      }\n    }\n  }\n": typeof types.SignUpDocument;
   "\n  mutation ConfirmAccount($email: String!, $token: String!) {\n    confirmAccount(email: $email, token: $token) {\n      user {\n        isActive\n      }\n    }\n  }\n": typeof types.ConfirmAccountDocument;
   "\n  mutation DeactivateAllTokens {\n    tokensDeactivateAll {\n      __typename\n    }\n  }\n": typeof types.DeactivateAllTokensDocument;
   "\n  mutation AddPromoCode($id: ID!, $promoCode: String!) {\n    checkoutAddPromoCode(id: $id, promoCode: $promoCode) {\n      errors {\n        ...CheckoutValidationError @unmask\n      }\n    }\n  }\n": typeof types.AddPromoCodeDocument;
@@ -50,7 +49,9 @@ type Documents = {
   "\n  fragment ProductThumbnail_Product on Product {\n    id\n    thumbnail {\n      url\n      alt\n    }\n  }\n": typeof types.ProductThumbnail_ProductFragmentDoc;
   "\n  fragment TaxedMoney_TaxedMoney on TaxedMoney {\n    net {\n      ...Money_Money @unmask\n    }\n    gross {\n      ...Money_Money @unmask\n    }\n  }\n": typeof types.TaxedMoney_TaxedMoneyFragmentDoc;
   "\n  query AddressValidationRules($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      allowedFields\n      requiredFields\n      upperFields\n      countryAreaChoices {\n        raw\n        verbose\n      }\n      cityChoices {\n        raw\n        verbose\n      }\n      cityAreaChoices {\n        raw\n        verbose\n      }\n    }\n  }\n": typeof types.AddressValidationRulesDocument;
+  "\n  mutation SignIn($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      user {\n        id\n      }\n      token\n      refreshToken\n    }\n  }\n": typeof types.SignInDocument;
   "\n  fragment AccountValidationError on AccountError {\n    field\n    message\n  }\n": typeof types.AccountValidationErrorFragmentDoc;
+  "\n  mutation RefreshAccessToken($refreshToken: String!) {\n    tokenRefresh(refreshToken: $refreshToken) {\n      token\n    }\n  }\n": typeof types.RefreshAccessTokenDocument;
   "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n": typeof types.ChannelSlugsDocument;
   "\n  query ChannelContextValue($slug: String!) {\n    channel(slug: $slug) {\n      countries {\n        code\n        country\n      }\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n": typeof types.ChannelContextValueDocument;
   "\n  fragment CheckoutLine_Checkout on CheckoutLine {\n    id\n    quantity\n    variant {\n      product {\n        name\n        ...ProductThumbnail_Product\n      }\n    }\n    totalPrice {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n": typeof types.CheckoutLine_CheckoutFragmentDoc;
@@ -62,10 +63,8 @@ type Documents = {
   "\n  fragment OrderMoneyLines_Order on Order {\n    id\n    subtotal {\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n    deliveryMethod {\n      __typename\n      ... on ShippingMethod {\n        price {\n          ...Money_Money @unmask\n        }\n      }\n    }\n    total {\n      tax {\n        ...Money_Money @unmask\n      }\n      ...TaxedMoney_TaxedMoney @unmask\n    }\n  }\n": typeof types.OrderMoneyLines_OrderFragmentDoc;
 };
 const documents: Documents = {
-  "\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n      refreshToken\n      errors {\n        ...AccountValidationError @unmask\n      }\n    }\n  }\n":
-    types.SigninDocument,
-  "\n  mutation Signup($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      requiresConfirmation\n      errors {\n        ...AccountValidationError @unmask\n      }\n    }\n  }\n":
-    types.SignupDocument,
+  "\n  mutation SignUp($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      requiresConfirmation\n      errors {\n        ...AccountValidationError @unmask\n      }\n    }\n  }\n":
+    types.SignUpDocument,
   "\n  mutation ConfirmAccount($email: String!, $token: String!) {\n    confirmAccount(email: $email, token: $token) {\n      user {\n        isActive\n      }\n    }\n  }\n":
     types.ConfirmAccountDocument,
   "\n  mutation DeactivateAllTokens {\n    tokensDeactivateAll {\n      __typename\n    }\n  }\n":
@@ -134,8 +133,12 @@ const documents: Documents = {
     types.TaxedMoney_TaxedMoneyFragmentDoc,
   "\n  query AddressValidationRules($countryCode: CountryCode!) {\n    addressValidationRules(countryCode: $countryCode) {\n      allowedFields\n      requiredFields\n      upperFields\n      countryAreaChoices {\n        raw\n        verbose\n      }\n      cityChoices {\n        raw\n        verbose\n      }\n      cityAreaChoices {\n        raw\n        verbose\n      }\n    }\n  }\n":
     types.AddressValidationRulesDocument,
+  "\n  mutation SignIn($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      user {\n        id\n      }\n      token\n      refreshToken\n    }\n  }\n":
+    types.SignInDocument,
   "\n  fragment AccountValidationError on AccountError {\n    field\n    message\n  }\n":
     types.AccountValidationErrorFragmentDoc,
+  "\n  mutation RefreshAccessToken($refreshToken: String!) {\n    tokenRefresh(refreshToken: $refreshToken) {\n      token\n    }\n  }\n":
+    types.RefreshAccessTokenDocument,
   "\n  query ChannelSlugs {\n    channels {\n      slug\n      isActive\n    }\n  }\n":
     types.ChannelSlugsDocument,
   "\n  query ChannelContextValue($slug: String!) {\n    channel(slug: $slug) {\n      countries {\n        code\n        country\n      }\n      taxConfiguration {\n        displayGrossPrices\n      }\n    }\n  }\n":
@@ -174,14 +177,8 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n      refreshToken\n      errors {\n        ...AccountValidationError @unmask\n      }\n    }\n  }\n",
-): (typeof documents)["\n  mutation Signin($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      token\n      refreshToken\n      errors {\n        ...AccountValidationError @unmask\n      }\n    }\n  }\n"];
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function graphql(
-  source: "\n  mutation Signup($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      requiresConfirmation\n      errors {\n        ...AccountValidationError @unmask\n      }\n    }\n  }\n",
-): (typeof documents)["\n  mutation Signup($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      requiresConfirmation\n      errors {\n        ...AccountValidationError @unmask\n      }\n    }\n  }\n"];
+  source: "\n  mutation SignUp($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      requiresConfirmation\n      errors {\n        ...AccountValidationError @unmask\n      }\n    }\n  }\n",
+): (typeof documents)["\n  mutation SignUp($input: AccountRegisterInput!) {\n    accountRegister(input: $input) {\n      requiresConfirmation\n      errors {\n        ...AccountValidationError @unmask\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -390,8 +387,20 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
+  source: "\n  mutation SignIn($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      user {\n        id\n      }\n      token\n      refreshToken\n    }\n  }\n",
+): (typeof documents)["\n  mutation SignIn($email: String!, $password: String!) {\n    tokenCreate(email: $email, password: $password) {\n      user {\n        id\n      }\n      token\n      refreshToken\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
   source: "\n  fragment AccountValidationError on AccountError {\n    field\n    message\n  }\n",
 ): (typeof documents)["\n  fragment AccountValidationError on AccountError {\n    field\n    message\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "\n  mutation RefreshAccessToken($refreshToken: String!) {\n    tokenRefresh(refreshToken: $refreshToken) {\n      token\n    }\n  }\n",
+): (typeof documents)["\n  mutation RefreshAccessToken($refreshToken: String!) {\n    tokenRefresh(refreshToken: $refreshToken) {\n      token\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

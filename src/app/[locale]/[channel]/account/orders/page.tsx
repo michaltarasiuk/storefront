@@ -3,7 +3,7 @@ import {Suspense} from "react";
 import {getIntl} from "#app/i18n/utils/get-intl";
 import {cn} from "#app/utils/cn";
 
-import {PageTitle} from "../_components/PageTitie";
+import {PageTitle} from "../_components/PageTitle";
 import {OrdersFilterSortSheet} from "./_components/OrdersFilterSortSheet";
 import {OrderStatusTabs} from "./_components/OrderStatusTabs";
 import {OrdersView, SkeletonOrdersView} from "./_components/OrdersView";
@@ -12,7 +12,7 @@ import {OrderViewToggle} from "./_components/OrderViewToggle";
 
 export default async function OrdersPage({
   params,
-}: PageProps<"/[locale]/[channel]/orders">) {
+}: PageProps<"/[locale]/[channel]/account/orders">) {
   const {locale} = await params;
   const intl = await getIntl(locale);
   return (

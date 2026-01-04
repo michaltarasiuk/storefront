@@ -6,7 +6,7 @@ import invariant from "tiny-invariant";
 import {getClient} from "#app/graphql/apollo-client";
 import {graphql} from "#app/graphql/codegen";
 import {getCheckoutId} from "#app/modules/checkout/utils/cookies";
-import {toValidationErrors} from "#app/modules/checkout/utils/validation-errors";
+import {toValidationErrors} from "#app/modules/checkout/utils/errors";
 import {isDefined} from "#app/utils/is-defined";
 
 const AddPromoCodeMutation = graphql(`
@@ -19,7 +19,7 @@ const AddPromoCodeMutation = graphql(`
   }
 `);
 
-export async function addPromoCode(_state: unknown, formData: FormData) {
+export async function addPromoCodeAction(_state: unknown, formData: FormData) {
   const checkoutId = await getCheckoutId();
   if (!isDefined(checkoutId)) {
     notFound();

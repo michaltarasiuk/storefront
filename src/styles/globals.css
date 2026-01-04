@@ -224,3 +224,82 @@
     0px 2.8px 2.8px rgba(0, 0, 0, 0.035), 0px 5.7px 5.7px rgba(0, 0, 0, 0.045),
     0px 11.7px 11.7px rgba(0, 0, 0, 0.055), 0px 32px 32px rgba(0, 0, 0, 0.08);
 }
+
+[data-theme="plant"] {
+  --color-base-background: #f7faf5;
+  --color-base-background-subdued: #ebf3e6;
+  --color-base-border: #dce9d3;
+  --color-base-icon: #44691e;
+  --color-base-text: #44691e;
+  --color-base-text-subdued: #93a97c;
+  --color-base-text-contrast: #ffffff;
+  --color-base-accent: #44691e;
+  --color-base-accent-contrast: #ffffff;
+  --color-base-decorative: #44691e;
+
+  --color-control-background: #f7faf5;
+  --color-control-background-subdued: #eaf4e6;
+  --color-control-border: #70815f;
+  --color-control-icon: #44691e;
+  --color-control-text: #44691e;
+  --color-control-text-subdued: #93a97c;
+  --color-control-text-contrast: #ffffff;
+  --color-control-accent: #44691e;
+  --color-control-accent-contrast: #f7faf5;
+  --color-control-decorative: #44691e;
+
+  --color-control-selected-background: #ebf3e6;
+  --color-control-selected-background-subdued: #44691e;
+  --color-control-selected-border: #44691e;
+  --color-control-selected-icon: #f7faf5;
+  --color-control-selected-text: #f7faf5;
+  --color-control-selected-text-subdued: #f7faf5;
+  --color-control-selected-text-contrast: #44691e;
+  --color-control-selected-accent: #f7faf5;
+  --color-control-selected-accent-contrast: #44691e;
+  --color-control-selected-decorative: #f7faf5;
+
+  --color-primary-button-background: #44691e;
+  --color-primary-button-background-subdued: #44691e;
+  --color-primary-button-border: #44691e;
+  --color-primary-button-icon: #f7faf5;
+  --color-primary-button-text: #f7faf5;
+  --color-primary-button-text-subdued: #f7faf5;
+  --color-primary-button-text-contrast: #000000;
+  --color-primary-button-accent: #f7faf5;
+  --color-primary-button-accent-contrast: #000000;
+  --color-primary-button-decorative: #f7faf5;
+
+  --color-primary-button-hover-background: #44691e;
+  --color-primary-button-hover-background-subdued: #44691e;
+  --color-primary-button-hover-border: #44691e;
+  --color-primary-button-hover-icon: #f7faf5;
+  --color-primary-button-hover-text: #f7faf5;
+  --color-primary-button-hover-text-subdued: #f7faf5;
+  --color-primary-button-hover-text-contrast: #000000;
+  --color-primary-button-hover-accent: #f7faf5;
+  --color-primary-button-hover-accent-contrast: #000000;
+  --color-primary-button-hover-decorative: #f7faf5;
+
+  --color-secondary-button-background: #44691e;
+  --color-secondary-button-background-subdued: #44691e;
+  --color-secondary-button-border: #44691e;
+  --color-secondary-button-icon: #44691e;
+  --color-secondary-button-text: #44691e;
+  --color-secondary-button-text-subdued: #44691e;
+  --color-secondary-button-text-contrast: #ffffff;
+  --color-secondary-button-accent: #44691e;
+  --color-secondary-button-accent-contrast: #ffffff;
+  --color-secondary-button-decorative: #44691e;
+
+  --color-secondary-button-hover-background: #ffffff;
+  --color-secondary-button-hover-background-subdued: #ffffff;
+  --color-secondary-button-hover-border: #44691e;
+  --color-secondary-button-hover-icon: #44691e;
+  --color-secondary-button-hover-text: #44691e;
+  --color-secondary-button-hover-text-subdued: #f7faf5;
+  --color-secondary-button-hover-text-contrast: #ffffff;
+  --color-secondary-button-hover-accent: #44691e;
+  --color-secondary-button-hover-accent-contrast: #ffffff;
+  --color-secondary-button-hover-decorative: #44691e;
+}

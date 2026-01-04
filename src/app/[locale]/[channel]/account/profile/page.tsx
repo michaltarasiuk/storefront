@@ -2,7 +2,7 @@ import {FormattedMessage} from "#app/i18n/react-intl";
 import {getIntl} from "#app/i18n/utils/get-intl";
 import {cn} from "#app/utils/cn";
 
-import {PageTitle} from "../_components/PageTitie";
+import {PageTitle} from "../_components/PageTitle";
 import {AddAddressDialog} from "./_components/AddAddressDialog";
 import {AddressCards} from "./_components/AddressCards";
 import {ContactInfo} from "./_components/ContactInfo";
@@ -11,7 +11,7 @@ import {Section, SectionHeader, SectionTitle} from "./_components/Section";
 
 export default async function ProfilePage({
   params,
-}: PageProps<"/[locale]/[channel]/profile">) {
+}: PageProps<"/[locale]/[channel]/account/profile">) {
   const {locale} = await params;
   const intl = await getIntl(locale);
   return (

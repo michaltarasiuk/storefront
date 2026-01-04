@@ -10,7 +10,7 @@ export function getLocaleByUrl(url: URL) {
   });
   const match = localePattern.exec(url);
   if (!isDefined(match)) {
-    return;
+    return null;
   }
   return match.pathname.groups.locale as Locale;
 }

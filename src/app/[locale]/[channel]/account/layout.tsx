@@ -3,7 +3,7 @@ import {cn} from "#app/utils/cn";
 
 import {Header} from "./_components/Header";
 
-export default async function DashboardLayout({
+export default async function AccountLayout({
   children,
 }: LayoutProps<"/[locale]/[channel]">) {
   return (

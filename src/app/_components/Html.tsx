@@ -10,6 +10,7 @@ export function Html({children}: {children: React.ReactNode}) {
     <html
       lang={locale}
       dir={direction}
+      data-theme="plant"
       className={`${fontInter.className} ${fontInter.variable}`}>
       {children}
     </html>

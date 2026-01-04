@@ -7,21 +7,11 @@ import {ROUTES} from "#app/consts/routes";
 import {getClient} from "#app/graphql/apollo-client";
 import {graphql} from "#app/graphql/codegen";
 import {getCheckoutId} from "#app/modules/checkout/utils/cookies";
-import {toValidationErrors} from "#app/modules/checkout/utils/validation-errors";
+import {toValidationErrors} from "#app/modules/checkout/utils/errors";
 import {isDefined} from "#app/utils/is-defined";
-import {BasePathnameSchema, joinPathSegments} from "#app/utils/pathname";
+import {joinPathname, PathnameParamsSchema} from "#app/utils/pathname";
 
-const DeliveryMethodUpdateMutation = graphql(`
-  mutation DeliveryMethodUpdate($id: ID!, $deliveryMethodId: ID!) {
-    checkoutDeliveryMethodUpdate(id: $id, deliveryMethodId: $deliveryMethodId) {
-      errors {
-        ...CheckoutValidationError @unmask
-      }
-    }
-  }
-`);
-
-export async function updateCheckoutDelivery(
+export async function updateCheckoutDeliveryAction(
   _state: unknown,
   formData: FormData,
 ) {
@@ -39,17 +29,29 @@ export async function updateCheckoutDelivery(
   });
   const {errors = []} = data?.checkoutDeliveryMethodUpdate ?? {};
   if (!errors.length) {
-    redirect(joinPathSegments(locale, channel, ROUTES.checkout.billing));
+    redirect(joinPathname(locale, channel, ROUTES.checkout.billing));
   }
   return {
     errors: toValidationErrors(errors),
   };
 }
 
+function parseFormData(formData: FormData) {
+  const formDataObject = Object.fromEntries(formData);
+  return FormSchema.parse(formDataObject);
+}
+
 const FormSchema = z.object({
   deliveryMethodId: z.string(),
-  ...BasePathnameSchema.shape,
+  ...PathnameParamsSchema.shape,
 });
-function parseFormData(formData: FormData) {
-  return FormSchema.parse(Object.fromEntries(formData));
-}
+
+const DeliveryMethodUpdateMutation = graphql(`
+  mutation DeliveryMethodUpdate($id: ID!, $deliveryMethodId: ID!) {
+    checkoutDeliveryMethodUpdate(id: $id, deliveryMethodId: $deliveryMethodId) {
+      errors {
+        ...CheckoutValidationError @unmask
+      }
+    }
+  }
+`);

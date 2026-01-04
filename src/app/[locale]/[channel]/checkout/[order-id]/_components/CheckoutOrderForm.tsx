@@ -7,25 +7,25 @@ import {Button} from "#app/components/Button";
 import {Checkbox, SkeletonCheckbox} from "#app/components/Checkbox";
 import {Divider} from "#app/components/Divider";
 import {ROUTES} from "#app/consts/routes";
-import {useBasePathname} from "#app/hooks/use-base-pathname";
+import {usePathnameParams} from "#app/hooks/use-base-pathname";
 import {FormattedMessage} from "#app/i18n/react-intl";
 import {
   OrderDetails,
   SkeletonOrderDetails,
 } from "#app/modules/order/components/OrderDetails";
 import {cn} from "#app/utils/cn";
-import {joinPathSegments} from "#app/utils/pathname";
+import {joinPathname} from "#app/utils/pathname";
 
 export function CheckoutOrderForm() {
   const router = useRouter();
-  const basePathname = useBasePathname();
+  const pathnameParams = usePathnameParams();
   const [isPending, startTransition] = useTransition();
   return (
     <form
       className={cn("space-y-large-300")}
       onSubmit={() =>
         startTransition(() =>
-          router.push(joinPathSegments(...basePathname, ROUTES.home)),
+          router.push(joinPathname(...pathnameParams, ROUTES.home)),
         )
       }>
       <div

@@ -11,11 +11,11 @@ import {TextField} from "#app/components/TextField";
 import {FormattedMessage, useIntl} from "#app/i18n/react-intl";
 import {cn} from "#app/utils/cn";
 
-import {signUp} from "../_actions/sign-up";
+import {signUpAction} from "../_actions/sign-up";
 import {FormHeader} from "./FormHeader";
 
-export function SignupForm() {
-  const [{errors}, formAction] = useActionState(signUp, {
+export function SignUpForm() {
+  const [{errors}, formAction] = useActionState(signUpAction, {
     requiresConfirmation: false,
     errors: {},
   });

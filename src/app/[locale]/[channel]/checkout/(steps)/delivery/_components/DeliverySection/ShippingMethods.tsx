@@ -62,7 +62,7 @@ export function ShippingMethods({checkout}: ShippingMethodsProps) {
           isDefined(data.deliveryMethod) &&
           isShippingMethod(data.deliveryMethod)
             ? data.deliveryMethod.id
-            : undefined
+            : null
         }
         aria-labelledby={headingId}
         isRequired>

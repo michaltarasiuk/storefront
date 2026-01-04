@@ -12,7 +12,7 @@ const ChannelSlugsQuery = graphql(`
   }
 `);
 
-export async function queryActiveChannelSlugs(client: ApolloClient) {
+export async function getActiveChannelSlugs(client: ApolloClient) {
   const {data} = await client.query({
     query: ChannelSlugsQuery,
     context: {

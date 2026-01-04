@@ -8,7 +8,7 @@ import {graphql} from "#app/graphql/codegen";
 import type {Locale} from "#app/i18n/consts";
 import {getCheckoutId} from "#app/modules/checkout/utils/cookies";
 import {isDefined} from "#app/utils/is-defined";
-import {joinPathSegments} from "#app/utils/pathname";
+import {joinPathname} from "#app/utils/pathname";
 
 const CompleteCheckoutMuatation = graphql(`
   mutation CompleteCheckout($id: ID!) {
@@ -20,7 +20,7 @@ const CompleteCheckoutMuatation = graphql(`
   }
 `);
 
-export async function completeCheckout(locale: Locale, channel: string) {
+export async function completeCheckoutAction(locale: Locale, channel: string) {
   const checkoutId = await getCheckoutId();
   if (!isDefined(checkoutId)) {
     notFound();
@@ -35,5 +35,5 @@ export async function completeCheckout(locale: Locale, channel: string) {
   if (!isDefined(order)) {
     return;
   }
-  redirect(joinPathSegments(locale, channel, ROUTES.checkout.order(order.id)));
+  redirect(joinPathname(locale, channel, ROUTES.checkout.order(order.id)));
 }

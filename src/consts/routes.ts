@@ -1,17 +1,19 @@
-import {joinPathSegments} from "#app/utils/pathname";
+import {joinPathname} from "#app/utils/pathname";
 
 export const ROUTES = {
   home: "/",
   cart: "/cart",
-  account: {
+  auth: {
     signup: "/signup",
     signin: "/signin",
     confirmAccount: "/confirm-account",
-    orders: "/orders",
-    profile: "/profile",
-    settings: "/settings",
+  },
+  account: {
+    orders: "/account/orders",
+    profile: "/account/profile",
+    settings: "/account/settings",
     order(id: string) {
-      return joinPathSegments(this.orders, id);
+      return joinPathname(this.orders, id);
     },
   },
   checkout: {
@@ -20,7 +22,7 @@ export const ROUTES = {
     billing: "/checkout/billing",
     review: "/checkout/review",
     order(id: string) {
-      return joinPathSegments("checkout", id);
+      return joinPathname("checkout", id);
     },
   },
 };

@@ -3,17 +3,17 @@
 import {DialogTrigger} from "#app/components/Dialog";
 import {Sheet} from "#app/components/Sheet";
 import {ROUTES} from "#app/consts/routes";
-import {useBasePathname} from "#app/hooks/use-base-pathname";
+import {usePathnameParams} from "#app/hooks/use-base-pathname";
 import {FormattedMessage} from "#app/i18n/react-intl";
 import {cn} from "#app/utils/cn";
 
-import {logOut} from "../_actions/log-out";
+import {signOutAction} from "../_actions/sign-out";
 import {LogoutDialog} from "./LogoutDialog";
 import {MenuItemButton, MenuItemLink} from "./MenuItem";
 import {ProfileCard} from "./ProfileCard";
 
 export function MobileNavigationSheet() {
-  const basePathname = useBasePathname();
+  const pathnameParams = usePathnameParams();
   return (
     <Sheet className={cn("p-base flex flex-col")}>
       {({close}) => (
@@ -49,7 +49,8 @@ export function MobileNavigationSheet() {
             </li>
             <li>
               <DialogTrigger>
-                <MenuItemButton onPress={() => logOut(...basePathname)}>
+                <MenuItemButton
+                  onPress={() => signOutAction(...pathnameParams)}>
                   <FormattedMessage id="PlBReU" defaultMessage="Log out" />
                 </MenuItemButton>
                 <LogoutDialog />

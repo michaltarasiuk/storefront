@@ -14,7 +14,7 @@ import type {CheckoutDeliveryForm_CheckoutFragment} from "#app/graphql/codegen/g
 import {FormattedMessage} from "#app/i18n/react-intl";
 import {cn} from "#app/utils/cn";
 
-import {updateCheckoutDelivery} from "../../_actions/update-delivery";
+import {updateCheckoutDeliveryAction} from "../../_actions/update-delivery";
 import {ReturnLink} from "../../_components/ReturnLink";
 import {
   DeliveryReviewList,
@@ -36,7 +36,7 @@ interface CheckoutDeliveryFormProps {
 }
 
 export function CheckoutDeliveryForm({checkout}: CheckoutDeliveryFormProps) {
-  const [{errors}, formAction] = useActionState(updateCheckoutDelivery, {
+  const [{errors}, formAction] = useActionState(updateCheckoutDeliveryAction, {
     errors: {},
   });
   const [isPending, startTransition] = useTransition();

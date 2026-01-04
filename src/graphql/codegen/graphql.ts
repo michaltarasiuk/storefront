@@ -19611,7 +19611,7 @@ export type ProductAttributeArgs = {
 
 /** Represents an individual item for sale in the storefront. */
 export type ProductImageByIdArgs = {
-  id?: InputMaybe<Scalars["ID"]["input"]>;
+  id: Scalars["ID"]["input"];
 };
 
 /** Represents an individual item for sale in the storefront. */
@@ -19626,7 +19626,7 @@ export type ProductMediaArgs = {
 
 /** Represents an individual item for sale in the storefront. */
 export type ProductMediaByIdArgs = {
-  id?: InputMaybe<Scalars["ID"]["input"]>;
+  id: Scalars["ID"]["input"];
 };
 
 /** Represents an individual item for sale in the storefront. */
@@ -25944,6 +25944,13 @@ export type Shop = ObjectWithMetadata & {
   /** Returns translated shop fields for the given language code. */
   translation?: Maybe<ShopTranslation>;
   /**
+   * Use legacy update webhook emission. When enabled, update webhooks (e.g. `customerUpdated`,`productVariantUpdated`) are sent even when only metadata changes. When disabled, update webhooks are not sent for metadata-only changes; only metadata-specific webhooks (e.g., `customerMetadataUpdated`, `productVariantMetadataUpdated`) are sent.
+   *
+   * Added in Saleor 3.22.
+   * @deprecated No longer supported
+   */
+  useLegacyUpdateWebhookEmission?: Maybe<Scalars["Boolean"]["output"]>;
+  /**
    * Saleor API version.
    *
    * Requires one of the following permissions: AUTHENTICATED_STAFF_USER, AUTHENTICATED_APP.
@@ -26136,6 +26143,14 @@ export type ShopSettingsInput = {
   reserveStockDurationAuthenticatedUser?: InputMaybe<Scalars["Int"]["input"]>;
   /** This field is used as a default value for `ProductVariant.trackInventory`. */
   trackInventoryByDefault?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /**
+   * Use legacy update webhook emission. When enabled, update webhooks (e.g. `customerUpdated`,`productVariantUpdated`) are sent even when only metadata changes. When disabled, update webhooks are not sent for metadata-only changes; only metadata-specific webhooks (e.g., `customerMetadataUpdated`, `productVariantMetadataUpdated`) are sent.
+   *
+   * Added in Saleor 3.22.
+   *
+   * DEPRECATED: this field will be removed.
+   */
+  useLegacyUpdateWebhookEmission?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
 /**
@@ -31183,30 +31198,11 @@ export type _Service = {
   sdl?: Maybe<Scalars["String"]["output"]>;
 };
 
-export type SigninMutationVariables = Exact<{
-  email: Scalars["String"]["input"];
-  password: Scalars["String"]["input"];
-}>;
-
-export type SigninMutation = {
-  __typename?: "Mutation";
-  tokenCreate?: {
-    __typename?: "CreateToken";
-    token?: string | null;
-    refreshToken?: string | null;
-    errors: Array<{
-      __typename?: "AccountError";
-      field?: string | null;
-      message?: string | null;
-    }>;
-  } | null;
-};
-
-export type SignupMutationVariables = Exact<{
+export type SignUpMutationVariables = Exact<{
   input: AccountRegisterInput;
 }>;
 
-export type SignupMutation = {
+export type SignUpMutation = {
   __typename?: "Mutation";
   accountRegister?: {
     __typename?: "AccountRegister";
@@ -31678,11 +31674,35 @@ export type AddressValidationRulesQuery = {
   } | null;
 };
 
+export type SignInMutationVariables = Exact<{
+  email: Scalars["String"]["input"];
+  password: Scalars["String"]["input"];
+}>;
+
+export type SignInMutation = {
+  __typename?: "Mutation";
+  tokenCreate?: {
+    __typename?: "CreateToken";
+    token?: string | null;
+    refreshToken?: string | null;
+    user?: {__typename?: "User"; id: string} | null;
+  } | null;
+};
+
 export type AccountValidationErrorFragment = {
   __typename?: "AccountError";
   field?: string | null;
   message?: string | null;
 } & {" $fragmentName"?: "AccountValidationErrorFragment"};
+
+export type RefreshAccessTokenMutationVariables = Exact<{
+  refreshToken: Scalars["String"]["input"];
+}>;
+
+export type RefreshAccessTokenMutation = {
+  __typename?: "Mutation";
+  tokenRefresh?: {__typename?: "RefreshToken"; token?: string | null} | null;
+};
 
 export type ChannelSlugsQueryVariables = Exact<{[key: string]: never}>;
 
@@ -34641,106 +34661,13 @@ export const CheckoutValidationErrorFragmentDoc = {
     },
   ],
 } as unknown as DocumentNode<CheckoutValidationErrorFragment, unknown>;
-export const SigninDocument = {
+export const SignUpDocument = {
   kind: "Document",
   definitions: [
     {
       kind: "OperationDefinition",
       operation: "mutation",
-      name: {kind: "Name", value: "Signin"},
-      variableDefinitions: [
-        {
-          kind: "VariableDefinition",
-          variable: {kind: "Variable", name: {kind: "Name", value: "email"}},
-          type: {
-            kind: "NonNullType",
-            type: {kind: "NamedType", name: {kind: "Name", value: "String"}},
-          },
-        },
-        {
-          kind: "VariableDefinition",
-          variable: {kind: "Variable", name: {kind: "Name", value: "password"}},
-          type: {
-            kind: "NonNullType",
-            type: {kind: "NamedType", name: {kind: "Name", value: "String"}},
-          },
-        },
-      ],
-      selectionSet: {
-        kind: "SelectionSet",
-        selections: [
-          {
-            kind: "Field",
-            name: {kind: "Name", value: "tokenCreate"},
-            arguments: [
-              {
-                kind: "Argument",
-                name: {kind: "Name", value: "email"},
-                value: {kind: "Variable", name: {kind: "Name", value: "email"}},
-              },
-              {
-                kind: "Argument",
-                name: {kind: "Name", value: "password"},
-                value: {
-                  kind: "Variable",
-                  name: {kind: "Name", value: "password"},
-                },
-              },
-            ],
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                {kind: "Field", name: {kind: "Name", value: "token"}},
-                {kind: "Field", name: {kind: "Name", value: "refreshToken"}},
-                {
-                  kind: "Field",
-                  name: {kind: "Name", value: "errors"},
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {
-                        kind: "FragmentSpread",
-                        name: {kind: "Name", value: "AccountValidationError"},
-                        directives: [
-                          {
-                            kind: "Directive",
-                            name: {kind: "Name", value: "unmask"},
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-    {
-      kind: "FragmentDefinition",
-      name: {kind: "Name", value: "AccountValidationError"},
-      typeCondition: {
-        kind: "NamedType",
-        name: {kind: "Name", value: "AccountError"},
-      },
-      selectionSet: {
-        kind: "SelectionSet",
-        selections: [
-          {kind: "Field", name: {kind: "Name", value: "field"}},
-          {kind: "Field", name: {kind: "Name", value: "message"}},
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<SigninMutation, SigninMutationVariables>;
-export const SignupDocument = {
-  kind: "Document",
-  definitions: [
-    {
-      kind: "OperationDefinition",
-      operation: "mutation",
-      name: {kind: "Name", value: "Signup"},
+      name: {kind: "Name", value: "SignUp"},
       variableDefinitions: [
         {
           kind: "VariableDefinition",
@@ -34815,7 +34742,7 @@ export const SignupDocument = {
       },
     },
   ],
-} as unknown as DocumentNode<SignupMutation, SignupMutationVariables>;
+} as unknown as DocumentNode<SignUpMutation, SignUpMutationVariables>;
 export const ConfirmAccountDocument = {
   kind: "Document",
   definitions: [
@@ -37886,6 +37813,126 @@ export const AddressValidationRulesDocument = {
 } as unknown as DocumentNode<
   AddressValidationRulesQuery,
   AddressValidationRulesQueryVariables
+>;
+export const SignInDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "mutation",
+      name: {kind: "Name", value: "SignIn"},
+      variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: {kind: "Variable", name: {kind: "Name", value: "email"}},
+          type: {
+            kind: "NonNullType",
+            type: {kind: "NamedType", name: {kind: "Name", value: "String"}},
+          },
+        },
+        {
+          kind: "VariableDefinition",
+          variable: {kind: "Variable", name: {kind: "Name", value: "password"}},
+          type: {
+            kind: "NonNullType",
+            type: {kind: "NamedType", name: {kind: "Name", value: "String"}},
+          },
+        },
+      ],
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "tokenCreate"},
+            arguments: [
+              {
+                kind: "Argument",
+                name: {kind: "Name", value: "email"},
+                value: {kind: "Variable", name: {kind: "Name", value: "email"}},
+              },
+              {
+                kind: "Argument",
+                name: {kind: "Name", value: "password"},
+                value: {
+                  kind: "Variable",
+                  name: {kind: "Name", value: "password"},
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: {kind: "Name", value: "user"},
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {kind: "Field", name: {kind: "Name", value: "id"}},
+                    ],
+                  },
+                },
+                {kind: "Field", name: {kind: "Name", value: "token"}},
+                {kind: "Field", name: {kind: "Name", value: "refreshToken"}},
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<SignInMutation, SignInMutationVariables>;
+export const RefreshAccessTokenDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "mutation",
+      name: {kind: "Name", value: "RefreshAccessToken"},
+      variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: {kind: "Name", value: "refreshToken"},
+          },
+          type: {
+            kind: "NonNullType",
+            type: {kind: "NamedType", name: {kind: "Name", value: "String"}},
+          },
+        },
+      ],
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: {kind: "Name", value: "tokenRefresh"},
+            arguments: [
+              {
+                kind: "Argument",
+                name: {kind: "Name", value: "refreshToken"},
+                value: {
+                  kind: "Variable",
+                  name: {kind: "Name", value: "refreshToken"},
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {kind: "Field", name: {kind: "Name", value: "token"}},
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  RefreshAccessTokenMutation,
+  RefreshAccessTokenMutationVariables
 >;
 export const ChannelSlugsDocument = {
   kind: "Document",

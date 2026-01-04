@@ -7,22 +7,12 @@ import {ROUTES} from "#app/consts/routes";
 import {getClient} from "#app/graphql/apollo-client";
 import {graphql} from "#app/graphql/codegen";
 import {getCheckoutId} from "#app/modules/checkout/utils/cookies";
-import {toValidationErrors} from "#app/modules/checkout/utils/validation-errors";
+import {toValidationErrors} from "#app/modules/checkout/utils/errors";
 import {AddressSchema} from "#app/utils/address";
 import {isDefined} from "#app/utils/is-defined";
-import {BasePathnameSchema, joinPathSegments} from "#app/utils/pathname";
+import {joinPathname, PathnameParamsSchema} from "#app/utils/pathname";
 
-const BillingAddressUpdateMutation = graphql(`
-  mutation BillingAddressUpdate($id: ID!, $billingAddress: AddressInput!) {
-    checkoutBillingAddressUpdate(id: $id, billingAddress: $billingAddress) {
-      errors {
-        ...CheckoutValidationError @unmask
-      }
-    }
-  }
-`);
-
-export async function updateCheckoutBilling(
+export async function updateCheckoutBillingAction(
   _state: unknown,
   formData: FormData,
 ) {
@@ -40,17 +30,29 @@ export async function updateCheckoutBilling(
   });
   const {errors = []} = data?.checkoutBillingAddressUpdate ?? {};
   if (!errors.length) {
-    redirect(joinPathSegments(locale, channel, ROUTES.checkout.review));
+    redirect(joinPathname(locale, channel, ROUTES.checkout.review));
   }
   return {
     errors: toValidationErrors(errors),
   };
 }
 
+function parseFormData(formData: FormData) {
+  const formDataObject = formData.entries();
+  return FormSchema.parse(formDataObject);
+}
+
 const FormSchema = z.object({
   ...AddressSchema.shape,
-  ...BasePathnameSchema.shape,
+  ...PathnameParamsSchema.shape,
 });
-function parseFormData(formData: FormData) {
-  return FormSchema.parse(Object.fromEntries(formData));
-}
+
+const BillingAddressUpdateMutation = graphql(`
+  mutation BillingAddressUpdate($id: ID!, $billingAddress: AddressInput!) {
+    checkoutBillingAddressUpdate(id: $id, billingAddress: $billingAddress) {
+      errors {
+        ...CheckoutValidationError @unmask
+      }
+    }
+  }
+`);

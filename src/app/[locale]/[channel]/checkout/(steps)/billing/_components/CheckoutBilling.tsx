@@ -6,9 +6,9 @@ import {notFound, redirect} from "next/navigation";
 import {HeadingGroup} from "#app/components/Heading";
 import {ROUTES} from "#app/consts/routes";
 import type {CheckoutBilling_CheckoutQuery} from "#app/graphql/codegen/graphql";
-import {useBasePathname} from "#app/hooks/use-base-pathname";
+import {usePathnameParams} from "#app/hooks/use-base-pathname";
 import {isDefined} from "#app/utils/is-defined";
-import {joinPathSegments} from "#app/utils/pathname";
+import {joinPathname} from "#app/utils/pathname";
 
 import {CheckoutLayout} from "../../../_components/CheckoutLayout";
 import {CheckoutBreadcrumbs} from "../../_components/CheckoutBreadcrumbs";
@@ -27,11 +27,11 @@ interface CheckoutBillingProps {
 
 export function CheckoutBilling({queryRef}: CheckoutBillingProps) {
   const {data} = useReadQuery(queryRef);
-  const basePathname = useBasePathname();
+  const pathnameParams = usePathnameParams();
   if (!isDefined(data.checkout)) {
     notFound();
   } else if (!isDefined(data.checkout.deliveryMethod)) {
-    redirect(joinPathSegments(...basePathname, ROUTES.checkout.delivery));
+    redirect(joinPathname(...pathnameParams, ROUTES.checkout.delivery));
   }
   return (
     <CheckoutLayout summary={<CheckoutSummary checkout={data.checkout} />}>

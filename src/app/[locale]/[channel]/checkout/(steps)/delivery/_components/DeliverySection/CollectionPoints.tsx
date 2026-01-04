@@ -57,7 +57,7 @@ export function CollectionPoints({checkout}: CollectionPointsProps) {
           isDefined(data.deliveryMethod) &&
           isCollectionPoint(data.deliveryMethod)
             ? data.deliveryMethod.id
-            : undefined
+            : null
         }
         aria-labelledby={headingId}
         isRequired>

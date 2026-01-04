@@ -17,3 +17,9 @@ export const {getClient, query, PreloadQuery} = registerApolloClient(() => {
     }),
   });
 });
+
+declare module "@apollo/client" {
+  interface DataMasking {
+    mode: "preserveTypes";
+  }
+}

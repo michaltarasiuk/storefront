@@ -4,18 +4,18 @@ import {usePathname} from "next/navigation";
 
 import {BreadcrumbLink, Breadcrumbs} from "#app/components/Breadcrumbs";
 import {ROUTES} from "#app/consts/routes";
-import {useBasePathname} from "#app/hooks/use-base-pathname";
+import {usePathnameParams} from "#app/hooks/use-base-pathname";
 import {FormattedMessage} from "#app/i18n/react-intl";
-import {joinPathSegments} from "#app/utils/pathname";
+import {joinPathname} from "#app/utils/pathname";
 
 type BreadcrumbLinkProps = React.ComponentProps<typeof BreadcrumbLink>;
 
 export function CheckoutBreadcrumbs() {
   const pathname = usePathname();
-  const [locale, channel] = useBasePathname();
+  const [locale, channel] = usePathnameParams();
   const pathWithoutLocaleAndChannel = pathname
-    .replace(joinPathSegments(locale), "")
-    .replace(joinPathSegments(channel), "");
+    .replace(joinPathname(locale), "")
+    .replace(joinPathname(channel), "");
   const isReviewPage = ROUTES.checkout.review === pathWithoutLocaleAndChannel;
   function getBreadcrumbLinkProps(href: string): BreadcrumbLinkProps {
     return {

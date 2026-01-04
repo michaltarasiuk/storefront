@@ -12,10 +12,10 @@ import type {
   EmailUpdateMutationVariables,
 } from "#app/graphql/codegen/graphql";
 import {getCheckoutId} from "#app/modules/checkout/utils/cookies";
-import {toValidationErrors} from "#app/modules/checkout/utils/validation-errors";
+import {toValidationErrors} from "#app/modules/checkout/utils/errors";
 import {AddressSchema} from "#app/utils/address";
 import {isDefined} from "#app/utils/is-defined";
-import {BasePathnameSchema, joinPathSegments} from "#app/utils/pathname";
+import {joinPathname, PathnameParamsSchema} from "#app/utils/pathname";
 
 const EmailUpdateMutation = graphql(`
   mutation EmailUpdate($id: ID!, $email: String!) {
@@ -42,7 +42,7 @@ const AddressUpdateMutation = graphql(`
   }
 `);
 
-export async function updateCheckoutInformation(
+export async function updateCheckoutInformationAction(
   _state: unknown,
   formData: FormData,
 ) {
@@ -67,7 +67,7 @@ export async function updateCheckoutInformation(
     ...(emailUpdate?.errors ?? []),
   ];
   if (!errors.length) {
-    redirect(joinPathSegments(locale, channel, ROUTES.checkout.delivery));
+    redirect(joinPathname(locale, channel, ROUTES.checkout.delivery));
   }
   return {
     errors: toValidationErrors(errors),
@@ -77,7 +77,7 @@ export async function updateCheckoutInformation(
 const FormSchema = z.object({
   email: z.email(),
   ...AddressSchema.shape,
-  ...BasePathnameSchema.shape,
+  ...PathnameParamsSchema.shape,
 });
 function parseFormData(formData: FormData) {
   return FormSchema.parse(Object.fromEntries(formData));

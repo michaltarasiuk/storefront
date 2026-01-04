@@ -5,12 +5,12 @@ import {getIntl} from "#app/i18n/utils/get-intl";
 import {LockIcon} from "#app/icons/LockIcon";
 import {cn} from "#app/utils/cn";
 
-import {PageTitle} from "../_components/PageTitie";
+import {PageTitle} from "../_components/PageTitle";
 import {DeactivateAllTokensButton} from "./_components/DeactivateAllTokensButton";
 
 export default async function SettingsPage({
   params,
-}: PageProps<"/[locale]/[channel]/settings">) {
+}: PageProps<"/[locale]/[channel]/account/settings">) {
   const {locale} = await params;
   const intl = await getIntl(locale);
   return (

@@ -8,7 +8,7 @@ import {Locales, NextLocaleCookieName} from "../consts";
 export async function getLocaleByCookies() {
   const localeCookie = (await cookies()).get(NextLocaleCookieName);
   if (!isDefined(localeCookie)) {
-    return;
+    return null;
   }
   let matchedLocale: string | undefined;
   for (const locale of Locales) {

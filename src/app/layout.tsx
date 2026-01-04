@@ -1,5 +1,4 @@
 import "#app/styles/globals.css";
-import "#app/styles/themes/plant-theme.css";
 
 import type {Viewport} from "next";
 

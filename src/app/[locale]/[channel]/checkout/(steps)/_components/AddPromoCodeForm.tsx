@@ -10,10 +10,10 @@ import {TextField} from "#app/components/TextField";
 import {FormattedMessage, useIntl} from "#app/i18n/react-intl";
 import {cn} from "#app/utils/cn";
 
-import {addPromoCode} from "../_actions/add-promo-code";
+import {addPromoCodeAction} from "../_actions/add-promo-code";
 
 export function AddPromoCodeForm() {
-  const [{errors}, formAction] = useActionState(addPromoCode, {
+  const [{errors}, formAction] = useActionState(addPromoCodeAction, {
     errors: {},
   });
   const [isPending, startTransition] = useTransition();
