@@ -18,31 +18,6 @@ import {parseFormData} from "#app/utils/form";
 import {isDefined} from "#app/utils/is-defined";
 import {joinPathname, PathnameParamsSchema} from "#app/utils/pathname";
 
-const EmailUpdateMutation = graphql(`
-  mutation EmailUpdate($id: ID!, $email: String!) {
-    checkoutEmailUpdate(id: $id, email: $email) {
-      errors {
-        ...CheckoutValidationError @unmask
-      }
-    }
-  }
-`);
-
-const AddressUpdateMutation = graphql(`
-  mutation AddressUpdate($id: ID!, $address: AddressInput!) {
-    checkoutShippingAddressUpdate(id: $id, shippingAddress: $address) {
-      errors {
-        ...CheckoutValidationError @unmask
-      }
-    }
-    checkoutBillingAddressUpdate(id: $id, billingAddress: $address) {
-      errors {
-        ...CheckoutValidationError @unmask
-      }
-    }
-  }
-`);
-
 export async function updateCheckoutInformationAction(
   _state: unknown,
   formData: FormData,
@@ -78,12 +53,6 @@ export async function updateCheckoutInformationAction(
   };
 }
 
-const FormSchema = z.object({
-  email: z.email(),
-  ...AddressSchema.shape,
-  ...PathnameParamsSchema.shape,
-});
-
 async function updateEmail(
   client: ApolloClient<unknown>,
   variables: EmailUpdateMutationVariables,
@@ -107,3 +76,34 @@ async function updateAddress(
     data?.checkoutShippingAddressUpdate ?? data?.checkoutBillingAddressUpdate;
   return checkoutAddress;
 }
+
+const FormSchema = z.object({
+  email: z.email(),
+  ...AddressSchema.shape,
+  ...PathnameParamsSchema.shape,
+});
+
+const EmailUpdateMutation = graphql(`
+  mutation EmailUpdate($id: ID!, $email: String!) {
+    checkoutEmailUpdate(id: $id, email: $email) {
+      errors {
+        ...CheckoutValidationError @unmask
+      }
+    }
+  }
+`);
+
+const AddressUpdateMutation = graphql(`
+  mutation AddressUpdate($id: ID!, $address: AddressInput!) {
+    checkoutShippingAddressUpdate(id: $id, shippingAddress: $address) {
+      errors {
+        ...CheckoutValidationError @unmask
+      }
+    }
+    checkoutBillingAddressUpdate(id: $id, billingAddress: $address) {
+      errors {
+        ...CheckoutValidationError @unmask
+      }
+    }
+  }
+`);

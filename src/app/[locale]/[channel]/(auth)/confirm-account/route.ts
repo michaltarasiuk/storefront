@@ -6,16 +6,6 @@ import {graphql} from "#app/graphql/codegen";
 import {isDefined} from "#app/utils/is-defined";
 import {joinPathname, parsePathnameParams} from "#app/utils/pathname";
 
-const ConfirmAccountMutation = graphql(`
-  mutation ConfirmAccount($email: String!, $token: String!) {
-    confirmAccount(email: $email, token: $token) {
-      user {
-        isActive
-      }
-    }
-  }
-`);
-
 export async function GET({nextUrl}: NextRequest) {
   const email = nextUrl.searchParams.get("email");
   const token = nextUrl.searchParams.get("token");
@@ -41,3 +31,13 @@ async function confirmAccount(email: string, token: string): Promise<boolean> {
   });
   return data?.confirmAccount?.user?.isActive ?? false;
 }
+
+const ConfirmAccountMutation = graphql(`
+  mutation ConfirmAccount($email: String!, $token: String!) {
+    confirmAccount(email: $email, token: $token) {
+      user {
+        isActive
+      }
+    }
+  }
+`);

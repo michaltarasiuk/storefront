@@ -12,17 +12,6 @@ import {toValidationErrors} from "#app/modules/account/utils/errors";
 import {parseFormData} from "#app/utils/form";
 import {joinPathname, PathnameParamsSchema} from "#app/utils/pathname";
 
-const SignUpMutation = graphql(`
-  mutation SignUp($input: AccountRegisterInput!) {
-    accountRegister(input: $input) {
-      requiresConfirmation
-      errors {
-        ...AccountValidationError @unmask
-      }
-    }
-  }
-`);
-
 export async function signUpAction(_state: unknown, formData: FormData) {
   const {email, password, locale, channel} = parseFormData(
     formData,
@@ -63,3 +52,14 @@ const FormDataSchema = z.object({
   password: z.string(),
   ...PathnameParamsSchema.shape,
 });
+
+const SignUpMutation = graphql(`
+  mutation SignUp($input: AccountRegisterInput!) {
+    accountRegister(input: $input) {
+      requiresConfirmation
+      errors {
+        ...AccountValidationError @unmask
+      }
+    }
+  }
+`);

@@ -8,7 +8,7 @@ import {text} from "#app/styles/text";
 import {cn} from "#app/utils/cn";
 
 const menuItem = cva([
-  "px-base py-small-100 rounded-base w-full cursor-pointer text-start",
+  "px-base py-small-100 rounded-base block w-full cursor-pointer text-start",
   "hover:bg-base-background-subdued hover:underline hover:underline-offset-2",
   "focus-visible:ring-base-accent focus-visible:bg-base-background-subdued outline-none focus-visible:ring-2 focus-visible:ring-offset-0",
   "data-route-match:underline data-route-match:underline-offset-2",
