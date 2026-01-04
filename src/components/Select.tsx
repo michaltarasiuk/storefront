@@ -127,7 +127,7 @@ export function SelectItem({children, ...props}: ListBoxItemProps) {
     <ListBoxItem
       {...props}
       className={cn(
-        "px-small-100 py-small-400 flex w-[var(--trigger-width)] cursor-pointer items-center justify-between",
+        "px-small-100 py-small-400 flex w-(--trigger-width) cursor-pointer items-center justify-between",
         "hover:bg-base-background-subdued",
         "focus-visible:bg-base-background-subdued outline-none",
         "selected:bg-base-background-subdued",

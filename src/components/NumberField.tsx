@@ -38,7 +38,7 @@ export function NumberField({label, description, ...props}: NumberFieldProps) {
           placeholder={label}
           className={cn(
             "px-field-padding-inline py-empty-field-padding-block h-field-height",
-            "[&:not(:placeholder-shown)]:pt-filled-field-padding-block-start [&:not(:placeholder-shown)]:pb-filled-field-padding-block-end",
+            "not-[&:placeholder-shown]:pt-filled-field-padding-block-start not-[&:placeholder-shown]:pb-filled-field-padding-block-end",
           )}
         />
         <NumberFieldControls />

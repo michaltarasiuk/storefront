@@ -48,7 +48,7 @@ export function TextArea({label, description, ...props}: TextAreaProps) {
           placeholder={label}
           className={cn(
             "rounded-base text-field-value border-control-border bg-control-background px-field-padding-inline py-field-padding-block resize-none overflow-hidden border transition-all [grid-area:1/1/2/2]",
-            "placeholder:text-control-text-subdued [&:not(:placeholder-shown)]:pt-filled-field-padding-block-start [&:not(:placeholder-shown)]:pb-filled-field-padding-block-end",
+            "placeholder:text-control-text-subdued not-[&:placeholder-shown]:pt-filled-field-padding-block-start not-[&:placeholder-shown]:pb-filled-field-padding-block-end",
             "focus:ring-control-accent/50 focus:border-control-accent outline-none focus:ring-3",
             "invalid:border-critical invalid:ring-critical invalid:ring-1",
             "disabled:bg-disabled-input-background disabled:opacity-50",

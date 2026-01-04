@@ -16,12 +16,12 @@ import {Text} from "./Text";
 const input = cva(
   [
     "px-field-padding-inline py-empty-field-padding-block h-field-height",
-    "[&:not(:placeholder-shown)]:pt-filled-field-padding-block-start [&:not(:placeholder-shown)]:pb-filled-field-padding-block-end",
+    "not-[&:placeholder-shown]:pt-filled-field-padding-block-start not-[&:placeholder-shown]:pb-filled-field-padding-block-end",
   ],
   {
     variants: {
       isUppercased: {
-        true: "[&:not(:placeholder-shown)]:uppercase",
+        true: "not-[&:placeholder-shown]:uppercase",
       },
     },
   },
