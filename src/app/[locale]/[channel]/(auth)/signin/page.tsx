@@ -6,11 +6,10 @@ import {FormattedMessage} from "#app/i18n/react-intl";
 
 import {SignInForm} from "../_components/SignInForm";
 
-export default async function SignInPage(
-  props: PageProps<"/[locale]/[channel]/signin">,
-) {
-  const searchParams = await props.searchParams;
-  const {email} = SearchParamsSchema.parse(searchParams);
+export default async function SignInPage({
+  searchParams,
+}: PageProps<"/[locale]/[channel]/signin">) {
+  const {email} = await SearchParamsSchema.parseAsync(searchParams);
   return (
     <>
       <SignInForm defaultEmail={email} />

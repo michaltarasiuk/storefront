@@ -3,7 +3,6 @@ import {type NextRequest, NextResponse} from "next/server";
 import {ROUTES} from "#app/consts/routes";
 import {getClient} from "#app/graphql/apollo-client";
 import {graphql} from "#app/graphql/codegen";
-import type {ConfirmAccountMutationVariables} from "#app/graphql/codegen/graphql";
 import {isDefined} from "#app/utils/is-defined";
 import {joinPathname, parsePathnameParams} from "#app/utils/pathname";
 
@@ -18,41 +17,27 @@ const ConfirmAccountMutation = graphql(`
 `);
 
 export async function GET({nextUrl}: NextRequest) {
-  const confirmationParams = getConfirmationParams(nextUrl.searchParams);
-  if (!isDefined(confirmationParams)) {
+  const email = nextUrl.searchParams.get("email");
+  const token = nextUrl.searchParams.get("token");
+  if (!isDefined(email) || !isDefined(token)) {
     return NextResponse.json(null, {status: 422});
   }
-  const isAccountActive = await confirmAccount(confirmationParams);
+  const isAccountActive = await confirmAccount(email, token);
   if (!isAccountActive) {
     return NextResponse.json(null, {status: 400});
   }
   const redirectUrl = new URL(
-    joinPathname(
-      ...parsePathnameParams(nextUrl.pathname),
-      ROUTES.auth.signin,
-    ),
+    joinPathname(...parsePathnameParams(nextUrl.pathname), ROUTES.auth.signin),
     nextUrl.origin,
   );
-  redirectUrl.searchParams.set("email", confirmationParams.email);
+  redirectUrl.searchParams.set("email", email);
   return NextResponse.redirect(redirectUrl);
 }
 
-function getConfirmationParams(searchParams: URLSearchParams) {
-  const email = searchParams.get("email");
-  const token = searchParams.get("token");
-  if (!isDefined(email) || !isDefined(token)) {
-    return null;
-  }
-  return {
-    email,
-    token,
-  };
-}
-
-async function confirmAccount(variables: ConfirmAccountMutationVariables) {
+async function confirmAccount(email: string, token: string): Promise<boolean> {
   const {data} = await getClient().mutate({
     mutation: ConfirmAccountMutation,
-    variables,
+    variables: {email, token},
   });
   return data?.confirmAccount?.user?.isActive ?? false;
 }

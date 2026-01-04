@@ -8,6 +8,7 @@ import {getClient} from "#app/graphql/apollo-client";
 import {graphql} from "#app/graphql/codegen";
 import {getCheckoutId} from "#app/modules/checkout/utils/cookies";
 import {toValidationErrors} from "#app/modules/checkout/utils/errors";
+import {parseFormData} from "#app/utils/form";
 import {isDefined} from "#app/utils/is-defined";
 import {joinPathname, PathnameParamsSchema} from "#app/utils/pathname";
 
@@ -19,7 +20,10 @@ export async function updateCheckoutDeliveryAction(
   if (!isDefined(checkoutId)) {
     notFound();
   }
-  const {deliveryMethodId, locale, channel} = parseFormData(formData);
+  const {deliveryMethodId, locale, channel} = parseFormData(
+    formData,
+    FormSchema,
+  );
   const {data} = await getClient().mutate({
     mutation: DeliveryMethodUpdateMutation,
     variables: {
@@ -34,11 +38,6 @@ export async function updateCheckoutDeliveryAction(
   return {
     errors: toValidationErrors(errors),
   };
-}
-
-function parseFormData(formData: FormData) {
-  const formDataObject = Object.fromEntries(formData);
-  return FormSchema.parse(formDataObject);
 }
 
 const FormSchema = z.object({

@@ -14,6 +14,7 @@ import type {
 import {getCheckoutId} from "#app/modules/checkout/utils/cookies";
 import {toValidationErrors} from "#app/modules/checkout/utils/errors";
 import {AddressSchema} from "#app/utils/address";
+import {parseFormData} from "#app/utils/form";
 import {isDefined} from "#app/utils/is-defined";
 import {joinPathname, PathnameParamsSchema} from "#app/utils/pathname";
 
@@ -50,7 +51,10 @@ export async function updateCheckoutInformationAction(
   if (!isDefined(checkoutId)) {
     notFound();
   }
-  const {email, locale, channel, ...address} = parseFormData(formData);
+  const {email, locale, channel, ...address} = parseFormData(
+    formData,
+    FormSchema,
+  );
   const client = getClient();
   const [emailUpdate, addressUpdate] = await Promise.all([
     updateEmail(client, {
@@ -79,9 +83,6 @@ const FormSchema = z.object({
   ...AddressSchema.shape,
   ...PathnameParamsSchema.shape,
 });
-function parseFormData(formData: FormData) {
-  return FormSchema.parse(Object.fromEntries(formData));
-}
 
 async function updateEmail(
   client: ApolloClient<unknown>,

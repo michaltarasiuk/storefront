@@ -9,6 +9,7 @@ import {graphql} from "#app/graphql/codegen";
 import {getCheckoutId} from "#app/modules/checkout/utils/cookies";
 import {toValidationErrors} from "#app/modules/checkout/utils/errors";
 import {AddressSchema} from "#app/utils/address";
+import {parseFormData} from "#app/utils/form";
 import {isDefined} from "#app/utils/is-defined";
 import {joinPathname, PathnameParamsSchema} from "#app/utils/pathname";
 
@@ -20,7 +21,10 @@ export async function updateCheckoutBillingAction(
   if (!isDefined(checkoutId)) {
     notFound();
   }
-  const {locale, channel, ...billingAddress} = parseFormData(formData);
+  const {locale, channel, ...billingAddress} = parseFormData(
+    formData,
+    FormSchema,
+  );
   const {data} = await getClient().mutate({
     mutation: BillingAddressUpdateMutation,
     variables: {
@@ -35,11 +39,6 @@ export async function updateCheckoutBillingAction(
   return {
     errors: toValidationErrors(errors),
   };
-}
-
-function parseFormData(formData: FormData) {
-  const formDataObject = formData.entries();
-  return FormSchema.parse(formDataObject);
 }
 
 const FormSchema = z.object({

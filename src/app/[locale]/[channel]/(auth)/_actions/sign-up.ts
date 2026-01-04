@@ -9,6 +9,7 @@ import {graphql} from "#app/graphql/codegen";
 import {localeToLanguageCode} from "#app/i18n/utils/locale-to-language-code";
 import {signIn} from "#app/modules/account/auth";
 import {toValidationErrors} from "#app/modules/account/utils/errors";
+import {parseFormData} from "#app/utils/form";
 import {joinPathname, PathnameParamsSchema} from "#app/utils/pathname";
 
 const SignUpMutation = graphql(`
@@ -23,7 +24,10 @@ const SignUpMutation = graphql(`
 `);
 
 export async function signUpAction(_state: unknown, formData: FormData) {
-  const {email, password, locale, channel} = parseFormData(formData);
+  const {email, password, locale, channel} = parseFormData(
+    formData,
+    FormDataSchema,
+  );
   const redirectUrl = new URL(
     joinPathname(locale, channel, ROUTES.auth.confirmAccount),
     env.NEXT_PUBLIC_SITE_URL,
@@ -34,8 +38,8 @@ export async function signUpAction(_state: unknown, formData: FormData) {
       input: {
         email,
         password,
-        languageCode: localeToLanguageCode(locale),
         channel,
+        languageCode: localeToLanguageCode(locale),
         redirectUrl: String(redirectUrl),
       },
     },
@@ -52,11 +56,6 @@ export async function signUpAction(_state: unknown, formData: FormData) {
     requiresConfirmation: requiresConfirmation as boolean,
     errors: toValidationErrors(errors),
   };
-}
-
-function parseFormData(formData: FormData) {
-  const formDataObject = Object.fromEntries(formData);
-  return FormDataSchema.parse(formDataObject);
 }
 
 const FormDataSchema = z.object({
