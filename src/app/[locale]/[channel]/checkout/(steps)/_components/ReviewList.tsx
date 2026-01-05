@@ -13,11 +13,11 @@ export function ReviewList({children}: {children: React.ReactNode}) {
 
 interface ReviewItemProps {
   label: string;
-  children: React.ReactNode;
   href: string;
+  children: React.ReactNode;
 }
 
-export function ReviewItem({label, children, href}: ReviewItemProps) {
+export function ReviewItem({label, href, children}: ReviewItemProps) {
   return (
     <div
       className={cn(

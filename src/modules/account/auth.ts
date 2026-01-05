@@ -26,8 +26,7 @@ export const {
         password: {label: "Password", type: "password"},
       },
       async authorize(credentials) {
-        const parsedCredentials =
-          await CredentialsSchema.safeParse(credentials);
+        const parsedCredentials = CredentialsSchema.safeParse(credentials);
         if (!parsedCredentials.success) {
           return null;
         }

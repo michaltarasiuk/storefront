@@ -8,14 +8,6 @@ import {isDefined} from "#app/utils/is-defined";
 
 import {signOutAction} from "./sign-out";
 
-const DeactivateAllTokensMutation = graphql(`
-  mutation DeactivateAllTokens {
-    tokensDeactivateAll {
-      __typename
-    }
-  }
-`);
-
 export async function deactivateAllTokensAction(
   locale: Locale,
   channel: string,
@@ -36,3 +28,11 @@ export async function deactivateAllTokensAction(
   });
   return signOutAction(locale, channel);
 }
+
+const DeactivateAllTokensMutation = graphql(`
+  mutation DeactivateAllTokens {
+    tokensDeactivateAll {
+      __typename
+    }
+  }
+`);

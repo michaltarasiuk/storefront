@@ -10,16 +10,6 @@ import {getCheckoutId} from "#app/modules/checkout/utils/cookies";
 import {isDefined} from "#app/utils/is-defined";
 import {joinPathname} from "#app/utils/pathname";
 
-const CompleteCheckoutMuatation = graphql(`
-  mutation CompleteCheckout($id: ID!) {
-    checkoutComplete(id: $id) {
-      order {
-        id
-      }
-    }
-  }
-`);
-
 export async function completeCheckoutAction(locale: Locale, channel: string) {
   const checkoutId = await getCheckoutId();
   if (!isDefined(checkoutId)) {
@@ -37,3 +27,13 @@ export async function completeCheckoutAction(locale: Locale, channel: string) {
   }
   redirect(joinPathname(locale, channel, ROUTES.checkout.order(order.id)));
 }
+
+const CompleteCheckoutMuatation = graphql(`
+  mutation CompleteCheckout($id: ID!) {
+    checkoutComplete(id: $id) {
+      order {
+        id
+      }
+    }
+  }
+`);
