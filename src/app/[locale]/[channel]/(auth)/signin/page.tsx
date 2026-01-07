@@ -9,7 +9,7 @@ import {SignInForm} from "../_components/SignInForm";
 export default async function SignInPage({
   searchParams,
 }: PageProps<"/[locale]/[channel]/signin">) {
-  const {email} = await SearchParamsSchema.parseAsync(searchParams);
+  const {email} = SearchParamsSchema.parse(await searchParams);
   return (
     <>
       <SignInForm defaultEmail={email} />
