@@ -79,7 +79,13 @@ const eslintConfig = defineConfig([
       "react-refresh/only-export-components": "off",
     },
   },
-  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
+  globalIgnores([
+    ".cursor/**",
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
 ]);
 export default eslintConfig;
 
